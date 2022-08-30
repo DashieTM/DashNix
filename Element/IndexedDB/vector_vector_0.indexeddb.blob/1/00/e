@@ -1,0 +1,929 @@
+яяo"id"instance-HRhQWQ0ip6ndvL0s"lines"кв2022-08-28T18:03:18.812Z I MatrixClient sync state => %s ERROR
+2022-08-28T18:03:19.448Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.458Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.732Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.742Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.751Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.754Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.757Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.763Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.770Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.777Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.784Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.792Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.798Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.805Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.813Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.822Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.829Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.835Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.842Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.853Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.862Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.867Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.873Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.898Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.904Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.912Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.916Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.918Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.925Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.932Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.939Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.947Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:19.956Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:20.419Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:22.418Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:24.199Z I MatrixClient sync state => %s ERROR
+2022-08-28T18:03:25.419Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:28.422Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.348Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.350Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.357Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.381Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.396Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.405Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.414Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.422Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.431Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.437Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.438Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.446Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.453Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.461Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.474Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.477Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.492Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.504Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.512Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.601Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.610Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.614Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.618Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.620Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.632Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.635Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.641Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.665Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.681Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.684Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.694Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.696Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.708Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.711Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.717Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.723Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.730Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.737Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.744Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.751Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.758Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.765Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.776Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.779Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.786Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.787Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.793Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.800Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.806Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.824Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.831Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.839Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.845Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.852Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.859Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.866Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.881Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.885Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.899Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.909Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.920Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.924Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.926Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.932Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.939Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.945Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.953Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.959Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.966Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.974Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.981Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.987Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:31.995Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:32.001Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:32.288Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:32.548Z I MatrixClient sync state => %s ERROR
+2022-08-28T18:03:33.900Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:34.399Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:34.429Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:37.432Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.156Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.567Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.573Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.580Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.588Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.600Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.610Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.627Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.637Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.641Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.645Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.652Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.653Z E request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/rooms/!uFLAkuQtUkmvhwOQyl%3Ashitgaem.online/read_markers
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.658Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.665Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.672Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.679Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.755Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.765Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.771Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.776Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.786Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.791Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.802Z I MatrixClient sync state => %s ERROR
+2022-08-28T18:03:38.810Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.813Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.824Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.828Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.840Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.842Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.849Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.856Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.869Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.871Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.884Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.891Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.898Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.905Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+2022-08-28T18:03:38.968Z E Failed to set presence: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+ConnectionError: request failed: CORS request rejected: https://matrix-client.matrix.org/_matrix/client/r0/presence/%40fabio.lenherr%3Amatrix.org/status
+    at vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:832082
+    at Object.callback (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:831702)
+    at u (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:12281)
+    at i.onreadystatechange (vector://vector/webapp/bundles/ecf118213a55b486ae33/vendors~init.js:2:11711)
+"indexI{

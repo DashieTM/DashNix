@@ -1,0 +1,9 @@
+#!/bin/sh
+currentName() {
+  win=$(hyprctl activewindow | grep class | awk -F ':' '{print $2}' | tr -d ' ')
+  echo "(box :class \"module\" :space-evenly \"false\" :orientation \"h\" :spacing \"3\" (label :text \"$win\" :class \"clock_minute_class\"))"
+}
+currentName
+tail -f /tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/hyprland.log | grep -E --line-buffered "focus to surface" | while read -r; do 
+currentName
+done

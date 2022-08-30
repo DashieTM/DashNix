@@ -1,0 +1,107 @@
+{
+  "segments": [
+    {
+      "segment_id": "b6a397be-867e-4550-b1fc-b15383f0cf10",
+      "max_doc": 5183,
+      "deletes": null
+    },
+    {
+      "segment_id": "69bea6bd-0298-4d0d-9a7a-ac62d6eba296",
+      "max_doc": 100,
+      "deletes": null
+    },
+    {
+      "segment_id": "e65363e1-dfbd-4f43-a883-80591f7704e8",
+      "max_doc": 100,
+      "deletes": null
+    },
+    {
+      "segment_id": "a257a274-f415-4504-9739-dc00d61918ff",
+      "max_doc": 98,
+      "deletes": null
+    },
+    {
+      "segment_id": "3a9e194e-00ac-4cfe-b6fb-dd45ae0f4e82",
+      "max_doc": 73,
+      "deletes": null
+    }
+  ],
+  "schema": [
+    {
+      "name": "body",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "tokenizer": "default"
+        },
+        "stored": false
+      }
+    },
+    {
+      "name": "topic",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "tokenizer": "default"
+        },
+        "stored": false
+      }
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "tokenizer": "default"
+        },
+        "stored": false
+      }
+    },
+    {
+      "name": "date",
+      "type": "u64",
+      "options": {
+        "indexed": false,
+        "fast": "single",
+        "stored": false
+      }
+    },
+    {
+      "name": "sender",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "tokenizer": "raw"
+        },
+        "stored": false
+      }
+    },
+    {
+      "name": "room_id",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "tokenizer": "raw"
+        },
+        "stored": true
+      }
+    },
+    {
+      "name": "event_id",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "tokenizer": "raw"
+        },
+        "stored": true
+      }
+    }
+  ],
+  "opstamp": 6006
+}
