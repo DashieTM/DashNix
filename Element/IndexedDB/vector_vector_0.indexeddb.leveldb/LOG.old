@@ -1,6 +1,0 @@
-2022/08/30-11:07:02.624 660 Reusing MANIFEST /home/dashie/.config/Element/IndexedDB/vector_vector_0.indexeddb.leveldb/MANIFEST-000001
-2022/08/30-11:07:02.626 660 Recovering log #74
-2022/08/30-11:07:02.671 660 Reusing old log /home/dashie/.config/Element/IndexedDB/vector_vector_0.indexeddb.leveldb/000074.log 
-2022/08/30-11:07:02.672 660 Delete type=2 #71
-2022/08/30-11:07:02.672 660 Delete type=2 #72
-2022/08/30-11:07:02.672 660 Delete type=2 #75
