@@ -62,10 +62,7 @@
 	(revealer :transition "slideright"
 			  :reveal wifi_rev
 			  :duration "350ms"
-	(label    :class "module_essid"
-			  :text ESSID_WLAN
-			  :orientation "h"
-			  )))))
+				(button :class "module_essid" :onclick "hyprctl dispatch exec 'alacritty -e nmtui'" :wrap "false" :limit-width 12 :style "color: ${COL_WLAN};" ESSID_WLAN)))))
 
 (defwidget bluetooth [] 
 		(box :vexpand "false" :hexpand "false" :space-evenly "false"
@@ -111,17 +108,17 @@
 (defwidget clock_module []
   (eventbox :onhover "${eww} update time_rev=true"
 			  :onhoverlost "${eww} update time_rev=false"
-    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
-      (label :text clock_time :class "clock_time_class" )
-      (label :text "" :class "clock_time_sep" )
-      (label :text clock_minute :class "clock_minute_class")
-	  (revealer :transition "slideleft"
-			  :reveal time_rev
-			  :duration "350ms"
-      (button :class "clock_date_class"
-             :onclick "scripts/pop calendar" clock_date
-        )
-  ))))
+    (button :onclick "scripts/pop calendar"
+      (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+        (label :text clock_time :class "clock_time_class" )
+        (label :text "" :class "clock_time_sep" )
+        (label :text clock_minute :class "clock_minute_class")
+	    (revealer :class "clock_date_class" 
+          :transition "slideleft"
+	    	  :reveal time_rev
+	    	  :duration "350ms"
+          clock_date
+          )))))
   
 ;; speaker and mic volume ;;
 (defwidget volume []
@@ -158,6 +155,8 @@
 
 ;; audio volume widget ;;
 (defwidget audio []
+  (eventbox :onhover "scripts/pop hoverCreate"
+            :onhoverlost "scripts/pop hoverGet audio_ctl"
 	(box :class "audio-box" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
 	(box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
 	(box :class "speaker_icon" :orientation "v")
@@ -183,7 +182,7 @@
               :tooltip "mic on ${mic_percent}%"
 			  :onchange "amixer -D pulse sset Capture {}%" 
 			  :max 100
-			  :min 0))))))
+			  :min 0)))))))
 
 ;;  Music  ;;
 ;;(defwidget music [] 
@@ -205,11 +204,13 @@
 
 ;; calendar ;;
 (defwidget cal []
+  (eventbox :onhover "scripts/pop hoverCreate"
+            :onhoverlost "scripts/pop hoverGet calendar"
 	(box :class "cal" :orientation "v"
 	(box :class "cal-in"
 	(calendar :class "cal" 
 			  :day calendar_day 
-			  :year calendar_year))))
+			  :year calendar_year)))))
 
 ;;  Music again.. ;;
 ;;(defwidget music_pop []
@@ -227,6 +228,8 @@
 
 
 (defwidget system []
+  (eventbox :onhover "scripts/pop hoverCreate"
+            :onhoverlost "scripts/pop hoverGet system"
   (box :class "sys_win" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 0
   (box :class "sys_bat_box" :orientation "h" :space-evenly "false"
       (circular-progress :value battery-capacity
@@ -285,7 +288,7 @@
                 :class "sys_text_mem_sub"
                 :limit-width 22
                 :show_truncated false
-                :wrap false)))))
+                :wrap false))))))
 
 ;; left side but displayed right? ;; 
 (defwidget left []
@@ -334,7 +337,7 @@
 (defwindow calendar
   :monitor 0
 	:geometry (geometry :x "20px" 
-						:y "2%" 
+						:y "2px" 
                         :anchor "top right"
 						:width "270px" 
 						:height "60px")
@@ -344,7 +347,7 @@
 (defwindow audio_ctl
   :monitor 0
 	:geometry (geometry :x "250px" 
-						:y "2%" 
+						:y "2px" 
                         :anchor "top right"
 						:width "280px" 
 						:height "60px")
@@ -359,7 +362,7 @@
 (defwindow system
   :monitor 0
 	:geometry (geometry :x "50px" 
-						:y "2%" 
+						:y "2px" 
                         :anchor "top right"
 						:width "290px" 
 						:height "120px")
@@ -370,7 +373,7 @@
 (defwindow bar
 	  :monitor 0
           :geometry (geometry :x "0%"
-                       :y "3px"
+                       :y "1px"
                        :width "99%"
                        :height "20px"
                        :anchor "top center")

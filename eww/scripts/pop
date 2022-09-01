@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 calendar() {
 LOCK_FILE="$HOME/.cache/eww-calendar.lock"
 EWW_BIN="$HOME/.local/bin/eww"
@@ -80,13 +81,35 @@ else
 fi
 }
 
+hoverGet() {
+NAME="$1"
+EWW_BIN="$HOME/.local/bin/eww"
+STORE="$HOME/.cache/cache.txt"
+if [[ -f "$STORE" ]]; then
+  rm "$STORE"
+  ${EWW_BIN} -c $HOME/.config/eww close "$NAME" 
+fi
+}
+
+hoverCreate() {
+STORE="$HOME/.cache/cache.txt"
+if [[ ! -f "$STORE" ]]; then
+  touch "$STORE"
+else
+  echo "failure!"
+fi
+}
 
 if [ "$1" = "calendar" ]; then
-calendar
+  calendar
 elif [ "$1" = "system" ]; then
-system
+  system
 #elif [ "$1" = "music" ]; then
 #music
 elif [ "$1" = "audio" ]; then
-audio
+  audio
+elif [ "$1" = "hoverGet" ]; then
+  hoverGet "$2"
+elif [ "$1" = "hoverCreate" ]; then
+  hoverCreate
 fi
