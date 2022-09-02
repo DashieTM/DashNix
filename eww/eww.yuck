@@ -5,7 +5,7 @@
 
 ;; volume definitions ;;
 (defpoll volume_percent :interval "3s" "pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' ' { print $2 } ' | tr -d ' %'")
-(defpoll mic_percent :interval "3s" "amixer -D pulse sget Capture | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll mic_percent :interval "3s" "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'")
 (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 
 ;; battery definitions ;;
@@ -88,15 +88,16 @@
 ;; memory ;;
 (defwidget mem []
 		(box :class "mem_module" :vexpand "false" :hexpand "false" 
+                (button :class "iconmem"
+                    :onclick "$HOME/.config/eww/scripts/pop system"
             (circular-progress :value memory
                 :class "membar"
                 :thickness 4
                 :tooltip "using ${memory}% ram"
-                :onclick "$HOME/.config/eww/scripts/pop system"
                 :show_truncated false
                 :wrap false
-                (button :class "iconmem" "")
-                )))
+                (label :class "mem_padding" :text "")
+                ))))
 
 
 ;; seperator ;;
@@ -180,9 +181,16 @@
               :space-evenly "false"
 			  :orientation "h"
               :tooltip "mic on ${mic_percent}%"
-			  :onchange "amixer -D pulse sset Capture {}%" 
+			  :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%" 
 			  :max 100
-			  :min 0)))))))
+			  :min 0))))
+        (label :text "" :class "audio_sep" :halign "center")
+	      (box :class "change_audio_box" :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+	      (box :class "change_audio" :orientation "v"
+          (button :onclick "scripts/change-audio internal" ""))
+	      (box :class "change_audio" :orientation "v"
+          (button :onclick "scripts/change-audio bluetooth" ""))
+  ))))
 
 ;;  Music  ;;
 ;;(defwidget music [] 

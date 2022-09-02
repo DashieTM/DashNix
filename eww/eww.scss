@@ -57,7 +57,7 @@ tooltip label {
 
 .membar {
   color: #e0b089;
-    background-color: #38384d;
+  background-color: #38384d;
   border-radius: 10px;
 }
 .batbar {
@@ -101,9 +101,12 @@ tooltip label {
 }
 
 .iconmem {
-    font-size: 15;
-    margin: 11px;
+    font-size: 23;
+    margin: 4px -3px 4px 0px;
     color: #e0b089;
+}
+.mem_padding {
+    margin: 10px;
 }
 .iconbat {
     font-size: 23;
@@ -119,9 +122,9 @@ tooltip label {
   }
 
 .mem_module {
-    background-color: #0f0f17;
+  background-color: #0f0f17;
 	border-radius: 16px;
-  margin: 0px 10px 0px 3px;
+  margin: 0px 10px 0px 0px;
   }
 .bat_module {
     background-color: #0f0f17;
@@ -390,6 +393,17 @@ color: #bfc9db;
 	font-size : 26px;
 	font-weight : bold;
 	margin: 20px 0px 0px 0px;
+}
+
+.change_audio_box {
+  margin: 0px 0px 0px 100px;
+}
+
+.change_audio {
+	color: #a1bdce;
+  margin: 0px 30px 5px 0px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .speaker_bar scale trough highlight {

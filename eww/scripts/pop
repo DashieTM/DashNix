@@ -84,7 +84,6 @@ fi
 hoverGet() {
 NAME="$1"
 EWW_BIN="$HOME/.local/bin/eww"
-STORE="$HOME/.cache/cache.txt"
 if [[ -f "$STORE" ]]; then
   rm "$STORE"
   ${EWW_BIN} -c $HOME/.config/eww close "$NAME" 
@@ -92,14 +91,13 @@ fi
 }
 
 hoverCreate() {
-STORE="$HOME/.cache/cache.txt"
 if [[ ! -f "$STORE" ]]; then
   touch "$STORE"
 else
   echo "failure!"
 fi
 }
-
+STORE=true
 if [ "$1" = "calendar" ]; then
   calendar
 elif [ "$1" = "system" ]; then
