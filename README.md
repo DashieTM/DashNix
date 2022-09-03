@@ -6,7 +6,11 @@ Programs used for the general environment:
 - hyprland
 - eww
 - blueman
+- blueman-manager
 - Network-Manager -> nmtui
 - nvim
 - alacritty
-
+- dunst
+- swaylock
+- brightnessctl
+- playerctl
