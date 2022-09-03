@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 internal() {
   SPEAKER=$(pactl list sinks | grep "Name" | grep "alsa" | awk -F ': ' '{ print $2  }')

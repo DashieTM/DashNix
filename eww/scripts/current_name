@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 currentName() {
   win=$(hyprctl activewindow | grep class | awk -F ':' '{print $2}' | tr -d ' ')
   echo "(box :class \"module_app_text\" :space-evenly \"false\" :orientation \"h\" :spacing \"3\" (label :text \"$win\"))"

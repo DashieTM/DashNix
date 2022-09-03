@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 workspaces() {
 
 ws1="ID 1"

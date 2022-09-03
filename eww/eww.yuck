@@ -4,8 +4,8 @@
 (defpoll clock_date :interval "10h" "date '+%d/%m'")
 
 ;; volume definitions ;;
-(defpoll volume_percent :interval "3s" "pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' ' { print $2 } ' | tr -d ' %'")
-(defpoll mic_percent :interval "3s" "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'")
+(defpoll volume_percent :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' ' { print $2 } ' | tr -d ' %'")
+(defpoll mic_percent :interval "1s" "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'")
 (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 
 ;; battery definitions ;;
@@ -121,45 +121,61 @@
           clock_date
           )))))
   
-;; speaker and mic volume ;;
+;; speaker volume ;;
 (defwidget volume []
-  (eventbox :onhover "${eww} update vol_reveal=true"
-			  :onhoverlost "${eww} update vol_reveal=false"
+  ;;(eventbox :onhover "${eww} update vol_reveal=true"
+	;;		  :onhoverlost "${eww} update vol_reveal=false"
   (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
-	(button   :onclick "scripts/pop audio"   :class "volume_icon" "")
-	(revealer :transition "slideleft"
-			  :reveal vol_reveal
-			  :duration "350ms"
-	(scale    :class "volbar"
-			  :value volume_percent
-			  :orientation "h"
-			  :tooltip "${volume_percent}%"
-			  :max 100
-			  :min 0
-			  :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%" )))))
+	(button   :onclick "scripts/pop audio"   :class "volume_icon" "")))
+	;;(revealer :transition "slideleft"
+	;;		  :reveal vol_reveal
+	;;		  :duration "350ms"
+	;;(scale    :class "volbar"
+	;;		  :value volume_percent
+	;;		  :orientation "h"
+	;;		  :tooltip "${volume_percent}%"
+	;;		  :max 100
+	;;		  :min 0
+  ;;     :onchange "scripts/change-volume sink {}%" )))
 
 ;; screen brightness ;;
 (defwidget bright []
-  (eventbox :onhover "${eww} update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
+  ;;(eventbox :onhover "${eww} update br_reveal=true" :onhoverlost "${eww} update br_reveal=false"
   (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
-    (label :text "" :class "bright_icon" :tooltip "brightness")
-	(revealer :transition "slideleft"
-			  :reveal br_reveal
-			  :duration "350ms"
-	(scale    :class "brightbar"
-			  :value brightness_percent
+	(button   :onclick "scripts/pop brightness"   :class "bright_icon" "")))
+	;;(revealer :transition "slideleft"
+	;;		  :reveal br_reveal
+	;;		  :duration "350ms"
+;;	(scale    :class "brightbar"
+;;			  :value brightness_percent
+;;			  :orientation "h"
+;;			  :tooltip "${brightness_percent}%"
+;;			  :max 100
+;;			  :min 0
+;;			  :onchange "brightnessctl set {}%" )))
+
+;; brightness widget ;;
+(defwidget brightness_overlay []
+  (eventbox :onhover "scripts/pop hoverCreate"
+            :onhoverlost "scripts/pop hoverGet brightness_window"
+	(box :class "audio-box" :halign "center" :orientation "v" :vexpand "false" :hexpand "false"
+    (label :class "speaker_text" :text "brightness" :halign "left" )
+	(box :class "brightbar" :halign "center" :vexpand "false" :hexpand "false"
+	(label :class "bright_icon_overlay" :text "")
+	(scale    :value brightness_percent
+              :space-evenly "false"
 			  :orientation "h"
-			  :tooltip "${brightness_percent}%"
+        :onchange "brightnessctl set {}%"
+              :tooltip "brightness on ${brightness_percent}%"
 			  :max 100
-			  :min 0
-			  :onchange "brightnessctl set {}%" )))))
+			  :min 0)))))
 
 ;; audio volume widget ;;
 (defwidget audio []
   (eventbox :onhover "scripts/pop hoverCreate"
             :onhoverlost "scripts/pop hoverGet audio_ctl"
 	(box :class "audio-box" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
-	(box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+	(box :halign "center" :space-evenly "false" :hexpand "false" :vexpand "false"
 	(box :class "speaker_icon" :orientation "v")
 	(box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
     (label :class "speaker_text" :text "speaker" :valign "center" :halign "left" )
@@ -167,28 +183,41 @@
 	(scale    :value volume_percent
               :space-evenly "false"
 			  :orientation "h"
-			  :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%" 
+        :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
               :tooltip "volume on ${volume_percent}%"
 			  :max 100
 			  :min 0))))
-            (label :text "" :class "audio_sep" :halign "center")
-	(box :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
+            (label :text "" :class "audio_sep" :halign "center")
+	(box :halign "center" :space-evenly "false" :hexpand "false" :vexpand "false"
 	(box :class "mic_icon" :orientation "v")
 	(box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
-    (label :class "mic_text" :text "mic" :valign "center" :halign "left" )
+    (label :class "speaker_text" :text "mic" :valign "center" :halign "left" )
 	(box :class "mic_bar" :halign "center" :vexpand "false" :hexpand "false"
 	(scale    :value mic_percent
               :space-evenly "false"
 			  :orientation "h"
               :tooltip "mic on ${mic_percent}%"
-			  :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%" 
+        :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%"
 			  :max 100
 			  :min 0))))
-        (label :text "" :class "audio_sep" :halign "center")
-	      (box :class "change_audio_box" :halign "v" :space-evenly "false" :hexpand "false" :vexpand "false"
-	      (box :class "change_audio" :orientation "v"
+        (label :text "" :class "audio_sep" :halign "center")
+	(box :halign "center" :space-evenly "false" :hexpand "false" :vexpand "false"
+	(label :class "bright_icon_overlay" :orientation "v" :text "")
+	(box :orientation "v" :halign "center" :vexpand "false" :hexpand "false"
+    (label :class "bright_text" :text "lux" :valign "center" :halign "right" )
+	(box :class "brightbar" :halign "center" :vexpand "false" :hexpand "false"
+	(scale    :value brightness_percent
+              :space-evenly "false"
+			  :orientation "h"
+              :tooltip "brightness ${brightness_percent}%"
+        :onchange "brightnessctl set {}%"
+			  :max 100
+			  :min 0))))
+        (label :text "" :class "audio_sep" :halign "center")
+	      (box :class "change_audio_box" :halign "center" :spac`e-evenly "false" :hexpand "false" :vexpand "false"
+	      (box :class "change_audio" :orientation "v" :halign "left"
           (button :onclick "scripts/change-audio internal" ""))
-	      (box :class "change_audio" :orientation "v"
+	      (box :class "change_audio" :orientation "v" :halign "right"
           (button :onclick "scripts/change-audio bluetooth" ""))
   ))))
 
@@ -304,7 +333,6 @@
 		 :space-evenly false  
          :halign "end"
 		 :class "left_modules"
-(bright)
 (volume)
 (wifi)
 (bluetooth)
@@ -354,13 +382,23 @@
 
 (defwindow audio_ctl
   :monitor 0
+	:geometry (geometry :x "120px" 
+						:y "2px" 
+                        :anchor "top right"
+						:width "250px" 
+						:height "330px")
+  :stacking "overlay"
+(audio))
+
+(defwindow brightness_window
+  :monitor 0
 	:geometry (geometry :x "250px" 
 						:y "2px" 
                         :anchor "top right"
 						:width "280px" 
 						:height "60px")
   :stacking "overlay"
-(audio))
+(brightness_overlay))
 
 ;;  music again .. ;;
 ;;		(defwindow music_win :stacking "fg" :focusable "false" :screen 1
