@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e $(cat $HOME/.cache/weather/weather-quote) | head -n1

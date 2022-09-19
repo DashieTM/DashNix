@@ -1,0 +1,8 @@
+#! /bin/bash
+
+ISOPEN=$(eww windows | grep "*cockpit")
+if [ "$ISOPEN" = "" ]; then
+  eww open cockpit_window
+else
+  eww close cockpit_window
+fi

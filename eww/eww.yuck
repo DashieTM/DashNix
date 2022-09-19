@@ -9,9 +9,9 @@
 (defpoll brightness_percent :interval "5s" "brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 
 ;; battery definitions ;;
-(defpoll battery_status :interval "1m" "./scripts/battery stat")
-(defpoll battery-capacity	:interval "1m"	"scripts/battery percent")
-(defpoll battery			:interval "1m"	"scripts/battery icon")
+(defpoll battery_status :interval "5s" "./scripts/battery stat")
+(defpoll battery-capacity	:interval "5s"	"scripts/battery percent")
+(defpoll battery			:interval "5s"	"scripts/battery icon")
 
 ;; memory definitions ;;
 (defpoll memory :interval "15s" "scripts/memory")
@@ -25,11 +25,8 @@
 (defpoll WLAN_ICON :interval "1m" "~/.config/eww/scripts/wifi --ICON")
 
 ;; music definitions ;;
-;;(defpoll song :interval "2s"  "~/.config/eww/scripts/music_info --song")
-;;(defpoll song_artist :interval "2s"  "~/.config/eww/scripts/music_info --artist")
-;;(defpoll current_status :interval "1s"  "~/.config/eww/scripts/music_info --time")
-;;(defpoll song_status :interval "2s"  "~/.config/eww/scripts/music_info --status")
-;;(defpoll cover_art :interval "2s"  "~/.config/eww/scripts/music_info --cover")
+(defpoll Song_info :interval "2s"  "scripts/music_control")
+(defpoll Thumbnail :interval "2s"  "scripts/music_control2")
 
 ;; current window ;;
 ;;(defpoll currentWindow :interval "100ms" "hyprctl activewindow | grep class | awk -F ':' '{ print $2 }'")
@@ -38,6 +35,14 @@
 (defpoll calendar_day :interval "20h" "date '+%d'")
 (defpoll calendar_year :interval "20h" "date '+%Y'")
 
+;; Weather vars
+    (defpoll weather-interval :interval "20m"  "scripts/weather")
+    (defpoll weather-icon :interval "20m"  "cat ~/.cache/weather/weather-icon")
+    (defpoll temperature :interval "20m"  "cat ~/.cache/weather/weather-degree")
+    (defpoll weather-hex :interval "20m"  "cat ~/.cache/weather/weather-hex")
+    (defpoll weather-stat :interval "20m"  "cat ~/.cache/weather/weather-stat")
+    (defpoll weather-stat-side :interval "20m"  "~/.config/eww/scripts/weather-trimmer")
+    (defpoll weather-quote :interval "20m"  "~/.config/eww/scripts/getwethquote")
 
 ;; simple variables ;; 
 (defvar eww "$HOME/.local/bin/eww -c $HOME/.config/eww")
@@ -327,6 +332,56 @@
                 :show_truncated false
                 :wrap false))))))
 
+;; cockpit widget ;;
+(defwidget cockpit []
+       (box :orientation "h"
+  (box :class "cockpit_class"
+       :orientation "h"
+       (box :orientation "v"
+          (box :class "cockpit_box" :orientation "v"
+          (box 
+		         (button :class "cockpit_button_shutdown" :onclick "hyprctl dispatch exec 'shutdown now'" "")
+		         (button :class "cockpit_button_restart" :onclick "hyprctl dispatch exec reboot" "")
+		         (button :class "cockpit_button_sleep" :onclick "hyprctl dispatch exec 'playerctl -a pause & swaylock -c 000000 & systemctl suspend'" ""))
+        (label :text "" :class "audio_sep" :halign "center")
+          (box
+          (button :class "cockpit_button_settings" :onclick "hyprctl dispatch exec 'pavucontrol'" "")
+          (button :class "cockpit_button_settings" :onclick "scripts/change-audio bluetooth" "")))
+          (box :class "cockpit_box" :orientation "v"
+		         (button :class "cockpit_docs" :onclick "hyprctl dispatch exec nautilus $HOME/Documents" "Documents ")
+        (label :text "" :class "cockpit_sep_top" :halign "center")
+		         (button :class "cockpit_pics" :onclick "hyprctl dispatch exec nautilus $HOME/Pictures"  "Pictures  ")
+        (label :text "" :class "cockpit_sep_bottom" :halign "center")
+		         (button :class "cockpit_gits" :onclick "hyprctl dispatch exec 'alacritty --working-directory $HOME/gits'" "gits      ")))
+       (box :orientation "v"
+       (box :class "cockpit_box" :orientation "v" 
+             (box :class "cockpit_clock" 
+               (label :text clock_time :class "cockpit_clock_left" )
+               (label :text "" :class "cockpit_clock_sep" )
+               (label :text clock_minute :class "cockpit_clock_right"))
+        (label :text "" :class "audio_sep" :halign "center")
+             (box :class "cockpit_clock"
+               (label :text clock_date :class "cockpit_date")
+               ))
+       (box :class "cockpit_box" (weather)))
+       (box :width 300 :height 200 :class "cockpit_box" :orientation "v"
+          (box :class "song_info"
+              (label :wrap true :text "${Song_info}"))
+          (box :class "album_cover" :style 'background-image: url("${Thumbnail}")')
+       ))) 
+)
+
+;; weather ;;
+ (defwidget weather [] 
+      (box :orientation "v" :space-evenly "false" 
+        (box :orientation "h" :space-evenly "false" 
+          (box :class "weather-icon" :style "color: ${weather-hex}" {weather-icon})
+          (box :class "temperature" "${temperature}"))
+        (box :orientation "v" :space-evenly "false" 
+          (box :class "weather-stat" {weather-stat}))
+          (box :class "weather-quote-head" 
+                (label :wrap true :text {weather-quote}))))
+
 ;; left side but displayed right? ;; 
 (defwidget left []
 	(box :orientation "h" 
@@ -423,7 +478,19 @@
                        :width "99%"
                        :height "20px"
                        :anchor "top center")
-          :stacking "fg"
+          :stacking "bg"
 	  :wm-ignore false
     :exclusive true
   (bar_1))
+
+;; draw the bar ;;
+(defwindow cockpit_window
+	  :monitor 0
+          :geometry (geometry
+                       :width "600px"
+                       :height "500px"
+                       :anchor "center")
+          :stacking "overlay"
+	  :wm-ignore false
+    :exclusive true
+  (cockpit))
