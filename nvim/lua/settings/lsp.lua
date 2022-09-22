@@ -14,6 +14,12 @@ require'lspconfig'.jdtls.setup {}
 require'lspconfig'.sumneko_lua.setup {}
 require'lspconfig'.gopls.setup {}
 require'lspconfig'.jsonls.setup {}
+require'lspconfig'.cssls.setup {}
+require'lspconfig'.csharp_ls.setup {}
+require'lspconfig'.tsserver.setup {}
+require'lspconfig'.sqls.setup {}
+require'lspconfig'.rust_analyzer.setup {}
+require'lspconfig'.bashls.setup {}
 
 
 require("nvim-lsp-installer").setup({
@@ -34,7 +40,7 @@ if not status_ok2 then
 end
 
 local lspconfig = require("lspconfig")
-local servers = {"jdtls" , "sumneko_lua" , "texlab", "pyright" , "eslint" , "html" }
+local servers = {"jdtls" , "sumneko_lua" , "texlab", "pyright" , "eslint" , "html" , "cssls" , "rust_analyzer" , "bashls" , "csharp_ls" , "sqls" }
 
 lsp_installer.setup {
 	ensure_installed = servers
