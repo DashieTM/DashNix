@@ -40,7 +40,7 @@ if not status_ok2 then
 end
 
 local lspconfig = require("lspconfig")
-local servers = {"jdtls" , "sumneko_lua" , "texlab", "pyright" , "eslint" , "html" , "cssls" , "rust_analyzer" , "bashls" , "csharp_ls" , "sqls" }
+local servers = {"jdtls" , "sumneko_lua" , "texlab", "pyright" , "eslint" , "html" , "cssls" , "rust_analyzer" , "bashls" , "csharp_ls" , "sqls" , "clangd" }
 
 lsp_installer.setup {
 	ensure_installed = servers
