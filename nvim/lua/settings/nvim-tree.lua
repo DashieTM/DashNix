@@ -75,7 +75,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       },
       renderer = {
         add_trailing = false,
-        group_empty = false,
+        group_empty = true,
         highlight_git = false,
         full_name = false,
         highlight_opened_files = "none",
@@ -229,4 +229,6 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
           watcher = false,
         },
       },
-    } -- END_DEFAULT_OPTS
+    }
+
+vim.g.nvim_tree_group_empty = 1

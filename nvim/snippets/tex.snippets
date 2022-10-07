@@ -1,0 +1,36 @@
+
+snippet mini \minipg{}{}[]
+	\\minipg{
+	$1
+	}
+	{${2}}[${3}]
+
+snippet code "code"
+	\\begin{lstlisting}
+	$1
+	\\end{lstlisting}
+
+snippet list "list" 
+	\\begin{itemize}
+	\\item $1
+	\\end{itemize}
+
+snippet enum "enumerate"
+	\\begin{enumerate}
+	\\item 
+	\\end{enumerate}
+
+snippet table "table"
+	\\begin{table}[ht!]
+	\\section{${1}}
+	\\begin{tabular}{|m{0.2\linewidth}|m{0.755\linewidth}|}
+	\hline
+	$2
+	\hline
+	\\end{tabular}
+	\\end{table}
+
+snippet tabular "tabular"
+	\\begin{tabular}{|m{0.2\linewidth}|m{0.755\linewidth}|}
+	$1
+	\\end{tabular}

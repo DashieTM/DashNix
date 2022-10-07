@@ -22,6 +22,9 @@ Plug('hrsh7th/cmp-path')
 Plug('hrsh7th/cmp-cmdline')
 Plug('saadparwaiz1/cmp_luasnip')
 Plug('L3MON4D3/LuaSnip')
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 Plug('kyazdani42/nvim-tree.lua')
 Plug('windwp/nvim-autopairs')
 Plug('akinsho/bufferline.nvim')
@@ -38,5 +41,13 @@ Plug('weilbith/nvim-code-action-menu')
 Plug('mfussenegger/nvim-lint')
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'MunifTanjim/prettier.nvim'
+Plug 'rafamadriz/friendly-snippets'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-ui-select.nvim' 
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 vim.call('plug#end')
 
