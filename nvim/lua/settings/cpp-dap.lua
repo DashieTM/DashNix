@@ -23,7 +23,7 @@ dap.configurations.cpp = {
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
     end,
-    args = '[--gui]',
+    args = {'--gui'},
     cwd = '${workspaceFolder}',
     stopAtEntry = true,
   },
