@@ -5,7 +5,7 @@ end
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "latex" , "c", "cpp" ,  "lua", "haskell" , "java" , "javascript" , "typescript" },
+  ensure_installed = { "latex" , "c", "cpp" , "rust" , "lua", "haskell" , "java" , "javascript" , "typescript" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,

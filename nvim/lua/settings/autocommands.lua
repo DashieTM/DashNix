@@ -1,5 +1,2 @@
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
+vim.cmd('let g:vimtex_view_general_viewer = "evince"')
+vim.cmd('let g:vimtex_compiler_method = "latexmk"')
