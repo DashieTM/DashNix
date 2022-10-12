@@ -13,11 +13,21 @@ snippet code "code"
 snippet list "list" 
 	\\begin{itemize}
 	\\item $1
+	\\item $2
+	\\item $3
+	\\item $4
+	\\item $5
+	\\vspace{-3mm}
 	\\end{itemize}
 
 snippet enum "enumerate"
 	\\begin{enumerate}
-	\\item 
+	\\item $1
+	\\item $2
+	\\item $3
+	\\item $4
+	\\item $5
+	\\vspace{-3mm}
 	\\end{enumerate}
 
 snippet table "table"
@@ -32,5 +42,13 @@ snippet table "table"
 
 snippet tabular "tabular"
 	\\begin{tabular}{|m{0.2\linewidth}|m{0.755\linewidth}|}
+	\hline
 	$1
+	\hline
 	\\end{tabular}
+
+snippet tx "textcolor"
+	\\textcolor{${1}}{${2}}
+
+snippet bm "vectormatrix"
+	\\begin{bmatrix} $1 \\ $2 \\ $3 \end{bmatrix}

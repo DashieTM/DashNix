@@ -3,19 +3,18 @@ if not status_ok then
 	return
 end
 
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "latex" , "c", "cpp" , "rust" , "lua", "haskell" , "java" , "javascript" , "typescript" },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
+require("nvim-treesitter.configs").setup({
+	-- A list of parser names, or "all"
+	ensure_installed = { "latex", "c", "cpp", "rust", "lua", "haskell", "java", "javascript", "typescript" },
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+})
 
 local status_ok2, _ = pcall(require, "spellsitter")
 if not status_ok2 then
-  return
+	return
 end
 
 require("spellsitter").setup()
-

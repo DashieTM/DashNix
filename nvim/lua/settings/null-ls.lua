@@ -11,25 +11,17 @@ require("mason-null-ls").setup({
 		"autopep8",
 		"stylua",
 		"rustfmt",
-    "stylish-haskell",
+		"stylish-haskell",
 	},
 })
 
 null_ls.setup({
 	on_attach = function(client, bufnr)
-		if client.server_capabilities.documentFormattingProvider then
-			vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.format { async = true }<CR>")
-
-			-- format on save
-			vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.format { async = true }")
-		end
-
 		if client.server_capabilities.documentRangeFormattingProvider then
 			vim.cmd("xnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.range_formatting({})<CR>")
 		end
 	end,
 	sources = {
-		require("null-ls").builtins.completion.spell,
 		require("null-ls").builtins.formatting.prettier,
 		require("null-ls").builtins.formatting.clang_format,
 		require("null-ls").builtins.formatting.latexindent,

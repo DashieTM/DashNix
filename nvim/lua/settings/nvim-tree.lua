@@ -11,18 +11,6 @@ if not config_status_ok then
   return
 end
 
--- Replaces auto_close
---local tree_cb = nvim_tree_config.nvim_tree_callback
---vim.api.nvim_create_autocmd("BufEnter", {
---  nested = true,
---  callback = function()
---    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
---      vim.cmd "quit"
---    end
---  end
---})
-
-
 nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       auto_reload_on_write = true,
       create_in_closed_folder = false,
@@ -47,7 +35,6 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         adaptive_size = false,
         centralize_selection = false,
         width = 30,
-        height = 30,
         hide_root_folder = false,
         side = "left",
         preserve_window_proportions = false,
@@ -58,7 +45,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         mappings = {
           custom_only = false,
           list = {
-            -- user mappings go here
+                    -- user mappings go here
           },
         },
         float = {
@@ -136,7 +123,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         auto_open = true,
       },
       update_focused_file = {
-        enable = false,
+        enable = true,
         update_root = false,
         ignore_list = {},
       },
@@ -231,4 +218,24 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       },
     }
 
-vim.g.nvim_tree_group_empty = 1
+-- nvim-tree is also there in modified buffers so this function filter it out
+local modifiedBufs = function(bufs)
+    local t = 0
+    for k,v in pairs(bufs) do
+        if v.name:match("NvimTree_") == nil then
+            t = t + 1
+        end
+    end
+    return t
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    nested = true,
+    callback = function()
+        if #vim.api.nvim_list_wins() == 1 and
+        vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil and
+        modifiedBufs(vim.fn.getbufinfo({bufmodified = 1})) == 0 then
+            vim.cmd "quit"
+        end
+    end
+})

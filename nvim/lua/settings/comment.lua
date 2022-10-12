@@ -20,3 +20,5 @@ comment.setup {
     }
   end,
 }
+vim.cmd([[highlight TabLineSel guifg=#192330 guibg=112e54]])
+vim.cmd([[highlight BufferDefaultCurrent guifg=#192330 guibg=112e54]])

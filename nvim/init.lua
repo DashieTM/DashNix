@@ -1,25 +1,27 @@
-require "settings.plugins"
-require "settings.options"
-require "settings.cmp"
-require "settings.lsp"
-require "settings.devicons"
-require "settings.treesitter"
-require "settings.feline"
-require "settings.colorscheme"
-require "settings.nvim-tree"
-require "settings.pairs"
-require "settings.bufferline"
-require "settings.comment"
-require "settings.indentline"
-require "settings.impatient"
-require "settings.project"
-require "settings.dashboard"
-require "settings.haskell"
-require "settings.keymaps"
-require "settings.null-ls"
-require "settings.prettier"
-require "settings.gitsigns"
-require "settings.rainbow"
-require "settings.dap"
-require "settings.telescope"
-require "settings.autocommands"
+require("settings.plugins")
+require("settings.options")
+require("settings.cmp")
+require("settings.lsp")
+require("settings.devicons")
+require("settings.treesitter")
+require("settings.nvim-tree")
+require("settings.pairs")
+require("settings.comment")
+require("settings.indentline")
+require("settings.project")
+require("settings.dashboard")
+require("settings.haskell")
+require("settings.null-ls")
+require("settings.rainbow")
+require("settings.dap")
+require("settings.autocommands")
+require("settings.keymaps")
+require("settings.barbar")
+
+-- simple plugins that don't make sense to put in a seperate file, would clutter too much
+require("gitsigns").setup()
+require("feline").setup()
+require("telescope").setup({})
+require("telescope").load_extension("fzy_native")
+require("impatient").enable_profile()
+require("nightfox")
