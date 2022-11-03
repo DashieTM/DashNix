@@ -3,6 +3,7 @@ local options = {
 	mouse = "a",
 	fileencoding = "utf-8",
 	relativenumber = true,
+  number = true,
 	smartindent = true,
 	smartcase = true,
 	showmode = true,
@@ -10,7 +11,7 @@ local options = {
 	--	winbar = "",
 	ignorecase = true,
 	showtabline = 2,
-	timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undoi      updatetime = 300,                        -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces

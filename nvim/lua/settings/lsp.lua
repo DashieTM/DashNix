@@ -17,9 +17,9 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"cssls", -- css
 		"html", -- html
-		"eslint", -- latex
+	  "eslint", -- latex
 		"clangd", -- cpp / c
-		"tsserver", -- python
+		--"tsserver", -- python
 		"texlab", -- latex
 		"sumneko_lua", -- lua
 		"pyright", -- python
@@ -56,10 +56,10 @@ require("lspconfig")["clangd"].setup({
 	--on_attach = on_attach,
 })
 
-require("lspconfig")["tsserver"].setup({
-	capabilities = capabilities,
+--require("lspconfig")["tsserver"].setup({
+--	capabilities = capabilities,
 	--on_attach = on_attach,
-})
+--})
 
 require("lspconfig")["texlab"].setup({
 	capabilities = capabilities,

@@ -2,7 +2,7 @@ local null_ls = require("null-ls")
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-		"prettier",
+		"prettierd",
 		"clang_format",
 		"latexindent",
 		"shellharden",
@@ -22,7 +22,11 @@ null_ls.setup({
 		end
 	end,
 	sources = {
-		require("null-ls").builtins.formatting.prettier,
+		require("null-ls").builtins.formatting.prettierd.with({
+      env = {
+            PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/lua/settings/.prettierrc"),
+      },}
+    ),
 		require("null-ls").builtins.formatting.clang_format,
 		require("null-ls").builtins.formatting.latexindent,
 		require("null-ls").builtins.formatting.shellharden,
