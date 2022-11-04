@@ -9,6 +9,8 @@ local keymap = vim.api.nvim_set_keymap
 
 keymap("n", "<M-CR>", ":CodeActionMenu<CR>", opts)
 keymap("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
+keymap("n", "<C-g>", ':lua require("vgit").buffer_hunk_preview()<CR>', opts)
+--keymap("n", "<C-b>", ':lua  require("vgit").buffer_stage()<CR>', opts)
 keymap("n", "<F5>", ':lua require("dap").toggle_breakpoint()<CR>', opts)
 keymap("n", "<F6>", ':lua require("dap").step_over()<CR>', opts)
 keymap("n", "<F7>", ':lua require("dap").step_into()<CR>', opts)

@@ -18,9 +18,9 @@ local file_pattern = "*.tex"
 -- snippers go here:
 
 local listSnippet = s(
-  "list-",
-  fmt(
-    [[ 
+	"list-",
+	fmt(
+		[[ 
 \begin{{itemize}}
 \item \textcolor{{{1}}}{{{5}}}
 \item \textcolor{{{2}}}{{{6}}}
@@ -29,24 +29,24 @@ local listSnippet = s(
 \vspace{{2mm}}
 \end{{itemize}} 
     ]],
-    {
-      i(1, "color"),
-      rep(1),
-      rep(1),
-      rep(1),
-      i(2, "item 2"),
-      i(3, "item 1"),
-      i(4, "item 3"),
-      i(5, "item 4"),
-    }
-  )
+		{
+			i(1, "color"),
+			rep(1),
+			rep(1),
+			rep(1),
+			i(2, "item 2"),
+			i(3, "item 1"),
+			i(4, "item 3"),
+			i(5, "item 4"),
+		}
+	)
 )
 table.insert(snippets, listSnippet)
 
 local enumerateSnippet = s(
-  "enum-",
-  fmt(
-    [[ 
+	"enum-",
+	fmt(
+		[[ 
 \begin{{enumerate}}
 \item \textcolor{{{1}}}{{{5}}}
 \item \textcolor{{{2}}}{{{6}}}
@@ -55,24 +55,24 @@ local enumerateSnippet = s(
 \vspace{{2mm}}
 \end{{enumerate}} 
     ]],
-    {
-      i(1, "color"),
-      rep(1),
-      rep(1),
-      rep(1),
-      i(2, "item 2"),
-      i(3, "item 1"),
-      i(4, "item 3"),
-      i(5, "item 4"),
-    }
-  )
+		{
+			i(1, "color"),
+			rep(1),
+			rep(1),
+			rep(1),
+			i(2, "item 2"),
+			i(3, "item 1"),
+			i(4, "item 3"),
+			i(5, "item 4"),
+		}
+	)
 )
 table.insert(snippets, enumerateSnippet)
 
 local tableSnippet = s(
-  "table-",
-  fmt(
-    [[ 
+	"table-",
+	fmt(
+		[[ 
 \begin{{table}}[ht!]
 \section{{{}}}
 \begin{{tabular}}{{|m{{0.2\linewidth}}|m{{0.755\linewidth}}|}}
@@ -82,103 +82,103 @@ local tableSnippet = s(
 \end{{tabular}}
 \end{{table}}
     ]],
-    {
-      i(1, "Section Name"),
-      i(2, "data....."),
-    }
-  )
+		{
+			i(1, "Section Name"),
+			i(2, "data....."),
+		}
+	)
 )
 table.insert(snippets, tableSnippet)
 
 local tabularSnippet = s(
-  "tabular-",
-  fmt(
-    [[ 
+	"tabular-",
+	fmt(
+		[[ 
 \begin{{tabular}}{{|m{{0.2\linewidth}}|m{{0.755\linewidth}}|}}
 \hline
 {}
 \hline
 \end{{tabular}}
     ]],
-    {
-      i(1, "data....."),
-    }
-  )
+		{
+			i(1, "data....."),
+		}
+	)
 )
+table.insert(snippets, tabularSnippet)
 
 local textcolorSnippet = s(
-  "tx-",
-  fmt(
-    [[ 
+	"tx-",
+	fmt(
+		[[ 
 \textcolor{{{1}}}{{{2}}}
     ]],
-    {
-      i(1, "color"),
-      i(2, "text...")
-    }
-  )
+		{
+			i(1, "color"),
+			i(2, "text..."),
+		}
+	)
 )
 table.insert(snippets, textcolorSnippet)
 
 local boldSnippet = s(
-  "bold-",
-  fmt(
-    [[ 
+	"bold-",
+	fmt(
+		[[ 
 \textbf{{{1}}}
     ]],
-    {
-      i(1, "text..."),
-    }
-  )
+		{
+			i(1, "text..."),
+		}
+	)
 )
 table.insert(snippets, boldSnippet)
 
 local minipgSnippet = s(
-  "mini-",
-  fmt(
-    [[
+	"mini-",
+	fmt(
+		[[
 \minipg{{
 {1}
 }}{{{2}}}[{3}]
     ]],
-    {
-      i(1, "data..."),
-      rep(1),
-      i(2, "0.4,0.4"),
-    }
-  )
+		{
+			i(1, "data..."),
+			rep(1),
+			i(2, "0.4,0.4"),
+		}
+	)
 )
 table.insert(snippets, minipgSnippet)
 
 local graphicSnippet = s(
-  "graph-",
-  fmt(
-    [[
+	"graph-",
+	fmt(
+		[[
 \includegraphics[scale={1}]{{{2}}}
     ]],
-    {
-      i(1, "0.4"),
-      i(2, "something.png"),
-    }
-  )
+		{
+			i(1, "0.4"),
+			i(2, "something.png"),
+		}
+	)
 )
 table.insert(snippets, graphicSnippet)
 
 local lstSnippet = s(
-  "lst-",
-  fmt(
-    [[
+	"code-",
+	fmt(
+		[[
 \begin{{lstlisting}}
 {}
 \end{{lstlisting}}
     ]],
-    {
-      i(1, "data"),
-    }
-  )
+		{
+			i(1, "data"),
+		}
+	)
 )
 table.insert(snippets, lstSnippet)
-
 
 ------------------------------------------------- snippets end
 return snippets, autosnippets
