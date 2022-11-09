@@ -4,7 +4,6 @@ require("mason-null-ls").setup({
 	ensure_installed = {
 		"prettierd",
 		"clang_format",
-		"latexindent",
 		"shellharden",
 		"sql_formatter",
 		"fixjson",
@@ -28,7 +27,6 @@ null_ls.setup({
       },}
     ),
 		require("null-ls").builtins.formatting.clang_format,
-		require("null-ls").builtins.formatting.latexindent,
 		require("null-ls").builtins.formatting.shellharden,
 		require("null-ls").builtins.formatting.sql_formatter,
 		require("null-ls").builtins.formatting.fixjson,

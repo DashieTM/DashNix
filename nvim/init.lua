@@ -25,4 +25,8 @@ require("telescope").load_extension("fzy_native")
 require("impatient").enable_profile()
 require("nightfox")
 require('Comment').setup()
-require('vgit').setup()
+-- require('vgit').setup()
+
+-- vim.o.updatetime = 3000
+-- vim.o.incsearch = false
+-- vim.wo.signcolumn = 'yes'

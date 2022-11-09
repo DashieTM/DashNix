@@ -21,10 +21,10 @@ Plug("nvim-treesitter/nvim-treesitter",
 { ["do"] = vim.fn[":TSUpdate"] })                   -- syntax colors
 Plug("hrsh7th/nvim-cmp")                            -- completions
 Plug("hrsh7th/cmp-nvim-lsp")                        -- lsp integration with completions
-Plug("hrsh7th/cmp-buffer")                          -- buffer completion
+--Plug("hrsh7th/cmp-buffer")                          -- buffer completion
 Plug("hrsh7th/cmp-path")                            -- path completion
 Plug("hrsh7th/cmp-cmdline")                         -- command completion
-Plug("f3fora/cmp-spell")                            -- spelling completion
+--Plug("f3fora/cmp-spell")                            -- spelling completion
 Plug("saadparwaiz1/cmp_luasnip")                    -- snip completion
 Plug("L3MON4D3/LuaSnip")                            -- snippet plugin
 Plug("kyazdani42/nvim-tree.lua")                    -- file viewer on the right

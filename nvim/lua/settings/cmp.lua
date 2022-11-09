@@ -26,7 +26,7 @@ luasnip.config.set_config({
 	},
 })
 
-vim.cmd('let g:snipMate = {"snippet_version" : 1 }')
+--vim.cmd('let g:snipMate = {"snippet_version" : 1 }')
 require("luasnip/loaders/from_vscode").lazy_load()
 --require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -147,17 +147,22 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "buffer" },
+		--{
+    --  name = "buffer",
+    --  option = {
+    --    keyword_pattern = [[\k\+]],
+    --  }
+    --},
 		{ name = "path" },
-		{
-			name = "spell",
-			option = {
-				keep_all_entries = false,
-				enable_in_context = function()
-					return true
-				end,
-			},
-		},
+	--	{
+	--		name = "spell",
+	--		option = {
+	--			keep_all_entries = false,
+	--			enable_in_context = function()
+	--				return true
+	--			end,
+	--		},
+	--	},
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
