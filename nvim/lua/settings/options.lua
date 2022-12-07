@@ -1,6 +1,6 @@
 local options = {
 	clipboard = "unnamedplus",
-	mouse = "a",
+	mouse = "n",
 	fileencoding = "utf-8",
 	relativenumber = true,
   cursorline = false,

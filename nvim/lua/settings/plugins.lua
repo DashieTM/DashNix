@@ -17,7 +17,7 @@ Plug("mfussenegger/nvim-dap")                       -- debugging capabilities
 Plug("rcarriga/nvim-dap-ui")                        -- debug ui
 Plug("theHamsta/nvim-dap-virtual-text")             -- more debug ui
 Plug("jayp0521/mason-nvim-dap.nvim")                -- debug mason bridge
-Plug("nvim-treesitter/nvim-treesitter", 
+Plug("nvim-treesitter/nvim-treesitter",
 { ["do"] = vim.fn[":TSUpdate"] })                   -- syntax colors
 Plug("hrsh7th/nvim-cmp")                            -- completions
 Plug("hrsh7th/cmp-nvim-lsp")                        -- lsp integration with completions
@@ -44,9 +44,5 @@ Plug("nvim-telescope/telescope-ui-select.nvim")     -- telescope ui
 Plug("nvim-telescope/telescope-file-browser.nvim")  -- telescope file browser
 Plug("nvim-telescope/telescope-fzy-native.nvim")    -- telescope fuzzy search
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
---Plug("folke/twilight.nvim") --twilight dims code not being edited right now ? useless ?
---Plug("lambdalisue/fern.vim") -- likely not needed?
---Plug("MarcWeber/vim-addon-mw-utils") -- wtf?
---Plug("tomtom/tlib_vim") --wtf2?
 vim.call("plug#end")
 

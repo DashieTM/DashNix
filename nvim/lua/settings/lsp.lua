@@ -17,9 +17,8 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"cssls", -- css
 		"html", -- html
-	  "eslint", -- latex
 		"clangd", -- cpp / c
-		--"tsserver", -- python
+		"tsserver", -- python
 		"texlab", -- latex
 		"sumneko_lua", -- lua
 		"pyright", -- python
@@ -28,86 +27,27 @@ require("mason-lspconfig").setup({
 		"cmake", -- cmake
 		"bashls", -- shell
 		"ansiblels", -- ansible
-		"csharp_ls", -- dotnot
+		"omnisharp", -- dotnot
 		"hls", -- haskel
 	},
 	automatic_installation = true,
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require("lspconfig")["cssls"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
+local on_attach = function(client, bufnr)
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	local opts = { noremap = true, silent = true, buffer=bufnr }
+	vim.keymap.set("n", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.keymap.set("n", "<M-CR>", "<Cmd>lua vim.lsp.buf.code_action<CR>", opts)
+end
+
+require("mason-lspconfig").setup_handlers({
+	function(server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+	end,
 })
-
-require("lspconfig")["html"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["eslint"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["clangd"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
---require("lspconfig")["tsserver"].setup({
---	capabilities = capabilities,
-	--on_attach = on_attach,
---})
-
-require("lspconfig")["texlab"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["sumneko_lua"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["pyright"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["rust_analyzer"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["jdtls"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["cmake"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["bashls"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["ansiblels"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["csharp_ls"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
-require("lspconfig")["hls"].setup({
-	capabilities = capabilities,
-	--on_attach = on_attach,
-})
-
