@@ -40,7 +40,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local opts = { noremap = true, silent = true, buffer=bufnr }
 	vim.keymap.set("n", "<C-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.keymap.set("n", "<M-CR>", "<Cmd>lua vim.lsp.buf.code_action<CR>", opts)
+	vim.keymap.set("n", "<M-CR>", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 end
 
 require("mason-lspconfig").setup_handlers({
