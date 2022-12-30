@@ -7,6 +7,10 @@ local keymap = vim.api.nvim_set_keymap
 --vim.lsp.handlers["textDocument/codeAction"] = require'lspactions'.codeaction
 --vim.cmd [[ nnoremap <leader>af :lua require'lspactions'.code_action()<CR> ]]
 
+
+-- keymap('n', '<Space>', '<Nop>', { noremap = true, silent = true })
+-- keymap('n', '<Space>', '<leader>', { noremap = true, silent = true })
+-- keymap("n", "<Space>", "<Leader>", opts)
 -- keymap("n", "<M-CR>", ":CodeActionMenu<CR>", opts)
 keymap("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
 --keymap("n", "<C-b>", ':lua  require("vgit").buffer_stage()<CR>', opts)

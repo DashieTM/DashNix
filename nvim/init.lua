@@ -1,5 +1,5 @@
-require("settings.plugins")
 require("settings.options")
+require("settings.plugins")
 require("settings.cmp")
 require("settings.lsp")
 require("settings.devicons")
