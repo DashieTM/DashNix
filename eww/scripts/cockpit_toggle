@@ -1,8 +1,11 @@
 #! /bin/bash
 
-ISOPEN=$(eww windows | grep "*cockpit")
+ISOPEN=$(eww windows | grep "*cockpit" | tr -d '*')
+
+
 if [ "$ISOPEN" = "" ]; then
-  eww open cockpit_window
+MONITOR=$(hyprctl monitors | grep -B 7 "focused: yes" | grep "ID" | awk -F '(' ' { print $2 } ' | tr -d 'ID ):')
+  eww open cockpit_window_"$MONITOR"
 else
-  eww close cockpit_window
+  eww close "$ISOPEN"
 fi

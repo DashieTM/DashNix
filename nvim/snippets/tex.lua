@@ -17,6 +17,32 @@ local file_pattern = "*.tex"
 ------------------------------------------------- boilerplate end
 -- snippers go here:
 
+local formSnippet = s(
+	"form-",
+	fmt(
+  [[
+\, \newline
+\large \textcolor{{purple}}{{\( {1} \)}}\newline
+\, \newline
+\normalsize Legend: \newline
+\begin{{itemize}}
+\item {2}
+\item {3}
+\item {4} 
+\item {5}
+\end{{itemize}} 
+    ]],
+		{
+			i(1, "formula"),
+			i(2, "item 1"),
+			i(3, "item 2"),
+			i(4, "item 3"),
+			i(5, "item 4"),
+		}
+	)
+)
+table.insert(snippets, formSnippet)
+
 local listSnippet = s(
 	"list-",
 	fmt(
@@ -140,12 +166,14 @@ local minipgSnippet = s(
 		[[
 \minipg{{
 {1}
-}}{{{2}}}[{3}]
+}}{{
+{2}
+}}[{3}]
     ]],
 		{
 			i(1, "data..."),
-			rep(1),
-			i(2, "0.4,0.4"),
+			i(2, "data..."),
+			i(3, "0.25,0.25"),
 		}
 	)
 )

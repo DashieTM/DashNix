@@ -21,14 +21,14 @@ o7=$(hyprctl workspaces | grep "$ws7" )
 o8=$(hyprctl workspaces | grep "$ws8" )
 
 # check if Focused
-f1=$(hyprctl monitors | grep "workspace: 1" )
-f2=$(hyprctl monitors | grep "workspace: 2" )
-f3=$(hyprctl monitors | grep "workspace: 3" )
-f4=$(hyprctl monitors | grep "workspace: 4" )
-f5=$(hyprctl monitors | grep "workspace: 5" )
-f6=$(hyprctl monitors | grep "workspace: 6" )
-f7=$(hyprctl monitors | grep "workspace: 7" )
-f8=$(hyprctl monitors | grep "workspace: 8" )
+f1=$(hyprctl monitors | grep "workspace: 1" -A 4 | grep "focused: yes" )
+f2=$(hyprctl monitors | grep "workspace: 2" -A 4 | grep "focused: yes" )
+f3=$(hyprctl monitors | grep "workspace: 3" -A 4 | grep "focused: yes" )
+f4=$(hyprctl monitors | grep "workspace: 4" -A 4 | grep "focused: yes" )
+f5=$(hyprctl monitors | grep "workspace: 5" -A 4 | grep "focused: yes" )
+f6=$(hyprctl monitors | grep "workspace: 6" -A 4 | grep "focused: yes" )
+f7=$(hyprctl monitors | grep "workspace: 7" -A 4 | grep "focused: yes" )
+f8=$(hyprctl monitors | grep "workspace: 8" -A 4 | grep "focused: yes" )
 
 if [ "$o1" != "" ]; then
     ic_1="①"

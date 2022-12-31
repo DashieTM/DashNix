@@ -3,8 +3,8 @@ local options = {
 	mouse = "n",
 	fileencoding = "utf-8",
 	relativenumber = true,
-	cursorline = false,
-	number = true,
+  cursorline = false,
+  number = true,
 	smartindent = true,
 	smartcase = true,
 	showmode = true,
@@ -20,14 +20,11 @@ local options = {
 	tabstop = 2, -- insert 2 spaces for a tab
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
-	spell = false,
-	syntax = "off",
+	spell = true,
+  syntax = "off",
 	spelllang = "en_us",
 	mousemodel = "popup_setpos",
 }
-
-vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
 
 --vim.opt.shortmess:append "c"
 

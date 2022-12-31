@@ -1,18 +1,19 @@
 window {
-  margin: 5px;
+  margin: 0px;
   background-color: #0f0f17;
   border-radius: 10px;
-  opacity: 0.95;
 }
 
 #inner-box {
-  margin: 5px;
   background-color: #0f0f17;
+  margin: 5px;
+  border: none;
   border-radius: 10px;
 }
 
 #outer-box {
-  margin: 5px;
   background-color: #0f0f17;
+  margin: 5px;
+  border: none;
   border-radius: 10px;
 }

@@ -29,7 +29,7 @@ run() {
     ${EWW_BIN} -c $HOME/.config/eww open system 
 }
 
-# Open widgets
+# Open system
 if [[ ! -f "$LOCK_FILE_MEM" ]]; then
     ${EWW_BIN} -c $HOME/.config/eww close calendar music_win audio_ctl brightness
     touch "$LOCK_FILE_MEM"

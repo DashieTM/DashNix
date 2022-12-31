@@ -10,16 +10,16 @@ tmp_weather_icon=$tmp_weather/weather-icon
 if [ ! -d $tmp_weather ]; then
         mkdir -p $tmp_weather
 fi
-
+#notify-send -u critical "weather ping" "pangping"
 # Put in your api and stuff link here 
 # If you dunno, head to openweathermap.org, and make and account 
 #(completely free I swear, and then get your API Key and  your City ID)
 # I wish I was smart enough to do it like Elena, but this is the top I could do lol
-KEY="{your key}"
-ID="{your city id}"
+KEY="{key}"
+ID="{location}"
 UNIT="{metric}" #Options are 'metric' and 'imperial'
-weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="$KEY"&id="$ID"&units="$UNIT"")
-echo $weather
+weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="$KEY"&q="$ID"&units="$UNIT"")
+#echo $weather
 if [ ! -z "$weather" ]; then
         weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
         weather_icon_code=$(echo "$weather" | jq -r ".weather[].icon" | head -1)
