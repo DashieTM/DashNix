@@ -26,24 +26,25 @@ keymap("n", "<F2>", ":BufferNext<CR>", opts)
 keymap("n", "<F4>", ":lua vim.lsp.buf.format { async = true }<CR>", opts)
 
 -- telescope
-keymap("n", "ff", ':lua require("telescope.builtin").find_files()<CR>', {})
-keymap("n", "fg", ':lua require("telescope.builtin").live_grep()<CR>', {})
-keymap("n", "fb", ':lua require("telescope.builtin").buffers()<CR>', {})
-keymap("n", "fh", ':lua require("telescope.builtin").help_tags()<CR>', {})
+keymap("n", "ff", ":lua require('telescope.builtin').find_files()<CR>", {})
+keymap("n", "fg", ":lua require('telescope.builtin').live_grep()<CR>", {})
+keymap("n", "fb", ":lua require('telescope.builtin').buffers()<CR>", {})
+keymap("n", "fh", ":lua require('telescope.builtin').help_tags()<CR>", {})
+keymap("n", "fp", ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
 
--- trouble 
+-- trouble
 keymap("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
-require("trouble").setup {
-  action_keys = {
-    --remove the fucking stupid keymap amk
-    open_tab = {}
-  }
-}
+require("trouble").setup({
+	action_keys = {
+		--remove the fucking stupid keymap amk
+		open_tab = {},
+	},
+})
 
 -- LSP
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	local opts = { noremap = true, silent = true, buffer=bufnr }
+	local opts = { noremap = true, silent = true, buffer = bufnr }
 	keymap("n", "<leader>h", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	keymap("n", "<leader>j", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	keymap("n", "<leader>k", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)

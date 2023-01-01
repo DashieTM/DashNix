@@ -10,7 +10,6 @@ require("mason-null-ls").setup({
 		"autopep8",
 		"stylua",
 		"rustfmt",
-		"stylish-haskell",
 	},
 })
 
@@ -33,6 +32,5 @@ null_ls.setup({
 		require("null-ls").builtins.formatting.autopep8,
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.formatting.rustfmt,
-		require("null-ls").builtins.formatting.stylish_haskell,
 	},
 })

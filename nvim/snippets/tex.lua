@@ -52,7 +52,6 @@ local listSnippet = s(
 \item \textcolor{{{2}}}{{{6}}}
 \item \textcolor{{{3}}}{{{7}}}
 \item \textcolor{{{4}}}{{{8}}}
-\vspace{{-3mm}}
 \end{{itemize}} 
     ]],
 		{
@@ -78,7 +77,6 @@ local enumerateSnippet = s(
 \item \textcolor{{{2}}}{{{6}}}
 \item \textcolor{{{3}}}{{{7}}}
 \item \textcolor{{{4}}}{{{8}}}
-\vspace{{-3mm}}
 \end{{enumerate}} 
     ]],
 		{

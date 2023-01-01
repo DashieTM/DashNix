@@ -9,7 +9,6 @@ local options = {
 	smartcase = true,
 	showmode = true,
 	termguicolors = true,
-	--	winbar = "",
 	ignorecase = true,
 	showtabline = 2,
 	timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
@@ -18,15 +17,13 @@ local options = {
 	expandtab = true, -- convert tabs to spaces
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	tabstop = 2, -- insert 2 spaces for a tab
-	scrolloff = 8, -- is one of my fav
+	scrolloff = 8, 
 	sidescrolloff = 8,
 	spell = true,
   syntax = "off",
 	spelllang = "en_us",
 	mousemodel = "popup_setpos",
 }
-
---vim.opt.shortmess:append "c"
 
 vim.g.mkdp_browser = '/usr/bin/firefox'
 vim.g.mkdp_auto_start = 1

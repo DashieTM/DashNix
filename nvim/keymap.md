@@ -26,6 +26,22 @@
 - fg: live ripgrep
 - fb: find buffers
 - fh: help for functions etc
+- fp: find projects
 
 ## toggletrouble
 - Ctrl + f: show errors and warnings
+
+## cmp
+Note, these require the cmp list view to be open to do anything!
+- Ctrl + b: scroll docs up
+- Ctrl + f: scroll docs down
+- Ctrl + e: cancel cmp
+- Enter: write selected suggestion (does nothing if not selected)
+- Tab: scroll down through suggestion list
+- Shift + Tab: scroll up through suggestion list
+
+## snippets
+These require you to be inside a snippet!
+- Ctrl + j: jump to next entry
+- Ctrl + k: jump to previous entry
+

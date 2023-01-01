@@ -18,14 +18,14 @@ require("mason-lspconfig").setup({
 		"cssls", -- css
 		"html", -- html
 		"clangd", -- cpp / c
-		"tsserver", -- python
+		"tsserver", -- javascript / typescript
 		"sumneko_lua", -- lua
 		"pyright", -- python
 		"rust_analyzer", -- rust
 		"cmake", -- cmake
 		"bashls", -- shell
 		"ansiblels", -- ansible
-    "marksman",
+    "marksman", -- markdown
 	},
 	automatic_installation = true,
 })
