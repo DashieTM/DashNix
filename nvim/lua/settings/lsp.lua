@@ -25,6 +25,7 @@ require("mason-lspconfig").setup({
 		"cmake", -- cmake
 		"bashls", -- shell
 		"ansiblels", -- ansible
+    "marksman",
 	},
 	automatic_installation = true,
 })

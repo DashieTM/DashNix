@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
-local builtin = require("telescope.builtin")
 
 -- space leader
 vim.g.mapleader = " "
@@ -27,10 +26,10 @@ keymap("n", "<F2>", ":BufferNext<CR>", opts)
 keymap("n", "<F4>", ":lua vim.lsp.buf.format { async = true }<CR>", opts)
 
 -- telescope
-keymap("n", "ff", ":lua builtin.find_files", {})
-keymap("n", "fg", ":lua builtin.live_grep", {})
-keymap("n", "fb", ":lua builtin.buffers", {})
-keymap("n", "fh", ":lua builtin.help_tags", {})
+keymap("n", "ff", ':lua require("telescope.builtin").find_files()<CR>', {})
+keymap("n", "fg", ':lua require("telescope.builtin").live_grep()<CR>', {})
+keymap("n", "fb", ':lua require("telescope.builtin").buffers()<CR>', {})
+keymap("n", "fh", ':lua require("telescope.builtin").help_tags()<CR>', {})
 
 -- trouble 
 keymap("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)

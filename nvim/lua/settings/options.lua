@@ -28,6 +28,9 @@ local options = {
 
 --vim.opt.shortmess:append "c"
 
+vim.g.mkdp_browser = '/usr/bin/firefox'
+vim.g.mkdp_auto_start = 1
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end

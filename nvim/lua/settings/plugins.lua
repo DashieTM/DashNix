@@ -44,5 +44,7 @@ Plug("nvim-telescope/telescope-ui-select.nvim")     -- telescope ui
 Plug("nvim-telescope/telescope-file-browser.nvim")  -- telescope file browser
 Plug("nvim-telescope/telescope-fzy-native.nvim")    -- telescope fuzzy search
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
+  Plug("iamcco/markdown-preview.nvim", { ["do"] = "cd app && yarn install" })                                                -- markdown preview
+
 vim.call("plug#end")
 
