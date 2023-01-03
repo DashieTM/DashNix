@@ -33,3 +33,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 alias sudo='sudo '
 alias ls='lsd'
 alias :q='exit'
+alias gh='git push origin'
+alias gl='git pull origin'
+alias gm='git commit -m'
+
