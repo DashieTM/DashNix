@@ -84,6 +84,17 @@ Note, these require the cmp list view to be open to do anything!
 | Tab         |scroll down through suggestion list                        |
 | Shift + Tab | scroll up through suggestion list                         |
 
+## LSP 
+| key         |  Description           |
+| ----------- | ---------------------- |
+|  Leader + h | go to declaration      |
+|  Leader + j | go to definition       |
+|  Leader + k | go to implementation   |
+|  Leader + l | go to references       |
+|  Leader + ; | execute code actions   |
+|  Leader + u | signature help         |
+|  Leader + g | hover                  |
+
 ## snippets
 These require you to be inside a snippet!
 | key      | Description               |
