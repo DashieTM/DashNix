@@ -33,12 +33,12 @@ Plug("romgrk/barbar.nvim")                          -- bar on the top
 Plug("numToStr/Comment.nvim")                       -- fast comments
 Plug("lukas-reineke/indent-blankline.nvim")         -- indicators for indentation (needs config)
 Plug("lewis6991/impatient.nvim")                    -- speedup startup
-Plug("nvim-telescope/telescope.nvim")               -- file/text search
 Plug("goolord/alpha-nvim")                          -- dashboard
 Plug("lervag/vimtex")                               -- latex plugin
 Plug("weilbith/nvim-code-action-menu")              -- code action menu
 Plug("rafamadriz/friendly-snippets")                -- some provided snippets
 Plug("p00f/nvim-ts-rainbow")                        -- colors brackets
+Plug("nvim-telescope/telescope.nvim")               -- file/text search
 Plug("nvim-telescope/telescope-ui-select.nvim")     -- telescope ui
 Plug("nvim-telescope/telescope-file-browser.nvim")  -- telescope file browser
 Plug("nvim-telescope/telescope-fzy-native.nvim")    -- telescope fuzzy search
