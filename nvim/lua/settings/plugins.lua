@@ -46,5 +46,6 @@ Plug('nvim-telescope/telescope-project.nvim')       -- telescope projects
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
 Plug("iamcco/markdown-preview.nvim",                -- markdown preview
 { ["do"] = "cd app && yarn install" })
+Plug('preservim/tagbar')                            -- tags on the right
 vim.call("plug#end")
 

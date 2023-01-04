@@ -26,6 +26,7 @@ require("mason-lspconfig").setup({
 		"bashls", -- shell
 		"ansiblels", -- ansible
     "marksman", -- markdown
+    "asm_lsp", -- assembly
 	},
 	automatic_installation = true,
 })
