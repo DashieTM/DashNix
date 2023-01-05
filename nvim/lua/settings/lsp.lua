@@ -26,6 +26,7 @@ require("mason-lspconfig").setup({
     "marksman", -- markdown
     "asm_lsp", -- assembly
     "tsserver", -- js and ts
+    "ltex" -- latex
   },
   automatic_installation = true,
 })

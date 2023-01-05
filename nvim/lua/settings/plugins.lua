@@ -6,7 +6,6 @@ Plug("EdenEast/nightfox.nvim")                      -- dark theme
 Plug("kyazdani42/nvim-web-devicons")                -- icons
 Plug("feline-nvim/feline.nvim")                     -- bottom bar
 Plug("lewis6991/gitsigns.nvim")                     -- git signs on the bar and on the left
-Plug("tanvirtin/vgit.nvim")                         -- git plugin
 Plug("nvim-lua/plenary.nvim")                       -- library, don't delete
 Plug("williamboman/mason.nvim")                     -- lsp and dap
 Plug("williamboman/mason-lspconfig.nvim")           -- lsp to mason bridge
@@ -19,10 +18,8 @@ Plug("nvim-treesitter/nvim-treesitter",
 { ["do"] = vim.fn[":TSUpdate"] })                   -- syntax colors
 Plug("hrsh7th/nvim-cmp")                            -- completions
 Plug("hrsh7th/cmp-nvim-lsp")                        -- lsp integration with completions
---Plug("hrsh7th/cmp-buffer")                          -- buffer completion
 Plug("hrsh7th/cmp-path")                            -- path completion
 Plug("hrsh7th/cmp-cmdline")                         -- command completion
---Plug("f3fora/cmp-spell")                            -- spelling completion
 Plug("saadparwaiz1/cmp_luasnip")                    -- snip completion
 Plug("L3MON4D3/LuaSnip")                            -- snippet plugin
 Plug("kyazdani42/nvim-tree.lua")                    -- file viewer on the right
@@ -45,8 +42,8 @@ Plug('nvim-telescope/telescope-symbols.nvim')       -- symbol picker
 Plug('nvim-telescope/telescope-file-browser.nvim')  -- telescope file browser
 Plug('nvim-telescope/telescope-dap.nvim')           -- dap UI for telescope
 Plug('benfowler/telescope-luasnip.nvim')            -- telescope luasnip integration
-Plug('sudormrfbin/cheatsheet.nvim')                 -- cheatsheet for keymaps
 Plug('jvgrootveld/telescope-zoxide')                -- zoxide integration
+Plug('sudormrfbin/cheatsheet.nvim')                 -- cheatsheet for keymaps
 Plug('ThePrimeagen/harpoon')                        -- harpoonman
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
 Plug('akinsho/toggleterm.nvim',{ ["tag"] = "*" })   -- better terminal integration
@@ -56,5 +53,6 @@ Plug('p00f/clangd_extensions.nvim')                 -- clangd_extensions
 Plug('kdarkhan/rust-tools.nvim')                    -- rust extensions
 Plug('lvimuser/lsp-inlayhints.nvim')                -- inlay hints
 Plug('preservim/tagbar')                            -- tags on the right
+Plug('ggandor/leap.nvim')                           -- special movement
 vim.call("plug#end")
 

@@ -13,6 +13,7 @@ require("settings.rainbow")
 require("settings.dap")
 require("settings.autocommands")
 require("settings.telescope")
+require("settings.vimtex")
 require("settings.keymaps")
 require("settings.barbar")
 

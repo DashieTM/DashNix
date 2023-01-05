@@ -1,12 +1,8 @@
 local dap = require("dap")
-dap.adapters.codelldb = {
-  type = "server",
-  port = "${port}",
-  executable = {
-    -- CHANGE THIS to your path!
-    command = "/home/dashie/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb",
-    args = { "--port", "${port}" },
-  },
+dap.adapters.lldb = {
+    type = 'executable',
+    command = '/usr/bin/lldb-vscode',
+    name = "lldb"
 }
 
 local rust_dap = vim.fn.getcwd()
@@ -15,7 +11,7 @@ for w in rust_dap:gmatch("([^/]+)") do filename = w end
 
 dap.configurations.rust = {
   {
-    type = "codelldb",
+    type = "lldb",
     request = "launch",
     program = function()
       return rust_dap .. "/target/debug/" .. filename
@@ -29,13 +25,14 @@ dap.configurations.rust = {
 
 dap.configurations.cpp = {
   {
-    type = "codelldb",
+    name = "debug cpp",
+    type = "lldb",
     request = "launch",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/build/", "file")
     end,
-    --program = '${fileDirname}/${fileBasenameNoExtension}',
     cwd = "${workspaceFolder}",
+    stopOnEntry = true,
     terminal = "integrated",
   },
 }
@@ -115,10 +112,10 @@ require("dapui").setup({
 })
 require("mason-nvim-dap").setup({
   ensure_installed = {
-    "codelldb",
     "bash-debug-adapter",
     "firefox-debug-adapter",
     "js-debug-adapter",
     "node-debug2-adapter",
   },
 })
+require("nvim-dap-virtual-text").setup()
