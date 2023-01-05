@@ -49,13 +49,12 @@ Plug('sudormrfbin/cheatsheet.nvim')                 -- cheatsheet for keymaps
 Plug('jvgrootveld/telescope-zoxide')                -- zoxide integration
 Plug('ThePrimeagen/harpoon')                        -- harpoonman
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
-Plug('akinsho/toggleterm.nvim',{ ["tag"] = "*" })                     -- better terminal integration
+Plug('akinsho/toggleterm.nvim',{ ["tag"] = "*" })   -- better terminal integration
 Plug("iamcco/markdown-preview.nvim",                -- markdown preview
 { ["do"] = "cd app && yarn install" })
 Plug('p00f/clangd_extensions.nvim')                 -- clangd_extensions
-Plug('jose-elias-alvarez/typescript.nvim')          -- typescript extensions
-Plug('kdarkhan/rust-tools.nvim')                   -- rust extensions
+Plug('kdarkhan/rust-tools.nvim')                    -- rust extensions
+Plug('lvimuser/lsp-inlayhints.nvim')                -- inlay hints
 Plug('preservim/tagbar')                            -- tags on the right
-Plug('lukas-reineke/lsp-format.nvim')
 vim.call("plug#end")
 

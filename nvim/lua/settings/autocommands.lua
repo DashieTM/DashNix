@@ -12,3 +12,4 @@ vim.cmd([[highlight BufferInactive guifg=#888888 guibg=#131a24]])
 vim.cmd([[highlight BufferInactiveMod guifg=#dbc074 guibg=#131a24]])
 vim.cmd([[highlight BufferInactiveSign guifg=#719cd6 guibg=#131a24]])
 
+vim.cmd([[highlight LspInlayHint guibg=#192330]])

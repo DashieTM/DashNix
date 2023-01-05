@@ -1,6 +1,6 @@
 local tele_status_ok, telescope = pcall(require, "telescope")
 if not tele_status_ok then
-	return
+  return
 end
 
 telescope.load_extension("project")
@@ -10,10 +10,10 @@ require('telescope').setup {
     project = {
       base_dirs = {
         '~/dev/src',
-        {'~/dev/src2'},
-        {'~/dev/src3', max_depth = 4},
-        {path = '~/dev/src4'},
-        {path = '~/dev/src5', max_depth = 2},
+        { '~/dev/src2' },
+        { '~/dev/src3', max_depth = 4 },
+        { path = '~/dev/src4' },
+        { path = '~/dev/src5', max_depth = 2 },
       },
       hidden_files = true, -- default: false
       theme = "dropdown",

@@ -1,4 +1,3 @@
-
 local t = require("telescope")
 local z_utils = require("telescope._extensions.zoxide.utils")
 

@@ -12,7 +12,7 @@ keymap("n", "<F10>", ':lua require("dap").close()<CR> :lua require("dapui").togg
 
 -- file tree
 keymap("n", "t", ":ToggleTerm<CR>", opts)
-keymap("n", "n", ':lua require("nvim-tree").toggle()<CR>', opts)
+keymap("n", "f", ':lua require("nvim-tree").toggle()<CR>', opts)
 
 -- tab switching
 keymap("n", "<F1>", ":BufferPrev<CR>", opts)
@@ -39,9 +39,8 @@ vim.keymap.set("n", "<leader>z", ":lua require('telescope').extensions.zoxide.li
 -- trouble
 keymap("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
 require("trouble").setup({
-	action_keys = {
-		--remove the fucking stupid keymap amk
-		open_tab = {},
-	},
+  action_keys = {
+    --remove the fucking stupid keymap amk
+    open_tab = {},
+  },
 })
-
