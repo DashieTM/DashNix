@@ -23,10 +23,15 @@ local options = {
   syntax = "off",
 	spelllang = "en_us",
 	mousemodel = "popup_setpos",
+  shell = "/usr/bin/zsh"
 }
 
 vim.g.mkdp_browser = '/usr/bin/firefox'
 vim.g.mkdp_auto_start = 1
+
+-- space leader
+vim.g.mapleader = " "
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, noremap = false })
 
 for k, v in pairs(options) do
 	vim.opt[k] = v

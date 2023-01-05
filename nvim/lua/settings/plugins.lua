@@ -11,8 +11,6 @@ Plug("nvim-lua/plenary.nvim")                       -- library, don't delete
 Plug("williamboman/mason.nvim")                     -- lsp and dap
 Plug("williamboman/mason-lspconfig.nvim")           -- lsp to mason bridge
 Plug("neovim/nvim-lspconfig")                       -- nvim lsp
-Plug("jose-elias-alvarez/null-ls.nvim")             -- enables formatters
-Plug("jayp0521/mason-null-ls.nvim")                 -- mason to formatter
 Plug("mfussenegger/nvim-dap")                       -- debugging capabilities
 Plug("rcarriga/nvim-dap-ui")                        -- debug ui
 Plug("theHamsta/nvim-dap-virtual-text")             -- more debug ui
@@ -43,9 +41,21 @@ Plug("nvim-telescope/telescope-ui-select.nvim")     -- telescope ui
 Plug("nvim-telescope/telescope-file-browser.nvim")  -- telescope file browser
 Plug("nvim-telescope/telescope-fzy-native.nvim")    -- telescope fuzzy search
 Plug('nvim-telescope/telescope-project.nvim')       -- telescope projects
+Plug('nvim-telescope/telescope-symbols.nvim')       -- symbol picker
+Plug('nvim-telescope/telescope-file-browser.nvim')  -- telescope file browser
+Plug('nvim-telescope/telescope-dap.nvim')           -- dap UI for telescope
+Plug('benfowler/telescope-luasnip.nvim')            -- telescope luasnip integration
+Plug('sudormrfbin/cheatsheet.nvim')                 -- cheatsheet for keymaps
+Plug('jvgrootveld/telescope-zoxide')                -- zoxide integration
+Plug('ThePrimeagen/harpoon')                        -- harpoonman
 Plug 'folke/trouble.nvim'                           -- provides warning/error explanation tab
+Plug('akinsho/toggleterm.nvim',{ ["tag"] = "*" })                     -- better terminal integration
 Plug("iamcco/markdown-preview.nvim",                -- markdown preview
 { ["do"] = "cd app && yarn install" })
+Plug('p00f/clangd_extensions.nvim')                 -- clangd_extensions
+Plug('jose-elias-alvarez/typescript.nvim')          -- typescript extensions
+Plug('kdarkhan/rust-tools.nvim')                   -- rust extensions
 Plug('preservim/tagbar')                            -- tags on the right
+Plug('lukas-reineke/lsp-format.nvim')
 vim.call("plug#end")
 
