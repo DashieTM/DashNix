@@ -20,11 +20,20 @@ keymap("n", "<F2>", ":BufferNext<CR>", opts)
 
 -- formatting
 keymap("n", "<F4>", ":lua vim.lsp.buf.format { async = true }<CR>", opts)
-keymap("n", "<leader>q", ":Telescope lsp_definitions<CR>", opts)
-keymap("n", "<leader>w", ":Telescope lsp_references<CR>", opts)
-keymap("n", "<leader>e", ":Telescope lsp_type_definitions<CR>", opts)
-keymap("n", "<leader>a", ":lua vim.lsp.buf.code_action()<CR>", opts)
-keymap("n", "<leader>s", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+keymap("n", "<leader>a", ":Telescope lsp_definitions<CR>", opts)
+keymap("n", "<leader>s", ":Telescope lsp_references<CR>", opts)
+keymap("n", "<leader>d", ":Telescope lsp_type_definitions<CR>", opts)
+keymap("n", "<leader>f", ":Telescope lsp_implementations<CR>", opts)
+keymap("n", "<leader>q", ":lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "<leader>w", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+keymap("n", "<leader>e", ":lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "<leader>r", ":lua vim.lsp.buf.rename()<CR>", opts)
+keymap("n", "<leader>gq", ":lua require('telescope.builtin').git_commits()<CR>", opts)
+keymap("n", "<leader>gw", ":lua require('telescope.builtin').git_bcommits()<CR>", opts)
+keymap("n", "<leader>ge", ":lua require('telescope.builtin').git_branches()<CR>", opts)
+keymap("n", "<leader>gr", ":lua require('telescope.builtin').git_status()<CR>", opts)
+keymap("n", "<leader>ga", ":lua require('telescope.builtin').git_stash()<CR>", opts)
+
 
 -- harpoon man
 

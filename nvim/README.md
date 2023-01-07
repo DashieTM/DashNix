@@ -15,8 +15,7 @@
 ## Nerd Tree
 | key | Description               |
 | --- | ------------------------- |
-| t   |toggle open                |
-| f   | focus tree                |
+| f   |toggle open                |
 
 ## buffer switching
 | key | Description               |
@@ -37,6 +36,16 @@
 | fb  | find buffers              |
 | fh  | help for functions etc    |
 | fp  | find projects             |
+| fb  | file browser              |
+
+### telescope git
+| key        | Description               |
+| ---------- | ------------------------- |
+| <leader>gq | show commits              |
+| <leader>gw | show commits with diff    |
+| <leader>ge | show branches             | 
+| <leader>gr | show git status           |
+| <leader>ga | show git stash            | 
 
 ### project telescope
 <table> <tr> <th> normal mode </th> <th> insert mode </th></tr>
@@ -87,13 +96,14 @@ Note, these require the cmp list view to be open to do anything!
 ## LSP 
 | key         |  Description           |
 | ----------- | ---------------------- |
-|  Leader + h | go to declaration      |
-|  Leader + j | go to definition       |
-|  Leader + k | go to implementation   |
-|  Leader + l | go to references       |
-|  Leader + ; | execute code actions   |
-|  Leader + u | signature help         |
-|  Leader + g | hover                  |
+|  Leader + a | go to declaration      |
+|  Leader + s | go to definition       |
+|  Leader + d | go to type definitions |
+|  Leader + f | go to references       |
+|  Leader + q | execute code actions   |
+|  Leader + w | signature help         |
+|  Leader + e | hover                  |
+|  Leader + r | rename                 |
 
 ## snippets
 These require you to be inside a snippet!
