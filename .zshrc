@@ -36,6 +36,7 @@ alias :q='exit'
 alias gh='git push origin'
 alias gl='git pull origin'
 alias gm='git commit -m'
+alias ga="git add -A"
 alias g+='bear -- g++ -Wextra -Werror -std=c++20'
 
 # zoxide
