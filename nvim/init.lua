@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("settings.plugins")
 require("settings.options")
 require("settings.cmp")
@@ -23,4 +26,7 @@ require("feline").setup()
 require("impatient").enable_profile()
 require("nightfox")
 require('Comment').setup()
-require("toggleterm").setup()
+require("toggleterm").setup({
+  autochdir = true,
+})
+require('leap').add_default_mappings()

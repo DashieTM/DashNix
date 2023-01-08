@@ -23,7 +23,8 @@ local options = {
   syntax = "off",
   spelllang = "en_us",
   mousemodel = "popup_setpos",
-  shell = "/usr/bin/zsh"
+  shell = "/usr/bin/zsh",
+  autochdir = true,
 }
 
 vim.g.mkdp_browser = '/usr/bin/firefox'

@@ -26,9 +26,9 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   sort_by = "name",
   root_dirs = {},
   prefer_startup_root = false,
-  sync_root_with_cwd = false,
+  sync_root_with_cwd = true,
   reload_on_bufenter = false,
-  respect_buf_cwd = false,
+  respect_buf_cwd = true,
   on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
   remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
   view = {
@@ -124,6 +124,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   },
   update_focused_file = {
     enable = true,
+    -- update_cwd = true,
     update_root = false,
     ignore_list = {},
   },

@@ -11,8 +11,10 @@ keymap("n", "<F9>", ':lua require("dap").continue()<CR>', opts)
 keymap("n", "<F10>", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', opts)
 
 -- file tree
-keymap("n", "t", ":ToggleTerm<CR>", opts)
 keymap("n", "f", ':lua require("nvim-tree").toggle()<CR>', opts)
+
+-- toggle terminal
+keymap('n', '<C-d>', ':ToggleTerm ZSH<CR>', opts)
 
 -- tab switching
 keymap("n", "<F1>", ":BufferPrev<CR>", opts)
@@ -33,6 +35,24 @@ keymap("n", "<leader>gw", ":lua require('telescope.builtin').git_bcommits()<CR>"
 keymap("n", "<leader>ge", ":lua require('telescope.builtin').git_branches()<CR>", opts)
 keymap("n", "<leader>gr", ":lua require('telescope.builtin').git_status()<CR>", opts)
 keymap("n", "<leader>ga", ":lua require('telescope.builtin').git_stash()<CR>", opts)
+
+-- window switching 
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<A-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<A-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<A-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<A-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+keymap("n", "<A-h>", ":wincmd h<CR>", opts)
+keymap("n", "<A-j>", ":wincmd j<CR>", opts)
+keymap("n", "<A-K>", ":wincmd k<CR>", opts)
+keymap("n", "<A-l>", ":wincmd l<CR>", opts)
 
 
 -- harpoon man
