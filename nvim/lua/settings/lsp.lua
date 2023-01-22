@@ -44,6 +44,14 @@ local on_attach = function(client, bufnr)
   require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
+require("rust-tools").setup({
+  server = {
+    standalone = false,
+    root_dir = require('lspconfig').util.find_git_ancestor,
+    loadOutputiDirs = false,
+  }
+})
+
 require("mason-lspconfig").setup_handlers({
   function(server_name) -- default handler (optional)
     require("lspconfig")[server_name].setup({
@@ -93,11 +101,6 @@ require("mason-lspconfig").setup_handlers({
 
 
 -- special server setups
-require("clangd_extensions").setup()
-require("rust-tools").setup({
-  server = {
-    standalone = false,
-    root_dir = require('lspconfig').util.find_git_ancestor,
-    loadOutputiDirs = false,
-  }
-})
+require("clangd_extensions").setup(
+-- brudi no troll plox
+)

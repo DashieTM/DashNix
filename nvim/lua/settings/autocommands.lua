@@ -1,6 +1,5 @@
 vim.cmd('let g:vimtex_view_general_viewer = "evince"')
 vim.cmd('let g:vimtex_compiler_method = "latexmk"')
-vim.cmd("colorscheme nightfox")
 
 vim.cmd([[highlight TabLineSel guifg=#192330 guibg=#192330]])
 vim.cmd([[highlight BufferCurrent guifg=#FFFFFF guibg=#192330]])

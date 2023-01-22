@@ -24,9 +24,27 @@ require("settings.barbar")
 require("gitsigns").setup()
 require("feline").setup()
 require("impatient").enable_profile()
-require("nightfox")
 require('Comment').setup()
 require("toggleterm").setup({
   autochdir = true,
 })
 require('leap').add_default_mappings()
+require("nvim-highlight-colors").setup {
+	render = 'background', -- or 'foreground' or 'first_column'
+	enable_named_colors = true,
+	enable_tailwind = true,
+}
+-- colorscheme
+local options = {
+  transparent = false,
+}
+local palettes = {
+  nightfox = {
+    bg1 = "#1A1B27",
+  },
+}
+require("nightfox").setup({
+  palettes = palettes,
+  options = options,
+})
+vim.cmd("colorscheme nightfox")

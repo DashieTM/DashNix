@@ -54,5 +54,6 @@ Plug('kdarkhan/rust-tools.nvim')                    -- rust extensions
 Plug('lvimuser/lsp-inlayhints.nvim')                -- inlay hints
 Plug('preservim/tagbar')                            -- tags on the right
 Plug('ggandor/leap.nvim')                           -- special movement
+Plug('brenoprata10/nvim-highlight-colors')          -- colors 
 vim.call("plug#end")
 
