@@ -29,6 +29,8 @@ export TEXMFHOME=$HOME/.texmf
 export MANGOHUD_CONFIG=position=top-right,font_scale=0.7,round_corners=10.0
 export MOZ_ENABLE_WAYLAND=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export VISUAL=nvim;
+export EDITOR=nvim;
 
 alias sudo='sudo '
 alias ls='lsd'

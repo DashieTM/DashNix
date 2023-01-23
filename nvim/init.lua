@@ -34,17 +34,3 @@ require("nvim-highlight-colors").setup {
 	enable_named_colors = true,
 	enable_tailwind = true,
 }
--- colorscheme
-local options = {
-  transparent = false,
-}
-local palettes = {
-  nightfox = {
-    bg1 = "#1A1B27",
-  },
-}
-require("nightfox").setup({
-  palettes = palettes,
-  options = options,
-})
-vim.cmd("colorscheme nightfox")
