@@ -27,7 +27,8 @@ require("mason-lspconfig").setup({
     "asm_lsp", -- assembly
     "tsserver", -- js and ts
     "ltex", -- latex
-    "jdtls" -- jafuck
+    "jdtls", -- jafuck
+    "gopls" -- yet another gargabe collector
   },
   automatic_installation = true,
 })
