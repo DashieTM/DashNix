@@ -40,6 +40,7 @@ alias gl='git pull origin'
 alias gm='git commit -m'
 alias ga="git add -A"
 alias g+='bear -- g++ -Wextra -Werror -std=c++20'
+alias s="kitty +kitten ssh"
 
 # zoxide
 ## =============================================================================

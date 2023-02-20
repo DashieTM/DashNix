@@ -36,9 +36,9 @@ keymap("n", "<leader>ge", ":lua require('telescope.builtin').git_branches()<CR>"
 keymap("n", "<leader>gr", ":lua require('telescope.builtin').git_status()<CR>", opts)
 keymap("n", "<leader>ga", ":lua require('telescope.builtin').git_stash()<CR>", opts)
 
--- window switching 
+-- window switching
 function _G.set_terminal_keymaps()
-  local opts = {buffer = 0}
+  local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<A-h>', [[<Cmd>wincmd h<CR>]], opts)
