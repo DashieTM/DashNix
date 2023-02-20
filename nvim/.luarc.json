@@ -5,6 +5,7 @@
         "global"
     ],
     "Lua.workspace.library": [
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }

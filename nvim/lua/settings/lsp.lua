@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
     "cssls", -- css
     "html", -- html
     "clangd", -- cpp / c
-    "sumneko_lua", -- lua
+    "lua_ls", -- lua
     "pyright", -- python
     "cmake", -- cmake
     "bashls", -- shell
@@ -28,7 +28,12 @@ require("mason-lspconfig").setup({
     "tsserver", -- js and ts
     "ltex", -- latex
     "jdtls", -- jafuck
-    "gopls" -- yet another gargabe collector
+    "gopls", -- yet another gargabe collector
+    "sqls", -- sql
+    "taplo", -- toml
+    "lemminx", -- xml
+    "yamlls", -- yaml 
+    "bashls", -- shell
   },
   automatic_installation = true,
 })

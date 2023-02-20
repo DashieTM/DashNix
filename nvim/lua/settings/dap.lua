@@ -110,6 +110,7 @@ require("dapui").setup({
     max_value_lines = 100, -- Can be integer or nil.
   },
 })
+
 require("mason-nvim-dap").setup({
   ensure_installed = {
     "bash-debug-adapter",
@@ -118,4 +119,5 @@ require("mason-nvim-dap").setup({
     "node-debug2-adapter",
   },
 })
+
 require("nvim-dap-virtual-text").setup()
