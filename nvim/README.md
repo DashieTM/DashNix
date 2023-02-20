@@ -16,6 +16,17 @@
 | key | Description               |
 | --- | ------------------------- |
 | f   |toggle open                |
+| a   |create new file            |
+| d   |remove file                |
+| r   |rename file                |
+| y   |copy name                  |
+| Y   |copy path                  |
+| x   |cut file                   |
+| c   |copy file                  |
+| p   |paste file                 |
+| f   |filter (inside nvim tree)  |
+| E   |expand all folders         |
+| W   |collapse all folders       |
 
 ## buffer switching
 | key | Description               |
@@ -111,6 +122,11 @@ These require you to be inside a snippet!
 | -------- | ------------------------- |
 | Ctrl + j | jump to next entry        |
 | Ctrl + k | jump to previous entry    |
+
+## Leap
+| key      | Description                                            |
+| -------- | ------------------------------------------------------ |
+| s        | followed by 2 other characters and the marker to jump  |
 
 ## Dashboard
 only available on dashboard
