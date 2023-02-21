@@ -55,5 +55,6 @@ Plug('lvimuser/lsp-inlayhints.nvim')                -- inlay hints
 Plug('preservim/tagbar')                            -- tags on the right
 Plug('ggandor/leap.nvim')                           -- special movement
 Plug('brenoprata10/nvim-highlight-colors')          -- colors 
+Plug('karb94/neoscroll.nvim')
 vim.call("plug#end")
 

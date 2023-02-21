@@ -14,7 +14,7 @@ local options = {
   timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undoi      updatetime = 300,                        -- faster completion (4000ms default)
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  expandtab = true, -- convert tabs to spaces
+  -- expandtab = true, -- convert tabs to spaces
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   tabstop = 2, -- insert 2 spaces for a tab
   scrolloff = 8,
@@ -25,6 +25,7 @@ local options = {
   mousemodel = "popup_setpos",
   shell = "/usr/bin/zsh",
   autochdir = true,
+  lazyredraw = true,
 }
 
 vim.g.mkdp_browser = '/usr/bin/firefox'
