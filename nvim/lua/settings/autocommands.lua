@@ -27,4 +27,8 @@ vim.cmd([[highlight BufferInactiveMod guifg=#dbc074 guibg=#131a24]])
 vim.cmd([[highlight BufferInactiveSign guifg=#719cd6 guibg=#131a24]])
 
 vim.cmd([[highlight LspInlayHint guibg=#192330]])
+vim.cmd(":syntax off")
+vim.cmd([[highlight CursorLine guibg=#1A1B27]])
+vim.cmd([[highlight CursorLineSign guibg=#1A1B27]])
+vim.cmd([[highlight CursorLineFold guibg=#1A1B27]])
 
