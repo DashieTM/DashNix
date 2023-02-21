@@ -50,7 +50,8 @@ Plug('akinsho/toggleterm.nvim',{ ["tag"] = "*" })   -- better terminal integrati
 Plug("iamcco/markdown-preview.nvim",                -- markdown preview
 { ["do"] = "cd app && yarn install" })
 Plug('p00f/clangd_extensions.nvim')                 -- clangd_extensions
-Plug('kdarkhan/rust-tools.nvim')                    -- rust extensions
+-- Plug('kdarkhan/rust-tools.nvim')                    -- rust extensions
+Plug('simrat39/rust-tools.nvim')
 Plug('lvimuser/lsp-inlayhints.nvim')                -- inlay hints
 Plug('preservim/tagbar')                            -- tags on the right
 Plug('ggandor/leap.nvim')                           -- special movement

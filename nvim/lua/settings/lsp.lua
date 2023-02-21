@@ -52,15 +52,8 @@ end
 
 require("rust-tools").setup({
 	server = {
-		standalone = false,
 		root_dir = require('lspconfig').util.find_git_ancestor,
-		loadOutputiDirs = false,
 	},
-	tools = {
-		inlay_hints = {
-			auto = false
-		}
-	}
 })
 
 require("mason-lspconfig").setup_handlers({
