@@ -74,7 +74,7 @@ return {
             },
           },
         },
-        ltex = {},
+        -- ltex = {},
         jdtls = {},
         gopls = {},
         sqls = {},
