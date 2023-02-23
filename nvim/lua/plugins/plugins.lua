@@ -7,9 +7,12 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
+    lazy = true,
   },
   {
     "brenoprata10/nvim-highlight-colors",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     config = function(_, _)
       require("nvim-highlight-colors").setup()
       vim.cmd(":hi clear CursorLine")
@@ -19,30 +22,41 @@ return {
   },
   {
     "gpanders/editorconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
   },
   {
     "ThePrimeagen/harpoon",
+    lazy = true,
     config = function()
       require("telescope").load_extension("harpoon")
     end,
   },
   {
     "iamcco/markdown-preview.nvim",
+    lazy = true,
+    event = "FileType markdown",
+    build = "cd app && yarn install",
   },
   {
     "nvim-telescope/telescope-project.nvim",
+    lazy = true,
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
+    lazy = true,
     config = function()
       require("telescope").load_extension("file_browser")
     end,
   },
   {
     "jvgrootveld/telescope-zoxide",
+    lazy = true,
     config = function()
       local z_utils = require("telescope._extensions.zoxide.utils")
       local t = require("telescope")
