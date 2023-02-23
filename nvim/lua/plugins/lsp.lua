@@ -38,6 +38,49 @@ return {
       ---@type lspconfig.options
       servers = {
         jsonls = {},
+        tailwindcss = {},
+        cssls = {},
+        html = {},
+        clangd = {},
+        pyright = {},
+        cmake = {},
+        bashls = {},
+        ansiblels = {},
+        marksman = {},
+        asm_lsp = {},
+        tsserver = {
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        ltex = {},
+        jdtls = {},
+        gopls = {},
+        sqls = {},
+        taplo = {},
+        lemminx = {},
+        yamlls = {},
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {

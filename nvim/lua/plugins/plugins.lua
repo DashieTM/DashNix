@@ -14,7 +14,9 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     config = function(_, _)
-      require("nvim-highlight-colors").setup()
+      require("nvim-highlight-colors").setup({
+        enable_tailwind = true,
+      })
       vim.cmd(":hi clear CursorLine")
       vim.cmd(":hi clear CursorLineFold")
       vim.cmd(":hi clear CursorLineSign")
