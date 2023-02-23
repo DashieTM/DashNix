@@ -12,7 +12,7 @@
 | F9  | continue from breakpoint  |
 | F10 | close debug UI            |
 
-## Nerd Tree
+## Neo-Tree
 | key | Description               |
 | --- | ------------------------- |
 | f   |toggle open                |

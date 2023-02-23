@@ -1,9 +1,5 @@
 return {
   {
-    "mxsdev/nvim-dap-vscode-js",
-    build = "npm install --legacy-peer-deps && npm run compile",
-  },
-  {
     "mfussenegger/nvim-dap",
     lazy = true,
     dependencies = {
