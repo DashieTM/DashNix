@@ -21,6 +21,7 @@ return {
             "firefox",
             "bash",
             "delve",
+            "coreclr",
           },
           automatic_installation = true,
           automatic_setup = true,
@@ -40,6 +41,9 @@ return {
         command = "/usr/bin/lldb-vscode",
         name = "lldb",
       }
+      dap.adapters.nlua = function(callback, config)
+        callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+      end
 
       local rust_dap = vim.fn.getcwd()
       local filename = ""
@@ -78,18 +82,11 @@ return {
 
       dap.configurations.python = {
         {
-          -- The first three options are required by nvim-dap
           type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
           request = "launch",
           name = "Launch file",
-
-          -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
           program = "${file}", -- This configuration will launch the current file if used.
           pythonPath = function()
-            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
             local cwd = vim.fn.getcwd()
             if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
               return cwd .. "/venv/bin/python"
@@ -103,7 +100,6 @@ return {
       }
       dap.configurations.java = {
         {
-          -- type = "javadbg",
           request = "attach",
           name = "Debug (Attach) - Remote",
           hostName = "127.0.0.1",
@@ -124,7 +120,6 @@ return {
           mode = "test",
           program = "${file}",
         },
-        -- works with go.mod packages and sub packages
         {
           type = "delve",
           name = "Debug test (go.mod)",
@@ -156,10 +151,47 @@ return {
           firefoxExecutable = "/usr/bin/firefox",
         },
       }
+      dap.configurations.lua = {
+        {
+          type = "nlua",
+          request = "attach",
+          name = "Attach to running Neovim instance",
+        },
+      }
+      dap.configurations.cs = {
+        {
+          type = "coreclr",
+          name = "launch - netcoredbg",
+          request = "launch",
+          program = function()
+            return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+          end,
+        },
+      }
+      dap.configurations.sh = {
+        {
+          type = "bashdb",
+          request = "launch",
+          name = "Launch file",
+          showDebugOutput = true,
+          pathBashdb = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
+          pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
+          trace = true,
+          file = "${file}",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+          pathCat = "cat",
+          pathBash = "/bin/bash",
+          pathMkfifo = "mkfifo",
+          pathPkill = "pkill",
+          args = {},
+          env = {},
+          terminalKind = "integrated",
+        },
+      }
       require("dapui").setup({
         icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
         mappings = {
-          -- Use a table to apply multiple mappings
           expand = { "<CR>", "<2-LeftMouse>" },
           open = "o",
           remove = "d",
@@ -167,20 +199,10 @@ return {
           repl = "r",
           toggle = "t",
         },
-        -- Expand lines larger than the window
-        -- Requires >= 0.7
         expand_lines = vim.fn.has("nvim-0.7") == 1,
-        -- Layouts define sections of the screen to place windows.
-        -- The position can be "left", "right", "top" or "bottom".
-        -- The size specifies the height/width depending on position. It can be an Int
-        -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-        -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-        -- Elements are the elements shown in the layout (in order).
-        -- Layouts are opened in order so that earlier layouts take priority in window sizing.
         layouts = {
           {
             elements = {
-              -- Elements can be strings or table with id and size keys.
               { id = "scopes", size = 0.25 },
               "breakpoints",
               "stacks",
@@ -199,9 +221,7 @@ return {
           },
         },
         controls = {
-          -- Requires Neovim nightly (or 0.8 when released)
           enabled = true,
-          -- Display controls in this element
           element = "repl",
           icons = {
             pause = "",
@@ -228,60 +248,6 @@ return {
           max_value_lines = 100, -- Can be integer or nil.
         },
       })
-
-      -- require("mason-nvim-dap").setup({
-      --   ensure_installed = {
-      --     "bash-debug-adapter",
-      --     "firefox-debug-adapter",
-      --     "js-debug-adapter",
-      --     "node-debug2-adapter",
-      --     "java-debug-adapter",
-      --     "debugpy",
-      --   },
-      --   automatic_installation = true,
-      --   automatic_setup = true,
-      -- })
-      -- require("mason-nvim-dap").setup_handlers({
-      --   function(source_name)
-      --     -- all sources with no handler get passed here
-      --
-      --     -- Keep original functionality of `automatic_setup = true`
-      --     require("mason-nvim-dap.automatic_setup")(source_name)
-      --   end,
-      --   python = function(source_name)
-      --     dap.adapters.python = {
-      --       type = "executable",
-      --       command = "/usr/bin/python3",
-      --       args = {
-      --         "-m",
-      --         "debugpy.adapter",
-      --       },
-      --     }
-      --
-      --     dap.configurations.python = {
-      --       {
-      --         type = "python",
-      --         request = "launch",
-      --         name = "Launch file",
-      --         program = "${file}", -- This configuration will launch the current file if used.
-      --       },
-      --     }
-      --   end,
-      -- })
-      local dap = require("dap")
-      dap.configurations.lua = {
-
-        {
-
-          type = "nlua",
-          request = "attach",
-          name = "Attach to running Neovim instance",
-        },
-      }
-
-      dap.adapters.nlua = function(callback, config)
-        callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
-      end
       require("nvim-dap-virtual-text").setup()
     end,
   },
