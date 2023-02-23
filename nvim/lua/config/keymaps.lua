@@ -32,8 +32,8 @@ map("n", "f", ":Neotree action=focus toggle=true<CR>", opts)
 map("n", "<C-d>", ":lua require('toggleterm').toggle(1)<CR>", opts)
 
 -- tab switching
-map("n", "<F1>", ":BufferPrev<CR>", opts)
-map("n", "<F2>", ":BufferNext<CR>", opts)
+map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
+map("n", "<F2>", ":BufferLineCycleNext<CR>", opts)
 
 -- formatting
 map("n", "<F4>", ":lua vim.lsp.buf.format { async = true }<CR>", opts)
