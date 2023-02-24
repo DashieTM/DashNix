@@ -8,6 +8,9 @@ return {
   {
     "akinsho/toggleterm.nvim",
     lazy = true,
+    opts = {
+      autochdir = true,
+    },
   },
   {
     "brenoprata10/nvim-highlight-colors",
@@ -116,5 +119,9 @@ return {
         },
       },
     },
+  },
+  {
+    "echasnovski/mini.ai",
+    enabled = false,
   },
 }
