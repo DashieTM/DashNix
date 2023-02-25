@@ -90,3 +90,11 @@ vim.keymap.set("n", "<leader>z", ":lua require('telescope').extensions.zoxide.li
 
 -- trouble
 map("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
+
+-- gitui
+map("n", "<leader>gg", function()
+  Util.float_term({ "gitui" }, { cwd = Util.get_root() })
+end, { desc = "gitui (root dir)" })
+map("n", "<leader>gG", function()
+  Util.float_term({ "gitui" })
+end, { desc = "gitui (cwd)" })
