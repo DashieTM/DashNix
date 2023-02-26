@@ -23,6 +23,7 @@ alias ga="git add -A"
 alias g+='bear -- g++ -Wextra -Werror -std=c++20'
 alias s="kitty +kitten ssh"
 alias zl='z "" '
+alias jo='joshuto'
 
 # pwd based on the value of _ZO_RESOLVE_SYMLINKS.
 function __zoxide_pwd
