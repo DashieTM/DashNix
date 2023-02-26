@@ -683,5 +683,5 @@ alias ga = git add -A
 alias g+ = bear -- g++ -Wextra -Werror -std=c++20
 alias s = kitty +kitten ssh
 source ~/.zoxide.nu
-source ~/.oh-my-posh.nu
+source ~/.cache/starship/init.nu
 

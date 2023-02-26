@@ -249,3 +249,29 @@ ga
 z dot
 ga
 z dot
+ga
+gm "feat: change to nushell"
+gh lazy
+ls
+z kitty
+nvim 
+nvim .
+z hypr
+nvim
+nvim .
+nvim .
+nvim 
+z nu
+oh-my-posh debug
+z 
+z .poshthemes/
+nvim .
+dude jsut work
+nu --help
+z kitty
+sudo pacman -S starship
+ls
+nu --help
+nvim .
+nvim .
+nvim sonicboom_dark.omp.json 

@@ -58,5 +58,4 @@ let-env PATH = ($env.PATH | split row (char esep) | append '.cargo/bin')
 let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
-oh-my-posh init nu --config ~/.poshthemes/sonicboom_dark.omp.json
 zoxide init nushell | save -f ~/.zoxide.nu
