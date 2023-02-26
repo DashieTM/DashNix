@@ -6,7 +6,14 @@ end
 # Utility functions for zoxide.
 #
 set fish_greeting
-
+function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
+    if test "$argv" = !!
+        echo sudo $history[1]
+        eval command sudo $history[1]
+    else
+        command sudo $argv
+    end
+end
 alias ls='lsd'
 alias :q='exit'
 alias gh='git push origin'
