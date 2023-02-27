@@ -75,8 +75,13 @@ return {
             },
           },
         },
-        -- ltex = {},
-        ltex = {},
+        ltex = {
+          settings = {
+            ltex = {
+              checkFrequency = "save",
+            },
+          },
+        },
         gopls = {},
         sqls = {},
         taplo = {},
