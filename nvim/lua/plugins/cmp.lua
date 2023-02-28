@@ -14,9 +14,10 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
+        preselect = cmp.PreselectMode.None,
+        -- completion = {
+        --   completeopt = "menu,menuone,noinsert",
+        -- },
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
