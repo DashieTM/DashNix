@@ -11,6 +11,7 @@ local options = {
   spelllang = "en_us",
   shell = "/usr/bin/zsh",
   autochdir = true,
+  relativenumber = false,
 }
 
 vim.g.mkdp_browser = "/usr/bin/firefox"
