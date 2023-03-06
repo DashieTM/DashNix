@@ -181,7 +181,7 @@ return {
 
       require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
       require("mason-lspconfig").setup_handlers({ setup })
-      vim.cmd([[highlight LspInlayHint guibg=#192330]])
+      vim.cmd([[highlight LspInlayHint guibg=#1A1B26]])
     end,
   },
 }

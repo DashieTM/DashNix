@@ -1,7 +1,30 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    build = (not jit.os:find("Windows"))
+        and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
+      or nil,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+    opts = {
+      history = true,
+      delete_check_events = "TextChanged",
+      updateevents = "TextChanged,TextChangedI",
+      enable_autosnippets = true,
+    },
+    keys = function()
+      return {}
+    end,
+    config = function(_, opts)
+      require("luasnip").setup(opts)
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -15,13 +38,12 @@ return {
       local luasnip = require("luasnip")
       return {
         preselect = cmp.PreselectMode.None,
-        -- completion = {
-        --   completeopt = "menu,menuone,noinsert",
-        -- },
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
         snippet = {
           expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
+            luasnip.lsp_expand(args.body)
           end,
         },
         mapping = {
@@ -77,12 +99,12 @@ return {
           { name = "path" },
         }),
         formatting = {
-          format = function(_, item)
+          format = function(entry, item)
             local icons = require("lazyvim.config").icons.kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
-            return item
+            return require("tailwindcss-colorizer-cmp").formatter(entry, item)
           end,
         },
         experimental = {
@@ -92,20 +114,10 @@ return {
         },
       }
     end,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    lazy = true,
-    dependencies = {
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-    },
-    opts = function(_, opts)
-      local format_kinds = opts.formatting.format
-      opts.formatting.format = function(entry, item)
-        format_kinds(entry, item)
-        return require("tailwindcss-colorizer-cmp").formatter(entry, item)
-      end
+    config = function(_, opts)
+      local cmp = require("cmp")
       require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
+      cmp.setup(opts)
     end,
   },
 }
