@@ -1,0 +1,4 @@
+enable_media_control = true
+[device]
+volume = 100
+audio_cache = true
