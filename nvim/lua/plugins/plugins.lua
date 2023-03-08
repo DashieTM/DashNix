@@ -117,6 +117,8 @@ return {
         mappings = {
           ["f"] = "close_window",
         },
+        position = "right",
+            scan_mode = "deep", 
       },
     },
   },
