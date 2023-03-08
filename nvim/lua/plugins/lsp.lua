@@ -82,6 +82,7 @@ return {
             },
           },
         },
+        texlab = {},
         gopls = {},
         sqls = {},
         taplo = {},
