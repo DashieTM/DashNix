@@ -39,7 +39,7 @@ return {
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
-          completeopt = "menu,menuone,noinsert",
+          -- completeopt = "menu,menuone,noinsert",
         },
         snippet = {
           expand = function(args)
@@ -52,6 +52,10 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        }), -- Accept cur
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
