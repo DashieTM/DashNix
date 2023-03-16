@@ -17,9 +17,9 @@ end
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
-map("n", "d", ':set relativenumber<CR>d', opts)
-map("n", "y", ':set relativenumber<CR>y', opts)
-map("n", "<ESC>", ':set norelativenumber<CR><ESC>', opts)
+-- map("n", "d", ':set relativenumber<CR>d', opts)
+-- map("n", "y", ':set relativenumber<CR>y', opts)
+-- map("n", "<ESC>", ':set norelativenumber<CR><ESC>', opts)
 
 -- debug
 map("n", "<F5>", ':lua require("dap").toggle_breakpoint()<CR>', opts)
