@@ -1,4 +1,5 @@
 enable_media_control = true
+theme = "tokyonight-dark"
 [device]
 volume = 100
 audio_cache = true
