@@ -126,4 +126,10 @@ return {
     "echasnovski/mini.ai",
     enabled = false,
   },
+  {
+  "rcarriga/nvim-notify",
+    opts = {
+      top_down = false,
+    },
+  },
 }
