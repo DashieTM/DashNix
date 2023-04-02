@@ -1,0 +1,9 @@
+Config(
+  width: 800,
+  plugins: [
+    "libapplications.so",
+    "librink.so",
+    "libshell.so",
+    "libtranslate.so",
+  ],
+)

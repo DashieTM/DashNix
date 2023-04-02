@@ -4,3 +4,7 @@ gtk-3.0/servers
 /fish/fish_variables
 fish/fish_variables
 fish/*.tmp.*
+copyq/copyq.lock
+copyq/copyq_geometry.*
+copyq/copyq_tab*
+nvim/lazy-lock.json

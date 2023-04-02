@@ -127,9 +127,18 @@ return {
     enabled = false,
   },
   {
-  "rcarriga/nvim-notify",
+    "rcarriga/nvim-notify",
     opts = {
       top_down = false,
     },
+  },
+  {
+    "elkowar/yuck.vim",
+  },
+  {
+    "jbyuki/instant.nvim",
+    config = function()
+      vim.cmd("let g:instant_username = 'dashie'")
+    end,
   },
 }

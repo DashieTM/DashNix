@@ -1,0 +1,2 @@
+monitor_name = 'whatever'
+utility_command = "echo 'henlo' ;; echo 'pingpang'"
