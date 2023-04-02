@@ -74,10 +74,10 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_maps()")
-map("n", "<A-h>", ":wincmd h<CR>", opts)
-map("n", "<A-j>", ":wincmd j<CR>", opts)
-map("n", "<A-K>", ":wincmd k<CR>", opts)
-map("n", "<A-l>", ":wincmd l<CR>", opts)
+map("n", "<A-j>", ":wincmd h<CR>", opts)
+map("n", "<A-k>", ":wincmd j<CR>", opts)
+map("n", "<A-l>", ":wincmd k<CR>", opts)
+map("n", "<A-;>", ":wincmd l<CR>", opts)
 
 -- harpoon man
 
