@@ -21,6 +21,12 @@ local term_opts = { silent = true }
 -- map("n", "y", ':set relativenumber<CR>y', opts)
 -- map("n", "<ESC>", ':set norelativenumber<CR><ESC>', opts)
 
+-- crimes against humanity, but I don't care
+map("n", "j", 'h', opts)
+map("n", "k", 'j', opts)
+map("n", "l", 'k', opts)
+map("n", ";", 'l', opts)
+
 -- debug
 map("n", "<F5>", ':lua require("dap").toggle_breakpoint()<CR>', opts)
 map("n", "<F6>", ':lua require("dap").step_over()<CR>', opts)
