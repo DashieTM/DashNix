@@ -1,6 +1,7 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
+    lazy = true,
     opts = {
       on_attach = function(bufnr)
         local api = require("nvim-tree.api")
@@ -61,7 +62,6 @@ return {
         vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
       end,
       respect_buf_cwd = true,
-      open_on_setup = true,
       view = {
         centralize_selection = false,
         side = "right",
