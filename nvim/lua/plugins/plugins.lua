@@ -107,25 +107,8 @@ return {
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      close_if_last_window = true,
-      filesystem = {
-        group_empty_dirs = true,
-      },
-      window = {
-        mappings = {
-          ["f"] = "close_window",
-          ["l"] = "",
-        },
-        position = "right",
-        scan_mode = "deep",
-      },
-    },
-  },
-  {
     "echasnovski/mini.ai",
-    enabled = false,
+    diabled = true,
   },
   {
     "rcarriga/nvim-notify",
@@ -134,12 +117,27 @@ return {
     },
   },
   {
-    "elkowar/yuck.vim",
-  },
-  {
     "jbyuki/instant.nvim",
     config = function()
       vim.cmd("let g:instant_username = 'dashie'")
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+          },
+        },
+      },
+    },
   },
 }

@@ -36,7 +36,7 @@ map("n", "<F9>", ':lua require("dap").continue()<CR>', opts)
 map("n", "<F10>", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', opts)
 
 -- file tree
-map("n", "f", ":Neotree action=focus toggle=true<CR>", opts)
+map("n", "f", ":NvimTreeToggle<CR>", opts)
 
 -- toggle terminal
 map("n", "<C-d>", ":lua require('toggleterm').toggle(1)<CR>", opts)
