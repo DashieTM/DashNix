@@ -49,6 +49,13 @@ return {
         ansiblels = {},
         marksman = {},
         asm_lsp = {},
+        csharp_ls = {
+          cmd = { "/home/dashie/.dotnet/tools/csharp-ls" },
+          filetypes = { "cs" },
+          init_options = {
+            AutomaticWorkspaceInit = true,
+          },
+        },
         tsserver = {
           settings = {
             typescript = {

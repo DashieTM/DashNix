@@ -26,6 +26,10 @@ map("n", "j", 'h', opts)
 map("n", "k", 'j', opts)
 map("n", "l", 'k', opts)
 map("n", ";", 'l', opts)
+map("v", "j", 'h', opts)
+map("v", "k", 'j', opts)
+map("v", "l", 'k', opts)
+map("v", ";", 'l', opts)
 
 -- debug
 map("n", "<F5>", ':lua require("dap").toggle_breakpoint()<CR>', opts)
