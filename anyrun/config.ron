@@ -1,5 +1,6 @@
 Config(
   width: 800,
+  position: Center,
   plugins: [
     "libapplications.so",
     "librink.so",

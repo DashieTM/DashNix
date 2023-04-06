@@ -36,7 +36,7 @@ map("n", "<F9>", ':lua require("dap").continue()<CR>', opts)
 map("n", "<F10>", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', opts)
 
 -- file tree
-map("n", "f", ":NvimTreeToggle<CR>", opts)
+map("n", "f", ":lua   require('nvim-tree.api').tree.toggle()<CR>", opts)
 
 -- toggle terminal
 map("n", "<C-d>", ":lua require('toggleterm').toggle(1)<CR>", opts)
@@ -88,8 +88,7 @@ map("n", "fma", ":lua require('harpoon.mark').add_file()<CR>", opts)
 map("n", "fmd", ":lua require('harpoon.mark').remove_file()<CR>", opts)
 
 -- telescope
-map("n", "fb", ":Telescope file_browser<CR>", {})
-map("n", "fc", ":Cheatsheet<CR>", {})
+map("n", "fb", ":lua require('telescope').extensions.file_browser.file_browser{}<CR>", {})
 map("n", "ff", ":lua require('telescope.builtin').find_files()<CR>", {})
 map("n", "fg", ":lua require('telescope.builtin').live_grep()<CR>", {})
 map("n", "fh", ":lua require('telescope.builtin').help_tags()<CR>", {})

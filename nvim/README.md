@@ -12,7 +12,7 @@
 | F9  | continue from breakpoint  |
 | F10 | close debug UI            |
 
-## Neo-Tree
+## Nvim-Tree
 | key | Description               |
 | --- | ------------------------- |
 | f   |toggle open                |
@@ -44,7 +44,6 @@
 | --- | ------------------------- |
 | ff  | find files                |
 | fg  | live ripgrep              |
-| fb  | find buffers              |
 | fh  | help for functions etc    |
 | fp  | find projects             |
 | fb  | file browser              |
@@ -139,3 +138,12 @@ only available on dashboard
 |  t  | find text                 |
 |  c  | open config               |
 |  q  | quit                      |
+
+## Treesitter specials
+used to interact with treesitter defined objects.
+| key | Description                          |
+| --- | ------------------------------------ |
+| dif | Delete the content of a function     |
+| daf | Delete the entire function           |
+| dic | Delete the content of a class/struct |
+| dac | Delete the entire class/struct       |

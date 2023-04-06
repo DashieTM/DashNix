@@ -61,7 +61,9 @@ return {
         vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
         vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
       end,
-      respect_buf_cwd = true,
+      -- respect_buf_cwd = true,
+      sync_root_with_cwd = true,
+      prefer_startup_root = true,
       view = {
         centralize_selection = false,
         side = "right",
