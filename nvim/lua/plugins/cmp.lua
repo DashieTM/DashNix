@@ -29,8 +29,9 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      "FelipeLema/cmp-async-path",
       "saadparwaiz1/cmp_luasnip",
+      "Saecki/crates.nvim",
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
     opts = function()
@@ -113,10 +114,11 @@ return {
           },
         },
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
+          { name = "nvim_lsp", priority = 99 },
+          { name = "luasnip", priority = 10, max_item_count = 3 },
+          { name = "buffer", priority = 5, max_item_count = 2, keyword_length = 5 },
+          { name = "async_path", priority = 0, max_item_count = 2, keyword_length = 3, trigger_characters = {} },
+          { name = "crates" },
         }),
         formatting = {
           preselect = cmp.PreselectMode.None,
