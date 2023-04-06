@@ -3,7 +3,7 @@ return {
     "L3MON4D3/LuaSnip",
     build = (not jit.os:find("Windows"))
         and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-      or nil,
+        or nil,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -36,6 +36,7 @@ return {
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local compare = require('cmp.config.compare')
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
@@ -53,9 +54,9 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ["<S-CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
-        }), -- Accept cur
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+          }), -- Accept cur
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -96,6 +97,21 @@ return {
             "s",
           }),
         },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            compare.offset,
+            compare.exact,
+            -- compare.scopes,
+            compare.kind,
+            compare.score,
+            compare.recently_used,
+            compare.locality,
+            -- compare.sort_text,
+            compare.length,
+            compare.order,
+          },
+        },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -103,6 +119,7 @@ return {
           { name = "path" },
         }),
         formatting = {
+          preselect = cmp.PreselectMode.None,
           format = function(entry, item)
             local icons = require("lazyvim.config").icons.kinds
             if icons[item.kind] then
