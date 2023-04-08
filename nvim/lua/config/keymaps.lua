@@ -23,8 +23,8 @@ local term_opts = { silent = true }
 
 -- crimes against humanity, but I don't care
 map("n", "j", 'h', opts)
-map("n", "k", 'j', opts)
 map("n", "l", 'k', opts)
+map("n", "k", 'j', opts)
 map("n", ";", 'l', opts)
 map("v", "j", 'h', opts)
 map("v", "k", 'j', opts)
@@ -72,8 +72,8 @@ function _G.set_terminal_maps()
   vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
   vim.keymap.set("t", "<A-h>", [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set("t", "<A-j>", [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set("t", "<A-k>", [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set("t", "<A-l>", [[<Cmd>wincmd l<CR>]], opts)
+  -- vim.keymap.set("t", "<A-k>", [[<Cmd>wincmd k<CR>]], opts)
+  -- vim.keymap.set("t", "<A-l>", [[<Cmd>wincmd l<CR>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead

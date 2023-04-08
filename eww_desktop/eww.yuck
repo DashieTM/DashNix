@@ -125,13 +125,13 @@
         (label :text "" :class "audio_sep" :halign "center")
 	      (box :class "change_audio_box" :halign "center" :spac`e-evenly "false" :hexpand "false" :vexpand "false"
 	      (box :class "change_audio" :orientation "v" :halign "left"
-          (button :onclick "scripts/change-audio internal" ""))
+          (button :onclick "scripts/change-audio internal" "󰋋"))
 	      (box :class "change_audio" :orientation "v" :halign "right"
           (button :onclick "scripts/change-audio bluetooth" ""))
   ))))
 
 (defwidget cname []
-  (literal :content currentName))
+  (literal :class "windowname" :content currentName))
 
 ;; calendar ;;
 (defwidget cal []
@@ -151,7 +151,7 @@
       (circular-progress :value memory
                 :class "sys_mem"
                 :thickness 9
-            (label :text ""
+            (label :text ""
                 :class "sys_icon_mem"
                 :limit-width 2
                 :show_truncated false
@@ -185,17 +185,17 @@
        (box :orientation "v"
           (box :class "cockpit_box" :orientation "v"
           (box 
-		         (button :class "cockpit_button_shutdown" :onclick "hyprctl dispatch exec 'shutdown now'" "")
-		         (button :class "cockpit_button_restart" :onclick "hyprctl dispatch exec reboot" "")
-		         (button :class "cockpit_button_sleep" :onclick "hyprctl dispatch exec 'playerctl -a pause & swaylock -c 000000 & systemctl suspend'" ""))
+		         (button :class "cockpit_button_shutdown" :onclick "hyprctl dispatch exec 'shutdown now'" "")
+		         (button :class "cockpit_button_restart" :onclick "hyprctl dispatch exec reboot" "")
+		         (button :class "cockpit_button_sleep" :onclick "hyprctl dispatch exec 'playerctl -a pause & swaylock -c 000000 & systemctl suspend'" "⏾"))
         (label :text "" :class "audio_sep" :halign "center")
           (box
-          (button :class "cockpit_button_settings" :onclick "hyprctl dispatch exec 'pavucontrol'" "")
+          (button :class "cockpit_button_settings" :onclick "hyprctl dispatch exec 'pavucontrol'" "")
           (button :class "cockpit_button_settings" :onclick "scripts/change-audio bluetooth" "")))
           (box :class "cockpit_box" :orientation "v"
-		         (button :class "cockpit_docs" :onclick "hyprctl dispatch exec nautilus $HOME/Documents" "Documents ")
+		         (button :class "cockpit_docs" :onclick "hyprctl dispatch exec nautilus $HOME/Documents" "Documents ")
         (label :text "" :class "cockpit_sep_top" :halign "center")
-		         (button :class "cockpit_pics" :onclick "hyprctl dispatch exec nautilus $HOME/Pictures"  "Pictures  ")
+		         (button :class "cockpit_pics" :onclick "hyprctl dispatch exec nautilus $HOME/Pictures"  "Pictures  ")
         (label :text "" :class "cockpit_sep_bottom" :halign "center")
 		         (button :class "cockpit_gits" :onclick "hyprctl dispatch exec 'alacritty --working-directory $HOME/gits'" "gits      ")))
        (box :orientation "v"
@@ -305,9 +305,9 @@
 (defwindow bar
 	  :monitor 0
           :geometry (geometry :x "0%"
-                       :y "1px"
-                       :width "3417px"
-                       :height "20px"
+                       :y "0px"
+                       :width "3440px"
+                       :height "10px"
                        :anchor "top center")
           :stacking "bottom"
 	  :wm-ignore false

@@ -1,7 +1,7 @@
 * {
   all: unset;
-  font-family: feather;
-  font-family: DaddyTimeMono Nerd Font;
+  // font-family: feather;
+  font-family: JetBrainsMono Nerd Font;
 }
 
 /** General **/
@@ -30,62 +30,62 @@ tooltip label {
 
 .clock_time_sep {
   font-size: 20;
-  color: #bfc9db;
+  color: #71BBE6;
   margin: 0px 0px 1px 0px;
 }
 .clock_time_class,
 .clock_minute_class {
-  font-size: 24;
+  font-size: 20;
 }
 .clock_date_class {
-  font-size: 21;
+  font-size: 20;
   margin: 0px 5px 0px 5px;
-  color: #d7beda;
+  color: #71BBE6;
 }
 .clock_minute_class {
   margin: 0px 5px 0px 2px;
-  color: #bfc9db;
+  color: #71BBE6;
 }
 .clock_time_class {
-  color: #bfc9db;
+  color: #71BBE6;
   font-weight: bold;
   margin: 0px 0px 0px 8px;
 }
 
 .membar {
-  color: #e0b089;
+  color: #71BBE6;
   background-color: #38384d;
   border-radius: 10px;
 }
 
 .module_app_text {
-  font-size: 23;
+  font-size: 20;
   margin: 2px 0px 0px 0px;
 }
 
 .bright_icon_overlay {
-  font-size: 28;
-  color: #e4c9af;
+  font-size: 23;
+  color: #71BBE6;
   background-size: cover;
   background-position: center;
   margin: 0px 27px 0px 3px;
 }
 .volume_icon {
-  font-size: 22;
-  color: #a1bdce;
+  font-size: 20;
+  color: #71BBE6;
   margin: 0px 5px 0px 0px;
 }
 .module-blu {
-  font-size: 22;
-  color: #a1bdce;
+  font-size: 20;
+  color: #71BBE6;
   border-radius: 100%;
   margin: 0px 10px 0px 0px;
 }
 
 .iconmem {
-  font-size: 23;
+  font-size: 20;
   margin: 0px -3px 4px 8px;
-  color: #e0b089;
+  color: #71BBE6;
 }
 
 .mem_padding {
@@ -93,9 +93,9 @@ tooltip label {
 }
 
 .separ {
-  color: #3e424f;
+  color: #71BBE6;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   margin: 0px 0px 0px 0px;
 }
 
@@ -116,10 +116,11 @@ scale trough {
 }
 
 .works {
-  font-size: 27px;
+  font-size: 22px;
   font-weight: normal;
   margin: 0px 0px 0px 15px;
   background-color: #111017;
+  color: #71BBE6;
 }
 
 .0,
@@ -140,7 +141,7 @@ scale trough {
 
 /* Unoccupied */
 .0 {
-  color: #3e424f;
+  color: #71BBE6;
 }
 
 /* Occupied */
@@ -150,7 +151,7 @@ scale trough {
 .04,
 .05,
 .06 {
-  color: #bfc9db;
+  color: #71BBE6;
 }
 
 /* Focused */
@@ -160,7 +161,7 @@ scale trough {
 .044,
 .055,
 .066 {
-  color: #a1bdce;
+  color: #71BBE6;
 }
 
 .song_cover_art {
@@ -196,14 +197,14 @@ scale trough {
 }
 
 calender {
-  color: #bfc9db;
+  color: #71BBE6;
 }
 calendar:selected {
-  color: #a1bdce;
+  color: #71BBE6;
 }
 
 calendar.header {
-  color: #a1bdce;
+  color: #71BBE6;
   font-weight: bold;
 }
 
@@ -231,11 +232,13 @@ calendar:indeterminate {
   margin: 5px 0px 0px 25px;
 }
 .sys_text_mem {
+  color: #71BBE6;
   font-size: 21;
   font-weight: bold;
   margin: 14px 0px 0px 25px;
 }
 .sys_icon_mem {
+  color: #71BBE6;
   font-size: 30;
   margin: 30px;
 }
@@ -245,14 +248,14 @@ calendar:indeterminate {
 }
 
 .sys_mem {
-  color: #e4c9af;
+  color: #71BBE6;
   background-color: #38384d;
   border-radius: 10px;
 }
 
 .sys_icon_mem,
 .sys_text_mem {
-  color: #e4c9af;
+  color: #71BBE6;
 }
 
 .sys_mem_box {
@@ -329,7 +332,7 @@ calendar:indeterminate {
 }
 
 .mic_text {
-  color: #a1bdce;
+  color: #71BBE6;
   font-size: 26px;
   font-weight: bold;
   margin: 0px 0px 0px 0px;
@@ -421,7 +424,7 @@ calendar:indeterminate {
 .weather-icon {
   font-size: 80px;
   margin: 10px 0px 5px 10px;
-  font-family: Iosevka;
+  font-family: JetBrainsMono Nerd Font;
 }
 
 .weather-stat {
@@ -507,4 +510,8 @@ calendar:indeterminate {
   font-size: 18;
   margin: 0px 0px -10px 0px;
   padding: 0px;
+}
+
+.windowname {
+  color: #71BBE6;
 }
