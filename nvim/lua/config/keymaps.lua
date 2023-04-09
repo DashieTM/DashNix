@@ -22,14 +22,14 @@ local term_opts = { silent = true }
 -- map("n", "<ESC>", ':set norelativenumber<CR><ESC>', opts)
 
 -- crimes against humanity, but I don't care
-map("n", "j", 'h', opts)
-map("n", "l", 'k', opts)
-map("n", "k", 'j', opts)
-map("n", ";", 'l', opts)
-map("v", "j", 'h', opts)
-map("v", "k", 'j', opts)
-map("v", "l", 'k', opts)
-map("v", ";", 'l', opts)
+map("n", "j", "h", opts)
+map("n", "l", "k", opts)
+map("n", "k", "j", opts)
+map("n", ";", "l", opts)
+map("v", "j", "h", opts)
+map("v", "k", "j", opts)
+map("v", "l", "k", opts)
+map("v", ";", "l", opts)
 
 -- debug
 map("n", "<F5>", ':lua require("dap").toggle_breakpoint()<CR>', opts)
@@ -103,6 +103,23 @@ vim.keymap.set("n", "<leader>z", ":lua require('telescope').extensions.zoxide.li
 
 -- trouble
 map("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
+
+-- better yank
+function Better_yank(opts)
+  local current_line = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_command(current_line .. "," .. (opts.count - (current_line - 1)) .. "y")
+end
+
+vim.api.nvim_create_user_command("BetterYank", Better_yank, { count = 1 }) map("n", "gy", ":BetterYank<CR>", term_opts)
+map("n", "<leader>y", ":BetterYank<CR>", term_opts)
+-- better delete
+function Better_delete(opts)
+  local current_line = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_command(current_line .. "," .. (opts.count - (current_line - 1)) .. "d")
+end
+
+vim.api.nvim_create_user_command("BetterDelete", Better_delete, { count = 1 })
+map("n", "<leader>d", ":BetterDelete<CR>", term_opts)
 
 -- gitui
 map("n", "<leader>gg", function()

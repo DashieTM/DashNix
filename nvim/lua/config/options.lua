@@ -2,8 +2,6 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 local options = {
-  clipboard = "",
-  mouse = "n",
   fileencoding = "utf-8",
   number = true,
   showmode = true,
@@ -11,7 +9,7 @@ local options = {
   spelllang = "en_us",
   shell = "/usr/bin/zsh",
   autochdir = true,
-  relativenumber = true,
+  relativenumber = false,
   scrolloff = 5,
   scrolljump = 5,
 }
