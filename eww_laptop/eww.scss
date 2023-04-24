@@ -2,18 +2,24 @@
 Created by saimoom **/
 * {
   all: unset;
-  font-family: feather;
-  font-family: DaddyTimeMono Nerd Font;
+  font-family: "JetBrains Mono Nerd", feather;
+  color:#7DCEFE;
 }
 
 /** General **/
 .bar_class {
+  padding: 0px;
   background-color:#000000 ; /*#282828#111017;*/
-  border-radius: 10px;
 }
 .module {
   margin: 0px 0px 0px 0px;
   border-radius: 10px 10px 0px 10px;
+}
+
+.windowname {
+  font-size: 18px;
+  padding: 0px;
+  margin: -5px;
 }
 
 /** tooltip!! **/
@@ -31,16 +37,16 @@ tooltip label {
 /** Widgets **/
 
 .clock_time_sep {
-  font-size: 20;
+  font-size: 15;
   color: #bfc9db;
   margin: 0px 0px 1px 0px;
 }
 .clock_time_class,
 .clock_minute_class {
-  font-size: 24;
+  font-size: 20;
 }
 .clock_date_class {
-  font-size: 21;
+  font-size: 18;
   margin: 0px 5px 0px 5px;
   color: #d7beda;
 }
@@ -93,48 +99,48 @@ tooltip label {
 }
 
 .module_app_text {
-  font-size: 23;
+  font-size: 20;
   margin: 2px 0px 0px 0px;
 }
 .bright_icon {
-  font-size: 22;
+  font-size: 20;
   color: #e4c9af;
   margin: 0px 10px 0px -10px;
 }
 .bright_icon_overlay {
-  font-size: 28;
+  font-size: 20;
   color: #e4c9af;
   background-size: cover;
   background-position: center;
   margin: 0px 27px 0px 3px;
 }
 .volume_icon {
-  font-size: 22;
+  font-size: 20;
   color: #a1bdce;
   margin: 0px 5px 0px 0px;
 }
 .module-wif {
-  font-size: 22;
+  font-size: 20;
   color: #a1bdce;
   border-radius: 100%;
   margin: 0px 10px 0px 0px;
 }
 .module_essid {
-  font-size: 18;
+  font-size: 17;
   color: #a1bdce;
   margin: 0px 5px 0px -1px;
 }
 
 .iconmem {
-  font-size: 23;
+  font-size: 8;
   margin: 4px -3px 4px 0px;
   color: #e0b089;
 }
 .mem_padding {
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
 }
 .iconbat {
-  font-size: 23;
+  font-size: 17;
   color: #afbea2;
 }
 
@@ -167,9 +173,9 @@ scale trough {
 }
 
 .works {
-  font-size: 27px;
+  font-size: 22px;
   font-weight: normal;
-  margin: 0px 0px 0px 15px;
+  margin: 0px 0px 0px 3px;
   background-color: #000000;
 }
 
@@ -374,7 +380,6 @@ calendar:indeterminate {
 .music_btn_prev,
 .music_btn_play,
 .music_btn_next {
-  font-family: Iosevka Nerd Font;
 }
 .music_btn_prev {
   color: #bbc5d7;
@@ -576,7 +581,6 @@ calendar:indeterminate {
 .weather-icon {
   font-size: 80px;
   margin: 10px 0px 35px 25px;
-  font-family: Iosevka;
 }
 
 .weather-stat {
