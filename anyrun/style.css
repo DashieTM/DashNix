@@ -1,6 +1,7 @@
 
 #window {
   border-radius: 10px;
+  background-color: none; 
 }
 
 box#main {
