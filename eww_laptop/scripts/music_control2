@@ -1,3 +1,3 @@
 #!/bin/bash
-echo $(playerctl -p spofity_player,%any metadata mpris:artUrl)
+echo $(playerctl -p ncspot,%any metadata mpris:artUrl)
 

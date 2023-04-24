@@ -126,9 +126,6 @@ end)
 -- neovide paste
 vim.g.neovide_input_use_logo = 1
 vim.api.nvim_set_keymap('i', '<C-S-V>', '<ESC>p<CR>I', { noremap = true, silent = true})
--- vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
--- vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
--- vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
 -- gitui
 map("n", "<leader>gg", function()
