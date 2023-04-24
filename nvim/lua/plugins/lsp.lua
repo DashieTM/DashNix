@@ -50,7 +50,7 @@ return {
         marksman = {},
         asm_lsp = {},
         csharp_ls = {
-          cmd = { "/home/dashie/.dotnet/tools/csharp-ls" },
+          cmd = { "/home/dashie/.local/share/nvim/mason/bin/csharp-ls" },
           filetypes = { "cs" },
           init_options = {
             AutomaticWorkspaceInit = true,
@@ -115,6 +115,9 @@ return {
         jdtls = function()
           return true
         end,
+        rust_analyzer = function()
+          return true
+        end,
       },
     },
     config = function(plugin, opts)
@@ -148,7 +151,6 @@ return {
           on_attach = on_attach,
           vim.lsp.diagnostic.on_publish_diagnostics,
           {
-            -- Disable virtual_text
             virtual_text = true,
           },
         }, servers[server] or {})
