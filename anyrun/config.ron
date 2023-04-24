@@ -1,5 +1,11 @@
 Config(
+  // `width` and `vertical_offset` use an enum for the value it can be either:
+  // Absolute(n): The absolute value in pixels
+  // Fraction(n): A fraction of the width or height of the full screen (depends on exclusive zones and the settings related to them) window respectively
+  
+  // How wide the input box and results are.  
   width: Absolute(800), 
+  
   // Where Anyrun is located on the screen: Top, Center
   position: Center, 
 
@@ -24,6 +30,6 @@ Config(
     "libapplications.so",
     "libshell.so",
     "librink.so",
-    "libanyrun_websearch.so",
+    "libanyrun_websearch.so"
   ],
 )
