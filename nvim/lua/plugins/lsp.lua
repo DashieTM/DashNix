@@ -224,6 +224,7 @@ return {
           nls.builtins.formatting.shfmt,
           nls.builtins.diagnostics.flake8,
           nls.builtins.formatting.autopep8,
+          nls.builtins.formatting.prettierd
         },
       }
     end,
