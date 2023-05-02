@@ -172,4 +172,9 @@ return {
       }
     end,
   },
+  {
+    "kaarmu/typst.vim",
+    lazy = true,
+    event = "FileType typst",
+  },
 }
