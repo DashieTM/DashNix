@@ -4,8 +4,8 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "folke/neoconf.nvim", cmd = "Neoconf",                                config = true },
+      { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "lvimuser/lsp-inlayhints.nvim",
@@ -82,11 +82,24 @@ return {
             },
           },
         },
+        typst_lsp = {},
         ltex = {
           settings = {
             ltex = {
               checkFrequency = "save",
             },
+          },
+          filetypes = {
+            "bib",
+            "gitcommit",
+            "markdown",
+            "org",
+            "plaintex",
+            "rst",
+            "rnoweb",
+            "tex",
+            "pandoc",
+            "typst",
           },
         },
         texlab = {},
