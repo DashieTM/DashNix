@@ -32,7 +32,7 @@ map("n", "<F9>", ':lua require("dap").continue()<CR>', opts)
 map("n", "<F10>", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', opts)
 
 -- file tree
-map("n", "f", ":lua   require('nvim-tree.api').tree.toggle()<CR>", opts)
+map("n", "<A-f>", ":lua   require('nvim-tree.api').tree.toggle()<CR>", opts)
 
 -- toggle terminal
 map("n", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", opts)
@@ -92,7 +92,7 @@ map("n", "fm", ":Telescope harpoon marks<CR>", { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>z", ":lua require('telescope').extensions.zoxide.list{}<CR>")
 
 -- trouble
-map("n", "<C-f>", "<cmd>TroubleToggle<CR>", term_opts)
+map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)
 
 -- better yank
 function Better_yank(opts)
