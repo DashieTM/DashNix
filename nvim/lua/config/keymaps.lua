@@ -32,21 +32,35 @@ map("n", "<leader>dt", ':lua require("dapui").toggle()<CR> :lua require("dap").c
 map("n", "<leader>dq", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', { desc = "Close DAP" })
 
 -- file tree
-map("n", "<A-f>", function()   require('nvim-tree.api').tree.toggle()end, opts)
+map("n", "<A-f>", function()
+  require("nvim-tree.api").tree.toggle()
+end, opts)
 
 -- toggle terminal
-map("n", "<C-t>", function() require('toggleterm').toggle(1)end, {desc = "Toggle Terminal"})
+map("n", "<C-t>", function()
+  require("toggleterm").toggle(1)
+end, { desc = "Toggle Terminal" })
 
 -- tab switching
 map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<F2>", ":BufferLineCycleNext<CR>", opts)
 
 -- git
-map("n", "<leader>gq", function() require('telescope.builtin').git_commits()end, { desc = "Commits" })
-map("n", "<leader>gw", function() require('telescope.builtin').git_bcommits()end, { desc = "Commits in branch" })
-map("n", "<leader>ge", function() require('telescope.builtin').git_branches()end, { desc = "Branches" })
-map("n", "<leader>gr", function() require('telescope.builtin').git_status()end, { desc = "Git status" })
-map("n", "<leader>ga", function() require('telescope.builtin').git_stash()end, { desc = "Git stash" })
+map("n", "<leader>gq", function()
+  require("telescope.builtin").git_commits()
+end, { desc = "Commits" })
+map("n", "<leader>gw", function()
+  require("telescope.builtin").git_bcommits()
+end, { desc = "Commits in branch" })
+map("n", "<leader>ge", function()
+  require("telescope.builtin").git_branches()
+end, { desc = "Branches" })
+map("n", "<leader>gr", function()
+  require("telescope.builtin").git_status()
+end, { desc = "Git status" })
+map("n", "<leader>ga", function()
+  require("telescope.builtin").git_stash()
+end, { desc = "Git stash" })
 map("n", "<leader>gg", function()
   Util.float_term({ "gitui" }, { cwd = Util.get_root() })
 end, { desc = "gitui (root dir)" })
@@ -61,8 +75,12 @@ function _G.set_terminal_maps()
   vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
   vim.keymap.set("t", "<A-h>", [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set("t", "<A-j>", [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set("n", "<C-t>", function() require('toggleterm').toggle(1)end, opts)
-  vim.keymap.set("i", "<C-t>", function() require('toggleterm').toggle(1)end, opts)
+  vim.keymap.set("n", "<C-t>", function()
+    require("toggleterm").toggle(1)
+  end, opts)
+  vim.keymap.set("i", "<C-t>", function()
+    require("toggleterm").toggle(1)
+  end, opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -73,11 +91,21 @@ map("n", "<A-l>", ":wincmd k<CR>", opts)
 map("n", "<A-;>", ":wincmd l<CR>", opts)
 
 -- harpoon man
-map("n", "<leader>h1", function() require('harpoon.ui').nav_file(1)end, { desc = "First Harpoon File" })
-map("n", "<leader>h2", function() require('harpoon.ui').nav_file(2)end, { desc = "Second Harpoon File" })
-map("n", "<leader>h3", function() require('harpoon.ui').nav_file(3)end, { desc = "First Harpoon File" })
-map("n", "<leader>ha", function() require('harpoon.mark').add_file()end, { desc = "First Harpoon File" })
-map("n", "<leader>hd", function() require('harpoon.mark').remove_file()end, { desc = "First Harpoon File" })
+map("n", "<leader>h1", function()
+  require("harpoon.ui").nav_file(1)
+end, { desc = "First Harpoon File" })
+map("n", "<leader>h2", function()
+  require("harpoon.ui").nav_file(2)
+end, { desc = "Second Harpoon File" })
+map("n", "<leader>h3", function()
+  require("harpoon.ui").nav_file(3)
+end, { desc = "First Harpoon File" })
+map("n", "<leader>ha", function()
+  require("harpoon.mark").add_file()
+end, { desc = "First Harpoon File" })
+map("n", "<leader>hd", function()
+  require("harpoon.mark").remove_file()
+end, { desc = "First Harpoon File" })
 map("n", "<leader>hm", ":Telescope harpoon marks<CR>", { noremap = true, silent = true, desc = "Show harpoon marks" })
 
 -- telescope
@@ -88,15 +116,20 @@ map("n", "<leader>ff", function()
   require("telescope.builtin").find_files()
 end, { desc = "Find Files" })
 map("n", "<leader>fg", function()
+  live_grep_from_project_git_root()
+end, { desc = "Live Grep (root)" })
+map("n", "<leader>fG", function()
   require("telescope.builtin").live_grep()
-end, { desc = "Live Grep" })
+end, { desc = "Live Grep (cwd)" })
 map("n", "<leader>fh", function()
   require("telescope.builtin").help_tags()
 end, { desc = "Help" })
 map("n", "<leader>fp", function()
   require("telescope").extensions.project.project({})
 end, { noremap = true, silent = true, desc = "Projects" })
-map("n", "<leader>z", function() require('telescope').extensions.zoxide.list{}end, { desc = "Zoxide" })
+map("n", "<leader>z", function()
+  require("telescope").extensions.zoxide.list({})
+end, { desc = "Zoxide" })
 
 -- trouble
 map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)
@@ -133,3 +166,26 @@ end)
 -- neovide paste
 vim.g.neovide_input_use_logo = 1
 vim.api.nvim_set_keymap("i", "<C-S-V>", "<ESC>p<CR>I", { noremap = true, silent = true })
+
+function live_grep_from_project_git_root()
+  local function is_git_repo()
+    vim.fn.system("git rev-parse --is-inside-work-tree")
+
+    return vim.v.shell_error == 0
+  end
+
+  local function get_git_root()
+    local dot_git_path = vim.fn.finddir(".git", ".;")
+    return vim.fn.fnamemodify(dot_git_path, ":h")
+  end
+
+  local opts = {}
+
+  if is_git_repo() then
+    opts = {
+      cwd = get_git_root(),
+    }
+  end
+
+  require("telescope.builtin").live_grep(opts)
+end
