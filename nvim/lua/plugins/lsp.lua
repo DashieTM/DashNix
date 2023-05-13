@@ -42,7 +42,27 @@ return {
         tailwindcss = {},
         cssls = {},
         html = {},
-        clangd = {},
+        clangd = {
+          root_pattern = {
+            ".clangd",
+            ".clang-tidy",
+            ".clang-format",
+            "compile_commands.json",
+            "compile_flags.txt",
+            "configure.ac",
+            ".git",
+            "build/compile_commands.json",
+          },
+          filetypes = {
+            "c",
+            "cpp",
+            "objc",
+            "objcpp",
+            "cuda",
+            "proto",
+            "cl",
+          },
+        },
         pyright = {},
         cmake = {},
         bashls = {},
@@ -110,6 +130,7 @@ return {
         sqlls = {},
         taplo = {},
         lemminx = {},
+        opencl_ls = {},
         yamlls = {},
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -140,7 +161,7 @@ return {
       -- setup formatting and keymaps
       require("lazyvim.util").on_attach(function(client, buffer)
         require("lazyvim.plugins.lsp.format").on_attach(client, buffer)
-        require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
+        require("config.lsp-keymap").on_attach(client, bufnr)
       end)
 
       -- diagnostics
@@ -157,6 +178,7 @@ return {
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
         local optslsp = { noremap = false, silent = true, buffer = bufnr }
         require("lsp-inlayhints").on_attach(client, bufnr)
+        -- keymaps
       end
 
       local function setup(server)
@@ -225,7 +247,7 @@ return {
           nls.builtins.formatting.shfmt,
           nls.builtins.diagnostics.flake8,
           nls.builtins.formatting.autopep8,
-          nls.builtins.formatting.prettierd
+          nls.builtins.formatting.prettierd,
         },
       }
     end,
