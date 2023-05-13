@@ -43,5 +43,32 @@ local imageSnippet = s(
 )
 table.insert(snippets, imageSnippet)
 
+local centerImageSnippet = s(
+  "cimage-",
+  fmt(
+    [[
+    #align(center, [#image("{1}", width: {2}%)])
+    ]],
+    {
+      i(1, "image"),
+      i(2, "width"),
+    }
+  )
+)
+table.insert(snippets, centerImageSnippet)
+
+local colSnippet = s(
+  "col-",
+  fmt(
+    [[
+    #columns({1}, [{2}])
+    ]],
+    {
+      i(1, "col-amount"),
+      i(2, "content"),
+    }
+  )
+)
+table.insert(snippets, colSnippet)
 ------------------------------------------------- snippets end
 return snippets, autosnippets
