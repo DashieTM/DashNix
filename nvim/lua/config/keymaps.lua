@@ -35,7 +35,7 @@ map("n", "<leader>dq", ':lua require("dap").close()<CR> :lua require("dapui").to
 map("n", "<A-f>", ":lua   require('nvim-tree.api').tree.toggle()<CR>", opts)
 
 -- toggle terminal
-map("n", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", opts)
+map("n", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", {desc = "Toggle Terminal"})
 
 -- tab switching
 map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
@@ -108,7 +108,7 @@ function Better_yank(opts)
 end
 
 vim.api.nvim_create_user_command("BetterYank", Better_yank, { count = 1 })
-map("n", "<leader>y", ":BetterYank<CR>", term_opts)
+map("n", "by", ":BetterYank<CR>", term_opts)
 
 -- better delete
 function Better_delete(opts)
@@ -117,7 +117,7 @@ function Better_delete(opts)
 end
 
 vim.api.nvim_create_user_command("BetterDelete", Better_delete, { count = 1 })
-map("n", "<leader>d", ":BetterDelete<CR>", term_opts)
+map("n", "bd", ":BetterDelete<CR>", term_opts)
 
 -- neovide zoom
 local change_scale_factor = function(delta)
