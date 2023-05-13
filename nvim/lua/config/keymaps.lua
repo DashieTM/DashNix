@@ -81,14 +81,23 @@ function _G.set_terminal_maps()
   vim.keymap.set("i", "<C-t>", function()
     require("toggleterm").toggle(1)
   end, opts)
+  vim.keymap.set("t", "<C-t>", function()
+    require("toggleterm").toggle(1)
+  end, opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_maps()")
-map("n", "<A-j>", ":wincmd h<CR>", opts)
-map("n", "<A-k>", ":wincmd j<CR>", opts)
-map("n", "<A-l>", ":wincmd k<CR>", opts)
-map("n", "<A-;>", ":wincmd l<CR>", opts)
+map("t", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
+map("t", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
+map("t", "<A-l>", [[<Cmd>wincmd k<CR>]], opts)
+map("t", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
+map("n", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
+map("n", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
+map("n", "<A-t>", [[<Cmd>wincmd j<CR>]], opts)
+map("i", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
+map("i", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
+map("i", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
 
 -- harpoon man
 map("n", "<leader>h1", function()
@@ -116,7 +125,7 @@ map("n", "<leader>ff", function()
   require("telescope.builtin").find_files()
 end, { desc = "Find Files" })
 map("n", "<leader>fg", function()
-  live_grep_from_project_git_root()
+  Live_grep_from_project_git_root()
 end, { desc = "Live Grep (root)" })
 map("n", "<leader>fG", function()
   require("telescope.builtin").live_grep()
@@ -167,25 +176,24 @@ end)
 vim.g.neovide_input_use_logo = 1
 vim.api.nvim_set_keymap("i", "<C-S-V>", "<ESC>p<CR>I", { noremap = true, silent = true })
 
-function live_grep_from_project_git_root()
+function Get_git_root()
+  local opts = {}
   local function is_git_repo()
     vim.fn.system("git rev-parse --is-inside-work-tree")
 
     return vim.v.shell_error == 0
   end
-
-  local function get_git_root()
-    local dot_git_path = vim.fn.finddir(".git", ".;")
-    return vim.fn.fnamemodify(dot_git_path, ":h")
-  end
-
-  local opts = {}
-
   if is_git_repo() then
+    local dot_git_path = vim.fn.finddir(".git", ".;")
+    local root = vim.fn.fnamemodify(dot_git_path, ":h")
     opts = {
-      cwd = get_git_root(),
+      cwd = root,
     }
   end
+  return opts
+end
 
+function Live_grep_from_project_git_root()
+  local opts = Get_git_root()
   require("telescope.builtin").live_grep(opts)
 end

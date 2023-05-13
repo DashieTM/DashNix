@@ -3,7 +3,7 @@ return {
     "L3MON4D3/LuaSnip",
     build = (not jit.os:find("Windows"))
         and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-        or nil,
+      or nil,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -37,7 +37,7 @@ return {
     opts = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local compare = require('cmp.config.compare')
+      local compare = require("cmp.config.compare")
       return {
         preselect = cmp.PreselectMode.None,
         completion = {
@@ -98,28 +98,22 @@ return {
             "s",
           }),
         },
-        sorting = {
-          priority_weight = 2,
-          comparators = {
-            compare.offset,
-            compare.exact,
-            -- compare.scopes,
-            compare.kind,
-            compare.score,
-            compare.recently_used,
-            compare.locality,
-            -- compare.sort_text,
-            compare.length,
-            compare.order,
-          },
-        },
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 99 },
-          { name = "luasnip", priority = 10, max_item_count = 3 },
-          { name = "buffer", priority = 5, max_item_count = 2, keyword_length = 5 },
-          { name = "async_path", priority = 0, max_item_count = 2, keyword_length = 3, trigger_characters = {} },
+          { name = "luasnip", priority = 3, max_item_count = 3 },
+          { name = "buffer", priority = 2, max_item_count = 2, keyword_length = 5 },
+          { name = "async_path", priority = 1, max_item_count = 2, keyword_length = 3, trigger_characters = {} },
           { name = "crates" },
         }),
+        sorting = {
+          priority_weight = 1,
+          comparators = {
+            compare.exact,
+            compare.score,
+            compare.offset,
+            compare.kind,
+          },
+        },
         formatting = {
           preselect = cmp.PreselectMode.None,
           format = function(entry, item)

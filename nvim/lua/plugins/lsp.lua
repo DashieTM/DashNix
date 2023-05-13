@@ -4,8 +4,8 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf",                                config = true },
-      { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "lvimuser/lsp-inlayhints.nvim",
@@ -70,13 +70,6 @@ return {
         marksman = {},
         asm_lsp = {},
         omnisharp = {},
-        -- csharp_ls = {
-        --   cmd = { "/home/dashie/.local/share/nvim/mason/bin/csharp-ls" },
-        --   filetypes = { "cs" },
-        --   init_options = {
-        --     AutomaticWorkspaceInit = true,
-        --   },
-        -- },
         tsserver = {
           settings = {
             typescript = {
@@ -176,6 +169,7 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local on_attach = function(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
         local optslsp = { noremap = false, silent = true, buffer = bufnr }
         require("lsp-inlayhints").on_attach(client, bufnr)
         -- keymaps
