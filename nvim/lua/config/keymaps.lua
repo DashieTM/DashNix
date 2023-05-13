@@ -41,6 +41,12 @@ map("n", "<C-t>", function()
   require("toggleterm").toggle(1)
 end, { desc = "Toggle Terminal" })
 
+-- semicolon thing
+map("i","<leader>m" ,"<C-o>A;<CR>", {desc = "add semi and newline"})
+map("i","<leader>n" ,"<C-o>A;<ESC>", {desc = "add semi"})
+map("n","<leader>m" ,"$a;<CR>", {desc = "add semi and newline"})
+map("n","<leader>n" ,"$a;<ESC>", {desc = "add semi"})
+
 -- tab switching
 map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<F2>", ":BufferLineCycleNext<CR>", opts)
