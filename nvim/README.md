@@ -2,31 +2,44 @@
 
 ## Space as leader
 
+## Motion
+| key     | Descpription              |
+| ------- | ------------------------- |
+| j       | left                      |
+| k       | down                      |
+| l       | up                        | 
+| ;       | right                     |
+| \<A-j\> | window left               |
+| \<A-k\> | window up                 |
+| \<A-l\> | window down               |
+| \<A-;\> | window right              |
+
+
 ## Debugging
-| key | Description               |
-| --- | ------------------------- |
-| F5  | toggle breakpoint         |
-| F6  | step over breakpoint      |
-| F7  | step into breakpoint      |
-| F8  | start debugging           |
-| F9  | continue from breakpoint  |
-| F10 | close debug UI            |
+| key         | Description               |
+| ----------- | ------------------------- |
+| <leader>dt  | toggle breakpoint         |
+| <leader>do  | step over breakpoint      |
+| <leader>di  | step into breakpoint      |
+| <leader>dc  | continue from breakpoint  |
+| <leader>dt  | start debugging           |
+| <leader>dq  | close debug UI            |
 
 ## Nvim-Tree
-| key | Description               |
-| --- | ------------------------- |
-| f   |toggle open                |
-| a   |create new file            |
-| d   |remove file                |
-| r   |rename file                |
-| y   |copy name                  |
-| Y   |copy path                  |
-| x   |cut file                   |
-| c   |copy file                  |
-| p   |paste file                 |
-| f   |filter (inside nvim tree)  |
-| E   |expand all folders         |
-| W   |collapse all folders       |
+| key | Description                |
+| --- | -------------------------- |
+| f   | toggle open                |
+| a   | create new file            |
+| d   | remove file                |
+| r   | rename file                |
+| y   | copy name                  |
+| Y   | copy path                  |
+| x   | cut file                   |
+| c   | copy file                  |
+| p   | paste file                 |
+| f   | filter (inside nvim tree)  |
+| E   | expand all folders         |
+| W   | collapse all folders       |
 
 ## buffer switching
 | key | Description               |
@@ -40,13 +53,13 @@
 | F4  | format this file          |
 
 ## telescope
-| key | Description               |
-| --- | ------------------------- |
-| ff  | find files                |
-| fg  | live ripgrep              |
-| fh  | help for functions etc    |
-| fp  | find projects             |
-| fb  | file browser              |
+| key         | Description               |
+| ----------- | ------------------------- |
+| <leader>ff  | find files                |
+| <leader>fg  | live ripgrep              |
+| <leader>fh  | help for functions etc    |
+| <leader>fp  | find projects             |
+| <leader>fb  | file browser              |
 
 ### telescope git
 | key        | Description               |
@@ -104,16 +117,16 @@ Note, these require the cmp list view to be open to do anything!
 | Shift + Tab | scroll up through suggestion list                         |
 
 ## LSP 
-| key         |  Description           |
-| ----------- | ---------------------- |
-|  Leader + a | go to declaration      |
-|  Leader + s | go to definition       |
-|  Leader + d | go to type definitions |
-|  Leader + f | go to references       |
-|  Leader + q | execute code actions   |
-|  Leader + w | signature help         |
-|  Leader + e | hover                  |
-|  Leader + r | rename                 |
+| key          |  Description           |
+| ------------ | ---------------------- |
+|  Leader + ca | go to declaration      |
+|  Leader + cs | go to definition       |
+|  Leader + cd | go to type definitions |
+|  Leader + cf | go to references       |
+|  Leader + cq | execute code actions   |
+|  Leader + cw | signature help         |
+|  Leader + ce | hover                  |
+|  Leader + cr | rename                 |
 
 ## snippets
 These require you to be inside a snippet!
