@@ -69,14 +69,14 @@ return {
         ansiblels = {},
         marksman = {},
         asm_lsp = {},
-        typst_lsp = {},
-        csharp_ls = {
-          cmd = { "/home/dashie/.local/share/nvim/mason/bin/csharp-ls" },
-          filetypes = { "cs" },
-          init_options = {
-            AutomaticWorkspaceInit = true,
-          },
-        },
+        omnisharp = {},
+        -- csharp_ls = {
+        --   cmd = { "/home/dashie/.local/share/nvim/mason/bin/csharp-ls" },
+        --   filetypes = { "cs" },
+        --   init_options = {
+        --     AutomaticWorkspaceInit = true,
+        --   },
+        -- },
         tsserver = {
           settings = {
             typescript = {
