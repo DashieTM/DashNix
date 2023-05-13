@@ -32,21 +32,21 @@ map("n", "<leader>dt", ':lua require("dapui").toggle()<CR> :lua require("dap").c
 map("n", "<leader>dq", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', { desc = "Close DAP" })
 
 -- file tree
-map("n", "<A-f>", ":lua   require('nvim-tree.api').tree.toggle()<CR>", opts)
+map("n", "<A-f>", function()   require('nvim-tree.api').tree.toggle()end, opts)
 
 -- toggle terminal
-map("n", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", {desc = "Toggle Terminal"})
+map("n", "<C-t>", function() require('toggleterm').toggle(1)end, {desc = "Toggle Terminal"})
 
 -- tab switching
 map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<F2>", ":BufferLineCycleNext<CR>", opts)
 
 -- git
-map("n", "<leader>gq", ":lua require('telescope.builtin').git_commits()<CR>", { desc = "Commits" })
-map("n", "<leader>gw", ":lua require('telescope.builtin').git_bcommits()<CR>", { desc = "Commits in branch" })
-map("n", "<leader>ge", ":lua require('telescope.builtin').git_branches()<CR>", { desc = "Branches" })
-map("n", "<leader>gr", ":lua require('telescope.builtin').git_status()<CR>", { desc = "Git status" })
-map("n", "<leader>ga", ":lua require('telescope.builtin').git_stash()<CR>", { desc = "Git stash" })
+map("n", "<leader>gq", function() require('telescope.builtin').git_commits()end, { desc = "Commits" })
+map("n", "<leader>gw", function() require('telescope.builtin').git_bcommits()end, { desc = "Commits in branch" })
+map("n", "<leader>ge", function() require('telescope.builtin').git_branches()end, { desc = "Branches" })
+map("n", "<leader>gr", function() require('telescope.builtin').git_status()end, { desc = "Git status" })
+map("n", "<leader>ga", function() require('telescope.builtin').git_stash()end, { desc = "Git stash" })
 map("n", "<leader>gg", function()
   Util.float_term({ "gitui" }, { cwd = Util.get_root() })
 end, { desc = "gitui (root dir)" })
@@ -61,8 +61,8 @@ function _G.set_terminal_maps()
   vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
   vim.keymap.set("t", "<A-h>", [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set("t", "<A-j>", [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set("n", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", opts)
-  vim.keymap.set("i", "<C-t>", ":lua require('toggleterm').toggle(1)<CR>", opts)
+  vim.keymap.set("n", "<C-t>", function() require('toggleterm').toggle(1)end, opts)
+  vim.keymap.set("i", "<C-t>", function() require('toggleterm').toggle(1)end, opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -73,11 +73,11 @@ map("n", "<A-l>", ":wincmd k<CR>", opts)
 map("n", "<A-;>", ":wincmd l<CR>", opts)
 
 -- harpoon man
-map("n", "<leader>h1", ":lua require('harpoon.ui').nav_file(1)<CR>", { desc = "First Harpoon File" })
-map("n", "<leader>h2", ":lua require('harpoon.ui').nav_file(2)<CR>", { desc = "Second Harpoon File" })
-map("n", "<leader>h3", ":lua require('harpoon.ui').nav_file(3)<CR>", { desc = "First Harpoon File" })
-map("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", { desc = "First Harpoon File" })
-map("n", "<leader>hd", ":lua require('harpoon.mark').remove_file()<CR>", { desc = "First Harpoon File" })
+map("n", "<leader>h1", function() require('harpoon.ui').nav_file(1)end, { desc = "First Harpoon File" })
+map("n", "<leader>h2", function() require('harpoon.ui').nav_file(2)end, { desc = "Second Harpoon File" })
+map("n", "<leader>h3", function() require('harpoon.ui').nav_file(3)end, { desc = "First Harpoon File" })
+map("n", "<leader>ha", function() require('harpoon.mark').add_file()end, { desc = "First Harpoon File" })
+map("n", "<leader>hd", function() require('harpoon.mark').remove_file()end, { desc = "First Harpoon File" })
 map("n", "<leader>hm", ":Telescope harpoon marks<CR>", { noremap = true, silent = true, desc = "Show harpoon marks" })
 
 -- telescope
@@ -96,7 +96,7 @@ end, { desc = "Help" })
 map("n", "<leader>fp", function()
   require("telescope").extensions.project.project({})
 end, { noremap = true, silent = true, desc = "Projects" })
-map("n", "<leader>z", ":lua require('telescope').extensions.zoxide.list{}<CR>", { desc = "Zoxide" })
+map("n", "<leader>z", function() require('telescope').extensions.zoxide.list{}end, { desc = "Zoxide" })
 
 -- trouble
 map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)
