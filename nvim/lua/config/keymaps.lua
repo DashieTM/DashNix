@@ -42,10 +42,10 @@ map("n", "<C-t>", function()
 end, { desc = "Toggle Terminal" })
 
 -- semicolon thing
-map("i","<C-m>" ,"<C-o>A;<CR>", {desc = "add semi and newline"})
-map("i","<C-n>" ,"<C-o>A;<ESC>", {desc = "add semi"})
-map("n","<leader>m" ,"$a;<CR>", {desc = "add semi and newline"})
-map("n","<leader>n" ,"$a;<ESC>", {desc = "add semi"})
+-- map("i","<C-m>" ,"<C-o>A;<CR>", {desc = "add semi and newline"})
+-- map("i","<C-n>" ,"<C-o>A;<ESC>", {desc = "add semi"})
+map("n", "<leader>m", "$a;<CR>", { desc = "add semi and newline" })
+map("n", "<leader>n", "$a;<ESC>", { desc = "add semi" })
 
 -- tab switching
 map("n", "<F1>", ":BufferLineCyclePrev<CR>", opts)
@@ -72,6 +72,10 @@ map("n", "<leader>gg", function()
 end, { desc = "gitui (root dir)" })
 map("n", "<leader>gG", function()
   Util.float_term({ "gitui" })
+end, { desc = "gitui (cwd)" })
+map("n", "<leader>gb", function()
+  require("gitblame")
+  vim.cmd(":GitBlameToggle")
 end, { desc = "gitui (cwd)" })
 
 -- window switching

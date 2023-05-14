@@ -8,7 +8,9 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    keys = function() return {} end,
+    keys = function()
+      return {}
+    end,
     config = function(opts)
       require("telescope").setup(opts)
     end,
@@ -216,5 +218,9 @@ return {
       wk.setup(opts)
       wk.register(opts.defaults)
     end,
+  },
+  {
+    "f-person/git-blame.nvim",
+    lazy = true,
   },
 }

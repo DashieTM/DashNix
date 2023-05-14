@@ -70,6 +70,12 @@ return {
         marksman = {},
         asm_lsp = {},
         omnisharp = {},
+        rust_analyzer = {
+          diagnostics = {
+            enable = true,
+            experimental = true,
+          },
+        },
         tsserver = {
           settings = {
             typescript = {
@@ -143,18 +149,15 @@ return {
         jdtls = function()
           return true
         end,
-        rust_analyzer = function()
-          return true
-        end,
       },
     },
-    config = function(plugin, opts)
+    config = function(_, opts)
       -- setup autoformat
       require("lazyvim.plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
       require("lazyvim.util").on_attach(function(client, buffer)
         require("lazyvim.plugins.lsp.format").on_attach(client, buffer)
-        require("config.lsp-keymap").on_attach(client, bufnr)
+        require("config.lsp-keymap").on_attach(client, buffer)
       end)
 
       -- diagnostics
@@ -166,13 +169,17 @@ return {
 
       require("lsp-inlayhints").setup({})
       local servers = opts.servers
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities(),
+        opts.capabilities or {}
+      )
       local on_attach = function(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
         vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
-        local optslsp = { noremap = false, silent = true, buffer = bufnr }
-        require("lsp-inlayhints").on_attach(client, bufnr)
-        -- keymaps
+        require("lsp-inlayhints").on_attach(client, bufnr, true)
       end
 
       local function setup(server)

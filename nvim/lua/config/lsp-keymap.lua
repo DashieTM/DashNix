@@ -28,14 +28,24 @@ function M.get()
       { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
       { "<F4>", format, desc = "Format Document", has = "documentFormatting" },
       -- { "<leader>cf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
-      { "<leader>cq", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+      { "<leader>cq",function()
+        vim.lsp.buf.code_action({
+            context = {
+              only = {
+                "quickfix",
+                "source",
+              },
+              diagnostics = {},
+            },
+        })
+      end, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
       {
         "<leader>cA",
         function()
           vim.lsp.buf.code_action({
             context = {
               only = {
-                "source",
+                "refactor",
               },
               diagnostics = {},
             },

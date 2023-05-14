@@ -24,9 +24,9 @@ return {
         },
         config = function(_, opts)
           require("mason-nvim-dap").setup(opts)
-          require("mason-nvim-dap").setup_handlers({
-            javadbg = function() end,
-          })
+          -- require("mason-nvim-dap").setup_handlers({
+          --   javadbg = function() end,
+          -- })
         end,
       },
     },
