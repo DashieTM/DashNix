@@ -209,4 +209,7 @@ return {
     "f-person/git-blame.nvim",
     lazy = true,
   },
+  {
+    "mg979/vim-visual-multi",
+  },
 }

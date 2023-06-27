@@ -40,17 +40,8 @@ function M.get()
         })
       end, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
       {
-        "<leader>cA",
-        function()
-          vim.lsp.buf.code_action({
-            context = {
-              only = {
-                "refactor",
-              },
-              diagnostics = {},
-            },
-          })
-        end,
+        "<leader>cQ",
+          vim.lsp.buf.code_action,
         desc = "Source Action",
         has = "codeAction",
       }

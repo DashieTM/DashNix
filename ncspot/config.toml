@@ -20,3 +20,9 @@ statusbar_bg = "#7dcfff"
 
 cmdline_bg = "#24283b"
 search_match = "#bb9af7"
+
+[keybindings]
+"j" = "move left 1"
+"k" = "move down 1"
+"l" = "move up 1"
+";" = "move right 1"

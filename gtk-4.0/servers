@@ -3,12 +3,21 @@
       xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
       xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
 >
-  <bookmark href="smb://192.168.1.4/" added="2023-02-05T22:38:29.299667Z" modified="2023-04-19T09:28:46.298282Z" visited="2023-04-19T09:28:46.298275Z">
+  <bookmark href="smb://192.168.1.4/" added="2023-02-05T22:38:29.299667Z" modified="2023-06-18T14:04:32.624001Z" visited="2023-06-18T14:04:32.624000Z">
     <title>Windows shares on 192.168.1.4</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-04-19T09:28:46.298278Z" count="4"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-06-18T14:04:32.624000Z" count="7"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://shpc0002.hsr.ch/fabio.lenherr" added="2023-05-29T09:18:36.300126Z" modified="2023-06-21T09:54:18.514448Z" visited="2023-06-21T09:54:18.514446Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-06-21T09:54:18.514447Z" count="2"/>
         </bookmark:applications>
       </metadata>
     </info>

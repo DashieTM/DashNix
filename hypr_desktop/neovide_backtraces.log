@@ -1,0 +1,15 @@
+2023-05-17 18:07:34 - Neovide panicked with the message 'Failed to initialize any backend! Wayland status: NoCompositorListening X11 status: XOpenDisplayFailed'. (File: /home/dashie/.cargo/git/checkouts/winit-223f41148c32cc30/19d9aaf/src/platform_impl/linux/mod.rs; Line: 795, Column: 9)
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: __libc_start_main
+  12: <unknown>
+
