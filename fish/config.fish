@@ -26,6 +26,9 @@ alias zl='z "" '
 alias jo='joshuto'
 alias nv='neovide --novsync --nofork'
 alias cr='cargo run'
+alias grep='rg'
+alias cat='bat'
+alias find='fd'
 
 # pwd based on the value of _ZO_RESOLVE_SYMLINKS.
 function __zoxide_pwd
