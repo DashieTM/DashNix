@@ -2,6 +2,8 @@ notify = true
 shuffle = true
 cover_max_scale = 2
 audio_cache_size = 50000
+initial_screen = "library"
+library_tabs = ["playlists"]
 [theme]
 background = "#1a1b26"
 primary = "#c0caf5"
@@ -26,3 +28,7 @@ search_match = "#bb9af7"
 "k" = "move down 1"
 "l" = "move up 1"
 ";" = "move right 1"
+
+[notification_format]
+title = "%artists"
+body = "%title"

@@ -28,8 +28,8 @@ map("n", "<leader>db", ':lua require("dap").toggle_breakpoint()<CR>', { desc = "
 map("n", "<leader>do", ':lua require("dap").step_over()<CR>', { desc = "Step over" })
 map("n", "<leader>di", ':lua require("dap").step_into()<CR>', { desc = "Step into" })
 map("n", "<leader>dc", ':lua require("dap").continue()<CR>', { desc = "Continue" })
-map("n", "<leader>dt", ':lua require("dapui").toggle()<CR> :lua require("dap").continue()<CR> ', { desc = "Open DAP" })
-map("n", "<leader>dq", ':lua require("dap").close()<CR> :lua require("dapui").toggle()<CR>', { desc = "Close DAP" })
+map("n", "<leader>dt", ':lua require("dap").continue()<CR> :lua require("dapui").toggle()<CR>', { desc = "Open DAP" })
+map("n", "<leader>dq", ':lua require("dapui").toggle()<CR> :lua require("dap").close()<CR>', { desc = "Close DAP" })
 
 -- file tree
 map("n", "<A-f>", function()
