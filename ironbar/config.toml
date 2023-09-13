@@ -1,4 +1,3 @@
-[monitors.DP-1]
 end = [
   { type = "sys_info", format = [
     " {memory_percent}",
