@@ -7,9 +7,8 @@ M._keys = nil
 function M.get()
   local format = require("lazyvim.plugins.lsp.format").format
   if not M._keys then
-  ---@class PluginLspKeys
-    -- stylua: ignore
-    M._keys =  {
+    ---@class PluginLspKeys
+    M._keys = {
       { "<leader>cld", vim.diagnostic.open_float, desc = "Line Diagnostics" },
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
       { "<leader>ca", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
@@ -28,23 +27,44 @@ function M.get()
       { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
       { "<F4>", format, desc = "Format Document", has = "documentFormatting" },
       -- { "<leader>cf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
-      { "<leader>cq",function()
-        vim.lsp.buf.code_action({
+      {
+        "<leader>cq",
+        function()
+          vim.lsp.buf.code_action({
             context = {
               only = {
                 "quickfix",
+                "quickfix.ltex",
                 "source",
+                "source.fixAll",
+                "source.organizeImports",
+                "",
               },
-              diagnostics = {},
             },
-        })
-      end, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+          })
+        end,
+        desc = "Fix",
+        mode = { "n", "v" },
+        has = "codeAction",
+      },
       {
         "<leader>cQ",
-          vim.lsp.buf.code_action,
-        desc = "Source Action",
+        function()
+          vim.lsp.buf.code_action({
+            context = {
+              only = {
+                "refactor",
+                "refactor.inline",
+                "refactor.extract",
+                "refactor.rewrite",
+              },
+            },
+          })
+        end,
+        desc = "Refactor",
+        mode = { "n", "v" },
         has = "codeAction",
-      }
+      },
     }
     if require("lazyvim.util").has("inc-rename.nvim") then
       M._keys[#M._keys + 1] = {

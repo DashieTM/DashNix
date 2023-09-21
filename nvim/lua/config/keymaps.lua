@@ -31,15 +31,25 @@ map("n", "<leader>dc", ':lua require("dap").continue()<CR>', { desc = "Continue"
 map("n", "<leader>dt", ':lua require("dap").continue()<CR> :lua require("dapui").toggle()<CR>', { desc = "Open DAP" })
 map("n", "<leader>dq", ':lua require("dapui").toggle()<CR> :lua require("dap").close()<CR>', { desc = "Close DAP" })
 
+-- window movement
+map("n", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
+map("n", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
+map("n", "<A-t>", [[<Cmd>wincmd j<CR>]], opts)
+map("i", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
+map("i", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
+map("i", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
+
 -- file tree
 map("n", "<A-f>", function()
   require("nvim-tree.api").tree.toggle()
 end, opts)
 
 -- toggle terminal
-map("n", "<C-t>", function()
-  require("toggleterm").toggle(1)
-end, { desc = "Toggle Terminal" })
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end
+map("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
+map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- semicolon thing
 -- map("i","<C-m>" ,"<C-o>A;<CR>", {desc = "add semi and newline"})
@@ -77,37 +87,6 @@ map("n", "<leader>gb", function()
   require("gitblame")
   vim.cmd(":GitBlameToggle")
 end, { desc = "gitui (cwd)" })
-
--- window switching
-function _G.set_terminal_maps()
-  local opts = { buffer = 0 }
-  vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-  vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-  vim.keymap.set("t", "<A-h>", [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set("t", "<A-j>", [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set("n", "<C-t>", function()
-    require("toggleterm").toggle(1)
-  end, opts)
-  vim.keymap.set("i", "<C-t>", function()
-    require("toggleterm").toggle(1)
-  end, opts)
-  vim.keymap.set("t", "<C-t>", function()
-    require("toggleterm").toggle(1)
-  end, opts)
-end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_maps()")
-map("t", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
-map("t", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
-map("t", "<A-l>", [[<Cmd>wincmd k<CR>]], opts)
-map("t", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
-map("n", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
-map("n", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
-map("n", "<A-t>", [[<Cmd>wincmd j<CR>]], opts)
-map("i", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
-map("i", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
-map("i", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
 
 -- harpoon man
 map("n", "<leader>h1", function()

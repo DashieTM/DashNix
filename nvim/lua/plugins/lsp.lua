@@ -102,7 +102,12 @@ return {
             },
           },
         },
-        typst_lsp = {},
+        typst_lsp = {
+          settings = {
+            experimentalFormatterMode = "On",
+            exportPdf = "onSave",
+          },
+        },
         ltex = {
           settings = {
             ltex = {
@@ -120,6 +125,7 @@ return {
             "tex",
             "pandoc",
             "typst",
+            "typ",
           },
         },
         texlab = {},
@@ -156,7 +162,7 @@ return {
       require("lazyvim.plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
       require("lazyvim.util").on_attach(function(client, buffer)
-      require("lazyvim.plugins.lsp.format").setup(opts)
+        require("lazyvim.plugins.lsp.format").setup(opts)
         require("config.lsp-keymap").on_attach(client, buffer)
       end)
 

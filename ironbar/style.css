@@ -14,7 +14,7 @@
   margin: 2px 0px 0px 5px;
   border-radius: 10px;
   /* background-color: #2b2c3b; */
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
   padding: 2px 5px 2px 5px;
 }
 
@@ -36,7 +36,7 @@
 
 .audio-box {
   padding: 2em;
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
   border-radius: 5px;
 }
 
@@ -59,7 +59,8 @@
 .focused {
   /* margin: 2px 0px 0px 0px; */
   padding: 0px 5px 0px 5px;
-  background-color: #1a1b26;
+  /* background-color: 1a1b26; */
+  background-color: #1E1E2E;
   font-size: 17px;
   border-radius: 10px;
 }
@@ -67,7 +68,7 @@
 #bar #end {
   margin: 0px 5px 0px 0px;
   padding: 0px 5px 0px 5px;
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
   border-radius: 10px;
 }
 
@@ -76,7 +77,7 @@
   margin: 0em 3px;
   border-radius: 100%;
   font-size: 13px;
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
 }
 
 .popup-button-box {
@@ -86,7 +87,7 @@
 .clock {
   padding: 0px 5px 0px 5px;
   font-size: 17px;
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
 }
 
 .clock:hover {
@@ -94,7 +95,7 @@
 }
 
 .custom button {
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
 }
 
 .custom button:hover {
@@ -111,7 +112,7 @@
 }
 
 .popup-clock {
-  background-color: #1a1b26;
+  background-color: #1E1E2E;
   border-radius: 5px;
   padding: 2px 8px 10px 8px;
 }

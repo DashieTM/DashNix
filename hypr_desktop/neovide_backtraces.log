@@ -13,3 +13,28 @@
   11: __libc_start_main
   12: <unknown>
 
+2023-09-06 13:16:38 - Neovide panicked with the message 'Received event for dead output'. (File: /home/dashie/.cargo/registry/src/github.com-1ecc6299db9ec823/smithay-client-toolkit-0.17.0/src/output.rs; Line: 568, Column: 14)
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: __libc_start_main
+  22: <unknown>
+
