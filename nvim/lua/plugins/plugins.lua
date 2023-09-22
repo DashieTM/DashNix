@@ -17,11 +17,6 @@ return {
     end,
   },
   {
-    "lvimuser/lsp-inlayhints.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    lazy = true,
-  },
-  {
     "ThePrimeagen/harpoon",
     lazy = true,
     config = function()
