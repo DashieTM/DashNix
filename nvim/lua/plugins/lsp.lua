@@ -108,6 +108,7 @@ return {
             exportPdf = "onSave",
           },
         },
+        texlab = {},
         ltex = {
           settings = {
             ltex = {
@@ -128,7 +129,6 @@ return {
             "typ",
           },
         },
-        texlab = {},
         gopls = {
           staticcheck = true,
         },
@@ -272,6 +272,16 @@ return {
           return not is_deno(root_dir)
         end)
       end
+
+      require("lspconfig").ltex.setup({
+        capabilities = capabilities,
+        on_attach = Util.on_attach(function(client, buffer)
+          require("config.lsp-keymap").on_attach(client, buffer)
+          require("ltex_extra").setup({
+            path = vim.fn.expand("~") .. "/.local/share/ltex",
+          })
+        end),
+      })
 
       vim.cmd([[highlight LspInlayHint guibg=#1A1B26]])
     end,

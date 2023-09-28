@@ -40,14 +40,14 @@ set_volume_sink() {
 	pactl set-sink-volume @DEFAULT_SINK@ "$1"
 	CURRENT=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %')
 	# dunstify -a "changeVolume" -r 2 -u low -i audio-volume-high -h int:value:"$CURRENT" "Output Volume: ${CURRENT}%"
-	dunstify -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Output Volume: ${CURRENT}%"
+	notify-send -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Output Volume: ${CURRENT}%"
 }
 
 set_volume_source() {
 	pactl set-source-volume @DEFAULT_SOURCE@ "$1"
 	CURRENT=$(pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %')
 	# dunstify -a "changeMicVolume" -r 2 -u low -i audio-volume-high -h int:value:"$CURRENT" "Input Volume: ${CURRENT}%"
-	dunstify -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Input Volume: ${CURRENT}%"
+	notify-send -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Input Volume: ${CURRENT}%"
 }
 
 bluetooth() {

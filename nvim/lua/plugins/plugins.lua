@@ -347,4 +347,9 @@ return {
       require("mini.hipatterns").setup(opts)
     end,
   },
+  {
+    "barreiroleo/ltex_extra.nvim",
+    ft = { "markdown", "tex", "typst", "typ" },
+    lazy = true,
+  },
 }
