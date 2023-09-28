@@ -7,7 +7,7 @@ ncspot() {
 	CHANGE=$(pactl list sink-inputs short | rg "$NUM" | awk -F ' ' ' { print $1 }' | tr -d ' \t\n')
 	pactl set-sink-input-volume "$CHANGE" "$1"
 	VOLUME=$(pactl list sink-inputs | rg "$NUM" -A7 | rg "Volume:" | awk -F ' ' ' { print $5 }' | tr -d '%')
-	dunstify -a "ncspot" -r 990 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Spotify Volume: ${VOLUME}%"
+	notify-send -a "ncspot" -r 990 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Spotify Volume: ${VOLUME}%"
 }
 
 firefox() {
@@ -21,7 +21,7 @@ firefox() {
 		pactl set-sink-input-volume "$CHANGE" "$1"
 	done
 	VOLUME=$(pactl list sink-inputs | rg "${NUMS[0]}" -A7 | rg "Volume:" | awk -F ' ' ' { print $5 }' | tr -d '%')
-	dunstify -a "Firefox" -r 991 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Firefox Volume: ${VOLUME}%"
+	notify-send -a "Firefox" -r 991 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Firefox Volume: ${VOLUME}%"
 }
 
 internal() {
@@ -39,14 +39,12 @@ internal() {
 set_volume_sink() {
 	pactl set-sink-volume @DEFAULT_SINK@ "$1"
 	CURRENT=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %')
-	# dunstify -a "changeVolume" -r 2 -u low -i audio-volume-high -h int:value:"$CURRENT" "Output Volume: ${CURRENT}%"
 	notify-send -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Output Volume: ${CURRENT}%"
 }
 
 set_volume_source() {
 	pactl set-source-volume @DEFAULT_SOURCE@ "$1"
 	CURRENT=$(pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %')
-	# dunstify -a "changeMicVolume" -r 2 -u low -i audio-volume-high -h int:value:"$CURRENT" "Input Volume: ${CURRENT}%"
 	notify-send -a "System Volume" -r 993 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Input Volume: ${CURRENT}%"
 }
 
@@ -65,7 +63,7 @@ bluetooth() {
 mute() {
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 	MUTE=$(pactl get-sink-mute @DEFAULT_SINK@)
-	dunstify -a "Audio" -r 994 -u low -i audio-volume-high "Audio: $MUTE"
+	notify-send -a "Audio" -r 994 -u low -i audio-volume-high "Audio: $MUTE"
 }
 
 if [ "$1" == "internal" ]; then
