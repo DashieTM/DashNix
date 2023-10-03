@@ -2145,6 +2145,7 @@ yay
 youtube-dl
 yt-dlp
 zbar
+zenith
 zenity
 zeromq
 zig

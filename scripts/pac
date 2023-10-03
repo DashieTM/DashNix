@@ -2,9 +2,9 @@
 
 pacfile="$HOME/.config/scripts/pacmanpkg.txt"
 flatfile="$HOME/.config/scripts/flatpkg.txt"
+carfile="$HOME/.config/scripts/carpkg.txt"
 
 save() {
-	rm "$pacfile"
 	pacvar=$(pacman -Q)
 	flatvar=$(flatpak list | awk '{ print $2 }')
 	if [ "$pacfile" != ' ' ]; then
@@ -13,8 +13,13 @@ save() {
 	if [ "$flatfile" != ' ' ]; then
 		touch "$flatfile"
 	fi
-	echo "$pacvar" | awk '{ print $1 }' >>"$pacfile"
-	echo "$flatvar" >>"$flatfile"
+	if [ "$carfile" != ' ' ]; then
+		touch "$carfile"
+	fi
+	echo "$pacvar" | awk '{ print $1 }' >"$pacfile"
+	echo "$flatvar" >"$flatfile"
+	mkdir -p $HOME/.local/bin/cargo/
+	ls $HOME/.local/bin/cargo/bin/ >"$carfile"
 }
 
 load() {
@@ -23,26 +28,17 @@ load() {
 
 install() {
 	PKG=$(pacman -Ss "^$1$")
-	AURPKG=$(paru -Ss "^$1$")
-	SPLIT=$(echo "$1" | awk -F '-' '{ print $NF }')
-	if [ "$SPLIT" != '' ]; then
-		AURPKGGIT=$(paru -Ss "$1")
-	else
-		AURPKGGIT=''
-	fi
-	if [ "$PKG" == '' ] && [ "$AURPKG" != '' ] && [ "$AURPKGGIT" != '' ]; then
-		echo "warning, this is an aur package!"
-		paru -S "$1"
-	elif [ "$PKG" == '' ] && [ "$AURPKG" == '' ] && [ "$AURPKGGIT" == '' ]; then
+	if [ "$PKG" == '' ]; then
 		CHOICE="F"
-		read -p "Flatpak or cargo? [F/c] " CHOICE
+		read -p "Flatpak, cargo or aur? [F/c/a] " CHOICE
 		if [ "$CHOICE" == 'F' ]; then
-			FLT=$(flatpak search "$1")
-			if [ "$FLT" == '' ]; then
-				flatpak install "$1"
-			fi
+			flatpak install "$1"
+		elif [ "$CHOICE" == 'c' ]; then
+			mkdir -p $HOME/.local/bin/cargo/
+			cargo install "$1" --root $HOME/.local/bin/cargo/
 		else
-			cargo install "$1"
+			echo "warning, this is an aur package!"
+			paru -S "$1"
 		fi
 	else
 		paru -S "$1"
