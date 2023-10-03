@@ -1,0 +1,67 @@
+#!/bin/bash
+
+pacfile="$HOME/.config/scripts/pacmanpkg.txt"
+flatfile="$HOME/.config/scripts/flatpkg.txt"
+
+save() {
+	rm "$pacfile"
+	pacvar=$(pacman -Q)
+	flatvar=$(flatpak list | awk '{ print $2 }')
+	if [ "$pacfile" != ' ' ]; then
+		touch "$pacfile"
+	fi
+	if [ "$flatfile" != ' ' ]; then
+		touch "$flatfile"
+	fi
+	echo "$pacvar" | awk '{ print $1 }' >>"$pacfile"
+	echo "$flatvar" >>"$flatfile"
+}
+
+load() {
+	sudo paru -S - <"$pacfile"
+}
+
+install() {
+	PKG=$(pacman -Ss "^$1$")
+	AURPKG=$(paru -Ss "^$1$")
+	SPLIT=$(echo "$1" | awk -F '-' '{ print $NF }')
+	if [ "$SPLIT" != '' ]; then
+		AURPKGGIT=$(paru -Ss "$1")
+	else
+		AURPKGGIT=''
+	fi
+	if [ "$PKG" == '' ] && [ "$AURPKG" != '' ] && [ "$AURPKGGIT" != '' ]; then
+		echo "warning, this is an aur package!"
+		paru -S "$1"
+	elif [ "$PKG" == '' ] && [ "$AURPKG" == '' ] && [ "$AURPKGGIT" == '' ]; then
+		FLT=$(flatpak search "$1")
+		if [ "$FLT" == '' ]; then
+			flatpak install "$1"
+		else
+			echo "No package found!"
+		fi
+	else
+		paru -S "$1"
+	fi
+  save
+}
+
+remove() {
+	PKG=$(pacman -Qs "$2")
+	if [ "$PKG" == '' ]; then
+		flatpak uninstall "$PKG"
+	else
+		sudo pacman -R "$PKG"
+	fi
+	save
+}
+
+if [ "$1" == "-S" ]; then
+	install "$2"
+elif [ "$1" == "-R" ]; then
+	remove "$2"
+elif [ "$1" == "save" ]; then
+	save
+elif [ "$1" == "load" ]; then
+	load
+fi
