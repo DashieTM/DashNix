@@ -1,0 +1,15 @@
+2023-10-03 19:57:09 - Neovide panicked with the message 'Failed to initialize any backend! Wayland status: NoCompositor X11 status: XOpenDisplayFailed'. (File: /build/.cargo/registry/src/index.crates.io-6f17d22bba15001f/winit-0.29.0-beta.0/src/platform_impl/linux/mod.rs; Line: 795, Column: 9)
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: __libc_start_main
+  12: <unknown>
+
