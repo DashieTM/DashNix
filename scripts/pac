@@ -34,16 +34,20 @@ install() {
 		echo "warning, this is an aur package!"
 		paru -S "$1"
 	elif [ "$PKG" == '' ] && [ "$AURPKG" == '' ] && [ "$AURPKGGIT" == '' ]; then
-		FLT=$(flatpak search "$1")
-		if [ "$FLT" == '' ]; then
-			flatpak install "$1"
+		CHOICE="F"
+		read -p "Flatpak or cargo? [F/c] " CHOICE
+		if [ "$CHOICE" == 'F' ]; then
+			FLT=$(flatpak search "$1")
+			if [ "$FLT" == '' ]; then
+				flatpak install "$1"
+			fi
 		else
-			echo "No package found!"
+			cargo install "$1"
 		fi
 	else
 		paru -S "$1"
 	fi
-  save
+	save
 }
 
 remove() {
