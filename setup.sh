@@ -9,8 +9,6 @@ unlink $HOME/.config/setup.sh
 unlink $HOME/.config/dotFiles
 
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
-sh ./pac load
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 if [ "$1" = "laptop" ]; then
 	ln -s $PWD/hypr_laptop $HOME/.config/hypr
