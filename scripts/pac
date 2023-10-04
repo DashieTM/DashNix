@@ -47,19 +47,40 @@ install() {
 }
 
 remove() {
-	PKG=$(pacman -Qs "$2")
+	PKG=$(pacman -Qs "$1")
 	if [ "$PKG" == '' ]; then
-		flatpak uninstall "$PKG"
+		flatpak uninstall "$1"
 	else
-		sudo pacman -R "$PKG"
+		sudo pacman -R "$1"
 	fi
 	save
+}
+
+update() {
+	CHOICE="Y"
+	read -p "Update pacman? [Y/n] " CHOICE
+	if [ "$CHOICE" == 'Y' ] || [ "$CHOICE" == 'y' ]; then
+		sudo pacman -Suy
+	fi
+	CHOICE="Y"
+	read -p "Update flatpak? [Y/n] " CHOICE
+	if [ "$CHOICE" == 'Y' ] || [ "$CHOICE" == 'y' ]; then
+		flatpak update
+	fi
+	CHOICE="Y"
+	read -p "Update AUR? [Y/n] " CHOICE
+	if [ "$CHOICE" == 'Y' ] || [ "$CHOICE" == 'y' ]; then
+		sudo paru -Suy
+	fi
+	CHOICE="Y"
 }
 
 if [ "$1" == "-S" ]; then
 	install "$2"
 elif [ "$1" == "-R" ]; then
 	remove "$2"
+elif [ "$1" == "-Suy" ]; then
+	update
 elif [ "$1" == "save" ]; then
 	save
 elif [ "$1" == "load" ]; then
