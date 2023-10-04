@@ -28,7 +28,6 @@ org.freedesktop.Platform.GL.default
 (Extra)
 org.freedesktop.Platform.GL32.default
 org.freedesktop.Platform.GL32.default
-(Extra)
 org.freedesktop.Platform.GStreamer.gstreamer-vaapi
 org.freedesktop.Platform.ffmpeg-full
 org.freedesktop.Platform.ffmpeg_full.i386

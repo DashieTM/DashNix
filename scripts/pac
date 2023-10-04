@@ -31,7 +31,7 @@ install() {
 	if [ "$PKG" == '' ]; then
 		CHOICE="F"
 		read -p "Flatpak, cargo or aur? [F/c/a] " CHOICE
-		if [ "$CHOICE" == 'F' ]; then
+		if [ "$CHOICE" == 'F' ] || [ "$CHOICE" == '' ]; then
 			flatpak install "$1"
 		elif [ "$CHOICE" == 'c' ]; then
 			mkdir -p $HOME/.local/bin/cargo/

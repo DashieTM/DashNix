@@ -75,6 +75,8 @@ aws-crt-cpp
 aws-sdk-cpp
 ayatana-ido
 babl
+baloo-widgets
+baloo5
 base
 bash
 bat
@@ -188,6 +190,7 @@ docbook-xml
 docbook-xsl
 docker
 docker-compose
+dolphin
 dosfstools
 dotnet-host
 dotnet-runtime
@@ -289,6 +292,7 @@ ghc-libs
 ghostscript
 giflib
 gimp
+girara
 git
 gitoxide
 gitui
@@ -2147,6 +2151,7 @@ yasm
 yay
 youtube-dl
 yt-dlp
+zathura
 zbar
 zenith
 zenity
