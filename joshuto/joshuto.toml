@@ -1,5 +1,0 @@
-xdg_open = true
-[preview]
-max_preview_size = 50000097152
-preview_shown_hook_script = "~/.config/joshuto/on_preview_shown"
-preview_removed_hook_script = "~/.config/joshuto/on_preview_removed"

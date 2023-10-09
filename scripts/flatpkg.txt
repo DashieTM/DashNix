@@ -1,6 +1,5 @@
-ar.xjuan.Cambalache
 Browser
-com.github.GradienceTeam.Gradience
+com.github.GradienceTeam.Gradience.Devel
 com.github.tchx84.Flatseal
 Games
 com.lakoliu.Furtherance
@@ -9,7 +8,6 @@ com.rustdesk.RustDesk
 com.usebottles.bottles
 com.valvesoftware.Steam.Utility.gamescope
 de.haeckerfelix.Fragments
-de.shorsh.discord-screenaudio
 im.fluffychat.Fluffychat
 io.github.Foldex.AdwSteamGtk
 io.github.lainsce.Colorway
@@ -32,7 +30,7 @@ org.freedesktop.Platform.GStreamer.gstreamer-vaapi
 org.freedesktop.Platform.ffmpeg-full
 org.freedesktop.Platform.ffmpeg_full.i386
 org.freedesktop.Platform.openh264
-org.freedesktop.Platform.openh264
+Application
 Application
 Application
 Application
@@ -41,9 +39,8 @@ Software
 Software
 Library
 Gtk
+Gtk
 theme
-theme
-Application
 Application
 Application
 org.winehq.Wine.DLLs.dxvk
