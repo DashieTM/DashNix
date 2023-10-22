@@ -50,10 +50,10 @@ end, opts)
 
 -- toggle terminal
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.terminal(nil, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
 end
 map("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
-map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<c-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- semicolon thing
 -- map("i","<C-m>" ,"<C-o>A;<CR>", {desc = "add semi and newline"})
@@ -132,6 +132,12 @@ end, { noremap = true, silent = true, desc = "Projects" })
 map("n", "<leader>z", function()
   require("telescope").extensions.zoxide.list({})
 end, { desc = "Zoxide" })
+
+-- neoscroll
+local t = {}
+t["<A-l>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } }
+t["<A-k>"] = { "scroll", { "vim.wo.scroll", "true", "250" } }
+require("neoscroll.config").set_mappings(t)
 
 -- trouble
 map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)

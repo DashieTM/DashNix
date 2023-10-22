@@ -444,6 +444,7 @@ jq
 jre17-openjdk
 jre17-openjdk-headless
 js102
+js115
 js91
 json-c
 json-glib
@@ -491,7 +492,7 @@ kidletime5
 kio-extras
 kio-fuse
 kio5
-kirigami-addons
+kirigami-addons5
 kirigami2
 kitemmodels5
 kitemviews5
@@ -728,6 +729,7 @@ libe-book
 libebml
 libebur128
 libedit
+libei
 libelf
 libepoxy
 libepubgen
@@ -867,6 +869,7 @@ libpaper
 libpcap
 libpciaccess
 libpeas
+libpeas-2
 libpgm
 libpipeline
 libpipewire
@@ -1648,6 +1651,7 @@ sassc
 sbc
 scdoc
 scour
+sdbus-cpp
 sdl12-compat
 sdl2
 sdl2_image
@@ -1719,6 +1723,7 @@ talloc
 tar
 tcl
 tdb
+tecla
 tectonic
 template-glib
 tevent
@@ -1748,6 +1753,7 @@ ttf-linux-libertine
 ttf-monofur
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-common
+ttf-noto-nerd
 twolame
 typescript
 typescript-language-server
@@ -1835,6 +1841,7 @@ xcb-util-xrm
 xdg-dbus-proxy
 xdg-desktop-portal
 xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xdg-user-dirs
 xdg-utils
 xdotool
@@ -1871,7 +1878,6 @@ yaml-cpp
 yarn
 yasm
 yay
-yazi
 youtube-dl
 yt-dlp
 zathura

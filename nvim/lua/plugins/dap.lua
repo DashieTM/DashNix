@@ -75,6 +75,8 @@ return {
       for w in rust_dap:gmatch("([^/]+)") do
         filename = w
       end
+      filename = filename:gsub("-", "_")
+      filename = string.lower(filename)
 
       dap.configurations.rust = {
         {

@@ -8,11 +8,10 @@ com.rustdesk.RustDesk
 com.usebottles.bottles
 com.valvesoftware.Steam.Utility.gamescope
 de.haeckerfelix.Fragments
-im.fluffychat.Fluffychat
+io.freetubeapp.FreeTube
 io.github.Foldex.AdwSteamGtk
 io.github.lainsce.Colorway
 Manager
-io.github.spacingbat3.webcord
 net.davidotek.pupgui2
 Picker
 Platform
@@ -30,6 +29,8 @@ org.freedesktop.Platform.GStreamer.gstreamer-vaapi
 org.freedesktop.Platform.ffmpeg-full
 org.freedesktop.Platform.ffmpeg_full.i386
 org.freedesktop.Platform.openh264
+org.freedesktop.Platform.openh264
+org.freedesktop.Platform.openh264
 Application
 Application
 Application
@@ -46,3 +47,4 @@ Application
 org.winehq.Wine.DLLs.dxvk
 org.winehq.Wine.gecko
 org.winehq.Wine.mono
+re.sonny.Workbench

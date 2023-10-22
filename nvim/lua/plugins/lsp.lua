@@ -189,11 +189,17 @@ return {
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
         require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
       end
+
       -- setup autoformat
-      require("lazyvim.plugins.lsp.format").setup(opts)
+      Util.format.register(Util.lsp.formatter())
+
+      -- deprectaed options
+      if opts.autoformat ~= nil then
+        vim.g.autoformat = opts.autoformat
+      end
 
       -- setup formatting and keymaps
-      Util.on_attach(function(client, buffer)
+      Util.lsp.on_attach(function(client, buffer)
         require("config.lsp-keymap").on_attach(client, buffer)
       end)
 
@@ -218,7 +224,7 @@ return {
       local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 
       if opts.inlay_hints.enabled and inlay_hint then
-        Util.on_attach(function(client, buffer)
+        Util.lsp.on_attach(function(client, buffer)
           if client.supports_method("textDocument/inlayHint") then
             inlay_hint(buffer, true)
           end
@@ -290,17 +296,17 @@ return {
         mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
       end
 
-      if Util.lsp_get_config("denols") and Util.lsp_get_config("tsserver") then
+      if Util.lsp.get_config("denols") and Util.lsp.get_config("tsserver") then
         local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-        Util.lsp_disable("tsserver", is_deno)
-        Util.lsp_disable("denols", function(root_dir)
+        Util.lsp.disable("tsserver", is_deno)
+        Util.lsp.disable("denols", function(root_dir)
           return not is_deno(root_dir)
         end)
       end
 
       require("lspconfig").ltex.setup({
         capabilities = capabilities,
-        on_attach = Util.on_attach(function(client, buffer)
+        on_attach = Util.lsp.on_attach(function(client, buffer)
           require("config.lsp-keymap").on_attach(client, buffer)
           require("ltex_extra").setup({
             path = vim.fn.expand("~") .. "/.local/share/ltex",
