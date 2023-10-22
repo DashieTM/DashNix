@@ -4,7 +4,7 @@ end = [
     " {memory_percent}",
   ], interval.memory = 30, class = "memory-usage" },
   { type = "custom", bar = [
-    { type = "button", class = "popup-button", label = "", on_click = "popup:toggle" },
+    { type = "button", class = "popup-button", label = "", on_click = "popup:toggle" },
   ], class = "popup-button-box", popup = [
     { type = "box", orientation = "vertical", class = "audio-box", widgets = [
       { type = "box", orientation = "horizontal", widgets = [
@@ -18,7 +18,7 @@ end = [
     ] },
   ] },
   { type = "custom", bar = [
-    { type = "button", class = "popup-button", label = "", on_click = "!oxidash --css /home/dashie/gits/oxidash/style.css" },
+    { type = "button", class = "popup-button", label = "", on_click = "!oxidash --css /home/dashie/gits/oxidash/style.css" },
   ], class = "popup-button-box" },
   { type = "clock", format = "%I:%M", format_popup = "%I:%M:%S", locale = "en_US" },
   { type = "tray" },

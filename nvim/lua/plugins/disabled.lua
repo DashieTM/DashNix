@@ -7,5 +7,5 @@ return {
   },
   { { "folke/noice.nvim", enabled = false } },
   { { "nvimtools/none-ls.nvim", enabled = false } },
-  { { "glepnir/dashboard-nvim", enabled = false } },
+  { { "nvimdev/dashboard-nvim", enabled = false } },
 }
