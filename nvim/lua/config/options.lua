@@ -12,6 +12,7 @@ local options = {
   relativenumber = false,
   scrolloff = 5,
   scrolljump = 5,
+  wrap = false,
 }
 vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 vim.g.neovide_refresh_rate_idle = 180
