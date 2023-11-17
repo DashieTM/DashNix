@@ -10,11 +10,10 @@ return {
         virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
         severity_sort = true,
       },
-      inlay_hints = {
-        enabled = true,
-      },
+      -- inlay_hints = {
+      --   enabled = true,
+      -- },
       capabilities = {},
-      autoformat = false,
       format_notify = false,
       format = {
         formatting_options = nil,

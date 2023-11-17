@@ -20,6 +20,7 @@ vim.g.neovide_refresh_rate_idle = 5
 vim.g.neovide_hide_mouse_when_typing = true
 vim.g.mkdp_browser = "/usr/bin/firefox"
 vim.g.mkdp_auto_start = 1
+vim.g.autoformat = false
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
