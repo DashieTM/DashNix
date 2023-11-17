@@ -43,11 +43,6 @@ map("i", "<A-j>", [[<Cmd>wincmd h<CR>]], opts)
 map("i", "<A-;>", [[<Cmd>wincmd l<CR>]], opts)
 map("i", "<A-k>", [[<Cmd>wincmd j<CR>]], opts)
 
--- file tree
-map("n", "<A-f>", function()
-  require("nvim-tree.api").tree.toggle()
-end, opts)
-
 -- toggle terminal
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
@@ -141,6 +136,11 @@ require("neoscroll.config").set_mappings(t)
 
 -- trouble
 map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)
+
+-- format
+map({ "n", "v" }, "<F4>", function()
+  Util.format({ force = true })
+end, { desc = "Format" })
 
 -- better yank
 function Better_yank(opts)

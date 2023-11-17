@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
   {
     "LazyVim/LazyVim",
@@ -265,5 +267,49 @@ return {
     "barreiroleo/ltex_extra.nvim",
     ft = { "markdown", "tex", "typst", "typ" },
     lazy = true,
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    lazy = true,
+    event = "BufEnter",
+    config = function()
+      require("inc_rename").setup({
+        cmd_name = "IncRename", -- the name of the command
+        hl_group = "Substitute", -- the highlight group used for highlighting the identifier's new name
+        preview_empty_name = true, -- whether an empty new name should be previewed; if false the command preview will be cancelled instead
+        show_message = true, -- whether to display a `Renamed m instances in n files` message after a rename operation
+        input_buffer_type = nil, -- the type of the external input buffer to use (the only supported value is currently "dressing")
+        post_hook = nil, -- callback to run after renaming, receives the result table (from LSP handler) as an argument
+      })
+    end,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        position = "right",
+        mappings = {
+          ["l"] = "none",
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ position = "right", toggle = true, dir = Util.root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
+      },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ position = "right", toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      { "<A-f>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+      { "<A-F>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+    },
   },
 }
