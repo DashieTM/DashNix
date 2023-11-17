@@ -10,11 +10,10 @@ return {
         virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
         severity_sort = true,
       },
-      inlay_hints = {
-        enabled = true,
-      },
+      -- inlay_hints = {
+      --   enabled = true,
+      -- },
       capabilities = {},
-      autoformat = false,
       format_notify = false,
       format = {
         formatting_options = nil,
@@ -147,7 +146,6 @@ return {
         opencl_ls = {},
         yamlls = {},
         lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
               workspace = {
@@ -166,35 +164,28 @@ return {
         end,
       },
     },
-    setup = function(_, _)
-      local Util = require("lazyvim.util")
-      Util.lsp.on_attach(function(client, buffer)
-        require("config.lsp-keymap").on_attach(client, buffer)
-      end)
-
-      vim.cmd([[highlight LspInlayHint guibg=#1A1B26]])
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      local my_keys = require("config.lsp-keymap").get()
+      local count = 0
+      for _ in pairs(my_keys) do
+        keys[#keys + 1] = my_keys[count]
+        count = count + 1
+      end
     end,
   },
   {
-    "DashieTM/null.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
+    "stevearc/conform.nvim",
     opts = function()
-      local nls = require("null-ls")
-      return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-
-        sources = {
-          nls.builtins.formatting.fish_indent,
-          nls.builtins.diagnostics.fish,
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.shfmt,
-          nls.builtins.diagnostics.flake8,
-          nls.builtins.formatting.autopep8,
-          nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.typst,
+      local opts = {
+        formatters_by_ft = {
+          lua = { "stylua" },
+          fish = { "fish_indent" },
+          sh = { "shfmt" },
+          typst = { "typstfmt" },
         },
       }
+      return opts
     end,
   },
 }

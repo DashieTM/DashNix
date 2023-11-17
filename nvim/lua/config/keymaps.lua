@@ -142,6 +142,11 @@ require("neoscroll.config").set_mappings(t)
 -- trouble
 map("n", "<leader>t", "<cmd>TroubleToggle<CR>", term_opts)
 
+-- format
+map({ "n", "v" }, "<F4>", function()
+  Util.format({ force = true })
+end, { desc = "Format" })
+
 -- better yank
 function Better_yank(opts)
   local current_line = unpack(vim.api.nvim_win_get_cursor(0))
