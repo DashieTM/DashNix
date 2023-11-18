@@ -28,7 +28,7 @@ function M.get()
       { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
       { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
       { "<F4>", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
-      { "<leader>cr", ":IncRename ", desc = "FUCK", has = "rename" },
+      { "<leader>cr", ":IncRename ", desc = "Rename", has = "rename" },
       {
         "<leader>cq",
         function()
