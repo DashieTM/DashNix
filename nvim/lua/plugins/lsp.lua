@@ -52,9 +52,6 @@ return {
             "typ",
           },
         },
-        gopls = {
-          staticcheck = true,
-        },
         sqlls = {},
         taplo = {},
         lemminx = {},

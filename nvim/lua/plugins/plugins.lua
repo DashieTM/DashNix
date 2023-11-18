@@ -262,4 +262,30 @@ return {
       },
     },
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    keys = {
+      {
+        "<leader>dk",
+        function()
+          require("dap").down()
+        end,
+        desc = "Down",
+      },
+      {
+        "<leader>dl",
+        function()
+          require("dap").up()
+        end,
+        desc = "Up",
+      },
+      {
+        "<leader>d;",
+        function()
+          require("dap").run_last()
+        end,
+        desc = "Run Last",
+      },
+    },
+  },
 }
