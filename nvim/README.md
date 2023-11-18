@@ -20,31 +20,31 @@
 ## Debugging
 | key         | Description           |
 | ----------- | --------------------- |
-| <leader>da  | run with args         |
-| <leader>db  | toggle breakpoint     |
-| <leader>dB  | breakpoint condition  |
-| <leader>dC  | run to cursoor        |
-| <leader>dc  | continue              |
-| <leader>de  | eval                  |
-| <leader>dg  | go to line            |
-| <leader>di  | step into             |
-| <leader>k   | down                  |
-| <leader>l   | up                    |
-| <leader>;   | run last              |
-| <leader>dO  | step over             |
-| <leader>do  | step out              |
-| <leader>dp  | pause                 |
-| <leader>dr  | toggle repl           |
-| <leader>ds  | session               |
-| <leader>dt  | terminate             |
-| <leader>du  | DAP UI                |
-| <leader>dw  | widgets               |
+| \<leader\>da  | run with args         |
+| \<leader\>db  | toggle breakpoint     |
+| \<leader\>dB  | breakpoint condition  |
+| \<leader\>dC  | run to cursoor        |
+| \<leader\>dc  | continue              |
+| \<leader\>de  | eval                  |
+| \<leader\>dg  | go to line            |
+| \<leader\>di  | step into             |
+| \<leader\>k   | down                  |
+| \<leader\>l   | up                    |
+| \<leader\>;   | run last              |
+| \<leader\>dO  | step over             |
+| \<leader\>do  | step out              |
+| \<leader\>dp  | pause                 |
+| \<leader\>dr  | toggle repl           |
+| \<leader\>ds  | session               |
+| \<leader\>dt  | terminate             |
+| \<leader\>du  | DAP UI                |
+| \<leader\>dw  | widgets               |
 
 ## neotest
 | key         | Description               |
 | ----------- | ------------------------- |
-| <leader>tt  | execute all tests         |
-| <leader>tT  | execute nearest test      |
+| \<leader\>tt  | execute all tests         |
+| \<leader\>tT  | execute nearest test      |
 
 ## buffer switching
 | key | Description               |
@@ -60,21 +60,21 @@
 ## telescope
 | key         | Description               |
 | ----------- | ------------------------- |
-| <leader>ff  | find files                |
-| <leader>fg  | live ripgrep              |
-| <leader>fh  | help for functions etc    |
-| <leader>fp  | find projects             |
-| <leader>fb  | file browser              |
+| \<leader\>ff  | find files                |
+| \<leader\>fg  | live ripgrep              |
+| \<leader\>fh  | help for functions etc    |
+| \<leader\>fp  | find projects             |
+| \<leader\>fb  | file browser              |
 
 ### telescope git
 | key        | Description               |
 | ---------- | ------------------------- |
-| <leader>gq | show commits              |
-| <leader>gw | show commits with diff    |
-| <leader>gb | show branches             | 
-| <leader>gr | show git status           |
-| <leader>ga | show git stash            | 
-| <leader>ge | git file tree             | 
+| \<leader\>gq | show commits              |
+| \<leader\>gw | show commits with diff    |
+| \<leader\>gb | show branches             | 
+| \<leader\>gr | show git status           |
+| \<leader\>ga | show git stash            | 
+| \<leader\>ge | git file tree             | 
 
 ### project telescope
 <table> <tr> <th> normal mode </th> <th> insert mode </th></tr>
@@ -94,14 +94,14 @@
 
 | key      | Description                       |
 | -------- | --------------------------------- |
-| <C-d>    | delete project                    |
-| <C-v>    | rename project                    |
-| <C-a>    | create project                    |
-| <C-s>    | search files in project           |
-| <C-b>    | browse files in project           |
-| <C-l>    | change directory to project       |
-| <C-r>    | recently opened files in project  |
-| <C-f>    | find file within project          |
+| \<C-d\>    | delete project                    |
+| \<C-v\>    | rename project                    |
+| \<C-a\>    | create project                    |
+| \<C-s\>    | search files in project           |
+| \<C-b\>    | browse files in project           |
+| \<C-l\>    | change directory to project       |
+| \<C-r\>    | recently opened files in project  |
+| \<C-f\>    | find file within project          |
 
 </td> </tr> </table>
 
@@ -109,15 +109,15 @@
 ## toggletrouble
 | key        | Description               |
 | ---------- | ------------------------- |
-| <leader>t  | show errors and warnings  |
+| \<leader\>t  | show errors and warnings  |
 
 ## cmp
 Note, these require the cmp list view to be open to do anything!
 | key         | Description                                               |
 | ----------- | --------------------------------------------------------- |
-| <C-b>       | scroll docs up                                            |
-| <C-f>       | scroll docs down                                          |
-| <C-e>       | cancel cmp                                                |
+| \<C-b\>       | scroll docs up                                            |
+| \<C-f\>       | scroll docs down                                          |
+| \<C-e\>       | cancel cmp                                                |
 | Enter       | write selected suggestion (does nothing if not selected)  |
 | Tab         |scroll down through suggestion list                        |
 | Shift + Tab | scroll up through suggestion list                         |
@@ -125,23 +125,23 @@ Note, these require the cmp list view to be open to do anything!
 ## LSP 
 | key          |  Description           |
 | ------------ | ---------------------- |
-|  <leader>ca  | go to definition       |
-|  <leader>ca  | go to declaration      |
-|  <leader>cs  | find references        |
-|  <leader>cd  | go to type definition  |
-|  <leader>cf  | go to implementation   |
-|  <leader>cq  | fix code action        |
-|  <leader>cQ  | refactor code action   |
-|  <leader>cw  | signature help         |
-|  <leader>ce  | hover                  |
-|  <leader>cr  | rename                 |
+|  \<leader\>ca  | go to definition       |
+|  \<leader\>ca  | go to declaration      |
+|  \<leader\>cs  | find references        |
+|  \<leader\>cd  | go to type definition  |
+|  \<leader\>cf  | go to implementation   |
+|  \<leader\>cq  | fix code action        |
+|  \<leader\>cQ  | refactor code action   |
+|  \<leader\>cw  | signature help         |
+|  \<leader\>ce  | hover                  |
+|  \<leader\>cr  | rename                 |
 
 ## snippets
 These require you to be inside a snippet!
 | key      | Description               |
 | -------- | ------------------------- |
-| <C-j>    | jump to next entry        |
-| <C-k>    | jump to previous entry    |
+| \<C-j\>    | jump to next entry        |
+| \<C-k\>    | jump to previous entry    |
 
 ## Leap
 | key      | Description                                            |
