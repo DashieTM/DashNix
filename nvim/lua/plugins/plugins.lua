@@ -14,9 +14,18 @@ return {
     keys = function()
       return {}
     end,
-    config = function(opts)
-      require("telescope").setup(opts)
-    end,
+    opts = {
+      defaults = {
+        layout_strategy = "flex",
+        layout_config = {
+          height = 0.95,
+          width = 0.95,
+          flip_columns = 100,
+          vertical = { preview_height = 0.5, preview_cutoff = 5 },
+          horizontal = { preview_width = 0.7, preview_cutoff = 99 },
+        },
+      },
+    },
   },
   {
     "ThePrimeagen/harpoon",
