@@ -82,10 +82,10 @@ end, { desc = "gitui (root dir)" })
 map("n", "<leader>gG", function()
   Util.terminal({ "gitui" })
 end, { desc = "gitui (cwd)" })
-map("n", "<leader>gb", function()
+map("n", "<leader>gB", function()
   require("gitblame")
   vim.cmd(":GitBlameToggle")
-end, { desc = "gitui (cwd)" })
+end, { desc = "git blame" })
 
 -- harpoon man
 map("n", "<leader>h1", function()
