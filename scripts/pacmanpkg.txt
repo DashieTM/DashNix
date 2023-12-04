@@ -32,7 +32,7 @@ ansible-core
 aom
 appstream
 appstream-glib
-appstream-qt
+appstream-qt5
 archlinux-keyring
 argon2
 aribb24
@@ -121,7 +121,6 @@ calf
 cambalache-git
 cantarell-fonts
 capstone
-carapace-bin
 cblas
 cdparanoia
 cdrtools
@@ -175,6 +174,7 @@ dbus
 dbus-glib
 dbus-python
 dconf
+debootstrap
 default-cursors
 deno
 desktop-file-utils
@@ -183,7 +183,6 @@ device-mapper
 dfu-programmer
 dfu-util
 diffutils
-discord-screenaudio
 djvulibre
 dkms
 dmidecode
@@ -194,6 +193,7 @@ docbook-xsl
 docker
 docker-compose
 dolphin
+dos2unix
 dosfstools
 dotnet-host
 dotnet-runtime
@@ -218,7 +218,6 @@ efibootmgr
 efivar
 electron
 electron25
-element-desktop-nightly-bin
 element-web
 elfutils
 embree
@@ -229,12 +228,14 @@ ethtool
 evince
 exempi
 exiv2
+exo
 expat
 eza
 faac
 faad2
 fakeroot
 faudio
+fcft
 fd
 ffmpeg
 ffmpeg-obs-debug
@@ -256,6 +257,7 @@ fmt
 foliate
 fontconfig
 foomatic-db-engine
+foot
 frameworkintegration5
 freeglut
 freeimage
@@ -302,6 +304,7 @@ gjs
 glade
 glava
 glew
+glfw-wayland
 glib-networking
 glib2
 glib2-docs
@@ -345,6 +348,9 @@ graphene
 graphicsmagick
 graphite
 graphviz
+greetd
+greetd-agreety
+greetd-regreet
 grep
 grilo
 grim
@@ -412,7 +418,6 @@ hwloc
 hyphen
 hyprdock
 hyprland
-hyprpaper
 iana-etc
 icu
 iio-sensor-proxy
@@ -478,7 +483,8 @@ kded5
 kdenlive
 kdesu5
 kdnssd5
-kdsoap
+kdsoap-qt5
+kdsoap-qt6
 kdsoap-ws-discovery-client
 keepassxc
 keyutils
@@ -521,7 +527,7 @@ kservice5
 ksystemstats
 ktexteditor5
 ktextwidgets5
-kuserfeedback
+kuserfeedback5
 kwallet5
 kwayland5
 kwidgetsaddons5
@@ -538,6 +544,7 @@ lcms2
 ldb
 ldns
 lensfun
+leptonica
 less
 level-zero-loader
 lib2geom
@@ -790,7 +797,7 @@ libixion
 libjpeg-turbo
 libjxl
 libkate
-libkdcraw
+libkdcraw5
 libkexiv2
 libksba
 libkscreen
@@ -833,6 +840,7 @@ libmwaw
 libmypaint
 libmysofa
 libnautilus-extension
+libnbd
 libndp
 libnet
 libnetfilter_conntrack
@@ -884,7 +892,7 @@ libproxy
 libpsl
 libpulse
 libpwquality
-libqaccessibilityclient
+libqaccessibilityclient-qt5
 libqalculate
 libqmi
 libqrtr-glib
@@ -995,6 +1003,8 @@ libxdamage
 libxdg-basedir
 libxdmcp
 libxext
+libxfce4ui
+libxfce4util
 libxfixes
 libxfont2
 libxft
@@ -1036,6 +1046,7 @@ lirc
 live-media
 lld
 lldb
+llvm
 llvm-libs
 llvm15-libs
 lm_sensors
@@ -1050,7 +1061,6 @@ lua
 lua51
 lua51-lpeg
 luajit
-lutris-git
 lv2
 lvm2
 lxappearance
@@ -1062,6 +1072,7 @@ m4
 mailcap
 make
 man-db
+materialx
 mbedtls
 mbedtls2
 md4c
@@ -1097,6 +1108,7 @@ mpv
 msgpack-c
 mtdev
 mtools
+mtpfs
 mtxclient
 mujs
 multipath-tools
@@ -1113,7 +1125,7 @@ ndctl
 neofetch
 neon
 neovide
-neovim-git
+neovim
 net-snmp
 netpbm
 netstandard-targeting-pack
@@ -1139,6 +1151,7 @@ npm
 npth
 nspr
 nss
+ntfs-3g
 numactl
 nushell
 nuspell
@@ -1360,14 +1373,19 @@ pugixml
 pulseaudio-qt
 purpose5
 pybind11
+pyside2
+pyside6
 pystring
 python
+python-aiohttp
+python-aiosignal
 python-annotated-types
 python-anytree
 python-appdirs
 python-argcomplete
 python-argon2-cffi-bindings
 python-argon2_cffi
+python-async-timeout
 python-attrs
 python-autocommand
 python-babel
@@ -1378,6 +1396,7 @@ python-cairo
 python-certifi
 python-cffi
 python-chardet
+python-charset-normalizer
 python-click
 python-cmake-build-extension
 python-colorama
@@ -1399,6 +1418,7 @@ python-evdev
 python-fastbencode
 python-fastjsonschema
 python-filelock
+python-frozenlist
 python-future
 python-gitdb
 python-gitpython
@@ -1423,11 +1443,14 @@ python-markdown
 python-markupsafe
 python-merge3
 python-milc
+python-moddb
 python-more-itertools
 python-msgpack
+python-multidict
 python-nautilus
 python-nspektr
 python-numpy
+python-opengl
 python-ordered-set
 python-packaging
 python-paramiko
@@ -1450,6 +1473,7 @@ python-pykeepass
 python-pynacl
 python-pyotp
 python-pyparsing
+python-pyrate-limiter
 python-pyrsistent
 python-pyserial
 python-pytz
@@ -1460,6 +1484,7 @@ python-resolvelib
 python-rpds-py
 python-setuptools
 python-setuptools-scm
+python-shiboken2
 python-six
 python-smmap
 python-snowballstemmer
@@ -1474,7 +1499,9 @@ python-sphinxcontrib-qthelp
 python-sphinxcontrib-serializinghtml
 python-spinners
 python-termcolor
+python-toml
 python-tomli
+python-toolz
 python-tqdm
 python-trove-classifiers
 python-typing_extensions
@@ -1487,6 +1514,7 @@ python-virtualenv-clone
 python-wheel
 python-xlib
 python-yaml
+python-yarl
 python-zstandard
 python-zxcvbn
 qca-qt5
@@ -1615,6 +1643,7 @@ qtkeychain-qt5
 qtractor
 quazip-qt5
 ragel
+rapidjson
 rapidyaml
 raptor
 rasqal
@@ -1635,7 +1664,7 @@ rocm-opencl-runtime
 rocm-opencl-sdk
 rofi-calc
 rofi-lbonn-wayland-git
-rpmextract
+rpm-tools
 rsync
 rtkit
 rtmpdump
@@ -1661,10 +1690,12 @@ seahorse
 seatd
 sed
 semver
+sequoia-sq
 serd
 shaderc
 shadow
 shared-mime-info
+shiboken6
 signon-kwallet-extension
 signon-plugin-oauth2
 signon-ui
@@ -1706,6 +1737,7 @@ sushi
 svt-av1
 svt-hevc
 swappy
+sway
 swayimg
 swaylock
 swig
@@ -1726,10 +1758,15 @@ tdb
 tecla
 tectonic
 template-glib
+tesseract
+tesseract-data-eng
+tesseract-data-osd
+testdisk
 tevent
 texinfo
 thin-provisioning-tools
 threadweaver5
+thunar
 thunderbird
 timeshift
 tinycompress
@@ -1745,7 +1782,6 @@ ts-node
 tslib
 ttc-iosevka
 ttf-hack
-ttf-icomoon-feather
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-liberation
@@ -1770,6 +1806,7 @@ upower
 usbmuxd
 usbredir
 usbutils
+usd
 util-linux
 util-linux-libs
 uutils-coreutils
@@ -1780,7 +1817,7 @@ vala
 vamp-plugin-sdk
 vcdimager
 vde2
-ventoy-bin
+vencord-desktop-git
 vid.stab
 virglrenderer
 virt-install
@@ -1819,6 +1856,7 @@ wireplumber
 wl-clipboard
 wlroots
 wlroots0.15
+wlroots0.16
 woff2
 wofi
 wolfssl
@@ -1846,6 +1884,7 @@ xdg-user-dirs
 xdg-utils
 xdotool
 xf86-input-libinput
+xfconf
 xfsprogs
 xkeyboard-config
 xmlsec
@@ -1890,6 +1929,7 @@ zig
 zimg
 zip
 zita-convolver
+zix
 zlib
 zoxide
 zsh
