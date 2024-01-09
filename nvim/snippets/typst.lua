@@ -72,16 +72,13 @@ local codeSnippet = s(
   "code-",
   fmt(
     [[
-    //typstfmt::off
     ```{1}
     {2}
     ```
-    //typstfmt::on
-
     ]],
     {
-      i(1, "lang"),
-      i(2, "code"),
+      i(1, ""),
+      i(2, ""),
     }
   )
 )
@@ -94,12 +91,9 @@ local patternSnippet = s(
     #subsection([{1}])
     #set text(size: 14pt)
     
-    Problem | {2}
-    Context | {3} 
-    Participants :
-    - {4}
+    *Problem* | {2}\
+    *Solution* | {3}\
     #set text(size: 11pt)
-    // images
     {5}
     
     #columns(2, [
@@ -111,9 +105,9 @@ local patternSnippet = s(
     ])
     ]],
     {
-      i(1, "pattern"),
-      i(2, "problem"),
-      i(3, "context"),
+      i(1, ""),
+      i(2, ""),
+      i(3, ""),
       i(4, ""),
       i(5, ""),
       i(6, ""),

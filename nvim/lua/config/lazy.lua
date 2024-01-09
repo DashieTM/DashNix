@@ -15,7 +15,7 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "lazyvim.plugins.extras.ui.alpha" },
-    { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
     { import = "plugins" },
     { import = "plugins.plugins" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
