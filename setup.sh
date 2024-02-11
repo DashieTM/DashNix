@@ -14,6 +14,8 @@ cargo install oxishut
 sudo cp ~/.carbo/bin/oxishut /usr/bin/.
 cargo install hyprdock
 sudo cp ~/.carbo/bin/hyprdock /usr/bin/.
+cargo install ironbar
+sudo cp ~/.carbo/bin/ironbar /usr/bin/.
 cargo install reset
 sudo cp ~/.carbo/bin/reset /usr/bin/.
 cargo install rm-improved
