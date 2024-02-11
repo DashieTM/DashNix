@@ -9,7 +9,7 @@ unlink $HOME/.config/dotFiles
 sudo pacman -S rustup
 rustup default nightly
 cargo install paru
-pac load
+sudo pac load
 
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
 
@@ -20,5 +20,7 @@ cargo install hyprdock
 cargo install reset
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+sudo systemctl enable greetd
 
 reboot
