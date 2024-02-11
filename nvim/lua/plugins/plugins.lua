@@ -37,12 +37,6 @@ return {
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    lazy = true,
-    event = "FileType markdown",
-    build = "cd app && yarn install",
-  },
-  {
     "nvim-telescope/telescope-project.nvim",
     lazy = true,
   },

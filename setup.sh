@@ -3,15 +3,22 @@ mv $HOME/.config/.zshrc ../.zshrc
 unlink $HOME/.config/.git
 unlink $HOME/.config/.gitignore
 unlink $HOME/.config/README.md
-unlink $HOME/.config/hypr_desktop
-unlink $HOME/.config/hypr_laptop
 unlink $HOME/.config/setup.sh
 unlink $HOME/.config/dotFiles
 
+sudo pacman -S rustup
+rustup default nightly
+cargo install paru
+pac load
+
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
 
-if [ "$1" = "laptop" ]; then
-	ln -s $PWD/hypr_laptop $HOME/.config/hypr
-elif [ "$1" = "desktop" ]; then
-	ln -s $PWD/hypr_desktop $HOME/.config/hypr
-fi
+cargo install oxinoti
+cargo install oxidash
+cargo install oxishut
+cargo install hyprdock
+cargo install reset
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+reboot

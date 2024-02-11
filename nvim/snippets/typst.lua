@@ -94,14 +94,14 @@ local patternSnippet = s(
     *Problem* | {2}\
     *Solution* | {3}\
     #set text(size: 11pt)
-    {5}
+    {4}
     
     #columns(2, [
       #text(green)[Benefits]
-      - {6}
+      - {5}
       #colbreak()
       #text(red)[Liabilities]
-      - {7}
+      - {6}
     ])
     ]],
     {
@@ -111,7 +111,6 @@ local patternSnippet = s(
       i(4, ""),
       i(5, ""),
       i(6, ""),
-      i(7, ""),
     }
   )
 )
