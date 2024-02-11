@@ -6,7 +6,7 @@ carfile="$HOME/.config/scripts/carpkg.txt"
 
 save() {
 	pacvar=$(pacman -Q)
-	flatvar=$(flatpak list | awk '{ print $2 }')
+	flatvar=$(flatpak list --columns=application | tail -n +2)
 	if [ "$pacfile" != ' ' ]; then
 		touch "$pacfile"
 	fi
@@ -23,6 +23,9 @@ save() {
 }
 
 load() {
+	while read app; do
+		flatpak install "$app" -y
+	done <"$flatfile"
 	sudo paru -S - <"$pacfile"
 }
 
