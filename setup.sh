@@ -32,6 +32,7 @@ cargo install --path anyrun/
 mkdir -p ~/.config/anyrun/plugins
 cp target/release/*.so ~/.config/anyrun/plugins
 cp examples/config.ron ~/.config/anyrun/config.ron
+sudo cp ~/.carbo/bin/anyrun /usr/bin/.
 
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install IlanCosman/tide@v5

@@ -23,10 +23,10 @@ save() {
 }
 
 load() {
+	sudo paru -S - <"$pacfile"
 	while read app; do
 		flatpak install "$app" -y
 	done <"$flatfile"
-	sudo paru -S - <"$pacfile"
 }
 
 install() {
