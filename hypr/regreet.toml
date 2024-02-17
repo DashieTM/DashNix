@@ -3,7 +3,6 @@
 fit = "Contain"
 
 [env]
-PATH = "/home/dashie/.config/:$HOME/.local/bin:/home/dashie/.cargo/bin:$PATH"
 QT_QPA_PLATFORMTHEME = "qt5ct"
 
 [GTK]
