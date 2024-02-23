@@ -40,6 +40,27 @@ local imageSnippet = s(
 )
 table.insert(snippets, imageSnippet)
 
+local figureSnippet = s(
+  "figure-",
+  fmt(
+    [[
+     #align(
+       center, [#figure(
+           img("{1}", width: {2}%, extension: "{3}"), caption: [{4}],
+         )<{5}>],
+     )
+    ]],
+    {
+      i(1, ""),
+      i(2, "100"),
+      i(3, "figures"),
+      i(4, ""),
+      i(5, ""),
+    }
+  )
+)
+table.insert(snippets, figureSnippet)
+
 local centerImageSnippet = s(
   "cimage-",
   fmt(

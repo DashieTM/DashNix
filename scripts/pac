@@ -73,7 +73,7 @@ update() {
 	CHOICE="Y"
 	read -p "Update AUR? [Y/n] " CHOICE
 	if [ "$CHOICE" == 'Y' ] || [ "$CHOICE" == 'y' ]; then
-		sudo paru -Suy
+		paru -Suy
 	fi
 	CHOICE="Y"
 }
