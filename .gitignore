@@ -1,6 +1,7 @@
 /nvim/plugged/*
 gtk-3.0/bookmarks
 gtk-3.0/servers
+gtk-4.0/servers
 /fish/fish_variables
 fish/fish_variables
 fish/*.tmp.*

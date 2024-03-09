@@ -23,6 +23,9 @@ map("v", "k", "j", opts)
 map("v", "l", "k", opts)
 map("v", ";", "l", opts)
 
+-- test plugin
+map("n", "<leader>OO", ':lua require("test_plugin").test()<CR>', { desc = "Toggle breakpoint" })
+
 -- debug
 map("n", "<leader>db", ':lua require("dap").toggle_breakpoint()<CR>', { desc = "Toggle breakpoint" })
 map("n", "<leader>do", ':lua require("dap").step_over()<CR>', { desc = "Step over" })
@@ -127,6 +130,11 @@ end, { noremap = true, silent = true, desc = "Projects" })
 map("n", "<leader>z", function()
   require("telescope").extensions.zoxide.list({})
 end, { desc = "Zoxide" })
+
+-- nvimtree
+map("n", "<A-f>", function()
+  require("nvim-tree.api").tree.toggle()
+end, { noremap = true, silent = true, desc = "Toggle file tree" })
 
 -- neoscroll
 local t = {}

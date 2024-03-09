@@ -194,34 +194,70 @@ return {
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-tree/nvim-tree.lua",
+    lazy = true,
     opts = {
-      window = {
-        position = "right",
-        mappings = {
-          ["l"] = "none",
+      view = {
+        centralize_selection = false,
+        side = "right",
+      },
+      update_focused_file = {
+        enable = true,
+        update_root = false,
+        ignore_list = {},
+      },
+      hijack_directories = {
+        enable = true,
+        auto_open = true,
+      },
+      system_open = {
+        cmd = "",
+        args = {},
+      },
+      actions = {
+        use_system_clipboard = true,
+        change_dir = {
+          enable = true,
+          global = false,
+          restrict_above_cwd = false,
+        },
+        expand_all = {
+          max_folder_discovery = 300,
+          exclude = {},
         },
       },
     },
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ position = "right", toggle = true, dir = Util.root() })
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-      {
-        "<leader>fE",
-        function()
-          require("neo-tree.command").execute({ position = "right", toggle = true, dir = vim.loop.cwd() })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      { "<A-f>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<A-F>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
-    },
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   opts = {
+  --     window = {
+  --       bind_to_cwd = true,
+  --       position = "right",
+  --       mappings = {
+  --         ["l"] = "none",
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     {
+  --       "<leader>fe",
+  --       function()
+  --         require("neo-tree.command").execute({ position = "right", toggle = true, dir = Util.root() })
+  --       end,
+  --       desc = "Explorer NeoTree (root dir)",
+  --     },
+  --     {
+  --       "<leader>fE",
+  --       function()
+  --         require("neo-tree.command").execute({ position = "right", toggle = true, dir = vim.loop.cwd() })
+  --       end,
+  --       desc = "Explorer NeoTree (cwd)",
+  --     },
+  --     { "<A-f>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+  --     { "<A-F>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+  --   },
+  -- },
   {
     "folke/edgy.nvim",
     opts = {
@@ -291,6 +327,13 @@ return {
         end,
         desc = "Run Last",
       },
+    },
+  },
+  {
+    "DashieTM/test_plugin",
+    lazy = false,
+    opts = {
+      what = 0,
     },
   },
 }
