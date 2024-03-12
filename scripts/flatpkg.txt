@@ -38,6 +38,7 @@ org.freedesktop.Platform.GStreamer.gstreamer-vaapi
 org.freedesktop.Platform.ffmpeg-full
 org.freedesktop.Platform.ffmpeg_full.i386
 org.freedesktop.Platform.openh264
+org.freedesktop.Platform.openh264
 org.freedesktop.Sdk
 org.freedesktop.Sdk
 org.freedesktop.Sdk.Extension.rust-stable
