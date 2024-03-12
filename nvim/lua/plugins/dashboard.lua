@@ -41,14 +41,8 @@ return {
       }
       dashboard.section.buttons.val = {
         dashboard.button("f", "  Find file", ":lua require('telescope.builtin').find_files()<CR>"),
-        dashboard.button(
-          "b",
-          "  Open File Browser",
-          ":lua require('telescope').extensions.file_browser.file_browser{}<CR>"
-        ),
-        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("p", "  Find project", ":lua require('telescope').extensions.project.project{}<CR>"),
-        dashboard.button("r", "  Recently used files", ":lua require('telescope.builtin').oldfiles() <CR>"),
+        dashboard.button("y", "  Yazi", ":lua require('yazi').yazi()<CR>"),
+        dashboard.button("p", "  Find project", ":lua require('telescope').extensions.project.project{}<CR>"),
         dashboard.button("t", "  Zoxide", ":lua require('telescope').extensions.zoxide.list{}<CR>"),
         dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
         dashboard.button("q", "  Quit Neovim", ":qa<CR>"),

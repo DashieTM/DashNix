@@ -14,6 +14,18 @@ function sudo --description "Replacement for Bash 'sudo !!' command to run last 
         command sudo $argv
     end
 end
+
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -- "$tmp"
+end
+
+set EDITOR "neovide --no-fork"
+
 alias ls='lsd'
 alias :q='exit'
 alias gh='git push origin'

@@ -30,13 +30,6 @@ return {
     },
   },
   {
-    "ThePrimeagen/harpoon",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("harpoon")
-    end,
-  },
-  {
     "nvim-telescope/telescope-project.nvim",
     lazy = true,
   },
@@ -92,12 +85,6 @@ return {
         "let g:vimtex_compiler_latexmk = {'options': ['-pdf', '-shell-escape', '-file-line-error', '--extra-mem-bot=10000000', '-synctex=1', '-interaction=nonstopmode',],}"
       )
     end,
-  },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      top_down = false,
-    },
   },
   {
     "jbyuki/instant.nvim",
@@ -194,113 +181,32 @@ return {
     end,
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    lazy = true,
+    "nvim-neo-tree/neo-tree.nvim",
     opts = {
-      view = {
-        centralize_selection = false,
-        side = "right",
-      },
-      update_focused_file = {
-        enable = true,
-        update_root = false,
-        ignore_list = {},
-      },
-      hijack_directories = {
-        enable = true,
-        auto_open = true,
-      },
-      system_open = {
-        cmd = "",
-        args = {},
-      },
-      actions = {
-        use_system_clipboard = true,
-        change_dir = {
-          enable = true,
-          global = false,
-          restrict_above_cwd = false,
-        },
-        expand_all = {
-          max_folder_discovery = 300,
-          exclude = {},
+      window = {
+        position = "right",
+        mappings = {
+          ["l"] = "none",
         },
       },
     },
-  },
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   opts = {
-  --     window = {
-  --       bind_to_cwd = true,
-  --       position = "right",
-  --       mappings = {
-  --         ["l"] = "none",
-  --       },
-  --     },
-  --   },
-  --   keys = {
-  --     {
-  --       "<leader>fe",
-  --       function()
-  --         require("neo-tree.command").execute({ position = "right", toggle = true, dir = Util.root() })
-  --       end,
-  --       desc = "Explorer NeoTree (root dir)",
-  --     },
-  --     {
-  --       "<leader>fE",
-  --       function()
-  --         require("neo-tree.command").execute({ position = "right", toggle = true, dir = vim.loop.cwd() })
-  --       end,
-  --       desc = "Explorer NeoTree (cwd)",
-  --     },
-  --     { "<A-f>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-  --     { "<A-F>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
-  --   },
-  -- },
-  {
-    "folke/edgy.nvim",
-    opts = {
-      animate = {
-        enabled = false,
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ position = "right", toggle = true, dir = Util.root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
       },
-      left = {},
-      right = {
-        -- Neo-tree filesystem always takes half the screen height
-        {
-          title = "Neo-Tree",
-          ft = "neo-tree",
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == "filesystem"
-          end,
-          size = { height = 0.5 },
-        },
-        {
-          title = "Neo-Tree Git",
-          ft = "neo-tree",
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == "git_status"
-          end,
-          pinned = true,
-          open = "Neotree position=right git_status",
-        },
-        {
-          title = "Neo-Tree Buffers",
-          ft = "neo-tree",
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == "buffers"
-          end,
-          pinned = true,
-          open = "Neotree position=top buffers",
-        },
-        {
-          ft = "Outline",
-          pinned = true,
-          open = "SymbolsOutlineOpen",
-        },
-        -- any other neo-tree windows
-        "neo-tree",
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ position = "right", toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
       },
+      { "<A-f>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+      { "<A-F>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
     },
   },
   {
@@ -334,6 +240,16 @@ return {
     lazy = false,
     opts = {
       what = 0,
+    },
+  },
+  {
+    "DreamMaoMao/yazi.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>fy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
     },
   },
 }

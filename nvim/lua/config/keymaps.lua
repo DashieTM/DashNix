@@ -131,11 +131,6 @@ map("n", "<leader>z", function()
   require("telescope").extensions.zoxide.list({})
 end, { desc = "Zoxide" })
 
--- nvimtree
-map("n", "<A-f>", function()
-  require("nvim-tree.api").tree.toggle()
-end, { noremap = true, silent = true, desc = "Toggle file tree" })
-
 -- neoscroll
 local t = {}
 t["<A-l>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } }
