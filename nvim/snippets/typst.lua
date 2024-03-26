@@ -105,6 +105,29 @@ local codeSnippet = s(
 )
 table.insert(snippets, codeSnippet)
 
+local codeFigure = s(
+  "codefig-",
+  fmt(
+    [[
+    #let code = "
+    {1}"
+
+    #align(
+      left, [#figure(
+          sourcecode(raw(code, lang: "{2}")), kind: "code", supplement: "Listing", caption: [{3}],
+        )<{4}>],
+    )
+    ]],
+    {
+      i(1, ""),
+      i(2, "rs"),
+      i(3, ""),
+      i(4, ""),
+    }
+  )
+)
+table.insert(snippets, codeFigure)
+
 local patternSnippet = s(
   "pattern-",
   fmt(
