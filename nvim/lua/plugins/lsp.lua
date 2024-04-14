@@ -10,6 +10,24 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        rust_analyzer = {
+          mason = false,
+        },
+        taplo = {
+          keys = {
+            {
+              "K",
+              function()
+                if vim.fn.expand("%:t") == "Cargo.toml" and require("crates").popup_available() then
+                  require("crates").show_popup()
+                else
+                  vim.lsp.buf.hover()
+                end
+              end,
+              desc = "Show Crate Documentation",
+            },
+          },
+        },
         bashls = {},
         ansiblels = {},
         asm_lsp = {},
@@ -40,7 +58,6 @@ return {
           },
         },
         sqlls = {},
-        taplo = {},
         lemminx = {},
         opencl_ls = {},
         yamlls = {},
@@ -87,4 +104,33 @@ return {
       },
     },
   },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   opts = {
+  --     default_settings = {
+  --       -- rust-analyzer language server configuration
+  --       ["rust-analyzer"] = {
+  --         cargo = {
+  --           allFeatures = true,
+  --           loadOutDirsFromCheck = true,
+  --           runBuildScripts = true,
+  --         },
+  --         -- Add clippy lints for Rust.
+  --         checkOnSave = {
+  --           allFeatures = true,
+  --           command = "cargo-clippy",
+  --           extraArgs = { "--no-deps" },
+  --         },
+  --         procMacro = {
+  --           enable = true,
+  --           ignored = {
+  --             ["async-trait"] = { "async_trait" },
+  --             ["napi-derive"] = { "napi" },
+  --             ["async-recursion"] = { "async_recursion" },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }
