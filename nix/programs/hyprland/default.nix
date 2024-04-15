@@ -1,10 +1,12 @@
-{ lib
-, pkgs
+{ pkgs
 , ...
 }: {
   imports = [
     ./anyrun.nix
     ./config.nix
+    ./ironbar.nix
+    ./hyprpaper.nix
+    ./hyprgreet.nix
   ];
 
   home.packages = with pkgs; [
@@ -15,7 +17,6 @@
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     hyprpaper
-    ironbar
     copyq
     gnome.nautilus
     gnome.sushi

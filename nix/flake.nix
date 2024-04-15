@@ -17,12 +17,16 @@
         url = "github:KZDKM/Hyprspace";
         inputs.hyprland.follows = "hyprland";
       };
+      ironbar = {
+        url = "github:JakeStanger/ironbar";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
 
       anyrun.url = "github:Kirottu/anyrun";
       anyrun.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nix-flatpak, hyprland, anyrun, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, nix-flatpak, hyprland, anyrun, ironbar, ... }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -68,6 +72,7 @@
               ./programs/default.nix
               hyprland.homeManagerModules.default
               anyrun.homeManagerModules.default
+              ironbar.homeManagerModules.default
               ./programs/hyprland/default.nix #{inherit Hyprspace; }
               nix-flatpak.homeManagerModules.nix-flatpak
               ./programs/flatpak.nix

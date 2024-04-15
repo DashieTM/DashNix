@@ -30,11 +30,9 @@
     dbus
     killall
     adw-gtk3
-    gradience
     qt5ct
     qt6ct
     libadwaita
-    yazi
     gnutar
     fishPlugins.tide
     nix-index

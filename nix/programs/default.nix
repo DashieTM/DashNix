@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   imports = [
     ./common.nix
@@ -7,6 +6,8 @@
     ./xdg.nix
     ./media.nix
     ./utils.nix
+    ./yazi.nix
+    ./oxi/default.nix
     #./gtk.nix
     #./cargo.nix
   ];

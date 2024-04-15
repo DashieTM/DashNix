@@ -1,5 +1,11 @@
 return {
   {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {},
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
@@ -11,6 +17,27 @@ return {
       ---@type lspconfig.options
       servers = {
         rust_analyzer = {
+          mason = false,
+        },
+        marksman = {
+          mason = false,
+        },
+        clangd = {
+          mason = false,
+        },
+        jdtls = {
+          mason = false,
+        },
+        gopls = {
+          mason = false,
+        },
+        pyright = {
+          mason = false,
+        },
+        ruff_lsp = {
+          mason = false,
+        },
+        texlab = {
           mason = false,
         },
         taplo = {
@@ -27,23 +54,28 @@ return {
               desc = "Show Crate Documentation",
             },
           },
+          mason = false,
         },
-        bashls = {},
-        ansiblels = {},
-        -- asm_lsp = {},
+        bashls = {
+          mason = false,
+        },
+        ansiblels = {
+          mason = false,
+        },
         typst_lsp = {
           settings = {
             experimentalFormatterMode = "on",
             exportPdf = "onSave",
           },
+          mason = false,
         },
         nil_ls = {
-          settings ={ 
-            ['nil'] = {
-          formatting = { 
-            command = {"nixpkgs-fmt"}
-          },
-          },
+          settings = {
+            ["nil"] = {
+              formatting = {
+                command = { "nixpkgs-fmt" },
+              },
+            },
           },
           mason = false,
         },
@@ -66,23 +98,32 @@ return {
             "typst",
             "typ",
           },
+          mason = false,
         },
-        sqlls = {},
-        lemminx = {},
-        opencl_ls = {},
-        yamlls = {},
+        sqlls = {
+          mason = false,
+        },
+        lemminx = {
+          mason = false,
+        },
+        opencl_ls = {
+          mason = false,
+        },
+        yamlls = {
+          mason = false,
+        },
         lua_ls = {
-          mason = false 
-        --   {
-        --     Lua = {
-        --       workspace = {
-        --         checkThirdParty = false,
-        --       },
-        --       completion = {
-        --         callSnippet = "Replace",
-        --       },
-        --     },
-        --   },
+          mason = false,
+          {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+            },
+          },
         },
       },
     },
@@ -113,36 +154,9 @@ return {
       formatters_by_ft = {
         typst = { "typstfmt" },
         nix = { "nixpkgs-fmt" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
       },
     },
   },
-  -- {
-  --   "mrcjkb/rustaceanvim",
-  --   opts = {
-  --     default_settings = {
-  --       -- rust-analyzer language server configuration
-  --       ["rust-analyzer"] = {
-  --         cargo = {
-  --           allFeatures = true,
-  --           loadOutDirsFromCheck = true,
-  --           runBuildScripts = true,
-  --         },
-  --         -- Add clippy lints for Rust.
-  --         checkOnSave = {
-  --           allFeatures = true,
-  --           command = "cargo-clippy",
-  --           extraArgs = { "--no-deps" },
-  --         },
-  --         procMacro = {
-  --           enable = true,
-  --           ignored = {
-  --             ["async-trait"] = { "async_trait" },
-  --             ["napi-derive"] = { "napi" },
-  --             ["async-recursion"] = { "async_recursion" },
-  --           },
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
 }
