@@ -1,14 +1,13 @@
-{  
- lib
+{ lib
 , pkgs
 , ...
 }: {
-  imports = [ 
-    #./anyrun.nix
+  imports = [
+    ./anyrun.nix
+    ./config.nix
   ];
 
   home.packages = with pkgs; [
-  hyprland
     xorg.xprop
     grim
     slurp
@@ -20,6 +19,9 @@
     copyq
     gnome.nautilus
     gnome.sushi
+    wl-clipboard
+    kooha
+    hyprcursor
+    hyprpaper
   ];
-
 }

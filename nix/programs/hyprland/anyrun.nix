@@ -1,20 +1,17 @@
-{ pkgs
-, osConfig
-, ...
-}: {
+{ inputs, pkgs, ... }: {
   programs.anyrun = {
+    enable = true;
     config = {
-      #plugins = with inputs.anyrun.packages.${pkgs.system}; [
-      #  applications
-      #  rink
-      #  shell
-      #  websearch
-      #  inputs.anyrun-nixos-options.packages.${pkgs.system}.default
-      #];
-
-      position = "center";
+      plugins = [
+        inputs.anyrun.packages.${pkgs.system}.applications
+        inputs.anyrun.packages.${pkgs.system}.rink
+        inputs.anyrun.packages.${pkgs.system}.translate
+        inputs.anyrun.packages.${pkgs.system}.websearch
+      ];
+      #position = "center";
       hideIcons = false;
       width = { fraction = 0.3; };
+      y = { fraction = 0.5; };
       layer = "overlay";
       hidePluginInfo = true;
       closeOnClick = true;

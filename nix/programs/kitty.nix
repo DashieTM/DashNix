@@ -58,6 +58,5 @@
       shell = "fish";
     };
 
-    theme = "Catppuccin-Mocha";
   };
 }

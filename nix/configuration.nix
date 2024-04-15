@@ -6,21 +6,23 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      # Include the results of the hardware scan.
+      #./hardware-configuration.nix
+      ./base_packages.nix
+      ./direnv.nix
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # WARNING: Simply change this for each config
+  networking.hostName = "spaceship";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -35,14 +37,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -59,13 +57,32 @@
     pulse.enable = true;
   };
 
+  environment.variables = rec {
+    XDG_CACHE_HOME = "$HOME/.cache";
+    DIRENV_LOG_FORMAT = "";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dashie = {
     isNormalUser = true;
     description = "dashie";
-    extraGroups = [ "networkmanager" "wheel" "gamemode"];
+    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
     packages = with pkgs; [
-    home-manager
+      home-manager
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+  };
+
+  nix.settings = {
+    builders-use-substitutes = true;
+    # substituters to use
+    substituters = [
+      "https://anyrun.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
   };
 

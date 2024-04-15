@@ -1,31 +1,17 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
+
 # =============================================================================
 #
 # Utility functions for zoxide.
 #
-set fish_greeting
-function sudo --description "Replacement for Bash 'sudo !!' command to run last command using sudo."
-    if test "$argv" = !!
-        echo sudo $history[1]
-        eval command sudo $history[1]
-    else
-        command sudo $argv
-    end
-end
 
-function y
-	set tmp (mktemp -t "yazi-cwd.XXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		cd -- "$cwd"
-	end
-	rm -- "$tmp"
-end
+export NIX_PATH="$NIX_PATH:$HOME/gits/dotFiles/nix/."
 
 set EDITOR "neovide --no-fork"
 
+alias rebuild='sudo nixos-rebuild switch --flake /home/dashie/gits/dotFiles/nix/.'
 alias ls='lsd'
 alias :q='exit'
 alias gh='git push origin'
@@ -43,6 +29,7 @@ alias cat='bat'
 alias find='fd'
 alias rm='rip'
 
+set fish_greeting
 # pwd based on the value of _ZO_RESOLVE_SYMLINKS.
 function __zoxide_pwd
     builtin pwd -L
@@ -50,9 +37,9 @@ end
 
 # A copy of fish's internal cd function. This makes it possible to use
 # `alias cd=z` without causing an infinite loop.
-if ! builtin functions -q __zoxide_cd_internal
-    if builtin functions -q cd
-        builtin functions -c cd __zoxide_cd_internal
+if ! builtin functions --query __zoxide_cd_internal
+    if builtin functions --query cd
+        builtin functions --copy cd __zoxide_cd_internal
     else
         alias __zoxide_cd_internal='builtin cd'
     end
@@ -79,20 +66,21 @@ end
 # When using zoxide with --no-cmd, alias these internal functions as desired.
 #
 
-set __zoxide_z_prefix 'z!'
+if test -z $__zoxide_z_prefix
+    set __zoxide_z_prefix 'z!'
+end
+set __zoxide_z_prefix_regex ^(string escape --style=regex $__zoxide_z_prefix)
 
 # Jump to a directory using only keywords.
 function __zoxide_z
     set -l argc (count $argv)
-    set -l completion_regex '^'(string escape --style=regex $__zoxide_z_prefix)'(.*)$'
-
     if test $argc -eq 0
         __zoxide_cd $HOME
     else if test "$argv" = -
         __zoxide_cd -
     else if test $argc -eq 1 -a -d $argv[1]
         __zoxide_cd $argv[1]
-    else if set -l result (string match --groups-only --regex $completion_regex $argv[-1])
+    else if set -l result (string replace --regex $__zoxide_z_prefix_regex '' $argv[-1]); and test -n $result
         __zoxide_cd $result
     else
         set -l result (command zoxide query --exclude (__zoxide_pwd) -- $argv)
@@ -100,26 +88,28 @@ function __zoxide_z
     end
 end
 
-# Completions for `z`.
+# Completions.
 function __zoxide_z_complete
     set -l tokens (commandline --current-process --tokenize)
     set -l curr_tokens (commandline --cut-at-cursor --current-process --tokenize)
 
     if test (count $tokens) -le 2 -a (count $curr_tokens) -eq 1
         # If there are < 2 arguments, use `cd` completions.
-        __fish_complete_directories "$tokens[2]" ''
-    else if test (count $tokens) -eq (count $curr_tokens)
-        # If the last argument is empty, use interactive selection.
+        complete --do-complete "'' "(commandline --cut-at-cursor --current-token) | string match --regex '.*/$'
+    else if test (count $tokens) -eq (count $curr_tokens); and ! string match --quiet --regex $__zoxide_z_prefix_regex. $tokens[-1]
+        # If the last argument is empty and the one before doesn't start with
+        # $__zoxide_z_prefix, use interactive selection.
         set -l query $tokens[2..-1]
-        set -l result (zoxide query --exclude (__zoxide_pwd) -i -- $query)
+        set -l result (zoxide query --exclude (__zoxide_pwd) --interactive -- $query)
         and echo $__zoxide_z_prefix$result
         commandline --function repaint
     end
 end
+complete --command __zoxide_z --no-files --arguments '(__zoxide_z_complete)'
 
 # Jump to a directory using interactive search.
 function __zoxide_zi
-    set -l result (command zoxide query -i -- $argv)
+    set -l result (command zoxide query --interactive -- $argv)
     and __zoxide_cd $result
 end
 
@@ -129,17 +119,10 @@ end
 #
 
 abbr --erase z &>/dev/null
-complete --command z --erase
-function z
-    __zoxide_z $argv
-end
-complete --command z --no-files --arguments '(__zoxide_z_complete)'
+alias z=__zoxide_z
 
 abbr --erase zi &>/dev/null
-complete --command zi --erase
-function zi
-    __zoxide_zi $argv
-end
+alias zi=__zoxide_zi
 
 # =============================================================================
 #
@@ -147,6 +130,5 @@ end
 # ~/.config/fish/config.fish):
 #
 #   zoxide init fish | source
-#
-# Note: zoxide only supports fish v3.4.0 and above.
-#
+
+direnv hook fish | source

@@ -1,5 +1,4 @@
-{ lib
-, pkgs
+{ pkgs
 , ...
 }:
 {
@@ -12,9 +11,18 @@
     go
     nodejs_20
     deno
-    # rustpython
+    python3
     neovim
     typst
     neovide
+    tree-sitter
+    dotnet-runtime_8
+    unzip
+    pkg-config
+    lua-language-server
+    nil
+    nixpkgs-fmt
+    crate2nix
+    sqlite
   ];
 }

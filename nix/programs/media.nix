@@ -15,6 +15,9 @@
     mpv
     # pdf
     zathura
+    evince
+    libreoffice-fresh
+    pdftk
     # spotify
     ncspot
     # video editing

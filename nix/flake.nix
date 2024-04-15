@@ -3,16 +3,26 @@
 
   inputs =
     {
-      flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+      nix-flatpak.url = "github:gmodena/nix-flatpak";
       nixpkgs.url = "github:nixos/nixpkgs";
-	home-manager = {
-	url = "github:nix-community/home-manager/release-23.05";
-	inputs.nixpkgs.follows = "nixpkgs";
-    };
-   hyprland.url = "github:hyprwm/Hyprland";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      hyprland = {
+        url = "github:hyprwm/Hyprland/67f47fbdccd639502a76ccb3552a23df37f19ef8";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      Hyprspace = {
+        url = "github:KZDKM/Hyprspace";
+        inputs.hyprland.follows = "hyprland";
+      };
+
+      anyrun.url = "github:Kirottu/anyrun";
+      anyrun.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  outputs = { self, nixpkgs, home-manager, flatpaks, hyprland }:
+  outputs = inputs @ { self, nixpkgs, home-manager, nix-flatpak, hyprland, anyrun, ... }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -30,26 +40,41 @@
         inherit pkgs;
         modules = [ ./hardware/overheating.nix ];
       };
-      homeConfigurations."dashie" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ 
-   	flatpaks.homeManagerModules.default 
-        hyprland.homeManagerModules.default
-	./programs/hyprland/config.nix
-	];
-      };
-
-      nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."spaceship" = nixpkgs.lib.nixosSystem {
         inherit pkgs;
         modules = [
-	  ./configuration.nix
-   	flatpaks.nixosModules.default 
-        hyprland.nixosModules.default
-	  home-manager.nixosModules.home-manager {
-	  home-manager.users.dashie = import ./programs/default.nix {inherit pkgs; };
-	  home-manager.useGlobalPkgs = true;
-	  }
-	./programs/flatpak.nix
+
+          # TODO put this into not gaming
+          ./hardware/spaceship.nix
+          ./configuration.nix
+          ./programs/gaming/default.nix
+          ./base/default.nix
+          hyprland.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            xdg.portal.config.common.default = "*";
+            xdg.portal = {
+              enable = true;
+              extraPortals = [
+                pkgs.xdg-desktop-portal-hyprland
+                pkgs.xdg-desktop-portal-gtk
+              ];
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.dashie.imports = [
+              {
+                _module = { args = { inherit self inputs; }; };
+              }
+              ./programs/default.nix
+              hyprland.homeManagerModules.default
+              anyrun.homeManagerModules.default
+              ./programs/hyprland/default.nix #{inherit Hyprspace; }
+              nix-flatpak.homeManagerModules.nix-flatpak
+              ./programs/flatpak.nix
+            ];
+
+            home-manager.users.dashie.home.stateVersion = "24.05";
+          }
         ];
       };
     };

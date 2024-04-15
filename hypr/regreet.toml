@@ -4,6 +4,7 @@ fit = "Contain"
 
 [env]
 QT_QPA_PLATFORMTHEME = "qt5ct"
+PATH = "/home/dashie/.cargo/bin:PATH"
 
 [GTK]
 application_prefer_dark_theme = true

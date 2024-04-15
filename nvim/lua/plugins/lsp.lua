@@ -30,12 +30,22 @@ return {
         },
         bashls = {},
         ansiblels = {},
-        asm_lsp = {},
+        -- asm_lsp = {},
         typst_lsp = {
           settings = {
             experimentalFormatterMode = "on",
             exportPdf = "onSave",
           },
+        },
+        nil_ls = {
+          settings ={ 
+            ['nil'] = {
+          formatting = { 
+            command = {"nixpkgs-fmt"}
+          },
+          },
+          },
+          mason = false,
         },
         ltex = {
           settings = {
@@ -62,16 +72,17 @@ return {
         opencl_ls = {},
         yamlls = {},
         lua_ls = {
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
+          mason = false 
+        --   {
+        --     Lua = {
+        --       workspace = {
+        --         checkThirdParty = false,
+        --       },
+        --       completion = {
+        --         callSnippet = "Replace",
+        --       },
+        --     },
+        --   },
         },
       },
     },
@@ -101,6 +112,7 @@ return {
       },
       formatters_by_ft = {
         typst = { "typstfmt" },
+        nix = { "nixpkgs-fmt" },
       },
     },
   },
