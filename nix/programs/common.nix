@@ -50,6 +50,11 @@
 
   home.keyboard = null;
 
+  home.file.".local/share/flatpak/overrides/global".text = ''
+    [Context]
+    filesystems=xdg-config/gtk-3.0;xdg-config/gtk-4.0
+  '';
+
   programs.nix-index =
     {
       enable = true;
