@@ -1,0 +1,7 @@
+parted $0 mklabel gpt mkpart primary fat32 1MiB 512MiB mkpart primary linux-swap 512MiB 31029MiB mkpart primary btrfs 31029MiB 40% mkpart primary btrfs 40% 100%
+e2label $0p1 BOOT
+e2label $0p2 SWAP
+e2label $0p3 ROOT
+e2label $0p4 HOME
+
+nixos-rebuild e2label /dev/sda1 ROOTswitch --flake ./nix/.#$1
