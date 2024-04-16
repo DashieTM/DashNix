@@ -50,6 +50,8 @@
     DIRENV_LOG_FORMAT = "";
   };
 
+  # allows user change later on
+  users.mutableUsers=true;
   users.users.dashie = {
     isNormalUser = true;
     description = "dashie";
@@ -59,6 +61,9 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
     ];
+    # this password will only last for the first login
+    # e.g. login, then change to whatever else, this also ensures no public hash is available
+    hashedPassword="firstlogin";
   };
 
   nix.settings = {

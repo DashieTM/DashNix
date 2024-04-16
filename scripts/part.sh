@@ -16,7 +16,8 @@ if [ "$IN" == "y" ]; then
 		e2label "$1"4 HOME
 	fi
 	# install nixos
-	nixos-install --flake ./nix/.#$2
+  echo "formatting finished, continuing to install system"
+	nixos-install --flake ./nix/.#$2 --no-root-passwd
 else
 	echo "aborting"
 fi
