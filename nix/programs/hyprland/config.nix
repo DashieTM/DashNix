@@ -262,7 +262,8 @@
       "hyprpaper"
       "ironbar"
       "firefox"
-      #"oxipaste_daemon"
+      "oxipaste_daemon"
+      # TODO: is this necessary?
       #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "nextcloud --background"
       "$HOME/.cargo/bin/oxinoti"
@@ -277,7 +278,6 @@
     };
   };
   wayland.windowManager.hyprland.plugins = [
-    # ... whatever
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
 }

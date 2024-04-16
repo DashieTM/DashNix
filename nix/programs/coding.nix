@@ -3,7 +3,7 @@
 }:
 {
   imports = [
-    ../nvim/default.nix
+    ./nvim/default.nix
   ];
 
   home.packages = with pkgs; [

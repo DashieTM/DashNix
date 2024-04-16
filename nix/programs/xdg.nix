@@ -1,8 +1,8 @@
-{ config, ... }:
 let
   browser = [ "firefox.desktop" ];
 
   # XDG MIME types
+  # TODO: make this actually work
   associations = {
     "application/x-extension-htm" = browser;
     "application/x-extension-html" = browser;

@@ -1,4 +1,4 @@
-{ ... }: {
+{
   xdg.configFile."hypr/hyprgreet.conf" = {
     text =
       ''

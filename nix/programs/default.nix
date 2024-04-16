@@ -1,16 +1,13 @@
 {
   imports = [
     ./common.nix
-    ./kitty.nix
     ./coding.nix
     ./xdg.nix
     ./media.nix
     ./utils.nix
-    ./yazi.nix
     ./oxi/default.nix
     ./themes/default.nix
-    ./fish.nix
-    ./ncspot.nix
+    ./individual_configs/default.nix
   ];
 
   home.username = "dashie";

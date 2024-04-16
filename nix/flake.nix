@@ -34,24 +34,7 @@
           allowUnfree = true;
         };
       };
-    in
-    {
-      homeConfigurations."dashie@spaceship" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hardware/spaceship.nix ];
-      };
-      homeConfigurations."dashie@overheating" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hardware/overheating.nix ];
-      };
-      nixosConfigurations."spaceship" = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        modules = [
-
-          # TODO put this into not gaming
-          ./hardware/spaceship.nix
-          ./configuration.nix
-          ./programs/gaming/default.nix
+      default_modules = [
           ./base/default.nix
           hyprland.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -73,13 +56,31 @@
               hyprland.homeManagerModules.default
               anyrun.homeManagerModules.default
               ironbar.homeManagerModules.default
-              ./programs/hyprland/default.nix #{inherit Hyprspace; }
+              ./programs/hyprland/default.nix
               nix-flatpak.homeManagerModules.nix-flatpak
               ./programs/flatpak.nix
             ];
 
             home-manager.users.dashie.home.stateVersion = "24.05";
           }
+      ];
+    in
+    {
+          # TODO put actual configuration of profiles somewhere else 
+      homeConfigurations."marmo" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs default_modules;
+        modules = [ ./hardware/marmo/default.nix ];
+      };
+      homeConfigurations."overheating" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs default_modules;
+        modules = [ ./hardware/overheating/default.nix ];
+      };
+      nixosConfigurations."spaceship" = nixpkgs.lib.nixosSystem {
+        inherit pkgs default_modules;
+        modules = [
+          ./hardware/spaceship/default.nix
+          ./hardware/streamdeck.nix
+          ./programs/gaming/default.nix
         ];
       };
     };
