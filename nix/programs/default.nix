@@ -8,8 +8,9 @@
     ./utils.nix
     ./yazi.nix
     ./oxi/default.nix
-    #./gtk.nix
-    #./cargo.nix
+    ./themes/default.nix
+    ./fish.nix
+    ./ncspot.nix
   ];
 
   home.username = "dashie";
