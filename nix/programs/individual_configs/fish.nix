@@ -16,22 +16,21 @@
         set EDITOR "neovide --no-fork"
 
         alias rebuild='sudo nixos-rebuild switch --flake /home/dashie/gits/dotFiles/nix/.'
-        alias ls='lsd'
-        alias :q='exit'
-        alias gh='git push origin'
-        alias gl='git pull origin'
-        alias gm='git commit -m'
-        alias ga="git add -A"
-        alias g+='bear -- g++ -Wextra -Werror -std=c++20'
-        alias s="kitty +kitten ssh"
-        alias zl='z "" '
-        alias jo='joshuto'
-        alias nv='neovide'
-        alias cr='cargo run'
-        alias grep='rg'
-        alias cat='bat'
-        alias find='fd'
-        alias rm='rip'
+        abbr --add ls 'lsd'
+        abbr --add :q 'exit'
+        abbr --add gh 'git push origin'
+        abbr --add gl 'git pull origin'
+        abbr --add gm 'git commit -m'
+        abbr --add ga "git add -A"
+        abbr --add g+ 'bear -- g++ -Wextra -Werror -std=c++20'
+        abbr --add s "kitty +kitten ssh"
+        abbr --add zl 'z "" '
+        abbr --add nv 'neovide'
+        abbr --add cr 'cargo run'
+        abbr --add grep 'rg'
+        abbr --add cat 'bat'
+        abbr --add find 'fd'
+        abbr --add rm 'rip'
 
         set fish_greeting
         # pwd based on the value of _ZO_RESOLVE_SYMLINKS.
