@@ -1,6 +1,7 @@
-{config, ...}:{
+{ config, ... }: {
   imports = [
     ../../modules/ironbar_config.nix
+    ../../modules/hyprpaper_config.nix
   ];
   wayland.windowManager.hyprland.settings.monitor = [
     # default
@@ -30,5 +31,17 @@
     # monitor right
     "3,monitor:HDMI-A-1, default:true"
   ];
-  programs.monitor = "DP-1";
+  programs.ironbar.monitor = "DP-1";
+  programs.hyprland.hyprpaper = ''
+    #load
+    preload = /home/dashie/Pictures/backgrounds/shinobu_2k.jpg
+    preload = /home/dashie/Pictures/backgrounds/shino_wide.png
+    preload = /home/dashie/Pictures/backgrounds/shinobu_1200.jpg
+
+    #set
+    wallpaper = DP-2,/home/dashie/Pictures/backgrounds/shinobu_2k.jpg
+    wallpaper = DP-1,/home/dashie/Pictures/backgrounds/shino_wide.png
+    wallpaper = HDMI-A-1,/home/dashie/Pictures/backgrounds/shinobu_1200.jpg
+    splash = true
+  '';
 }
