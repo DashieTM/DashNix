@@ -43,12 +43,13 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-    [org.gnome.desktop.interface]
-    gtk-theme='adw-gtk3'
-    cursor-theme='Bibata-Modern-Classsic'
-    cursor-size=24
-  '';
+ # services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+ #   [org.gnome.desktop.interface]
+ #   gtk-theme='adw-gtk3'
+ #   cursor-theme='Bibata-Modern-Classsic'
+ #   cursor-size=24
+ # '';
+
   programs.direnv = {
     package = pkgs.direnv;
     silent = false;

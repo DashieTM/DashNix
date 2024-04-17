@@ -1,5 +1,7 @@
-{
-  programs.ironbar = {
+{config, ...}:{
+   
+  programs.ironbar =
+  {
     enable = true;
     style = ''
       @import url("/home/dashie/.config/gtk-3.0/gtk.css");
@@ -139,7 +141,7 @@
       #"another_feature"
     ];
     config = {
-      monitors.DP-1 = {
+      monitors."${config.programs.ironbar.monitor}" = {
         end = [
           {
             type = "sys_info";

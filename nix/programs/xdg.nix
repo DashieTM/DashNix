@@ -1,3 +1,5 @@
+{config, ...}:
+
 let
   browser = [ "firefox.desktop" ];
 

@@ -1,27 +1,23 @@
-{ pkgs
-, ...
-}:
+{ pkgs, ... }:
 let
-  customKeyboardLayout = pkgs.writeText "us_int" ''
-    xkb_symbols "us_int"
+  dashie = pkgs.writeText "dashie" ''
+    xkb_symbols "dashie"
     {
       include "us(basic)"
-      key <AC11> {[ apostrophe, dead_diaeresis, apostrophe, quotedouble ] };
-      key <TLDE> {[ grave,      asciitilde                              ] };
+      include "level3(ralt_switch)"
+      key <AC01> { [ a, A, adiaeresis, Adiaeresis ] };
+      key <AD09> { [ o, O, odiaeresis, Odiaeresis ] };
+      key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
     };
-  '';
-  compiledLayout = pkgs.runCommand "keyboard-layout" { } ''
-    ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${customKeyboardLayout} $out
   '';
 in
 {
   environment.systemPackages = [ pkgs.xorg.xkbcomp ];
-  services.xserver.xkb.extraLayouts.us_int = {
+  services.xserver.xkb.extraLayouts.dashie = {
     description = "US layout with 'umlaut'";
     languages = [ "eng" ];
-    #symbolsFile = ${customKeyboardLayout};
-    symbolsFile = /home/dashie/.config/symbols/us_int;
+    symbolsFile = "${dashie}";
   };
-  #services.xserver.displayManager.sessionCommands = "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${compiledLayout} $DISPLAY";
 }
+
 

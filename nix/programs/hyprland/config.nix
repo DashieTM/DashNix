@@ -148,7 +148,7 @@
     };
 
     input = {
-      kb_layout = "us_int";
+      kb_layout = "dashie";
       repeat_delay = 200;
       force_no_accel = true;
       touchpad = {
@@ -167,6 +167,10 @@
       swallow_regex = "^(.*)(kitty)(.*)$";
       # conversion seems to be borked right now, i want a smooth bibata :(
       enable_hyprcursor = false;
+    };
+
+    gestures = {
+      workspace_swipe = true;
     };
 
     env = [
@@ -189,37 +193,6 @@
       "WLR_DRM_NO_ATOMIC,1"
       "GTK_USE_PORTAL, 1"
     ];
-
-    monitor = [
-      # default
-      "DP-2,2560x1440@165,0x0,1"
-      "DP-1,3440x1440@180,2560x0,1"
-      "HDMI-A-1,1920x1200@60,6000x0,1"
-      "HDMI-A-1,transform,1"
-
-      # all others
-      ",highrr,auto,1"
-    ];
-
-    workspace = [
-      # workspaces
-      # monitor middle
-      "2,monitor:DP-1, default:true"
-      "4,monitor:DP-1"
-      "6,monitor:DP-1"
-      "8,monitor:DP-1"
-      "9,monitor:DP-1"
-      "10,monitor:DP-1"
-
-      # monitor left
-      "1,monitor:DP-2, default:true"
-      "5,monitor:DP-2"
-      "7,monitor:DP-2"
-
-      # monitor right
-      "3,monitor:HDMI-A-1, default:true"
-    ];
-
 
     layerrule = [
       # layer rules

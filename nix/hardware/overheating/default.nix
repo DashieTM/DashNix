@@ -1,6 +1,6 @@
 {
   imports = [
-  ./overheating.nix
-  ./configuration.nix
+    ./overheating.nix
+    ./configuration.nix
   ];
 }
