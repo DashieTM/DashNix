@@ -60,5 +60,5 @@
       package = pkgs.nix-direnv;
     };
   };
-
+  programs.ssh.startAgent = true;
 }
