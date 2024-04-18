@@ -5,7 +5,7 @@
 let
   toolchain = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.minimal);
   rustPlatform = pkgs.makeRustPlatform {
-    cargo = toolchain; 
+    cargo = toolchain;
     rustc = toolchain;
   };
 in

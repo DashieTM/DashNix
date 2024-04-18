@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, ... }: {
 
   services.flatpak.remotes = lib.mkOptionDefault [{
     name = "flathub-stable";

@@ -1,6 +1,6 @@
 {
   imports = [
-  ./spaceship.nix
-  ./configuration.nix
+    ./spaceship.nix
+    ./configuration.nix
   ];
 }

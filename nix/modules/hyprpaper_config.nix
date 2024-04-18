@@ -3,7 +3,7 @@
     hyprpaper = lib.mkOption {
       default = '''';
       example = ''
-      hyprpaper stuff
+        hyprpaper stuff
       '';
       type = lib.types.lines;
       description = ''

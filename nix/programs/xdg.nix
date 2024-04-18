@@ -1,7 +1,6 @@
 # Copyright (c) 2020-2021 Mihai Fufezan
 # credits to fufexan https://github.com/fufexan/dotfiles/blob/main/home/terminal/programs/xdg.nix
 { config
-, pkgs
 , ...
 }:
 let

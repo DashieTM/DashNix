@@ -43,6 +43,7 @@ in
     zenith
     nh
     amberol
+    satty
     (callPackage
       ../override/ncspot.nix
       { })

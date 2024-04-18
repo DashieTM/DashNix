@@ -1,6 +1,6 @@
 {
   imports = [
-  ./marmo.nix
-  ./configuration.nix
+    ./marmo.nix
+    ./configuration.nix
   ];
 }
