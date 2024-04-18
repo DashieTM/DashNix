@@ -44,22 +44,22 @@ in
     nh
     amberol
     (callPackage
-      ../fix/ncspot.nix
+      ../override/ncspot.nix
       { })
     (callPackage
-      ../fix/oxinoti.nix
+      ../override/oxinoti.nix
       { })
     (callPackage
-      ../fix/oxidash.nix
+      ../override/oxidash.nix
       { })
     (callPackage
-      ../fix/oxicalc.nix
+      ../override/oxicalc.nix
       { })
     (callPackage
-      ../fix/oxipaste.nix
+      ../override/oxipaste.nix
       { })
     (callPackage
-      ../fix/oxishut.nix
+      ../override/oxishut.nix
       { })
   ];
 
