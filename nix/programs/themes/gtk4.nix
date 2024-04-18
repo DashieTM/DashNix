@@ -53,8 +53,8 @@
 #        @define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.36);
 #        @define-color thumbnail_bg_color #1a1b26;
 #        @define-color thumbnail_fg_color #c0caf5;
-#        @define-color sidebar_backdrop_color rgba(192, 202, 245, 0.12);
-#        @define-color secondary_sidebar_backdrop_color rgba(192, 202, 245, 0.12);
+#        @define-color sidebar_backdrop_color @sidebar_bg_color; 
+#        @define-color secondary_sidebar_backdrop_color @sidebar_bg_color; 
 #        @define-color blue_1 #99c1f1;
 #        @define-color blue_2 #62a0ea;
 #        @define-color blue_3 #3584e4;

@@ -38,7 +38,13 @@
     nix-index
     libnotify
     zenith
+    nh
+    amberol
   ];
+
+  home.username = "dashie";
+  home.homeDirectory = "/home/dashie";
+  home.stateVersion = "24.05";
 
   home.sessionPath = [
     "$HOME/.cargo/bin"
@@ -67,5 +73,9 @@
     {
       enable = true;
       enableFishIntegration = true;
+    };
+  home.sessionVariables =
+    {
+      FLAKE = "home/dasshie/gits/dotFiles/nix";
     };
 }

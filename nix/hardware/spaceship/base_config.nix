@@ -1,7 +1,6 @@
-{ config, ... }: {
+{
   imports = [
-    ../../modules/ironbar_config.nix
-    ../../modules/hyprpaper_config.nix
+    ../../modules
   ];
   wayland.windowManager.hyprland.settings.monitor = [
     # default

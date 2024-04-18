@@ -26,93 +26,51 @@
       anyrun.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nix-flatpak, hyprland, anyrun, ironbar, ... }:
+  outputs = { ... }@inputs:
     let
-      pkgs = import nixpkgs {
+      pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
         };
       };
-
-      hypr_config = { monitor = [ "" ]; workspace = [ "" ]; };
+      base_imports = [
+        inputs.home-manager.nixosModules.home-manager
+        ./base/default.nix
+      ];
     in
+    #inputs.flake-parts.lib.mkFlake { inherit inputs; }
     {
-      # TODO put actual configuration of profiles somewhere else 
-      # TODO: deduplicate
-      homeConfigurations."marmo" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hardware/marmo/default.nix ];
-      };
-      nixosConfigurations."overheating" = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
+      #imports = [
+      #];
+      #homeConfigurations."marmo" = inputs.home-manager.lib.homeManagerConfiguration {
+      #  inherit pkgs;
+      #  modules = [
+      #    ./hardware/marmo/default.nix
+      #    ./programs
+      #  ];
+      #};
+      nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs pkgs;
+          mod = ./hardware/overheating/base_config.nix;
+        };
         modules = [
           ./hardware/overheating/default.nix
-          ./base/default.nix
-          hyprland.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            xdg.portal.config.common.default = "*";
-            xdg.portal = {
-              enable = true;
-              extraPortals = [
-                pkgs.xdg-desktop-portal-hyprland
-                pkgs.xdg-desktop-portal-gtk
-              ];
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.dashie.imports = [
-              {
-                _module = { args = { inherit self inputs; }; };
-              }
-              ./programs/default.nix
-              hyprland.homeManagerModules.default
-              anyrun.homeManagerModules.default
-              ironbar.homeManagerModules.default
-              ./hardware/overheating/base_config.nix
-              ./programs/hyprland/default.nix
-              nix-flatpak.homeManagerModules.nix-flatpak
-              ./programs/flatpak.nix
-            ];
-            home-manager.users.dashie.home.stateVersion = "24.05";
-          }
+          ./programs
         ];
       };
-      nixosConfigurations."spaceship" = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
+      nixosConfigurations."spaceship" = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs pkgs;
+          mod = ./hardware/spaceship/base_config.nix;
+        };
         modules = [
           ./hardware/spaceship/default.nix
           ./hardware/streamdeck.nix
           ./programs/gaming/default.nix
-          ./base/default.nix
-          hyprland.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            xdg.portal.config.common.default = "*";
-            xdg.portal = {
-              enable = true;
-              extraPortals = [
-                pkgs.xdg-desktop-portal-hyprland
-                pkgs.xdg-desktop-portal-gtk
-              ];
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.dashie.imports = [
-              {
-                _module = { args = { inherit self inputs; }; };
-              }
-              ./programs/default.nix
-              hyprland.homeManagerModules.default
-              anyrun.homeManagerModules.default
-              ironbar.homeManagerModules.default
-              ./hardware/spaceship/base_config.nix
-              ./programs/hyprland/default.nix
-              nix-flatpak.homeManagerModules.nix-flatpak
-              ./programs/flatpak.nix
-            ];
-            home-manager.users.dashie.home.stateVersion = "24.05";
-          }
-        ];
+          ./programs
+        ] ++ base_imports;
       };
     };
 }
