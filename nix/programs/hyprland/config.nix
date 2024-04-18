@@ -24,11 +24,11 @@
       "$mod SUPER,T,exec,kitty -1"
       "$mod SUPER,E,exec,nautilus -w"
       "$mod SUPER,N,exec,neovide"
-      "$mod SUPER,M,exec,$HOME/.cargo/bin/oxidash"
+      "$mod SUPER,M,exec,oxidash"
       "$mod SUPER,R,exec,anyrun"
-      "$mod SUPER,G,exec,$HOME/.cargo/bin/oxicalc"
-      "$mod SUPER,D,exec,$HOME/.cargo/bin/oxishut"
-      "$mod SUPER,A,exec,$HOME/.cargo/bin/oxipaste"
+      "$mod SUPER,G,exec,oxicalc"
+      "$mod SUPER,D,exec,oxishut"
+      "$mod SUPER,A,exec,oxipaste"
       "$mod SUPERSHIFT,L,exec, playerctl -a pause & swaylock -c 000000 & systemctl suspend"
 
       # media keys
@@ -239,7 +239,7 @@
       # TODO: is this necessary?
       #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "nextcloud --background"
-      "$HOME/.cargo/bin/oxinoti"
+      "oxinoti"
     ];
 
     plugin = {
