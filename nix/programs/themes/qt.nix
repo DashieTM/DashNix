@@ -5,6 +5,14 @@ let
     disabled_colors=#ff6d728d, #ff1a1b26, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d
     inactive_colors=#ff6d728d, #ff1a1b26, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d
   '';
+  qss = ''
+    QTabBar::tab:selected {
+        color: palette(highlight);
+    }
+    QMenuBar, QMenu, QToolBar, QStatusBar, QFrame, QScrollBar {
+        border: none;
+    }
+  '';
 in
 {
   xdg.configFile."qt5ct/colors/tokyonight.conf" = {
@@ -14,15 +22,10 @@ in
     text = "${color}";
   };
   xdg.configFile."qt5ct/qss/tab.qss" = {
-    text =
-      ''
-        QTabBar::tab:selected {
-            color: palette(highlight);
-        }
-        QMenuBar, QMenu, QToolBar, QStatusBar, QFrame, QScrollBar {
-            border: none;
-        }
-      '';
+    text = "${qss}";
+  };
+  xdg.configFile."qt6ct/qss/tab.qss" = {
+    text = "${qss}";
   };
   xdg.configFile."qt5ct/qt5ct.conf" = {
     text =

@@ -16,7 +16,7 @@
     libreoffice-fresh
     pdftk
     # spotify
-    ncspot
+    #ncspot
     # video editing
     kdenlive
     # image creation

@@ -16,6 +16,7 @@
     gnome.adwaita-icon-theme
     bibata-cursors
     xorg.xkbutils
+    libxkbcommon
   ];
 
   fonts.packages = with pkgs; [

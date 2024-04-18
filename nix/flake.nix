@@ -33,23 +33,27 @@
         config = {
           allowUnfree = true;
         };
+        overlays = [
+          # because allowing rust nightly is too hard by default....
+          (import (fetchTarball { url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"; sha256 = "sha256:06al2zlkyf14pz0i0q0ah18ygijra8l5qwd8rnm1bp9l6g8gp5zk"; }))
+        ];
       };
       base_imports = [
         inputs.home-manager.nixosModules.home-manager
         ./base/default.nix
+        ./programs
       ];
     in
-    #inputs.flake-parts.lib.mkFlake { inherit inputs; }
     {
-      #imports = [
-      #];
-      #homeConfigurations."marmo" = inputs.home-manager.lib.homeManagerConfiguration {
-      #  inherit pkgs;
-      #  modules = [
-      #    ./hardware/marmo/default.nix
-      #    ./programs
-      #  ];
-      #};
+      homeConfigurations."marmo" = inputs.home-manager.lib.homeManagerConfiguration {
+        specialArgs = {
+          inherit inputs pkgs;
+          mod = ./hardware/overheating/base_config.nix;
+        };
+        modules = [
+          ./hardware/marmo/default.nix
+        ];
+      };
       nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs pkgs;
@@ -57,7 +61,6 @@
         };
         modules = [
           ./hardware/overheating/default.nix
-          ./programs
         ];
       };
       nixosConfigurations."spaceship" = inputs.nixpkgs.lib.nixosSystem {
@@ -69,7 +72,6 @@
           ./hardware/spaceship/default.nix
           ./hardware/streamdeck.nix
           ./programs/gaming/default.nix
-          ./programs
         ] ++ base_imports;
       };
     };

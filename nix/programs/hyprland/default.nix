@@ -24,5 +24,6 @@
     kooha
     hyprcursor
     hyprpaper
+    hyprpicker
   ];
 }

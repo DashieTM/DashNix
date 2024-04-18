@@ -1,6 +1,9 @@
 { pkgs
+, lib
 , ...
 }:
+let callPackage = lib.callPackageWith (pkgs);
+in
 {
   manual = {
     html.enable = false;
@@ -40,6 +43,24 @@
     zenith
     nh
     amberol
+    (callPackage
+      ../fix/ncspot.nix
+      { })
+    (callPackage
+      ../fix/oxinoti.nix
+      { })
+    (callPackage
+      ../fix/oxidash.nix
+      { })
+    (callPackage
+      ../fix/oxicalc.nix
+      { })
+    (callPackage
+      ../fix/oxipaste.nix
+      { })
+    (callPackage
+      ../fix/oxishut.nix
+      { })
   ];
 
   home.username = "dashie";

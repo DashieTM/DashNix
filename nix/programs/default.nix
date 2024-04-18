@@ -27,6 +27,7 @@ in
     ];
   };
   home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.users.dashie.imports = [
     {
       _module = { args = { inherit inputs; }; };
