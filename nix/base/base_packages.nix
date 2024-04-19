@@ -22,6 +22,7 @@
     hicolor-icon-theme
     morewaita-icon-theme
     kdePackages.breeze-icons
+    gnome.seahorse
   ];
 
   gtk.iconCache.enable = false;
