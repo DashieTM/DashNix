@@ -7,19 +7,24 @@
     glib
     gtk4
     gtk3
+    libadwaita
     gtk-layer-shell
     gtk4-layer-shell
     direnv
     dconf
     gsettings-desktop-schemas
     gnome.nixos-gsettings-overrides
-    gnome.adwaita-icon-theme
     bibata-cursors
     xorg.xkbutils
     libxkbcommon
-    gnome-icon-theme
     icon-library
+    gnome.adwaita-icon-theme
+    hicolor-icon-theme
+    morewaita-icon-theme
+    kdePackages.breeze-icons
   ];
+
+  gtk.iconCache.enable = false;
 
   fonts.packages = with pkgs; [
     cantarell-fonts

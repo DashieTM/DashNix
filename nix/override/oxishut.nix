@@ -22,7 +22,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-UeoBSHwMGfhkgRT7kmelcG3/omtB03Wh4IZrTy3yf3Y=";
 
-  nativeBuildInputs = with pkgs;[ pkg-config glib ];
+  nativeBuildInputs = with pkgs;[
+    pkg-config
+    glib
+    wrapGAppsHook4
+  ];
 
   buildInputs = with pkgs;[
     gtk4

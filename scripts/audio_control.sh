@@ -1,8 +1,7 @@
-#!/bin/bash
 
 ncspot() {
-	echo "$1"
-	echo "$2"
+  notify-send "$1"
+  notify-send "$2"
 	NUM=$(pactl list clients short | rg "ncspot" | awk -F 'PipeWire' ' { print $1 } ' | tr -d ' \t\n')
 	CHANGE=$(pactl list sink-inputs short | rg "$NUM" | awk -F ' ' ' { print $1 }' | tr -d ' \t\n')
 	pactl set-sink-input-volume "$CHANGE" "$1"

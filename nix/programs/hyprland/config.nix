@@ -1,5 +1,6 @@
 { pkgs
 , inputs
+, config
 , ...
 }:
 {
@@ -240,7 +241,7 @@
       #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "nextcloud --background"
       "oxinoti"
-    ];
+    ] ++ config.programs.hyprland.extra_autostart;
 
     plugin = {
       hyprspace = {

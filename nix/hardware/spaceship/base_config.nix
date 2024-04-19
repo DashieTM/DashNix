@@ -43,4 +43,5 @@
     wallpaper = HDMI-A-1,/home/dashie/Pictures/backgrounds/shinobu_1200.jpg
     splash = true
   '';
+  programs.hyprland.extra_autostart= [ "streamdeck -n" ];
 }

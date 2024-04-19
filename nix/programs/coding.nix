@@ -23,5 +23,6 @@
     unzip
     pkg-config
     sqlite
+    plantuml
   ];
 }

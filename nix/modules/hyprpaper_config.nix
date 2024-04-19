@@ -7,7 +7,15 @@
       '';
       type = lib.types.lines;
       description = ''
-        Extra settings for foo.
+        hyprpaper
+      '';
+    };
+    extra_autostart = lib.mkOption {
+      default = [ ];
+      example = [ "your application" ];
+      type = lib.types.listOf lib.types.str;
+      description = ''
+        Extra exec_once.
       '';
     };
   };

@@ -35,7 +35,6 @@ in
     adw-gtk3
     qt5ct
     qt6ct
-    libadwaita
     gnutar
     fishPlugins.tide
     nix-index
@@ -44,6 +43,8 @@ in
     nh
     amberol
     satty
+    pulseaudio
+    playerctl
     (callPackage
       ../override/ncspot.nix
       { })
@@ -61,6 +62,9 @@ in
       { })
     (callPackage
       ../override/oxishut.nix
+      { })
+    (callPackage
+      ../override/streamdeck.nix
       { })
   ];
 
@@ -88,6 +92,7 @@ in
       gtk-theme = "adw-gtk3";
       cursor-theme = "Bibata-Modern-Classic";
       cursor-size = 24;
+      icon-theme = "MoreWaita";
     };
   };
 

@@ -22,7 +22,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-seFHiBht0vc+iqQw5bd22qVvdhCMqDthWuth3NTm8OY=";
 
-  nativeBuildInputs = with pkgs;[ pkg-config glib ];
+  nativeBuildInputs = with pkgs;[
+    pkg-config
+    glib
+    wrapGAppsHook4
+  ];
 
   buildInputs = with pkgs;[
     dbus
@@ -30,16 +34,6 @@ rustPlatform.buildRustPackage rec {
     gtk4-layer-shell
     libadwaita
   ];
-
-  #postInstall = ''
-  #  install -D --mode=444 $src/misc/ncspot.desktop $out/share/applications/${pname}.desktop
-  #  install -D --mode=444 $src/images/logo.svg $out/share/icons/hicolor/scalable/apps/${pname}.png
-  #'';
-
-  #passthru = {
-  #  updateScript = nix-update-script { };
-  #  tests.version = testers.testVersion { package = oxinoti; };
-  #};
 
   meta = with lib; {
     description = "A work in progress notification daemon made with rust and gtk.";

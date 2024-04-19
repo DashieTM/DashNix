@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 54a8c19..f107170 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -18,7 +18,7 @@ pillow = "10.2.0"
+ pyside6 = "^6.4.2"
+ CairoSVG = "^2.5.2"
+ filetype = "^1.0.10"
+-importlib-metadata = "^6.8.0"
++importlib-metadata = "^7.0.0"
+ evdev = "^1.6.1"
+ 
+ [tool.poetry.group.docs.dependencies]
