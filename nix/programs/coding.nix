@@ -24,5 +24,6 @@
     pkg-config
     sqlite
     plantuml
+    vscodium
   ];
 }

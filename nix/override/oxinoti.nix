@@ -17,7 +17,7 @@ rustPlatform.buildRustPackage rec {
     owner = "DashieTM";
     repo = "OxiNoti";
     rev = "${version}";
-    hash = "sha256-XZMfJ2kUTd8+XiDgZFbG1sOPt37e4M+1rgp4Bdlej7s=";
+    hash = "sha256-fsrtLb14mCuYb1ibJAzPCrPNXdlcU/J7ZGYoVfppFBM=";
   };
 
   cargoHash = "sha256-jIdev6K5MQ8jASDo1KWU89rSLd9UhI2MhTT4l7pP+tA=";

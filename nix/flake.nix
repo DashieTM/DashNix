@@ -35,7 +35,10 @@
         };
         overlays = [
           # because allowing rust nightly is too hard by default....
-          (import (fetchTarball { url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"; sha256 = "sha256:06al2zlkyf14pz0i0q0ah18ygijra8l5qwd8rnm1bp9l6g8gp5zk"; }))
+          (import (fetchTarball {
+            url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
+            sha256 = "sha256:02p0zzglgi3980iyam46wv8ajr83wj6myjhrjjfv96vkafl6pycg";
+          }))
         ];
       };
       base_imports = [

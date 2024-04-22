@@ -45,9 +45,8 @@ in
     satty
     pulseaudio
     playerctl
-    (callPackage
-      ../override/ncspot.nix
-      { })
+    ncspot
+    poppler_utils
     (callPackage
       ../override/oxinoti.nix
       { })

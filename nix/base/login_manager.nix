@@ -44,6 +44,9 @@
       };
     };
   };
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+  '';
 
   # unlock GPG keyring on login
   security.pam.services.greetd.enableGnomeKeyring = true;
