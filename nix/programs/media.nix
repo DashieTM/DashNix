@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     # base audio
@@ -15,8 +12,11 @@
     mpv
     # pdf
     zathura
+    evince
+    libreoffice-fresh
+    pdftk
     # spotify
-    ncspot
+    #ncspot
     # video editing
     kdenlive
     # image creation

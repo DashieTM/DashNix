@@ -1,8 +1,11 @@
-{ lib
-, pkgs
+{ pkgs
 , ...
 }:
 {
+  imports = [
+    ./nvim/default.nix
+  ];
+
   home.packages = with pkgs; [
     git
     gcc
@@ -12,9 +15,15 @@
     go
     nodejs_20
     deno
-    # rustpython
-    neovim
+    python3
     typst
     neovide
+    tree-sitter
+    dotnet-runtime_8
+    unzip
+    pkg-config
+    sqlite
+    plantuml
+    vscodium
   ];
 }

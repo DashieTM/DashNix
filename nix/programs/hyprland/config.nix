@@ -1,21 +1,8 @@
-{ config
-, pkgs
+{ pkgs
+, inputs
+, config
 , ...
 }:
-let
-  # scripts = "${config.home.homeDirectory}/.config/scripts";
-  inputs = {
-  hyprland ={
-      # Update for releavant commit, this is just bleeding edge as of 2024/04/11
-      url = github:hyprwm/Hyprland/ac0f3411c18497a39498b756b711e092512de9e0;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    Hyprspace = {
-      url = github:KZDKM/Hyprspace;
-      inputs.hyprland.follows = "hyprland";
-    };
-  };
-in
 {
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
@@ -24,7 +11,7 @@ in
     bindm = [
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
-    ]; 
+    ];
 
     bind = [
       # screenshots
@@ -131,31 +118,38 @@ in
     ];
 
     general = {
-        gaps_out = "3,5,5,5";
-        border_size = 3;
-        col.active_border = "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
-        col.inactive_border = "0x66333333";
-        allow_tearing = true;
+      gaps_out = "3,5,5,5";
+      border_size = 3;
+      "col.active_border" = "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
+      "col.inactive_border" = "0x66333333";
+      allow_tearing = true;
     };
 
     decoration = {
-        rounding = 4;
+      rounding = 4;
     };
 
-    animations =  {
-        bezier = "penguin,0.05,0.9,0.1,1.0";
-        animation = [
-          "windowsMove,1,4,default"
-          "windows,1,7,default,popin 70%"
-          "windowsOut,1,7,default,popin 70%"
-          "border,1,10,default"
-          "fade,1,7,default"
-          "workspaces,1,6,default"
-          "layers,1,3,default,popin"
-        ];
+    animations = {
+      bezier = "penguin,0.05,0.9,0.1,1.0";
+      animation = [
+        "windowsMove,1,4,default"
+        "windows,1,7,default,popin 70%"
+        "windowsOut,1,7,default,popin 70%"
+        "border,1,10,default"
+        "fade,1,7,default"
+        "workspaces,1,6,default"
+        "layers,1,3,default,popin"
+      ];
+    };
+
+    dwindle = {
+      preserve_split = true;
+      pseudotile = 0;
+      permanent_direction_override = false;
     };
 
     input = {
+      kb_layout = "dashie";
       repeat_delay = 200;
       force_no_accel = true;
       touchpad = {
@@ -166,12 +160,18 @@ in
     };
 
     misc = {
-        vrr = 1;
-        animate_manual_resizes = 1;
-        enable_swallow = true;
-        disable_splash_rendering = true;
-        disable_hyprland_logo = true;
-        swallow_regex = "^(.*)(kitty)(.*)$";
+      vrr = 1;
+      animate_manual_resizes = 1;
+      enable_swallow = true;
+      disable_splash_rendering = true;
+      disable_hyprland_logo = true;
+      swallow_regex = "^(.*)(kitty)(.*)$";
+      # conversion seems to be borked right now, i want a smooth bibata :(
+      enable_hyprcursor = false;
+    };
+
+    gestures = {
+      workspace_swipe = true;
     };
 
     env = [
@@ -185,50 +185,17 @@ in
       "XCURSOR_THEME,Bibata-Modern-Classic"
       "XCURSOR_SIZE,24"
       "QT_QPA_PLATFORM,wayland"
+      "QT_QPA_PLATFORMTHEME = \"qt5ct\""
       "QT_WAYLAND_FORCE_DPI,96"
       "QT_AUTO_SCREEN_SCALE_FACTOR,0"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "QT_SCALE_FACTOR,1"
-      "PKG_CONFIG_PATH,/usr/local/lib/pkgconfig"
-      "LD_LIBRARY_PATH,/usr/local/lib"
       "EDITOR,\"neovide --novsync --nofork\""
       "WLR_DRM_NO_ATOMIC,1"
       "GTK_USE_PORTAL, 1"
-      "PATH,/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/.local/bin:~/.cargo/bin:$PATH"
     ];
 
-    monitor = [
-      # default
-      "DP-2,2560x1440@165,0x0,1"
-      "DP-1,3440x1440@180,2560x0,1"
-      "HDMI-A-1,1920x1200@60,6000x0,1"
-      "HDMI-A-1,transform,1"
-
-      # all others
-      ",highrr,auto,1"
-    ];
-
-    workspace = [
-      # workspaces
-      # monitor middle
-      "2,monitor:DP-1, default:true"
-      "4,monitor:DP-1"
-      "6,monitor:DP-1"
-      "8,monitor:DP-1"
-      "9,monitor:DP-1"
-      "10,monitor:DP-1"
-
-      # monitor left
-      "1,monitor:DP-2, default:true"
-      "5,monitor:DP-2"
-      "7,monitor:DP-2"
-
-      # monitor right
-      "3,monitor:HDMI-A-1, default:true"
-    ];
-
-
-    layerrule = [ 
+    layerrule = [
       # layer rules
       # mainly to disable animations within slurp and grim
       "noanim, selection"
@@ -261,20 +228,20 @@ in
 
     exec-once = [
       # environment
-      "systemctl --user import-environment" 
+      "systemctl --user import-environment"
       "dbus-update-activation-environment --systemd --all"
-      "hyprctl setcursor Bibata-Modern-Classic 24" 
+      "hyprctl setcursor Bibata-Modern-Classic 24"
 
       # other programs
-      "hyprpaper" 
-      "ironbar" 
-      "firefox" 
-      "streamdeck -n" 
-      "oxipaste_daemon" 
-      "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" 
-      "nextcloud --background" 
-      "oxinoti" 
-    ];
+      "hyprpaper"
+      "ironbar"
+      "firefox"
+      "oxipaste_daemon"
+      # TODO: is this necessary?
+      #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+      "nextcloud --background"
+      "oxinoti"
+    ] ++ config.programs.hyprland.extra_autostart;
 
     plugin = {
       hyprspace = {
@@ -285,7 +252,6 @@ in
     };
   };
   wayland.windowManager.hyprland.plugins = [
-    # ... whatever
     inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
 }

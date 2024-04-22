@@ -1,14 +1,15 @@
-{  
- lib
-, pkgs
+{ pkgs
 , ...
 }: {
-  imports = [ 
-    #./anyrun.nix
+  imports = [
+    ./anyrun.nix
+    ./config.nix
+    ./ironbar.nix
+    ./hyprpaper.nix
+    ./hyprgreet.nix
   ];
 
   home.packages = with pkgs; [
-  hyprland
     xorg.xprop
     grim
     slurp
@@ -16,10 +17,13 @@
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     hyprpaper
-    ironbar
     copyq
     gnome.nautilus
     gnome.sushi
+    wl-clipboard
+    kooha
+    hyprcursor
+    hyprpaper
+    hyprpicker
   ];
-
 }
