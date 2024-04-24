@@ -23,6 +23,7 @@
     morewaita-icon-theme
     kdePackages.breeze-icons
     gnome.seahorse
+    upower
   ];
 
   gtk.iconCache.enable = false;
@@ -42,6 +43,7 @@
   '';
 
   programs.dconf.enable = true;
+  services.upower.enable = true;
   services.printing.enable = true;
   services.dbus.enable = true;
   services.dbus.packages = with pkgs; [

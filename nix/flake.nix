@@ -37,7 +37,7 @@
           # because allowing rust nightly is too hard by default....
           (import (fetchTarball {
             url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
-            sha256 = "sha256:02p0zzglgi3980iyam46wv8ajr83wj6myjhrjjfv96vkafl6pycg";
+            sha256 = "sha256:1aaza47rqi74ypi77ksz396q9l7rrxfrdnhi2pfjb0yqmz7l69wl";
           }))
         ];
       };
@@ -55,7 +55,7 @@
         };
         modules = [
           ./hardware/marmo/default.nix
-        ];
+        ] ++ base_imports;
       };
       nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -64,7 +64,7 @@
         };
         modules = [
           ./hardware/overheating/default.nix
-        ];
+        ] ++ base_imports;
       };
       nixosConfigurations."spaceship" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
