@@ -32,15 +32,17 @@
     cantarell-fonts
   ];
 
-  environment.variables = {
-    NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (config.systemd.packages ++ config.environment.systemPackages);
-    PKG_CONFIG_PATH = pkgs.lib.makeLibraryPath (config.systemd.packages ++ config.environment.systemPackages);
-  };
   nix.settings.experimental-features = "nix-command flakes";
   programs.fish.enable = true;
   programs.fish.promptInit = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
   '';
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    jdk
+    zlib
+  ];
 
   programs.dconf.enable = true;
   services.upower.enable = true;
@@ -72,4 +74,8 @@
     };
   };
   programs.ssh.startAgent = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "dashie" ];
+  virtualisation.virtualbox.guest.enable = true;
 }

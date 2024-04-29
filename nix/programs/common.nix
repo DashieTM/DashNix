@@ -47,6 +47,7 @@ in
     playerctl
     ncspot
     poppler_utils
+    neofetch
     (callPackage
       ../override/oxinoti.nix
       { })
@@ -64,6 +65,12 @@ in
       { })
     (callPackage
       ../override/streamdeck.nix
+      { })
+    (callPackage
+      ../override/reset.nix
+      { })
+    (callPackage
+      ../override/cambalache.nix
       { })
   ];
 

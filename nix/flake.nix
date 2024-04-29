@@ -21,6 +21,9 @@
         url = "github:JakeStanger/ironbar";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+      rust-overlay = {
+        url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
+      };
 
       anyrun.url = "github:Kirottu/anyrun";
       anyrun.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,10 +38,9 @@
         };
         overlays = [
           # because allowing rust nightly is too hard by default....
-          (import (fetchTarball {
-            url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
-            sha256 = "sha256:1aaza47rqi74ypi77ksz396q9l7rrxfrdnhi2pfjb0yqmz7l69wl";
-          }))
+          (import
+            inputs.rust-overlay
+          )
         ];
       };
       base_imports = [

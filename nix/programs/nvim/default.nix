@@ -60,12 +60,16 @@
           nvim-lspconfig
           nvim-notify
           nvim-spectre
-          nvim-treesitter
+          nvim-treesitter.withAllGrammars
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
           nvim-ts-context-commentstring
           nvim-web-devicons
+          nvim-jdtls
+          neotest
+          neotest-java
+          neotest-rust
           persistence-nvim
           plenary-nvim
           telescope-fzf-native-nvim
@@ -97,6 +101,18 @@
           defaults = {
             lazy = true,
           },
+          performance = {
+            rtp = {
+              disabled_plugins = {
+                "gzip",
+                "netrw",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+              },
+            },
+          },
           dev = {
             -- reuse files from pkgs.vimPlugins.*
             path = "${lazyPath}",
@@ -107,8 +123,6 @@
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             { import = "lazyvim.plugins.extras.ui.alpha" },
-            { import = "plugins" },
-            { import = "plugins.plugins" },
             { import = "lazyvim.plugins.extras.lang.rust" },
             { import = "lazyvim.plugins.extras.lang.tailwind" },
             { import = "lazyvim.plugins.extras.lang.java" },
@@ -127,27 +141,15 @@
             { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
-            { "williamboman/mason.nvim", enabled = false },
-            -- import/override with your plugins
-            { import = "plugins" },
+            --{ "williamboman/mason.nvim", enabled = false },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
             { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+            { import = "plugins" },
+            { import = "plugins.plugins" },
           },
           install = { colorscheme = { "tokyonight" } },
           checker = { enabled = true, notify = false },
           change_detection = { enabled = true, notify = false },
-          performance = {
-            rtp = {
-              disabled_plugins = {
-                "gzip",
-                "netrw",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-              },
-            },
-          },
         })
       '';
   };
@@ -157,14 +159,12 @@
     let
       parsers = pkgs.symlinkJoin {
         name = "treesitter-parsers";
-        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-          c
-          lua
-        ])).dependencies;
+        paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
       };
     in
     "${parsers}/parser";
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   xdg.configFile."nvim/lua".source = ./lua;
+  xdg.configFile."nvim/ftplugin".source = ./ftplugin;
 }

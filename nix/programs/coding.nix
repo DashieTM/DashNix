@@ -17,13 +17,21 @@
     deno
     python3
     typst
+    typst-lsp
+    typstfmt
     neovide
     tree-sitter
-    dotnet-runtime_8
+    dotnet-sdk
     unzip
     pkg-config
     sqlite
     plantuml
     vscodium
+    gradle
+    maven
+    jdt-language-server
+    adoptopenjdk-jre-bin
+    #vscode-extensions.vscjava.vscode-java-test
+    #vscode-extensions.vscjava.vscode-java-debug
   ];
 }
