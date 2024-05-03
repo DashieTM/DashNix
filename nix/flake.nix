@@ -23,6 +23,7 @@
       };
       rust-overlay = {
         url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       anyrun.url = "github:Kirottu/anyrun";

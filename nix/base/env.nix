@@ -9,5 +9,8 @@
     SUDO_EDITOR = "neovide --no-fork";
     SCRIPTS = "$HOME/.config/scripts";
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    GOPATH = "$HOME/.go";
+  };
 }

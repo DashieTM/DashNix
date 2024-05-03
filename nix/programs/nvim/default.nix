@@ -67,6 +67,7 @@
           nvim-ts-context-commentstring
           nvim-web-devicons
           nvim-jdtls
+          omnisharp-extended-lsp-nvim
           neotest
           neotest-java
           neotest-rust

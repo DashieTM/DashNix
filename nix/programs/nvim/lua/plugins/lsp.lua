@@ -64,6 +64,10 @@ return {
 				ansiblels = {
 					mason = false,
 				},
+				omnisharp = {
+					mason = false,
+					cmd = { "OmniSharp" },
+				},
 				typst_lsp = {
 					settings = {
 						experimentalFormatterMode = "on",
@@ -158,6 +162,7 @@ return {
 				nix = { "nixpkgs-fmt" },
 				lua = { "stylua" },
 				sh = { "shfmt" },
+				cs = { "dotnet-csharpier" },
 			},
 		},
 	},

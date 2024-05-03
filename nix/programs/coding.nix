@@ -31,6 +31,8 @@
     maven
     jdt-language-server
     adoptopenjdk-jre-bin
+    omnisharp-roslyn
+    csharpier
     #vscode-extensions.vscjava.vscode-java-test
     #vscode-extensions.vscjava.vscode-java-debug
   ];
