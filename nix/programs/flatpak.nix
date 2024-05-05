@@ -12,6 +12,7 @@
     "org.onlyoffice.desktopeditors"
     "org.gtk.Gtk3theme.adw-gtk3"
     "com.brave.Browser"
+    "com.rustdesk.RustDesk"
   ];
 }
 

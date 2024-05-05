@@ -19,7 +19,7 @@ python3Packages.buildPythonApplication rec {
 
   patches = [
     # nixpkgs has a newer pillow version
-    ./streamdeck_path.patch
+    ./streamdeck.patch
   ];
 
   desktopItems =

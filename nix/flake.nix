@@ -3,31 +3,31 @@
 
   inputs =
     {
-      nix-flatpak.url = "github:gmodena/nix-flatpak";
-      nixpkgs.url = "github:nixos/nixpkgs";
+      nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+      nix-flatpak = {
+        url = "github:gmodena/nix-flatpak";
+        #inputs.nixpkgs.follows = "nixpkgs";
+      };
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      hyprland = {
-        url = "github:hyprwm/Hyprland/67f47fbdccd639502a76ccb3552a23df37f19ef8";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # inputs.nixpkgs.follows = "nixpkgs";
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
         inputs.hyprland.follows = "hyprland";
       };
       ironbar = {
         url = "github:JakeStanger/ironbar";
-        inputs.nixpkgs.follows = "nixpkgs";
+        # inputs.nixpkgs.follows = "nixpkgs";
       };
       rust-overlay = {
         url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
-        inputs.nixpkgs.follows = "nixpkgs";
+        # inputs.nixpkgs.follows = "nixpkgs";
       };
-
       anyrun.url = "github:Kirottu/anyrun";
-      anyrun.inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
   outputs = { ... }@inputs:
@@ -81,4 +81,18 @@
         ] ++ base_imports;
       };
     };
+
+  nixConfig = {
+    builders-use-substitutes = true;
+    # substituters to use
+    extra-substituters = [
+      "https://hyprland.cachix.org"
+      "https://anyrun.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+    ];
+  };
 }

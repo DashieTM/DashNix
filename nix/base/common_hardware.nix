@@ -42,6 +42,10 @@
     DIRENV_LOG_FORMAT = "";
   };
 
+  nix.settings.trusted-users = [
+    "dashie"
+  ];
+
   # allows user change later on
   users.mutableUsers = true;
   users.users.dashie = {
@@ -56,18 +60,6 @@
     # this password will only last for the first login
     # e.g. login, then change to whatever else, this also ensures no public hash is available
     password = "firstlogin";
-  };
-
-  nix.settings = {
-    builders-use-substitutes = true;
-    # substituters to use
-    substituters = [
-      "https://anyrun.cachix.org"
-    ];
-
-    trusted-public-keys = [
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-    ];
   };
 
   system.stateVersion = "unstable";

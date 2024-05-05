@@ -1,8 +1,13 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 54a8c19..f107170 100644
+index 54a8c19..0b95fb3 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -18,7 +18,7 @@ pillow = "10.2.0"
+@@ -14,11 +14,11 @@ packages = [
+ [tool.poetry.dependencies]
+ python = ">=3.8,<3.13"
+ streamdeck = "^0.9.5"
+-pillow = "10.2.0"
++pillow = "^10.2.0"
  pyside6 = "^6.4.2"
  CairoSVG = "^2.5.2"
  filetype = "^1.0.10"
