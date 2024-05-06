@@ -168,6 +168,7 @@
       swallow_regex = "^(.*)(kitty)(.*)$";
       # conversion seems to be borked right now, i want a smooth bibata :(
       enable_hyprcursor = false;
+      initial_workspace_tracking = 2;
     };
 
     gestures = {

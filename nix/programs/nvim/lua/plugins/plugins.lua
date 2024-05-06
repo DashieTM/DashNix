@@ -191,6 +191,9 @@ return {
 				view = {
 					side = "right",
 				},
+				diagnostics = {
+					enable = true,
+				},
 			})
 		end,
 		keys = {
