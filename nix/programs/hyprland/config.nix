@@ -243,15 +243,15 @@
       "oxinoti"
     ] ++ config.programs.hyprland.extra_autostart;
 
-    plugin = {
-      hyprspace = {
-        bind = [
-          "SUPER, W, overview:toggle, toggle"
-        ];
-      };
-    };
+    #plugin = {
+    #  hyprspace = {
+    #    bind = [
+    #      "SUPER, W, overview:toggle, toggle"
+    #    ];
+    #  };
+    #};
   };
-  wayland.windowManager.hyprland.plugins = [
-    inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-  ];
+  #wayland.windowManager.hyprland.plugins = [
+  #  inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+  #];
 }

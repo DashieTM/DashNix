@@ -4,30 +4,32 @@
   inputs =
     {
       nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+
       nix-flatpak = {
         url = "github:gmodena/nix-flatpak";
-        #inputs.nixpkgs.follows = "nixpkgs";
       };
+
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # inputs.nixpkgs.follows = "nixpkgs";
+
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
         inputs.hyprland.follows = "hyprland";
       };
+
       ironbar = {
         url = "github:JakeStanger/ironbar";
-        # inputs.nixpkgs.follows = "nixpkgs";
       };
+
       rust-overlay = {
         url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
-        # inputs.nixpkgs.follows = "nixpkgs";
       };
+
       anyrun.url = "github:Kirottu/anyrun";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
   outputs = { ... }@inputs:
@@ -84,7 +86,7 @@
 
   nixConfig = {
     builders-use-substitutes = true;
-    # substituters to use
+
     extra-substituters = [
       "https://hyprland.cachix.org"
       "https://anyrun.cachix.org"
