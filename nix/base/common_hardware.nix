@@ -51,7 +51,7 @@
   users.users.dashie = {
     isNormalUser = true;
     description = "dashie";
-    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+    extraGroups = [ "networkmanager" "wheel" "gamemode" "docker" ];
     packages = with pkgs; [
       home-manager
       xdg-desktop-portal-gtk
