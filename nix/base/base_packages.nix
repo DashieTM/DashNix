@@ -76,7 +76,4 @@
   };
   programs.ssh.startAgent = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "dashie" ];
-  virtualisation.virtualbox.guest.enable = true;
 }

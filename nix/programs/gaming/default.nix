@@ -1,4 +1,5 @@
 { pkgs
+, config
 , ...
 }: {
   imports = [
@@ -24,7 +25,7 @@
       };
       gpu = {
         apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 0;
+        gpu_device = config.programs.gamemode.device;
         amd_performance_level = "high";
       };
       custom = {
