@@ -53,13 +53,14 @@
       ];
     in
     {
-      homeConfigurations."marmo" = inputs.home-manager.lib.homeManagerConfiguration {
+      nixosConfigurations."marmo" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs pkgs;
-          mod = ./hardware/overheating/base_config.nix;
+          mod = ./hardware/marmo/base_config.nix;
         };
         modules = [
           ./hardware/marmo/default.nix
+          ./programs/gaming/default.nix
         ] ++ base_imports;
       };
       nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
