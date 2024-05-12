@@ -24,9 +24,6 @@ in
   xdg.configFile."qt5ct/qss/tab.qss" = {
     text = "${qss}";
   };
-  xdg.configFile."qt6ct/qss/tab.qss" = {
-    text = "${qss}";
-  };
   xdg.configFile."qt5ct/qt5ct.conf" = {
     text =
       ''

@@ -1,51 +1,63 @@
-{ pkgs
+{ inputs
+, lib
+, config
+, pkgs
 , ...
-}: {
-  # greetd display manager
-  services.greetd =
-    let
-      session = {
-        command = "${pkgs.hyprland}/bin/Hyprland --config /home/dashie/.config/hypr/hyprgreet.conf";
-        user = "dashie";
-      };
-    in
+}:
+let
+  regreet_override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
+    SESSION_DIRS = "${config.services.xserver.displayManager.sessionData.desktops}/share";
+  });
+  session = {
+    command = "${lib.getExe pkgs.hyprland} --config /etc/greetd/hyprgreet.conf";
+    user = "dashie";
+  };
+in
+{
+  imports = [
+    inputs.hyprland.nixosModules.default
+  ];
+
+  services.xserver.displayManager.session = [
     {
-      enable = true;
-      settings = {
-        terminal.vt = 1;
-        default_session = session;
-        initial_session = session;
-      };
-    };
-  programs.regreet = {
+      manage = "desktop";
+      name = "Hyprland";
+      start = ''
+        ${lib.getExe pkgs.hyprland} & waitPID=$!
+      '';
+    }
+  ];
+
+  # greetd display manager
+  programs.hyprland.enable = true;
+  services.greetd = {
     enable = true;
     settings = {
-
-      background = {
-        fit = "Contain";
-      };
-
-      env = {
-        QT_QPA_PLATFORMTHEME = "qt5ct";
-        PATH = "/home/dashie/.cargo/bin:PATH";
-      };
-
-      GTK = {
-        application_prefer_dark_theme = true;
-        cursor_theme_name = "Adwaita";
-        icon_theme_name = "Adwaita";
-        theme_name = "adw-gtk3";
-
-        command = {
-          reboot = [ "systemctl" "reboot" ];
-
-          poweroff = [ "systemctl" "poweroff" ];
-        };
-      };
+      terminal.vt = 1;
+      default_session = session;
     };
   };
+
   environment.etc."greetd/environments".text = ''
     Hyprland
+  '';
+
+  environment.etc."greetd/hyprgreet.conf".text = ''
+    exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+    monitor=${config.programs.ironbar.monitor},3440x1440@180,0x0,1
+    monitor=_,disable
+
+    input {
+        force_no_accel = true
+    }
+
+    misc {
+        disable_splash_rendering = true
+        disable_hyprland_logo = true
+    }
+
+    exec-once=regreet --style /home/dashie/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
   '';
 
   # unlock GPG keyring on login

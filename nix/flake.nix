@@ -16,6 +16,8 @@
 
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
+      hyprlock.url = "github:hyprwm/hyprlock";
+
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
         inputs.hyprland.follows = "hyprland";

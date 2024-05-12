@@ -30,7 +30,7 @@
       "$mod SUPER,G,exec,oxicalc"
       "$mod SUPER,D,exec,oxishut"
       "$mod SUPER,A,exec,oxipaste"
-      "$mod SUPERSHIFT,L,exec, playerctl -a pause & swaylock -c 000000 & systemctl suspend"
+      "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
       # media keys
       ",XF86AudioMute,exec, $HOME/.config/scripts/audio_control.sh mute"
@@ -166,9 +166,12 @@
       disable_splash_rendering = true;
       disable_hyprland_logo = true;
       swallow_regex = "^(.*)(kitty)(.*)$";
+      initial_workspace_tracking = 1;
+    };
+
+    cursor = {
       # conversion seems to be borked right now, i want a smooth bibata :(
       enable_hyprcursor = false;
-      initial_workspace_tracking = 1;
     };
 
     gestures = {
@@ -186,7 +189,7 @@
       "XCURSOR_THEME,Bibata-Modern-Classic"
       "XCURSOR_SIZE,24"
       "QT_QPA_PLATFORM,wayland"
-      "QT_QPA_PLATFORMTHEME = \"qt5ct\""
+      "QT_QPA_PLATFORMTHEME,qt5ct"
       "QT_WAYLAND_FORCE_DPI,96"
       "QT_AUTO_SCREEN_SCALE_FACTOR,0"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"

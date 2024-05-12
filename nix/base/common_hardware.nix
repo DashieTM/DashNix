@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -55,7 +55,6 @@
     packages = with pkgs; [
       home-manager
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
     ];
     # this password will only last for the first login
     # e.g. login, then change to whatever else, this also ensures no public hash is available
@@ -63,4 +62,41 @@
   };
 
   system.stateVersion = "unstable";
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-label/ROOT";
+      fsType = "btrfs";
+      options = [
+        "noatime"
+        "nodiratime"
+        "discard"
+      ];
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-label/BOOT";
+      fsType = "vfat";
+      options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+    };
+
+  fileSystems."/home" =
+    {
+      device = "/dev/disk/by-label/HOME";
+      fsType = "btrfs";
+      options = [
+        "noatime"
+        "nodiratime"
+        "discard"
+      ];
+    };
+
+  swapDevices =
+    [{ device = "/dev/disk/by-label/SWAP"; }];
+
+  boot.kernelParams = [
+    "resume=\"PARTLABEL=SWAP\""
+  ] ++ config.programs.boot.boot_params;
 }
