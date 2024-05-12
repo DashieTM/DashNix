@@ -142,7 +142,7 @@
       ];
       config = {
         monitors."${config.programs.ironbar.monitor}" = {
-          end = [
+          end = config.programs.ironbar.battery ++ [
             {
               type = "sys_info";
               format = [

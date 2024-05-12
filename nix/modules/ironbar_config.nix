@@ -8,5 +8,10 @@
         Extra settings for foo.
       '';
     };
+
+    battery = lib.mkOption {
+      default = [];
+      example = [];
+    };
   };
 }

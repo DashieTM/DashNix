@@ -1,4 +1,5 @@
 { pkgs
+, config
 , ...
 }: {
   imports = [
@@ -11,6 +12,7 @@
     steam
     lutris
     wine
+    adwsteamgtk
   ];
 
   programs.steam.enable = true;
@@ -23,7 +25,7 @@
       };
       gpu = {
         apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 0;
+        gpu_device = config.programs.gamemode.device;
         amd_performance_level = "high";
       };
       custom = {

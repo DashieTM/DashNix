@@ -14,6 +14,7 @@
     zathura
     evince
     libreoffice-fresh
+    onlyoffice-bin
     pdftk
     # spotify
     #ncspot
@@ -23,7 +24,9 @@
     inkscape
     gimp
     krita
-    # recording
-    obs-studio
+  ];
+  programs.obs-studio.enable = true;
+  programs.obs-studio.plugins = with pkgs; [
+    obs-studio-plugins.obs-vaapi
   ];
 }

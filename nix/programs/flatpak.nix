@@ -6,12 +6,9 @@
   }];
   services.flatpak.uninstallUnmanaged = true;
   services.flatpak.packages = [
+    # fallback if necessary, but generally avoided as nix is superior :)
     "com.github.tchx84.Flatseal"
     "io.github.Foldex.AdwSteamGtk"
-    "org.gnome.dspy"
-    "org.onlyoffice.desktopeditors"
-    "org.gtk.Gtk3theme.adw-gtk3"
-    "com.brave.Browser"
   ];
 }
 

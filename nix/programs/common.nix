@@ -26,8 +26,6 @@ in
     flatpak
     networkmanager
     zoxide
-    pkgs.greetd.greetd
-    pkgs.greetd.regreet
     fastfetch
     pkgs.gnome.gnome-keyring
     dbus
@@ -42,11 +40,13 @@ in
     zenith
     nh
     amberol
-    satty
     pulseaudio
     playerctl
     ncspot
     poppler_utils
+    neofetch
+    brave
+    greetd.regreet
     (callPackage
       ../override/oxinoti.nix
       { })
@@ -64,6 +64,12 @@ in
       { })
     (callPackage
       ../override/streamdeck.nix
+      { })
+    (callPackage
+      ../override/reset.nix
+      { })
+    (callPackage
+      ../override/cambalache.nix
       { })
   ];
 

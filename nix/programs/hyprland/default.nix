@@ -1,4 +1,5 @@
-{ pkgs
+{ inputs
+, pkgs
 , ...
 }: {
   imports = [
@@ -6,22 +7,20 @@
     ./config.nix
     ./ironbar.nix
     ./hyprpaper.nix
-    ./hyprgreet.nix
+    ./hyprlock.nix
   ];
 
   home.packages = with pkgs; [
     xorg.xprop
     grim
     slurp
-    swappy
+    satty
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    hyprpaper
+    # xdg-desktop-portal-hyprland
     copyq
     gnome.nautilus
     gnome.sushi
     wl-clipboard
-    kooha
     hyprcursor
     hyprpaper
     hyprpicker

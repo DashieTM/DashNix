@@ -10,4 +10,7 @@
     ",highrr,auto,1"
   ];
   programs.ironbar.monitor = "eDP-1";
+  programs.ironbar.battery = [
+    { type = "upower"; class = "memory-usage"; }
+  ];
 }
