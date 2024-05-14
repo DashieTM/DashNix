@@ -19,6 +19,20 @@
     plantuml
     d-spy
 
+    # cpp
+    bear
+
+    #yaml
+    yamlfmt
+    yamllint
+
+    #json
+    jsonfmt
+
+    #css
+    tailwindcss
+    tailwindcss-language-server
+
     #editors
     neovide
     ##fallback
