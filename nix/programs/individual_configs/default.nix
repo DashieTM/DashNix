@@ -4,5 +4,6 @@
     ./yazi.nix
     ./fish.nix
     ./ncspot.nix
+    ./ssh.nix
   ];
 }

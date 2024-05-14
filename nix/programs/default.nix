@@ -6,6 +6,7 @@ let
     inputs.anyrun.homeManagerModules.default
     inputs.ironbar.homeManagerModules.default
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    inputs.sops-nix.homeManagerModules.sops
   ];
 in
 {

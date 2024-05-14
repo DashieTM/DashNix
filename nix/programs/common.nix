@@ -47,6 +47,7 @@ in
     neofetch
     brave
     greetd.regreet
+    sops
     (callPackage
       ../override/oxinoti.nix
       { })
@@ -110,4 +111,16 @@ in
     {
       FLAKE = "home/dasshie/gits/dotFiles/nix";
     };
+
+  sops = {
+    gnupg = {
+      home = "~/.gnupg";
+      sshKeyPaths = [ ];
+    };
+    defaultSopsFile = ../secrets/secrets.yaml;
+    secrets.hub = { };
+    secrets.lab = { };
+    secrets.dashie = { };
+  };
+  systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 }
