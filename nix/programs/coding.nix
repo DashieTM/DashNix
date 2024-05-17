@@ -25,6 +25,13 @@
     #yaml
     yamlfmt
     yamllint
+    yaml-language-server
+
+    #markdown
+    marksman
+
+    #html
+    html-tidy
 
     #json
     jsonfmt
@@ -32,6 +39,7 @@
     #css
     tailwindcss
     tailwindcss-language-server
+    nodePackages_latest.vscode-css-languageserver-bin
 
     #editors
     neovide
@@ -74,6 +82,7 @@
     dotnet-sdk_8
     omnisharp-roslyn
     csharpier
+    netcoredbg
 
     #zig
     zig

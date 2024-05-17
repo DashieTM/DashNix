@@ -7,5 +7,8 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "overheating";
   programs.ironbar.monitor = "eDP-1";
-  programs.boot.boot_params = [];
+  programs.ironbar.scale = "2.0";
+  programs.boot.boot_params = [ ];
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 }

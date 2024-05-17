@@ -45,7 +45,7 @@ in
   environment.etc."greetd/hyprgreet.conf".text = ''
     exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-    monitor=${config.programs.ironbar.monitor},3440x1440@180,0x0,1
+    monitor=${config.programs.ironbar.monitor},3440x1440@180,0x0,${config.programs.ironbar.scale}
     monitor=_,disable
 
     input {

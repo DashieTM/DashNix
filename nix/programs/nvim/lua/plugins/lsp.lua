@@ -118,6 +118,10 @@ return {
 				yamlls = {
 					mason = false,
 				},
+				cssls = {
+					mason = false,
+					cmd = { "css-languageserver", '--stdio' },
+				},
 				lua_ls = {
 					mason = false,
 					{
