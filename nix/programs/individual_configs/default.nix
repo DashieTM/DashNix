@@ -5,5 +5,6 @@
     ./fish.nix
     ./ncspot.nix
     ./ssh.nix
+    ./direnv.nix
   ];
 }

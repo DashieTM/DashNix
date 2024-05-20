@@ -497,11 +497,11 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1706487304,
-        "narHash": "sha256-LE8lVX28MV2jWJsidW13D2qrHU/RUUONendL2Q/WlJg=",
+        "lastModified": 1716190602,
+        "narHash": "sha256-xYRimrR0duWvokWQEvB87bSsICeCvvX9DxpUOzCfsDE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "90f456026d284c22b3e3497be980b2e47d0b28ac",
+        "rev": "5a5ac83292c7842072318f57d68a48474f8bd34d",
         "type": "github"
       },
       "original": {
@@ -743,11 +743,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1716232192,
-        "narHash": "sha256-V5tQMMUc4zDWfY/91KWagutrfmyDOEOo0vWkhFvMJeQ=",
+        "lastModified": 1716235599,
+        "narHash": "sha256-6LDrLEfPzwbd5nEcis8us4BA18YhoWkzMVwafCJ5N/A=",
         "owner": "DashieTM",
         "repo": "OxiDash",
-        "rev": "aae01f9feadd9111869bdc940ca7404862d4957f",
+        "rev": "fe6984abc73f75a64b0a03231068c20f53ec4f76",
         "type": "github"
       },
       "original": {
@@ -763,11 +763,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1716232356,
-        "narHash": "sha256-2dvL/U5TnWkpd0f+GASwg1Bhnt0f8p3dfOk0lYJ6iL8=",
+        "lastModified": 1716235566,
+        "narHash": "sha256-1U4/h0YyuoOERjQE68yQZVsDdIGl43OprDplSGBMhYY=",
         "owner": "DashieTM",
         "repo": "OxiNoti",
-        "rev": "e07315309d901ae41aefae758bd590d92ccf3106",
+        "rev": "c52c330d59a3b066e94618adbe9a7be5b9cfde24",
         "type": "github"
       },
       "original": {
@@ -783,11 +783,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1716233251,
-        "narHash": "sha256-+WE1qMd4N4CElo/vm/WZ0Aex77kzm5nyWkr2PAD7Gus=",
+        "lastModified": 1716235097,
+        "narHash": "sha256-kTsSNciMnp3y/QOPseB/QlhRqVxrm7teRCMl05OIiBs=",
         "owner": "DashieTM",
         "repo": "OxiPaste",
-        "rev": "5d357c6fc8f4dd84a4a850dab3485bfe5a6a078c",
+        "rev": "3f494c1a3dd093e3c5761520554977a9dec33a3a",
         "type": "github"
       },
       "original": {
@@ -803,11 +803,11 @@
         "rust-overlay": "rust-overlay_5"
       },
       "locked": {
-        "lastModified": 1716232799,
-        "narHash": "sha256-Pzm45/GZ0Tn38EIx2ojxpwEFUWfy0XSe01UGILGJdvA=",
+        "lastModified": 1716235696,
+        "narHash": "sha256-qqN2ev97ff1Yftr+8YS7Pm2/kk8SpQU8uxplbQYJGho=",
         "owner": "DashieTM",
         "repo": "OxiShut",
-        "rev": "2a123b8710da615be3d5d59a367c49c802a36430",
+        "rev": "d38d5c892b7ae2420715cbb6b4944abb76b49f9d",
         "type": "github"
       },
       "original": {
@@ -823,11 +823,11 @@
         "rust-overlay": "rust-overlay_6"
       },
       "locked": {
-        "lastModified": 1716233038,
-        "narHash": "sha256-JuK1NvxtoC58/9RM70ClkCzXPHYipPiRonlGPO3JXcQ=",
+        "lastModified": 1716235655,
+        "narHash": "sha256-tTMaRDleLa7oBBwjlELt3NefpE1iwz4OLzyNIDGFjmY=",
         "owner": "Xetibo",
         "repo": "ReSet",
-        "rev": "397c48ae43e177203d5799aabec145e938d63a57",
+        "rev": "3cb7cd2d7f24bd1f270c9cdb5e519dde7936a6f4",
         "type": "github"
       },
       "original": {
@@ -884,12 +884,15 @@
       "locked": {
         "lastModified": 1716171463,
         "narHash": "sha256-lc7wOh5BjYUoxdhcPkeUY8BmuL2qtRaHlW1403RW48E=",
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "04d61d14803854fd8453ec43c5c53a471e5407a8",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "rust-overlay_3": {
@@ -900,12 +903,15 @@
       "locked": {
         "lastModified": 1716171463,
         "narHash": "sha256-lc7wOh5BjYUoxdhcPkeUY8BmuL2qtRaHlW1403RW48E=",
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "04d61d14803854fd8453ec43c5c53a471e5407a8",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "rust-overlay_4": {
@@ -916,12 +922,15 @@
       "locked": {
         "lastModified": 1716171463,
         "narHash": "sha256-lc7wOh5BjYUoxdhcPkeUY8BmuL2qtRaHlW1403RW48E=",
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "04d61d14803854fd8453ec43c5c53a471e5407a8",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "rust-overlay_5": {
@@ -932,12 +941,15 @@
       "locked": {
         "lastModified": 1716171463,
         "narHash": "sha256-lc7wOh5BjYUoxdhcPkeUY8BmuL2qtRaHlW1403RW48E=",
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "04d61d14803854fd8453ec43c5c53a471e5407a8",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "rust-overlay_6": {
@@ -948,12 +960,15 @@
       "locked": {
         "lastModified": 1716171463,
         "narHash": "sha256-lc7wOh5BjYUoxdhcPkeUY8BmuL2qtRaHlW1403RW48E=",
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "04d61d14803854fd8453ec43c5c53a471e5407a8",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "sops-nix": {
