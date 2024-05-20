@@ -14,10 +14,6 @@ let
   };
 in
 {
-  imports = [
-    inputs.hyprland.nixosModules.default
-  ];
-
   services.xserver.displayManager.session = [
     {
       manage = "desktop";

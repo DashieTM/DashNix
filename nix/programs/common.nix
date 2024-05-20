@@ -48,31 +48,22 @@ in
     brave
     greetd.regreet
     sops
-    (callPackage
-      ../override/oxinoti.nix
-      { })
-    (callPackage
-      ../override/oxidash.nix
-      { })
-    (callPackage
-      ../override/oxicalc.nix
-      { })
-    (callPackage
-      ../override/oxipaste.nix
-      { })
-    (callPackage
-      ../override/oxishut.nix
-      { })
+    flake-checker
     (callPackage
       ../override/streamdeck.nix
-      { })
-    (callPackage
-      ../override/reset.nix
       { })
     (callPackage
       ../override/cambalache.nix
       { })
   ];
+
+  #my own programs
+  programs.oxicalc.enable = true;
+  programs.oxinoti.enable = true;
+  programs.oxidash.enable = true;
+  programs.oxishut.enable = true;
+  programs.oxipaste.enable = true;
+  programs.reset.enable = true;
 
   home.username = "dashie";
   home.homeDirectory = "/home/dashie";

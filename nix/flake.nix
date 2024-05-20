@@ -16,24 +16,25 @@
 
       sops-nix.url = "github:Mic92/sops-nix";
 
-      hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
       hyprlock.url = "github:hyprwm/hyprlock";
 
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
-        inputs.hyprland.follows = "hyprland";
+        # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
+        inputs.hyprland.follows = "nixpkgs";
       };
 
       ironbar = {
         url = "github:JakeStanger/ironbar";
       };
 
-      rust-overlay = {
-        url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
-      };
-
       anyrun.url = "github:Kirottu/anyrun";
+      oxicalc.url = "github:DashieTM/OxiCalc";
+      oxishut.url = "github:DashieTM/OxiShut";
+      oxinoti.url = "github:DashieTM/OxiNoti";
+      oxidash.url = "github:DashieTM/OxiDash";
+      oxipaste.url = "github:DashieTM/OxiPaste";
+      reset.url = "github:Xetibo/ReSet";
     };
 
   outputs = { ... }@inputs:
@@ -43,12 +44,6 @@
         config = {
           allowUnfree = true;
         };
-        overlays = [
-          # because allowing rust nightly is too hard by default....
-          (import
-            inputs.rust-overlay
-          )
-        ];
       };
       base_imports = [
         inputs.home-manager.nixosModules.home-manager

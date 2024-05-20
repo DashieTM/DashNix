@@ -1,10 +1,15 @@
 { inputs, pkgs, mod, ... }:
 let
   base_imports = [
-    inputs.hyprland.homeManagerModules.default
     inputs.hyprlock.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
     inputs.ironbar.homeManagerModules.default
+    inputs.oxicalc.homeManagerModules.default
+    inputs.oxishut.homeManagerModules.default
+    inputs.oxinoti.homeManagerModules.default
+    inputs.oxidash.homeManagerModules.default
+    inputs.oxipaste.homeManagerModules.default
+    inputs.reset.homeManagerModules.default
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
   ];
