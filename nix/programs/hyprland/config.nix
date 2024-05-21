@@ -30,7 +30,8 @@
       "$mod SUPER,G,exec,oxicalc"
       "$mod SUPER,D,exec,oxishut"
       "$mod SUPER,A,exec,oxipaste"
-      "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl hibernate"
+      "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend"
+      "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
       # media keys
       ",XF86AudioMute,exec, $HOME/.config/scripts/audio_control.sh mute"

@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     #basics
-    git
+    gitui
     gcc
     meson
     ninja

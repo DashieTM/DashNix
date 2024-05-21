@@ -273,4 +273,11 @@ return {
 			{ "<leader>fy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
 		},
 	},
+	{
+		"sindrets/diffview.nvim",
+		keys = {
+			{ "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Toggle Difftool" },
+		},
+	},
+	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 }

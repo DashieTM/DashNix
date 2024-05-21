@@ -6,5 +6,6 @@
     ./ncspot.nix
     ./ssh.nix
     ./direnv.nix
+    ./git.nix
   ];
 }
