@@ -4,6 +4,7 @@
     ../../modules/ironbar_config.nix
     ../../modules/boot_params.nix
     ./dsdt.nix
+    ./firmware.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "overheating";
