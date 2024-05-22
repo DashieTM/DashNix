@@ -1,11 +1,6 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		--opts = function()
-		--	return {
-		--		ensure_installed = {},
-		--	}
-		--end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -160,6 +155,10 @@ return {
 				zls = {
 					mason = false,
 				},
+				jsonls = {
+					mason = false,
+					cmd = { "vscode-json-languageserver", "--stdio" },
+				},
 				cssls = {
 					mason = false,
 					cmd = { "css-languageserver", "--stdio" },
@@ -194,7 +193,6 @@ return {
 		opts = {
 			keys = {
 				{
-					-- Customize or remove this keymap to your liking
 					"<leader>cF",
 					function()
 						require("conform").format({ async = true, lsp_fallback = true })
@@ -211,7 +209,6 @@ return {
 				cs = { "dotnet-csharpier" },
 				markdown = { "mdformat" },
 				sql = { "sql-formatter" },
-				-- json doesn't work?
 				json = { "jq" },
 				yaml = { "yamlfmt" },
 			},

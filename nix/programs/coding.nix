@@ -47,6 +47,7 @@
 
     #json
     jq
+    nodePackages.vscode-json-languageserver
 
     #css
     tailwindcss
