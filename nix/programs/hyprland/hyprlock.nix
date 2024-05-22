@@ -5,8 +5,7 @@
 }:
 {
   programs.hyprlock.enable = true;
-  programs.hyprlock = {
-
+  programs.hyprlock.settings = {
     backgrounds = [
       {
         monitor = "";
@@ -32,6 +31,5 @@
         halign = "center";
       }
     ];
-
   };
 }

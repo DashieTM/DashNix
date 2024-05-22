@@ -134,7 +134,6 @@
             { import = "lazyvim.plugins.extras.lang.markdown" },
             { import = "lazyvim.plugins.extras.lang.cmake" },
             { import = "lazyvim.plugins.extras.lang.omnisharp" },
-            { import = "lazyvim.plugins.extras.lang.json" },
             { import = "lazyvim.plugins.extras.lang.tex" },
             { import = "lazyvim.plugins.extras.util.dot" },
             { import = "lazyvim.plugins.extras.dap.core" },

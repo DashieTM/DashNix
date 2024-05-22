@@ -22,6 +22,13 @@
     # cpp
     bear
 
+    #sql
+    nodePackages.sql-formatter
+    sqls
+
+    #assembly
+    asm-lsp
+
     #yaml
     yamlfmt
     yamllint
@@ -29,12 +36,17 @@
 
     #markdown
     marksman
+    mdformat
+
+    #bash
+    nodePackages.bash-language-server
+    shfmt
 
     #html
     html-tidy
 
     #json
-    jsonfmt
+    jq
 
     #css
     tailwindcss

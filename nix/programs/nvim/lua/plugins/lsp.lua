@@ -11,9 +11,6 @@ return {
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
 		opts = {
-			-- inlay_hints = {
-			--   enabled = true,
-			-- },
 			format_notify = false,
 			-- LSP Server Settings
 			---@type lspconfig.options
@@ -66,7 +63,49 @@ return {
 				},
 				omnisharp = {
 					mason = false,
-					cmd = { "OmniSharp" },
+					handlers = {
+						["textDocument/definition"] = function(...)
+							return require("omnisharp_extended").handler(...)
+						end,
+					},
+					keys = {
+						{
+							"<leader>oe",
+							function()
+								require("omnisharp_extended").telescope_lsp_definitions()
+							end,
+							desc = "Goto Definition",
+						},
+					},
+					cmd = {
+						-- no comment
+						"OmniSharp",
+						"-z",
+						"--hostPID",
+						tostring(vim.fn.getpid()),
+						"DotNet:enablePackageRestore=false",
+						"--encoding",
+						"utf-8",
+						"--languageserver",
+						"FormattingOptions:EnableEditorConfigSupport=true",
+						"FormattingOptions:OrganizeImports=true",
+						"RoslynExtensionsOptions:EnableAnalyzersSupport=true",
+						"RoslynExtensionsOptions:EnableImportCompletion=true",
+						-- inlay hints are bugged until next release.....
+						-- "RoslynExtensionsOptions:InlayHintsOptions:EnableForParameters=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForLiteralParameters=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForIndexerParameters=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForObjectCreationParameters=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForOtherParameters=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:SuppressForParametersThatDifferOnlyBySuffix=false",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:SuppressForParametersThatMatchMethodIntent=false",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:SuppressForParametersThatMatchArgumentName=false",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:EnableForTypes=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForImplicitVariableTypes=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForLambdaParameterTypes=true",
+						-- "RoslynExtensionsOptions:InlayHintsOptions:ForImplicitObjectCreation=true",
+						"Sdk:IncludePrereleases=true",
+					},
 				},
 				typst_lsp = {
 					settings = {
@@ -106,7 +145,7 @@ return {
 					},
 					mason = false,
 				},
-				sqlls = {
+				sqls = {
 					mason = false,
 				},
 				lemminx = {
@@ -118,9 +157,12 @@ return {
 				yamlls = {
 					mason = false,
 				},
+				zls = {
+					mason = false,
+				},
 				cssls = {
 					mason = false,
-					cmd = { "css-languageserver", '--stdio' },
+					cmd = { "css-languageserver", "--stdio" },
 				},
 				lua_ls = {
 					mason = false,
@@ -167,6 +209,11 @@ return {
 				lua = { "stylua" },
 				sh = { "shfmt" },
 				cs = { "dotnet-csharpier" },
+				markdown = { "mdformat" },
+				sql = { "sql-formatter" },
+				-- json doesn't work?
+				json = { "jq" },
+				yaml = { "yamlfmt" },
 			},
 		},
 	},

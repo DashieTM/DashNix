@@ -1,7 +1,6 @@
 { inputs, pkgs, mod, ... }:
 let
   base_imports = [
-    inputs.hyprlock.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
     inputs.ironbar.homeManagerModules.default
     inputs.oxicalc.homeManagerModules.default
@@ -26,8 +25,6 @@ in
   home-manager.useUserPackages = true;
 
   home-manager.users.dashie = {
-    #home-manager overlap -> use flake instead
-    disabledModules = [ "programs/hyprlock.nix" ];
     imports = [
       {
         _module = { args = { inherit inputs; }; };

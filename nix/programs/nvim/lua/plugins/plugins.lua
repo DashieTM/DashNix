@@ -280,4 +280,5 @@ return {
 		},
 	},
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
+	{ "Hoffs/omnisharp-extended-lsp.nvim" },
 }
