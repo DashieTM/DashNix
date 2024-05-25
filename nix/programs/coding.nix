@@ -21,6 +21,7 @@
 
     # cpp
     bear
+    clang-tools
 
     #sql
     nodePackages.sql-formatter

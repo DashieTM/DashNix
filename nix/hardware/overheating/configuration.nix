@@ -13,4 +13,7 @@
   programs.boot.boot_params = [ "rtc_cmos.use_acpi_alarm=1" ];
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  # for hyprdock
+  services.acpid.enable = true;
 }

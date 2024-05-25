@@ -15,7 +15,6 @@ in
   home.packages = with pkgs; [
     vesktop
     kitty
-    firefox
     fish
     ripgrep
     rm-improved
@@ -49,6 +48,7 @@ in
     greetd.regreet
     sops
     flake-checker
+    ffmpeg
     (callPackage
       ../override/streamdeck.nix
       { })
@@ -63,7 +63,10 @@ in
   programs.oxidash.enable = true;
   programs.oxishut.enable = true;
   programs.oxipaste.enable = true;
+  programs.hyprdock.enable = true;
   programs.reset.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   home.username = "dashie";
   home.homeDirectory = "/home/dashie";

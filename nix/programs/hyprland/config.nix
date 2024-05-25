@@ -30,6 +30,7 @@
       "$mod SUPER,G,exec,oxicalc"
       "$mod SUPER,D,exec,oxishut"
       "$mod SUPER,A,exec,oxipaste"
+      "$mod SUPERSHIFT,P,exec,hyprdock --gui"
       "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend"
       "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
@@ -242,8 +243,6 @@
       "ironbar"
       "firefox"
       "oxipaste_daemon"
-      # TODO: is this necessary?
-      #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "nextcloud --background"
       "oxinoti"
     ] ++ config.programs.hyprland.extra_autostart;

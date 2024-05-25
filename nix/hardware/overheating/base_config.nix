@@ -13,4 +13,5 @@
   programs.ironbar.battery = [
     { type = "upower"; class = "memory-usage"; }
   ];
+  programs.hyprland.extra_autostart = [ "hyprdock --server" ];
 }

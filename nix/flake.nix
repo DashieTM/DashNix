@@ -22,6 +22,11 @@
         inputs.hyprland.follows = "nixpkgs";
       };
 
+      nur.url = "github:nix-community/nur";
+      # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=2f1735bd93adb9e153758cd4171d8fd3ae610357";
+      # hyprland.url = "github:hyprwm/Hyprland/xwayland-rewrite?submodules=1";
+
       ironbar = {
         url = "github:JakeStanger/ironbar";
       };
@@ -32,6 +37,7 @@
       oxinoti.url = "github:DashieTM/OxiNoti";
       oxidash.url = "github:DashieTM/OxiDash";
       oxipaste.url = "github:DashieTM/OxiPaste";
+      hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
     };
 
@@ -39,6 +45,9 @@
     let
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
+        overlays = [
+          inputs.nur.overlay
+        ];
         config = {
           allowUnfree = true;
         };

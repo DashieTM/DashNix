@@ -7,5 +7,7 @@
     ./ssh.nix
     ./direnv.nix
     ./git.nix
+    ./firefox.nix
+    ./keepass.nix
   ];
 }

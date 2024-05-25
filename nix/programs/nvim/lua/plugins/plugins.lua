@@ -281,4 +281,15 @@ return {
 	},
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{ "Hoffs/omnisharp-extended-lsp.nvim" },
+	{
+		"barreiroleo/ltex_extra.nvim",
+		branch = "dev",
+		ft = { "markdown", "tex", "typst", "typ", "text" },
+		config = function()
+			require("ltex_extra").setup({
+				load_langs = { "en-US" },
+				path = vim.fn.stdpath("config") .. "/spell",
+			})
+		end,
+	},
 }
