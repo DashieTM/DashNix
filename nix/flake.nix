@@ -18,14 +18,12 @@
 
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
-        # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
         inputs.hyprland.follows = "nixpkgs";
       };
 
       nur.url = "github:nix-community/nur";
-      # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      # hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=2f1735bd93adb9e153758cd4171d8fd3ae610357";
-      # hyprland.url = "github:hyprwm/Hyprland/xwayland-rewrite?submodules=1";
+
+      hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
       ironbar = {
         url = "github:JakeStanger/ironbar";

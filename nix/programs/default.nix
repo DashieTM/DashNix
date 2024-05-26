@@ -9,7 +9,7 @@ let
     inputs.oxidash.homeManagerModules.default
     inputs.oxipaste.homeManagerModules.default
     inputs.hyprdock.homeManagerModules.default
-    # inputs.hyprland.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     inputs.reset.homeManagerModules.default
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
