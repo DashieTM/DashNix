@@ -284,12 +284,20 @@ return {
 	{
 		"barreiroleo/ltex_extra.nvim",
 		branch = "dev",
-		ft = { "markdown", "tex", "typst", "typ", "text" },
+		ft = { "tex", "typst", "text" },
+		-- this causes an error with fsharp since
+		-- they use markdown to show lsp messages
 		config = function()
 			require("ltex_extra").setup({
 				load_langs = { "en-US" },
 				path = vim.fn.stdpath("config") .. "/spell",
 			})
 		end,
+	},
+	{ "ionide/Ionide-vim", ft = "fsharp" },
+	{
+		"mrcjkb/haskell-tools.nvim",
+		version = "^3",
+		lazy = false,
 	},
 }

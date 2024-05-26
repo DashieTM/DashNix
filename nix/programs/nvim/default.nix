@@ -81,6 +81,8 @@
           vim-illuminate
           vim-startuptime
           which-key-nvim
+          haskell-tools-nvim
+          Ionide-vim
           { name = "LuaSnip"; path = luasnip; }
           #{ name = "catppuccin"; path = catppuccin-nvim; }
           { name = "mini.ai"; path = mini-nvim; }

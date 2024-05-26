@@ -103,7 +103,7 @@ in
     };
   home.sessionVariables =
     {
-      FLAKE = "home/dasshie/gits/dotFiles/nix";
+      FLAKE = "home/dashie/gits/dotFiles/nix";
       # don't ask... marksman somehow requires this
       DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
     };

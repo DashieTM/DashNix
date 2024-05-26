@@ -43,6 +43,15 @@
     nodePackages.bash-language-server
     shfmt
 
+    #fsharp
+    fsharp
+    fsautocomplete
+
+    #haskell
+    haskellPackages.cabal-install
+    ghc 
+    haskellPackages.haskell-language-server
+
     #html
     html-tidy
 
