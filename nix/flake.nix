@@ -22,7 +22,6 @@
       };
 
       nur.url = "github:nix-community/nur";
-
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
       ironbar = {
