@@ -219,7 +219,12 @@ return {
 						require("conform").format({ async = true, lsp_fallback = true })
 					end,
 					mode = "",
-					desc = "Format buffer",
+					numberdesc = "Format buffer",
+				},
+			},
+			formatters = {
+				mdformat = {
+					prepend_args = { "--number" },
 				},
 			},
 			formatters_by_ft = {

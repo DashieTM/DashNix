@@ -101,12 +101,6 @@ in
       enable = true;
       enableFishIntegration = true;
     };
-  home.sessionVariables =
-    {
-      FLAKE = "home/dashie/gits/dotFiles/nix";
-      # don't ask... marksman somehow requires this
-      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
-    };
 
   sops = {
     gnupg = {

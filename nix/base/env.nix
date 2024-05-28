@@ -12,5 +12,8 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     GOPATH = "$HOME/.go";
+    FLAKE = "home/dashie/gits/dotFiles/nix";
+    # don't ask... marksman somehow requires this
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
   };
 }
