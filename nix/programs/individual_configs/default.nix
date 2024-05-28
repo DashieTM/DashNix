@@ -9,5 +9,6 @@
     ./git.nix
     ./firefox.nix
     ./keepass.nix
+    ./neovide.nix
   ];
 }
