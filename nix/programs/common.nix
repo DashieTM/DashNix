@@ -1,4 +1,5 @@
 { pkgs
+, inputs
 , lib
 , ...
 }:
@@ -65,6 +66,10 @@ in
   programs.oxipaste.enable = true;
   programs.hyprdock.enable = true;
   programs.reset.enable = true;
+  programs.reset.config.plugins = [
+    inputs.reset-plugins.packages."x86_64-linux".monitor
+  ];
+  # inputs.reset-plugins.packages#.keyboard_plugin
 
   nixpkgs.config.allowUnfree = true;
 

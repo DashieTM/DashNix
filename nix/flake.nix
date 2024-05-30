@@ -36,6 +36,7 @@
       oxipaste.url = "github:DashieTM/OxiPaste";
       hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
+      reset-plugins.url = "github:Xetibo/ReSet-Plugins?ref=dashie";
     };
 
   outputs = { ... }@inputs:
