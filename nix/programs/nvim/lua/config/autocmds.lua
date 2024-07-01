@@ -5,7 +5,6 @@ local function open_nvim_tree(data)
 	if not directory then
 		return
 	end
-  print("FUCK")
 	-- change to the directory
 	vim.cmd.cd(data.file)
 

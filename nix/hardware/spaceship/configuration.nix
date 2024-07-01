@@ -14,21 +14,19 @@
   programs.gamemode = {
     device = 0;
   };
-  users.extraGroups.vboxusers.members = [ "dashie" ];
   virtualisation.virtualbox.host.enable = true;
 
   # enable hardware acceleration and rocm
   hardware.xone.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
     libvdpau-va-gl
     vaapiVdpau
     rocmPackages.clr.icd
     rocm-opencl-runtime
   ];
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = lib.mkDefault true;
-    driSupport32Bit = lib.mkDefault true;
+    enable32Bit = lib.mkDefault true;
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
   programs.ironbar.monitor = "DP-1";

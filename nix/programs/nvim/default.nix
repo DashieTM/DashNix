@@ -22,7 +22,7 @@
       nixpkgs-fmt
       crate2nix
       ruff-lsp
-      nodePackages.pyright
+      pyright
       lemminx
       marksman
       clang-tools_18
@@ -42,12 +42,15 @@
           cmp-nvim-lsp
           cmp-path
           cmp_luasnip
+          cmp-async-path
           conform-nvim
           dashboard-nvim
           dressing-nvim
           flash-nvim
           friendly-snippets
           gitsigns-nvim
+          git-conflict-nvim
+          ltex_extra-nvim
           indent-blankline-nvim
           lualine-nvim
           neo-tree-nvim
@@ -56,6 +59,12 @@
           noice-nvim
           nui-nvim
           nvim-cmp
+          nvim-dap
+          nvim-dap-ui
+          nvim-dap-python
+          nvim-dap-go
+          nvim-dap-virtual-text
+          nvim-nio
           nvim-lint
           nvim-lspconfig
           nvim-notify
@@ -67,6 +76,22 @@
           nvim-ts-context-commentstring
           nvim-web-devicons
           nvim-jdtls
+          rustaceanvim
+          typst-vim
+          instant-nvim
+          git-blame-nvim
+          neoscroll-nvim
+          mason-nvim
+          neotest
+          neotest-zig
+          neotest-python
+          neotest-rust
+          neotest-java
+          neotest-haskell
+          neotest-go
+          neotest-dotnet
+          neotest-bash
+          neotest-dart
           omnisharp-extended-lsp-nvim
           neotest
           neotest-java
@@ -75,7 +100,23 @@
           plenary-nvim
           telescope-fzf-native-nvim
           telescope-nvim
+          telescope-zoxide
+          telescope-file-browser-nvim
+          telescope-project-nvim
           todo-comments-nvim
+          vimtex
+          inc-rename-nvim
+          headlines-nvim
+          diffview-nvim
+          crates-nvim
+          cmake-tools-nvim
+          clangd_extensions-nvim
+          alpha-nvim
+          vim-visual-multi
+          ts-comments-nvim
+          nvim-tree-lua
+          nvim-snippets
+          markdown-preview-nvim
           tokyonight-nvim
           trouble-nvim
           vim-illuminate
@@ -84,7 +125,6 @@
           haskell-tools-nvim
           Ionide-vim
           { name = "LuaSnip"; path = luasnip; }
-          #{ name = "catppuccin"; path = catppuccin-nvim; }
           { name = "mini.ai"; path = mini-nvim; }
           { name = "mini.bufremove"; path = mini-nvim; }
           { name = "mini.comment"; path = mini-nvim; }
@@ -131,8 +171,8 @@
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.go" },
             { import = "lazyvim.plugins.extras.lang.clangd" },
-            { import = "lazyvim.plugins.extras.lang.typescript" },
-            { import = "lazyvim.plugins.extras.lang.python" },
+            -- { import = "lazyvim.plugins.extras.lang.typescript" },
+            -- { import = "lazyvim.plugins.extras.lang.python" },
             { import = "lazyvim.plugins.extras.lang.markdown" },
             { import = "lazyvim.plugins.extras.lang.cmake" },
             { import = "lazyvim.plugins.extras.lang.omnisharp" },
@@ -145,7 +185,7 @@
             { "williamboman/mason-lspconfig.nvim", enabled = false },
             --{ "williamboman/mason.nvim", enabled = false },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+            --{ "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
             { import = "plugins" },
             { import = "plugins.plugins" },
           },

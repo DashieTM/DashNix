@@ -5,7 +5,7 @@
   wayland.windowManager.hyprland.settings.monitor = [
     # default
     "DP-2,2560x1440@165,0x0,1"
-    "DP-1,3440x1440@180,2560x0,1"
+    "DP-1,3440x1440@180,2560x0,1,vrr,1"
     "HDMI-A-1,1920x1200@60,6000x0,1"
     "HDMI-A-1,transform,1"
 

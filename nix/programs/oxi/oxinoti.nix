@@ -1,6 +1,6 @@
 {
   xdg.configFile."oxinoti/style.css" = {
-    text =
+    text = /*css*/
       ''
         @import url("/home/dashie/.config/gtk-3.0/gtk.css");
         

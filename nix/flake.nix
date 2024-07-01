@@ -18,7 +18,7 @@
 
       Hyprspace = {
         url = "github:KZDKM/Hyprspace";
-        inputs.hyprland.follows = "nixpkgs";
+        inputs.hyprland.follows = "hyprland";
       };
 
       nur.url = "github:nix-community/nur";
@@ -36,7 +36,7 @@
       oxipaste.url = "github:DashieTM/OxiPaste";
       hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
-      reset-plugins.url = "github:Xetibo/ReSet-Plugins?ref=dashie";
+      reset-plugins.url = "github:Xetibo/ReSet-Plugins";
     };
 
   outputs = { ... }@inputs:

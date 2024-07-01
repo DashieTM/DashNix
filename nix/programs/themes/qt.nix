@@ -30,8 +30,8 @@ in
         [Appearance]
         color_scheme_path=/home/dashie/.config/qt5ct/colors/tokyonight.conf
         custom_palette=true
-        icon_theme=breeze
-        standard_dialogs=default
+        icon_theme=MoreWaita
+        standard_dialogs=gtk3
         style=Breeze
 
         [Fonts]
@@ -48,19 +48,13 @@ in
         keyboard_scheme=4
         menus_have_icons=true
         show_shortcuts_in_context_menus=true
-        stylesheets=/home/dashie/.config/qt5ct/qss/tab.qss
+        stylesheets=/home/dashie/.config/qt5ct/qss/tab.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/fusion-fixes.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/scrollbar-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/sliders-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/tooltip-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/traynotification-simple.qss
         toolbutton_style=4
         underline_shortcut=0
         wheel_scroll_lines=3
 
-        [PaletteEditor]
-        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\n\0\0\0\0\0\0\0\fv\0\0\x2\x10\0\0\n\0\0\0\0\0\0\0\fv\0\0\x2\x10\0\0\0\0\x2\0\0\0\rp\0\0\n\0\0\0\0\0\0\0\fv\0\0\x2\x10)
-
-        [QSSEditor]
-        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x2\x82\0\0\x1\xf2\0\0\0\0\0\0\0\0\0\0\x2\x82\0\0\x1\xf2\0\0\0\x2\x2\0\0\0\n\0\0\0\0\0\0\0\0\0\0\0\x2\x82\0\0\x1\xf2)
-
         [SettingsWindow]
-        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\n\0\0\0\0\0\0\0\r\x83\0\0\x2\x94\0\0\n\0\0\0\0\0\0\0\fO\0\0\x2\xbf\0\0\0\0\x2\0\0\0\rp\0\0\n\0\0\0\0\0\0\0\r\x83\0\0\x2\x94)
+        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q\0\0\n\0\0\0\0\0\0\0\r[\0\0\x5\x7f\0\0\0\0\x2\0\0\0\rp\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q)
 
         [Troubleshooting]
         force_raster_widgets=1

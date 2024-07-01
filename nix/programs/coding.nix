@@ -40,7 +40,7 @@
     mdformat
 
     #bash
-    nodePackages.bash-language-server
+    bash-language-server
     shfmt
 
     #fsharp

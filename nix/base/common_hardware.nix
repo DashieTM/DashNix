@@ -25,6 +25,14 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.browsing = true;
+  services.printing.drivers = [ pkgs.hplip ];
+  services.printing.startWhenNeeded = true; # optional
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -51,7 +59,7 @@
   users.users.dashie = {
     isNormalUser = true;
     description = "dashie";
-    extraGroups = [ "networkmanager" "wheel" "gamemode" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "gamemode" "docker" "vboxusers" ];
     packages = with pkgs; [
       home-manager
       xdg-desktop-portal-gtk

@@ -5,7 +5,6 @@ return {
 		"LazyVim/LazyVim",
 		opts = {
 			colorscheme = "tokyonight-night",
-			-- colorscheme = "catppuccin-mocha",
 		},
 	},
 	{
@@ -94,21 +93,26 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						-- You can use the capture groups defined in textobjects.scm
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
+		config = function(_, _)
+			local opts = {
+				ensure_installed = {},
+				-- parser_install_dir = "~/.config/nvim",
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
 					},
 				},
-			},
-		},
+			}
+			require("nvim-treesitter.configs").setup(opts)
+		end,
 	},
 	{
 		"karb94/neoscroll.nvim",
@@ -162,7 +166,7 @@ return {
 	},
 	{
 		"barreiroleo/ltex_extra.nvim",
-		ft = { "markdown", "tex", "typst", "typ" },
+		ft = { "tex", "typst", "typ" },
 		lazy = true,
 	},
 	{
@@ -254,13 +258,6 @@ return {
 					-- default: .local/share/nvim/neotest-java/junit-platform-console-standalone-[version].jar
 				},
 			},
-		},
-	},
-	{
-		"DashieTM/test_plugin",
-		lazy = false,
-		opts = {
-			what = 0,
 		},
 	},
 	{

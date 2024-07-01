@@ -7,6 +7,7 @@
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
+    "source" = "/home/dashie/.config/reset/keyboard.conf";
 
     bindm = [
       "$mod, mouse:272, movewindow"
@@ -151,7 +152,7 @@
     };
 
     input = {
-      kb_layout = "dashie";
+      #kb_layout = "dashie";
       repeat_delay = 200;
       force_no_accel = true;
       touchpad = {
@@ -162,7 +163,6 @@
     };
 
     misc = {
-      vrr = 1;
       animate_manual_resizes = 1;
       enable_swallow = true;
       disable_splash_rendering = true;
@@ -247,15 +247,15 @@
       "oxinoti"
     ] ++ config.programs.hyprland.extra_autostart;
 
-    #plugin = {
-    #  hyprspace = {
-    #    bind = [
-    #      "SUPER, W, overview:toggle, toggle"
-    #    ];
-    #  };
-    #};
+    # plugin = {
+    #   hyprspace = {
+    #     bind = [
+    #       "SUPER, W, overview:toggle, toggle"
+    #     ];
+    #   };
+    # };
   };
-  #wayland.windowManager.hyprland.plugins = [
-  #  inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-  #];
+  # wayland.windowManager.hyprland.plugins = [
+  #   inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+  # ];
 }

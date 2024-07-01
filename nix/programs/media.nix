@@ -16,6 +16,8 @@
     libreoffice-fresh
     onlyoffice-bin
     pdftk
+    pdfpc
+    polylux2pdfpc
     # spotify
     #ncspot
     # video editing

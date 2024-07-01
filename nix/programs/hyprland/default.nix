@@ -20,6 +20,7 @@
     copyq
     gnome.nautilus
     gnome.sushi
+    gnome.nautilus-python
     wl-clipboard
     hyprcursor
     hyprpaper

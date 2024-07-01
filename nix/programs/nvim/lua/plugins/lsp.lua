@@ -25,9 +25,6 @@ return {
 				-- LSP Server Settings
 				---@type lspconfig.options
 				servers = {
-					rust_analyzer = {
-						mason = false,
-					},
 					marksman = {
 						mason = false,
 					},

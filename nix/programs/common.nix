@@ -23,6 +23,7 @@ in
     fd
     lsd
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    noto-fonts
     flatpak
     networkmanager
     zoxide
@@ -50,6 +51,7 @@ in
     sops
     flake-checker
     ffmpeg
+    system-config-printer
     (callPackage
       ../override/streamdeck.nix
       { })
@@ -65,11 +67,18 @@ in
   programs.oxishut.enable = true;
   programs.oxipaste.enable = true;
   programs.hyprdock.enable = true;
-  programs.reset.enable = true;
-  programs.reset.config.plugins = [
+  programs.ReSet.enable = true;
+  programs.ReSet.config.plugins = [
     inputs.reset-plugins.packages."x86_64-linux".monitor
+    inputs.reset-plugins.packages."x86_64-linux".keyboard
   ];
-  # inputs.reset-plugins.packages#.keyboard_plugin
+  programs.ReSet.config.plugin_config = {
+    Keyboard = {
+      path = "/home/dashie/.config/reset/keyboard.conf";
+    };
+  };
+
+  
 
   nixpkgs.config.allowUnfree = true;
 

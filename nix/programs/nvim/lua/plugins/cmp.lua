@@ -33,7 +33,6 @@ return {
       "FelipeLema/cmp-async-path",
       "saadparwaiz1/cmp_luasnip",
       "Saecki/crates.nvim",
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
