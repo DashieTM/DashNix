@@ -16,10 +16,10 @@
 
       sops-nix.url = "github:Mic92/sops-nix";
 
-      Hyprspace = {
-        url = "github:KZDKM/Hyprspace";
-        inputs.hyprland.follows = "hyprland";
-      };
+      # Hyprspace = {
+      #   url = "github:KZDKM/Hyprspace";
+      #   inputs.hyprland.follows = "nixpkgs";
+      # };
 
       nur.url = "github:nix-community/nur";
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

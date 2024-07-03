@@ -78,8 +78,6 @@ in
     };
   };
 
-  
-
   nixpkgs.config.allowUnfree = true;
 
   home.username = "dashie";
