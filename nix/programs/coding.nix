@@ -62,7 +62,7 @@
     #css
     tailwindcss
     tailwindcss-language-server
-    nodePackages_latest.vscode-css-languageserver-bin
+    vscode-langservers-extracted
 
     #editors
     neovide

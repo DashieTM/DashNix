@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     openssl
@@ -17,11 +17,11 @@
     xorg.xkbutils
     libxkbcommon
     icon-library
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     hicolor-icon-theme
     morewaita-icon-theme
     kdePackages.breeze-icons
-    gnome.seahorse
+    seahorse
     upower
   ];
 

@@ -1,5 +1,4 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
 }: {
   imports = [
@@ -18,9 +17,9 @@
     xdg-desktop-portal-gtk
     # xdg-desktop-portal-hyprland
     copyq
-    gnome.nautilus
-    gnome.sushi
-    gnome.nautilus-python
+    nautilus
+    sushi
+    nautilus-python
     wl-clipboard
     hyprcursor
     hyprpaper

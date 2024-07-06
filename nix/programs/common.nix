@@ -29,7 +29,7 @@ in
     networkmanager
     zoxide
     fastfetch
-    pkgs.gnome.gnome-keyring
+    pkgs.gnome-keyring
     dbus
     killall
     adw-gtk3
