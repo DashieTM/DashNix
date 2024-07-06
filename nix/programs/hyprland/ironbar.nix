@@ -1,10 +1,10 @@
-{ config, ... }: {
+{ config, username, ... }: {
 
   programs.ironbar =
     {
       enable = true;
       style = ''
-        @import url("/home/dashie/.config/gtk-3.0/gtk.css");
+        @import url("/home/${username}/.config/gtk-3.0/gtk.css");
       
         * {
           color: #71bbe6;
@@ -176,13 +176,13 @@
                           type = "button";
                           class = "audio-button";
                           label = "";
-                          on_click = "!/home/dashie/.config/eww/scripts/audio_control.sh bluetooth";
+                          on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh bluetooth";
                         }
                         {
                           type = "button";
                           class = "audio-button";
                           label = "󰋋";
-                          on_click = "!/home/dashie/.config/eww/scripts/audio_control.sh internal";
+                          on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh internal";
                         }
                       ];
                       class = "audio-button-box";
@@ -222,7 +222,7 @@
                   type = "button";
                   class = "popup-button";
                   label = "";
-                  on_click = "!oxidash --css /home/dashie/gits/oxidash/style.css";
+                  on_click = "!oxidash --css /home/${username}/gits/oxidash/style.css";
                 }
               ];
               class = "popup-button-box";

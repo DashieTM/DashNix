@@ -1,4 +1,4 @@
-{
+{ username, ... }: {
   imports = [
     ../../modules
   ];
@@ -33,14 +33,14 @@
   programs.ironbar.monitor = "DP-1";
   programs.hyprland.hyprpaper = ''
     #load
-    preload = /home/dashie/Pictures/backgrounds/shinobu_2k.jpg
-    preload = /home/dashie/Pictures/backgrounds/shino_wide.png
-    preload = /home/dashie/Pictures/backgrounds/shinobu_1200.jpg
+    preload = /home/${username}/Pictures/backgrounds/shinobu_2k.jpg
+    preload = /home/${username}/Pictures/backgrounds/shino_wide.png
+    preload = /home/${username}/Pictures/backgrounds/shinobu_1200.jpg
 
     #set
-    wallpaper = DP-2,/home/dashie/Pictures/backgrounds/shinobu_2k.jpg
-    wallpaper = DP-1,/home/dashie/Pictures/backgrounds/shino_wide.png
-    wallpaper = HDMI-A-1,/home/dashie/Pictures/backgrounds/shinobu_1200.jpg
+    wallpaper = DP-2,/home/${username}/Pictures/backgrounds/shinobu_2k.jpg
+    wallpaper = DP-1,/home/${username}/Pictures/backgrounds/shino_wide.png
+    wallpaper = HDMI-A-1,/home/${username}/Pictures/backgrounds/shinobu_1200.jpg
     splash = true
   '';
   programs.hyprland.extra_autostart = [ "streamdeck -n" ];

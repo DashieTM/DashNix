@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, username, ... }:
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -51,14 +51,14 @@
   };
 
   nix.settings.trusted-users = [
-    "dashie"
+    username
   ];
 
   # allows user change later on
   users.mutableUsers = true;
-  users.users.dashie = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "dashie";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" "gamemode" "docker" "vboxusers" ];
     packages = with pkgs; [
       home-manager

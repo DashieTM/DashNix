@@ -1,4 +1,4 @@
-{ inputs, pkgs, mod, ... }:
+{ inputs, pkgs, mod, username, ... }:
 let
   base_imports = [
     inputs.anyrun.homeManagerModules.default
@@ -26,10 +26,10 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.dashie = {
+  home-manager.users.${username} = {
     imports = [
       {
-        _module = { args = { inherit inputs; }; };
+        _module = { args = { inherit inputs username; }; };
       }
       ./hyprland/default.nix
       ./flatpak.nix

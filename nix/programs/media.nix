@@ -27,7 +27,6 @@
     gimp
     krita
     yt-dlp
-    spotdl
   ];
   programs.obs-studio.enable = true;
   programs.obs-studio.plugins = with pkgs; [

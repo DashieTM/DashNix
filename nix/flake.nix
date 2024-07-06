@@ -55,11 +55,12 @@
         ./base/default.nix
         ./programs
       ];
+      username = "dashie";
     in
     {
       nixosConfigurations."marmo" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs pkgs;
+          inherit inputs pkgs username;
           mod = ./hardware/marmo/base_config.nix;
         };
         modules = [
@@ -69,7 +70,7 @@
       };
       nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs pkgs;
+          inherit inputs pkgs username;
           mod = ./hardware/overheating/base_config.nix;
         };
         modules = [
@@ -78,7 +79,7 @@
       };
       nixosConfigurations."spaceship" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs pkgs;
+          inherit inputs pkgs username;
           mod = ./hardware/spaceship/base_config.nix;
         };
         modules = [

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
   programs.firefox = {
     enable = true;
 
@@ -13,7 +13,7 @@
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "default-off";
     };
-    profiles.dashie = {
+    profiles.${username} = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         darkreader

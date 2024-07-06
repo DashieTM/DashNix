@@ -1,8 +1,8 @@
-{
+{ username, ... }: {
   xdg.configFile."oxinoti/style.css" = {
     text = /*css*/
       ''
-        @import url("/home/dashie/.config/gtk-3.0/gtk.css");
+        @import url("/home/${username}/.config/gtk-3.0/gtk.css");
         
         #MainWindow {
           background-color: transparent;

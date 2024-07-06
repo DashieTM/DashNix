@@ -1,6 +1,7 @@
 { pkgs
 , inputs
 , lib
+, username
 , ...
 }:
 let callPackage = lib.callPackageWith (pkgs);
@@ -74,14 +75,14 @@ in
   ];
   programs.ReSet.config.plugin_config = {
     Keyboard = {
-      path = "/home/dashie/.config/reset/keyboard.conf";
+      path = "/home/${username}/.config/reset/keyboard.conf";
     };
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  home.username = "dashie";
-  home.homeDirectory = "/home/dashie";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "24.05";
 
   home.sessionPath = [
@@ -122,7 +123,7 @@ in
     defaultSopsFile = ../secrets/secrets.yaml;
     secrets.hub = { };
     secrets.lab = { };
-    secrets.dashie = { };
+    secrets.${username} = { };
   };
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 }

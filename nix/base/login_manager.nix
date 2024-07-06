@@ -1,16 +1,13 @@
-{ inputs
-, lib
+{ lib
 , config
 , pkgs
+, username
 , ...
 }:
 let
-  regreet_override = pkgs.greetd.regreet.overrideAttrs (final: prev: {
-    SESSION_DIRS = "${config.services.xserver.displayManager.sessionData.desktops}/share";
-  });
   session = {
     command = "${lib.getExe pkgs.hyprland} --config /etc/greetd/hyprgreet.conf";
-    user = "dashie";
+    user = username;
   };
 in
 {
@@ -53,7 +50,7 @@ in
         disable_hyprland_logo = true
     }
 
-    exec-once=regreet --style /home/dashie/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
+    exec-once=regreet --style /home/${username}/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
   '';
 
   # unlock GPG keyring on login
