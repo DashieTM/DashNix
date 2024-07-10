@@ -146,7 +146,7 @@ in
       ];
       config = {
         monitors."${config.conf.monitor}" = {
-          end = config.conf.battery ++ [
+          end = config.conf.ironbar.modules ++ [
             {
               type = "sys_info";
               format = [

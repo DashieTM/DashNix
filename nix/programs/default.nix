@@ -1,4 +1,4 @@
-{ inputs, pkgs, mod, config, ... }:
+{ inputs, pkgs, config, lib, mod, ... }:
 let
   base_imports = [
     inputs.anyrun.homeManagerModules.default
@@ -14,7 +14,6 @@ let
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
   ];
-  username = config.conf.username;
 in
 {
   xdg.portal.config.common.default = "*";
@@ -26,12 +25,13 @@ in
   };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {
+    inherit inputs;
+  };
 
-  home-manager.users.${username} = {
+  home-manager.users.${config.conf.username} = {
     imports = [
-      {
-        _module = { args = { inherit inputs username; }; };
-      }
+
       ./hyprland/default.nix
       ./flatpak.nix
       ./common.nix
@@ -42,7 +42,7 @@ in
       ./oxi/default.nix
       ./themes/default.nix
       ./individual_configs/default.nix
-      mod
-    ] ++ base_imports;
+    ] ++ base_imports
+    ++ lib.optional (builtins.pathExists mod) mod;
   };
 }

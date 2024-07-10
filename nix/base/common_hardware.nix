@@ -29,7 +29,9 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.browsing = true;
-  services.printing.drivers = [ pkgs.hplip ];
+  # fucking fun 
+  # TODO: https://github.com/NixOS/nixpkgs/pull/325825 ....
+  # services.printing.drivers = [ pkgs.hplip ];
   services.printing.startWhenNeeded = true; # optional
   services.avahi = {
     enable = true;

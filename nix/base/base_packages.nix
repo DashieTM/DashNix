@@ -29,8 +29,8 @@
     seahorse
     upower
     (lib.mkIf config.conf.streamdeck.enable (callPackage
-      ../override/streamdeck.nix
-      { }))
+    ../override/streamdeck.nix
+    { }))
   ];
 
   gtk.iconCache.enable = false;

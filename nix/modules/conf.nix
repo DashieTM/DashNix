@@ -8,6 +8,7 @@
         main monitor
       '';
     };
+
     scale = lib.mkOption {
       default = "1.0";
       example = "1.0";
@@ -16,9 +17,18 @@
         Scale for the monitor
       '';
     };
-    battery = lib.mkOption {
-      default = [ ];
-      example = [ ];
+
+    ironbar = {
+      modules = lib.mkOption {
+        default = [ ];
+        example = [
+          { type = "upower"; class = "memory-usage"; }
+        ];
+        type = with lib.types; listOf attrs;
+        description = ''
+          Adds modules to ironbar.
+        '';
+      };
     };
 
     amdGpu = lib.mkOption {
@@ -33,6 +43,7 @@
     boot_params = lib.mkOption {
       default = [ ];
       example = [ "resume=something" ];
+      type = with lib.types; listOf str;
       description = ''
         Boot params
       '';
@@ -51,6 +62,7 @@
       device = lib.mkOption {
         default = 0;
         example = 0;
+        type = lib.types.int;
         description = ''
           GPU device number
         '';
@@ -71,7 +83,7 @@
     kernel = lib.mkOption {
       default = pkgs.linuxPackages_latest;
       example = pkgs.linuxPackages_xanmod_latest;
-      # type = lib.types.package;
+      type = with lib.types; nullOr attrs;
       description = ''
         kernel to be used
       '';
@@ -87,13 +99,54 @@
     };
 
     username = lib.mkOption {
-        default = "dashie";
-        example = "pingpang";
-        type = lib.types.str;
+      default = "dashie";
+      example = "pingpang";
+      type = lib.types.str;
+      description = ''
+        The username.
+      '';
+    };
+
+    hyprland = {
+      monitor = lib.mkOption {
+        default = [ ];
+        example = [
+          "DP-1,3440x1440@180,2560x0,1,vrr,1"
+        ];
+        type = with lib.types; listOf str;
         description = ''
-          The username.
+          The monitor configuration for hyprland.
         '';
       };
+      workspace = lib.mkOption {
+        default = [ ];
+        example = [
+          "2,monitor:DP-1, default:true"
+        ];
+        type = with lib.types; listOf str;
+        description = ''
+          The workspace configuration for hyprland.
+        '';
+      };
+      hyprpaper = lib.mkOption {
+        default = '''';
+        example = ''
+          hyprpaper stuff
+        '';
+        type = lib.types.lines;
+        description = ''
+          hyprpaper
+        '';
+      };
+      extra_autostart = lib.mkOption {
+        default = [ ];
+        example = [ "your application" ];
+        type = lib.types.listOf lib.types.str;
+        description = ''
+          Extra exec_once.
+        '';
+      };
+    };
   };
 
   config = {

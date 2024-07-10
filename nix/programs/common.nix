@@ -48,7 +48,6 @@ in
     playerctl
     ncspot
     poppler_utils
-    neofetch
     brave
     greetd.regreet
     sops

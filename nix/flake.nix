@@ -45,45 +45,41 @@
         system = "x86_64-linux";
         overlays = [
           inputs.nur.overlay
+          # DUDE FOR FUCK SAKE
+          # https://github.com/NixOS/nixpkgs/pull/325825 ....
+          # fucking fun 
+          # TODO: https://github.com/NixOS/nixpkgs/pull/325825 ....
+          (_: prev: {
+            python312 = prev.python312.override { packageOverrides = _: pysuper: { nose = pysuper.pynose; }; };
+          })
         ];
         config = {
           allowUnfree = true;
         };
       };
-      base_imports = [
-        inputs.home-manager.nixosModules.home-manager
-        ./base/default.nix
-        ./programs
-      ];
     in
     {
-      nixosConfigurations."marmo" = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs pkgs;
-          mod = ./hardware/marmo/base_config.nix;
-        };
-        modules = [
-          ./hardware/marmo/default.nix
-        ] ++ base_imports;
-      };
-      nixosConfigurations."overheating" = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs pkgs;
-          mod = ./hardware/overheating/base_config.nix;
-        };
-        modules = [
-          ./hardware/overheating/default.nix
-        ] ++ base_imports;
-      };
-      nixosConfigurations."spaceship" = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs pkgs;
-          mod = ./hardware/spaceship/base_config.nix;
-        };
-        modules = [
-          ./hardware/spaceship/default.nix
-        ] ++ base_imports;
-      };
+      nixosConfigurations = (builtins.listToAttrs (map
+        (name: {
+          name = name;
+          value =
+            let
+              mod = ./hardware/${name}/configuration.nix;
+            in
+            inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit inputs pkgs mod;
+              };
+              modules = [
+                mod
+
+                inputs.home-manager.nixosModules.home-manager
+                ./base/default.nix
+                ./programs
+              ] ++ inputs.nixpkgs.lib.optional (builtins.pathExists ./hardware/${name}/${name}.nix) ./hardware/${name}/${name}.nix
+              ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
+            };
+        }) [ "marmo" "overheating" "spaceship" ]));
     };
 
   nixConfig = {

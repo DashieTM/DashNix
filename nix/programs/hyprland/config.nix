@@ -178,6 +178,9 @@
       workspace_swipe = true;
     };
 
+    monitor = config.conf.hyprland.monitor;
+    workspace = config.conf.hyprland.workspace;
+
     env = [
       "GTK_CSD,0"
       "TERM,\"kitty /bin/fish\""
@@ -243,7 +246,7 @@
       "oxipaste_daemon"
       "nextcloud --background"
       "oxinoti"
-    ] ++ config.programs.hyprland.extra_autostart;
+    ] ++ config.conf.hyprland.extra_autostart;
 
     # plugin = {
     #   hyprspace = {
