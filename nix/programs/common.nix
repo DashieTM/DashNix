@@ -55,6 +55,7 @@ in
     flake-checker
     ffmpeg
     system-config-printer
+    brightnessctl
     (callPackage
       ../override/cambalache.nix
       { })
