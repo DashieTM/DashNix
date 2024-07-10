@@ -1,5 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  imports = [
+    # is wrapped in if statement to enable when needed
+    ../programs/gaming/default.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     openssl
     dbus
@@ -23,6 +28,9 @@
     kdePackages.breeze-icons
     seahorse
     upower
+    (lib.mkIf config.conf.streamdeck.enable (callPackage
+      ../override/streamdeck.nix
+      { }))
   ];
 
   gtk.iconCache.enable = false;
@@ -32,19 +40,9 @@
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
-  programs.fish.enable = true;
-  programs.fish.promptInit = ''
-    ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-  '';
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    jdk
-    zlib
-  ];
   virtualisation.docker.enable = true;
 
-  programs.dconf.enable = true;
   services.upower.enable = true;
   services.printing.enable = true;
   services.dbus.enable = true;
@@ -56,13 +54,17 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  # services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-  #   [org.gnome.desktop.interface]
-  #   gtk-theme='adw-gtk3'
-  #   cursor-theme='Bibata-Modern-Classsic'
-  #   cursor-size=24
-  # '';
 
+  programs.fish.enable = true;
+  programs.fish.promptInit = ''
+    ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+  '';
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    jdk
+    zlib
+  ];
+  programs.dconf.enable = true;
   programs.direnv = {
     package = pkgs.direnv;
     silent = false;

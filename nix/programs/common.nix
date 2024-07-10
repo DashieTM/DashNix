@@ -1,10 +1,12 @@
 { pkgs
 , inputs
 , lib
-, username
+, config
 , ...
 }:
-let callPackage = lib.callPackageWith (pkgs);
+let
+  callPackage = lib.callPackageWith (pkgs);
+  username = config.conf.username;
 in
 {
   manual = {
@@ -53,9 +55,6 @@ in
     flake-checker
     ffmpeg
     system-config-printer
-    (callPackage
-      ../override/streamdeck.nix
-      { })
     (callPackage
       ../override/cambalache.nix
       { })

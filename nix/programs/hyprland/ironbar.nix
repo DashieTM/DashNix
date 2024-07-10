@@ -1,4 +1,8 @@
-{ config, username, ... }: {
+{ config, ... }:
+let
+  username = config.conf.username;
+in
+{
 
   programs.ironbar =
     {
@@ -141,8 +145,8 @@
         #"another_feature"
       ];
       config = {
-        monitors."${config.programs.ironbar.monitor}" = {
-          end = config.programs.ironbar.battery ++ [
+        monitors."${config.conf.monitor}" = {
+          end = config.conf.battery ++ [
             {
               type = "sys_info";
               format = [

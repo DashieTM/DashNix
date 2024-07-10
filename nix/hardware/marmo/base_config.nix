@@ -8,5 +8,5 @@
     # all others
     ",highrr,auto,1"
   ];
-  programs.ironbar.monitor = "DP-1";
+  conf.monitor = "DP-1";
 }

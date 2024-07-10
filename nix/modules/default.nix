@@ -1,6 +1,6 @@
 {
   imports = [
-    ./ironbar_config.nix
     ./hyprpaper_config.nix
+    ./conf.nix
   ];
 }

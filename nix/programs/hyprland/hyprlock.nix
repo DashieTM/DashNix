@@ -15,7 +15,7 @@
 
       input-field = [
         {
-          monitor = "${config.programs.ironbar.monitor}";
+          monitor = "${config.conf.monitor}";
 
           placeholder_text = "password or something";
         }
@@ -23,7 +23,7 @@
 
       label = [
         {
-          monitor = "${config.programs.ironbar.monitor}";
+          monitor = "${config.conf.monitor}";
           text = "$TIME";
           font_size = 50;
           position = "0, 200";

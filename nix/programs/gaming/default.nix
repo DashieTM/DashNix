@@ -1,12 +1,8 @@
 { pkgs
+, lib
 , config
 , ...
-}: {
-  imports = [
-    # ./anyrun.nix
-    #   ./config.nix
-  ];
-
+}: lib.mkIf config.conf.gaming.enable {
   environment.systemPackages = with pkgs; [
     gamemode
     steam
@@ -25,7 +21,7 @@
       };
       gpu = {
         apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = config.programs.gamemode.device;
+        gpu_device = config.conf.gaming.device;
         amd_performance_level = "high";
       };
       custom = {

@@ -9,9 +9,11 @@
     # all others
     ",highres,auto,1"
   ];
-  programs.ironbar.monitor = "eDP-1";
-  programs.ironbar.battery = [
-    { type = "upower"; class = "memory-usage"; }
-  ];
+  conf = {
+    monitor = "eDP-1";
+    battery = [
+      { type = "upower"; class = "memory-usage"; }
+    ];
+  };
   programs.hyprland.extra_autostart = [ "hyprdock --server" ];
 }

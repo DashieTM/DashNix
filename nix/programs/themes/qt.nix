@@ -1,5 +1,6 @@
-{ username, ... }:
+{ config, ... }:
 let
+  username = config.conf.username;
   color = ''
     [ColorScheme]
     active_colors=#ffc0caf5, #ff1a1b26, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ffc0caf5, #ffc0caf5, #ffc0caf5, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ffc0caf5, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ffc0caf5, #ffc0caf5

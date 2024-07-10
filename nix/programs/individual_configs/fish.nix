@@ -1,4 +1,4 @@
-{ username, ... }: {
+{ config, ... }: {
   xdg.configFile."fish/config.fish" = {
     text =
       ''
@@ -15,7 +15,7 @@
 
         set EDITOR "neovide --no-fork"
 
-        alias rebuild='sudo nixos-rebuild switch --flake /home/${username}/gits/dotFiles/nix/.'
+        alias rebuild='sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/nix/.'
         abbr --add ls 'lsd'
         abbr --add :q 'exit'
         abbr --add gh 'git push origin'

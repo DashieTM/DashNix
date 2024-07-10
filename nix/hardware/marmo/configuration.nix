@@ -1,17 +1,14 @@
-{ pkgs, ... }:
 {
   imports = [
-    ../../modules/gamemode.nix
-    ../../modules/boot_params.nix
-    ../../modules/ironbar_config.nix
+    ../../modules/conf.nix
   ];
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  programs.boot.boot_params = [
-    "amdgpu.ppfeaturemask=0xffffffff"
-  ];
-  networking.hostName = "marmo";
-  programs.ironbar.monitor = "DP-1";
-  programs.gamemode = {
-    device = 1;
+  # variables for system
+  conf = {
+    monitor = "DP-1";
+    gaming = {
+      enable = true;
+      device = 1;
+    };
+    hostname = "marmo";
   };
 }

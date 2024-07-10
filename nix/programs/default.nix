@@ -1,4 +1,4 @@
-{ inputs, pkgs, mod, username, ... }:
+{ inputs, pkgs, mod, config, ... }:
 let
   base_imports = [
     inputs.anyrun.homeManagerModules.default
@@ -14,6 +14,7 @@ let
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
   ];
+  username = config.conf.username;
 in
 {
   xdg.portal.config.common.default = "*";

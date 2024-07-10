@@ -1,4 +1,7 @@
-{ pkgs, config, username, ... }:
+{ pkgs, config, ... }:
+let
+  username = config.conf.username;
+in
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -54,6 +57,14 @@
     username
   ];
 
+  boot.kernelPackages = config.conf.kernel;
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.kernelParams = [
+    "resume=\"PARTLABEL=SWAP\""
+  ] ++ config.conf.boot_params;
+
+  networking.hostName = config.conf.hostname;
+
   # allows user change later on
   users.mutableUsers = true;
   users.users.${username} = {
@@ -70,7 +81,6 @@
   };
 
   system.stateVersion = "unstable";
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
 
   fileSystems."/" =
     {
@@ -103,8 +113,4 @@
 
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
-
-  boot.kernelParams = [
-    "resume=\"PARTLABEL=SWAP\""
-  ] ++ config.programs.boot.boot_params;
 }

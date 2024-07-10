@@ -1,10 +1,10 @@
 { lib
 , config
 , pkgs
-, username
 , ...
 }:
 let
+  username = config.conf.username;
   session = {
     command = "${lib.getExe pkgs.hyprland} --config /etc/greetd/hyprgreet.conf";
     user = username;
@@ -38,7 +38,7 @@ in
   environment.etc."greetd/hyprgreet.conf".text = ''
     exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-    monitor=${config.programs.ironbar.monitor},3440x1440@180,0x0,${config.programs.ironbar.scale}
+    monitor=${config.conf.monitor},3440x1440@180,0x0,${config.conf.scale}
     monitor=_,disable
 
     input {

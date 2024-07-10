@@ -1,19 +1,19 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ../../modules/gamemode.nix
-    ../../modules/boot_params.nix
-    ../../modules/ironbar_config.nix
+    ../../modules/conf.nix
   ];
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  programs.boot.boot_params = [
-    "amdgpu.ppfeaturemask=0xffffffff"
-  ];
-  networking.hostName = "spaceship";
 
-  programs.gamemode = {
-    device = 0;
+  # config variables
+  conf = {
+    monitor = "DP-1";
+    gaming = {
+      enable = true;
+    };
+    streamdeck.enable = true;
+    hostname = "spaceship";
   };
+
   virtualisation.virtualbox.host.enable = true;
 
   # enable hardware acceleration and rocm
@@ -28,6 +28,12 @@
     enable = true;
     enable32Bit = lib.mkDefault true;
   };
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  programs.ironbar.monitor = "DP-1";
+  networking.firewall = {
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; } # KDE Connect
+    ];
+  };
 }

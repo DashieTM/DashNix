@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  dashie = pkgs.writeText "dashie" ''
+  layout = pkgs.writeText "dashie" ''
     xkb_symbols "dashie"
     {
       include "us(basic)"
@@ -16,7 +16,7 @@ in
   services.xserver.xkb.extraLayouts.dashie = {
     description = "US layout with 'umlaut'";
     languages = [ "eng" ];
-    symbolsFile = "${dashie}";
+    symbolsFile = "${layout}";
   };
 }
 

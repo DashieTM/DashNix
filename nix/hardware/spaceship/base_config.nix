@@ -1,4 +1,8 @@
-{ username, ... }: {
+{ config, ... }:
+let
+  username = config.conf.username;
+in
+{
   imports = [
     ../../modules
   ];
@@ -30,7 +34,7 @@
     # monitor right
     "3,monitor:HDMI-A-1, default:true"
   ];
-  programs.ironbar.monitor = "DP-1";
+  conf.monitor = "DP-1";
   programs.hyprland.hyprpaper = ''
     #load
     preload = /home/${username}/Pictures/backgrounds/shinobu_2k.jpg

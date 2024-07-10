@@ -1,5 +1,5 @@
 { pkgs
-, username
+, config
 , ...
 }: {
   environment.variables = {
@@ -13,7 +13,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     GOPATH = "$HOME/.go";
-    FLAKE = "home/${username}/gits/dotFiles/nix";
+    FLAKE = "home/${config.conf.username}/gits/dotFiles/nix";
     # don't ask... marksman somehow requires this
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
   };

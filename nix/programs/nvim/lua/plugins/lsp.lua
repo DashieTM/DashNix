@@ -114,9 +114,9 @@ return {
 							"Sdk:IncludePrereleases=true",
 						},
 					},
-					typst_lsp = {
+					tinymist = {
 						settings = {
-							experimentalFormatterMode = "on",
+							formatterMode = "typstyle",
 							exportPdf = "onSave",
 						},
 						mason = false,
@@ -225,7 +225,6 @@ return {
 				},
 			},
 			formatters_by_ft = {
-				typst = { "typstfmt" },
 				nix = { "nixpkgs-fmt" },
 				lua = { "stylua" },
 				sh = { "shfmt" },

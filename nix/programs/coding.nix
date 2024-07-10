@@ -91,8 +91,7 @@
 
     #typst
     typst
-    typst-lsp
-    typstfmt
+    tinymist
     ltex-ls
 
     #java

@@ -1,14 +1,11 @@
-{ pkgs
-, inputs
-, username
-, config
+{ config
 , ...
 }:
 {
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "source" = "/home/${username}/.config/reset/keyboard.conf";
+    "source" = "/home/${config.conf.username}/.config/reset/keyboard.conf";
 
     bindm = [
       "$mod, mouse:272, movewindow"
