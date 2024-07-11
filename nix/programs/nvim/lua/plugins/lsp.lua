@@ -121,9 +121,9 @@ return {
 						},
 						mason = false,
 					},
-					nil_ls = {
+					nixd = {
 						settings = {
-							["nil"] = {
+							["nixd"] = {
 								formatting = {
 									command = { "nixpkgs-fmt" },
 								},

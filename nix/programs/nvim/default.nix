@@ -9,7 +9,7 @@
       lua-language-server
       stylua
       # nix
-      nil
+      nixd
       # go
       gopls
       # jafuck

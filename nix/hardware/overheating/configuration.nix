@@ -22,5 +22,4 @@
     };
     colorscheme = "catppuccin-mocha";
   };
-
 }
