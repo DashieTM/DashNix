@@ -98,15 +98,15 @@ in
     [Context]
     filesystems=xdg-config/gtk-3.0;xdg-config/gtk-4.0
   '';
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "adw-gtk3";
-      cursor-theme = "Bibata-Modern-Classic";
-      cursor-size = 24;
-      icon-theme = "MoreWaita";
-    };
-  };
+  #
+  # dconf.settings = {
+    # "org/gnome/desktop/interface" = {
+      # gtk-theme = "adw-gtk3";
+      # cursor-theme = "Bibata-Modern-Classic";
+      # cursor-size = 24;
+      # icon-theme = "MoreWaita";
+    # };
+  # };
 
   programs.nix-index =
     {

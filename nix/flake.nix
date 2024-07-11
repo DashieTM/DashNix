@@ -28,6 +28,8 @@
         url = "github:JakeStanger/ironbar";
       };
 
+      stylix.url = "github:danth/stylix";
+
       anyrun.url = "github:Kirottu/anyrun";
       oxicalc.url = "github:DashieTM/OxiCalc";
       oxishut.url = "github:DashieTM/OxiShut";
@@ -71,11 +73,11 @@
                 inherit inputs pkgs mod;
               };
               modules = [
-                mod
-
                 inputs.home-manager.nixosModules.home-manager
+                inputs.stylix.nixosModules.stylix
                 ./base/default.nix
                 ./programs
+                mod
               ] ++ inputs.nixpkgs.lib.optional (builtins.pathExists ./hardware/${name}/${name}.nix) ./hardware/${name}/${name}.nix
               ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
             };

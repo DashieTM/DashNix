@@ -1,4 +1,5 @@
 { config
+, lib
 , ...
 }:
 {
@@ -121,8 +122,8 @@
     general = {
       gaps_out = "3,5,5,5";
       border_size = 3;
-      "col.active_border" = "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
-      "col.inactive_border" = "0x66333333";
+      "col.active_border" = lib.mkForce "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
+      # "col.inactive_border" = "0x66333333";
       allow_tearing = true;
     };
 
