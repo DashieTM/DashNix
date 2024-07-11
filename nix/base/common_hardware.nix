@@ -119,7 +119,7 @@ in
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
   hardware.cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.fstrim.enable = lib.mkDefault true;
   nix.settings.auto-optimise-store = true;

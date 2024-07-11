@@ -29,6 +29,7 @@
       };
 
       stylix.url = "github:danth/stylix";
+      base16.url = "github:SenchoPens/base16.nix";
 
       anyrun.url = "github:Kirottu/anyrun";
       oxicalc.url = "github:DashieTM/OxiCalc";
@@ -39,6 +40,7 @@
       hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
       reset-plugins.url = "github:Xetibo/ReSet-Plugins";
+
     };
 
   outputs = { ... }@inputs:
@@ -47,41 +49,15 @@
         system = "x86_64-linux";
         overlays = [
           inputs.nur.overlay
-          # DUDE FOR FUCK SAKE
-          # https://github.com/NixOS/nixpkgs/pull/325825 ....
-          # fucking fun 
-          # TODO: https://github.com/NixOS/nixpkgs/pull/325825 ....
-          (_: prev: {
-            python312 = prev.python312.override { packageOverrides = _: pysuper: { nose = pysuper.pynose; }; };
-          })
         ];
         config = {
           allowUnfree = true;
         };
       };
+      dashielib = import ./lib { inherit inputs pkgs; };
     in
     {
-      nixosConfigurations = (builtins.listToAttrs (map
-        (name: {
-          name = name;
-          value =
-            let
-              mod = ./hardware/${name}/configuration.nix;
-            in
-            inputs.nixpkgs.lib.nixosSystem {
-              specialArgs = {
-                inherit inputs pkgs mod;
-              };
-              modules = [
-                inputs.home-manager.nixosModules.home-manager
-                inputs.stylix.nixosModules.stylix
-                ./base/default.nix
-                ./programs
-                mod
-              ] ++ inputs.nixpkgs.lib.optional (builtins.pathExists ./hardware/${name}/${name}.nix) ./hardware/${name}/${name}.nix
-              ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
-            };
-        }) [ "marmo" "overheating" "spaceship" ]));
+      nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]);
     };
 
   nixConfig = {

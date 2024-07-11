@@ -1,7 +1,10 @@
-{ config, ... }:
+{ config, inputs, pkgs, ... }:
 let
   username = config.conf.username;
-  scheme = config.conf.colorscheme;
+  # at time of using this here, stylix might not be evaluated yet
+  # hence ensure it is by using base16 mkSchemeAttrs
+  base16 = pkgs.callPackage inputs.base16.lib { };
+  scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
   # active_colors=#ffc0caf5, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ffc0caf5, #ffc0caf5, #ffc0caf5, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ffc0caf5, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ffc0caf5, #ffc0caf5
   # disabled_colors=#ff6d728d, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d
   # inactive_colors=#ff6d728d, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d

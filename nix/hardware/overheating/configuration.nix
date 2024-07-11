@@ -20,6 +20,7 @@
       ];
       extra_autostart = [ "hyprdock --server" ];
     };
+    colorscheme = "catppuccin-mocha";
   };
 
 }

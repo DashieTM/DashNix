@@ -19,7 +19,6 @@
     pdfpc
     polylux2pdfpc
     # spotify
-    #ncspot
     # video editing
     kdenlive
     # image creation

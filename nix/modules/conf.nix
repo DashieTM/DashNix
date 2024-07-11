@@ -1,5 +1,16 @@
 { lib, config, pkgs, ... }: {
   options.conf = {
+
+    system = lib.mkOption {
+      default = "x86_64-linux";
+      # no fisherprice unix support
+      type = with lib.types; (enum [ "x86_64-linux" "aarch64-linux" "aarch64-linux-android" ]);
+      example = "aarch64-linux";
+      description = ''
+        System architecture.
+      '';
+    };
+
     cpu = lib.mkOption {
       # TODO: how to enable arm?
       default = "amd";
@@ -160,6 +171,7 @@
 
     colorscheme = lib.mkOption {
       default = {
+        # custom tokyo night
         base00 = "1A1B26";
         # base01 = "16161E";
         # base01 = "15161e";
@@ -183,10 +195,13 @@
         base0E = "BB9AF7";
         base0F = "F7768E";
       };
-      example = { base00 = "FFFFFF"; };
-      type = with lib.types; attrs;
+      example = "catppuccin-mocha";
+      type = with lib.types; oneOf [ str attrs path ];
       description = ''
         Base16 colorscheme.
+        Can be an attribute set with base00 to base0F,
+        a string that leads to a yaml file in base16-schemes path,
+        or a path to a custom yaml file.
       '';
     };
   };

@@ -1,12 +1,13 @@
 { lib
 , config
 , pkgs
+, inputs
 , ...
 }:
 let
   username = config.conf.username;
   session = {
-    command = "${lib.getExe pkgs.hyprland} --config /etc/greetd/hyprgreet.conf";
+    command = "${lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland} --config /etc/greetd/hyprgreet.conf";
     user = username;
   };
 in

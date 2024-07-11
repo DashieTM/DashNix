@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   stylix = {
     enable = true;
     image = /home/${config.conf.username}/Pictures/backgrounds/shinobu_2k.jpg;
@@ -33,6 +34,7 @@
       size = 24;
     };
 
-    base16Scheme = config.conf.colorscheme;
+    base16Scheme =
+      (if builtins.isAttrs config.conf.colorscheme then config.conf.colorscheme else "${pkgs.base16-schemes}/share/themes/${config.conf.colorscheme}.yaml");
   };
 }
