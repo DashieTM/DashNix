@@ -1,8 +1,6 @@
 {
   imports = [
     ../../modules/conf.nix
-    ./dsdt.nix
-    ./firmware.nix
   ];
   conf = {
     monitor = "eDP-1";
@@ -24,9 +22,4 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  # for hyprdock
-  services.acpid.enable = true;
 }

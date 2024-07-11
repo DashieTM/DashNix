@@ -1,5 +1,15 @@
 { lib, config, pkgs, ... }: {
   options.conf = {
+    cpu = lib.mkOption {
+      # TODO: how to enable arm?
+      default = "amd";
+      type = with lib.types; (enum [ "amd" "intel" ]);
+      example = "intel";
+      description = ''
+        cpu microcode.
+      '';
+    };
+
     monitor = lib.mkOption {
       default = "";
       example = "eDP-1";

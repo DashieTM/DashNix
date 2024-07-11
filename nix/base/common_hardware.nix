@@ -1,8 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, modulesPath, ... }:
 let
   username = config.conf.username;
 in
 {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -115,4 +118,10 @@ in
 
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  services.fstrim.enable = lib.mkDefault true;
+  nix.settings.auto-optimise-store = true;
+  networking.useDHCP = lib.mkDefault true;
 }
