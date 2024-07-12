@@ -49,6 +49,9 @@
         system = "x86_64-linux";
         overlays = [
           inputs.nur.overlay
+          (_: prev: {
+            python312 = prev.python312.override { packageOverrides = _: pysuper: { nose = pysuper.pynose; }; };
+          })
         ];
         config = {
           allowUnfree = true;

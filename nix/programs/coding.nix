@@ -1,9 +1,11 @@
 { pkgs
+, lib
+, config
 , ...
 }:
 {
   imports = [
-    ./nvim/default.nix
+    (import ./nvim/default.nix { inherit lib pkgs; colorscheme = config.conf.colorscheme; })
   ];
 
   home.packages = with pkgs; [
@@ -49,7 +51,7 @@
 
     #haskell
     haskellPackages.cabal-install
-    ghc 
+    ghc
     haskellPackages.haskell-language-server
 
     #html

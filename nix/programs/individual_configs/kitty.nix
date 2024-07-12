@@ -16,7 +16,7 @@
       italic_font = "JetBrainsMono Nerd Font Mono Extra Italic";
       bold_italic_font = "JetBrainsMono Nerd Font Mono Extra Bold Italic";
 
-      background = lib.mkForce "#1a1b25";
+      # background = lib.mkForce "#1a1b25";
       # foreground = "#c5c8c6";
       #
       # selection_background = "#b2ceee";

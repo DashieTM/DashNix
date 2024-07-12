@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }:
+# please nixvim enable lazyloading
+{ lib, pkgs, colorscheme, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -164,15 +165,17 @@
             fallback = true,
           },
           spec = {
-            { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+            { "LazyVim/LazyVim",
+            opts = {
+              ${if colorscheme != "" then "colorscheme = '${colorscheme}'," else ""}
+            },
+            import = "lazyvim.plugins" },
             { import = "lazyvim.plugins.extras.ui.alpha" },
             { import = "lazyvim.plugins.extras.lang.rust" },
             { import = "lazyvim.plugins.extras.lang.tailwind" },
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.go" },
             { import = "lazyvim.plugins.extras.lang.clangd" },
-            -- { import = "lazyvim.plugins.extras.lang.typescript" },
-            -- { import = "lazyvim.plugins.extras.lang.python" },
             { import = "lazyvim.plugins.extras.lang.markdown" },
             { import = "lazyvim.plugins.extras.lang.cmake" },
             { import = "lazyvim.plugins.extras.lang.omnisharp" },
@@ -181,15 +184,12 @@
             { import = "lazyvim.plugins.extras.dap.core" },
             { import = "lazyvim.plugins.extras.test.core" },
             { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
-            -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
-            --{ "williamboman/mason.nvim", enabled = false },
-            -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            --{ "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
             { import = "plugins" },
             { import = "plugins.plugins" },
           },
-          install = { colorscheme = { "tokyonight" } },
+
+          ${if colorscheme != "" then "install = { colorscheme = { '${colorscheme}' } }," else ""}
           checker = { enabled = true, notify = false },
           change_detection = { enabled = true, notify = false },
         })

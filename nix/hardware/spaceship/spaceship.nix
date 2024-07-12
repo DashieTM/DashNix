@@ -1,7 +1,8 @@
 { pkgs, lib, ... }:
 {
-# TODO: needed?
+  # TODO: needed?
   boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   fileSystems."/drive2" =
     {

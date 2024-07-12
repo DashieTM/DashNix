@@ -1,12 +1,4 @@
-local Util = require("lazyvim.util")
-
 return {
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "tokyonight-night",
-		},
-	},
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",

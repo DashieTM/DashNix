@@ -58,5 +58,6 @@ in
       '';
       extra_autostart = [ "streamdeck -n" ];
     };
+    colorscheme = "catppuccin-mocha";
   };
 }
