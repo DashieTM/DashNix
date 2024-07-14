@@ -4,16 +4,20 @@
     enable = true;
     image = /home/${config.conf.username}/Pictures/backgrounds/shinobu_2k.jpg;
     polarity = "dark";
+    targets = {
+      nixvim.enable = false;
+      fish.enable = false;
+    };
 
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        package = pkgs.cantarell-fonts;
+        name = "Cantarell";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.cantarell-fonts;
+        name = "Cantarell";
       };
 
       monospace = {

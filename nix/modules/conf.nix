@@ -169,6 +169,15 @@
       };
     };
 
+    nvim-colorscheme = lib.mkOption {
+      default = { tokyonight = { enable = true; }; };
+      example = { catppuccin = { enable = true; }; };
+      type = lib.types.attrs;
+      description = ''
+        nixvim colorscheme.
+      '';
+    };
+
     colorscheme = lib.mkOption {
       default = {
         # custom tokyo night

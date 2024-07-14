@@ -22,10 +22,8 @@
   hardware.graphics.extraPackages = with pkgs; [
     libvdpau-va-gl
     vaapiVdpau
-    # DUDE FOR FUCK SAKE
-    # TODO:
-    # rocmPackages.clr.icd
-    # rocm-opencl-runtime
+    rocmPackages.clr.icd
+    rocm-opencl-runtime
   ];
   hardware.graphics = {
     enable = true;

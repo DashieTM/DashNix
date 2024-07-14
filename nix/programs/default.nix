@@ -13,6 +13,7 @@ let
     inputs.reset.homeManagerModules.default
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
+    inputs.dashvim.homeManagerModules.dashvim
   ];
 in
 {
@@ -31,7 +32,6 @@ in
 
   home-manager.users.${config.conf.username} = {
     imports = [
-
       ./hyprland/default.nix
       ./flatpak.nix
       ./common.nix

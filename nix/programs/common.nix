@@ -100,12 +100,12 @@ in
   '';
   #
   # dconf.settings = {
-    # "org/gnome/desktop/interface" = {
-      # gtk-theme = "adw-gtk3";
-      # cursor-theme = "Bibata-Modern-Classic";
-      # cursor-size = 24;
-      # icon-theme = "MoreWaita";
-    # };
+  # "org/gnome/desktop/interface" = {
+  # gtk-theme = "adw-gtk3";
+  # cursor-theme = "Bibata-Modern-Classic";
+  # cursor-size = 24;
+  # icon-theme = "MoreWaita";
+  # };
   # };
 
   programs.nix-index =

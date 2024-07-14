@@ -230,8 +230,6 @@
       "immediate,class:^(.*)(Pal)$"
       "immediate,class:^(.*)(dota2)$"
       "immediate,class:^(.*)(needforspeedheat.exe)$"
-      "forceinput,class:^(.*)(Pal)$"
-      "forceinput,class:^(.*)(Battlefield 4)$"
     ];
 
     exec-once = [

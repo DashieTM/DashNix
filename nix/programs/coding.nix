@@ -5,8 +5,14 @@
 }:
 {
   imports = [
-    (import ./nvim/default.nix { inherit lib pkgs; colorscheme = config.conf.colorscheme; })
+    # old neovim config
+    # (import ./nvim/default.nix { inherit lib pkgs; colorscheme = config.conf.colorscheme; })
   ];
+
+  programs.dashvim = {
+    enable = true;
+    colorscheme = config.conf.colorscheme;
+  };
 
   home.packages = with pkgs; [
     #basics

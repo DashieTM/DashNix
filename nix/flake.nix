@@ -40,7 +40,11 @@
       hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
       reset-plugins.url = "github:Xetibo/ReSet-Plugins";
-
+      # nixvim.url = "github:nix-community/nixvim";
+      dashvim = {
+        url = "github:DashieTM/DashVim";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
   outputs = { ... }@inputs:
@@ -49,9 +53,6 @@
         system = "x86_64-linux";
         overlays = [
           inputs.nur.overlay
-          (_: prev: {
-            python312 = prev.python312.override { packageOverrides = _: pysuper: { nose = pysuper.pynose; }; };
-          })
         ];
         config = {
           allowUnfree = true;
