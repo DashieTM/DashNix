@@ -16,5 +16,6 @@
       # all others
       ",highrr,auto,1"
     ];
+    colorscheme="catppuccin-mocha";
   };
 }

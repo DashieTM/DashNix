@@ -2,7 +2,7 @@
 {
   stylix = {
     enable = true;
-    image = /home/${config.conf.username}/Pictures/backgrounds/shinobu_2k.jpg;
+    image = ../../base/black.jpg; 
     polarity = "dark";
     targets = {
       nixvim.enable = false;

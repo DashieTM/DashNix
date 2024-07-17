@@ -44,6 +44,7 @@
       dashvim = {
         url = "github:DashieTM/DashVim";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.base16.follows = "base16";
       };
     };
 

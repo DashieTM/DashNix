@@ -175,6 +175,9 @@
     },
     "dashvim": {
       "inputs": {
+        "base16": [
+          "base16"
+        ],
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
           "nixpkgs"
@@ -182,11 +185,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1721001253,
-        "narHash": "sha256-5Nfky4JhjM865jbvrueY/+fByUT8meUCHWuuwhaIUcw=",
+        "lastModified": 1721163124,
+        "narHash": "sha256-Ib3q42fxtCPFzLqKVWkTGGxrUFC9eGwCKTWuYCuSBBg=",
         "owner": "DashieTM",
         "repo": "DashVim",
-        "rev": "276041dee43e85f0223b08041a842ba38c3e1ad3",
+        "rev": "69f6406e6dd73d059a7d28f81183914704f70f9e",
         "type": "github"
       },
       "original": {
