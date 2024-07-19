@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, options, ... }: {
   options.conf = {
 
     system = lib.mkOption {
@@ -50,15 +50,6 @@
           Adds modules to ironbar.
         '';
       };
-    };
-
-    amdGpu = lib.mkOption {
-      default = false;
-      example = true;
-      type = lib.types.bool;
-      description = ''
-        Enables drivers, optimizations and kernel parameters for AMD gpus.
-      '';
     };
 
     boot_params = lib.mkOption {
@@ -216,10 +207,6 @@
   };
 
   config = {
-    conf.boot_params = lib.mkIf config.conf.amdGpu [
-      "amdgpu.ppfeaturemask=0xffffffff"
-    ];
-
     conf.kernel = lib.mkIf config.conf.gaming.enable pkgs.linuxPackages_xanmod_latest;
   };
 }

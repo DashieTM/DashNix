@@ -11,11 +11,11 @@
         # Utility functions for zoxide.
         #
 
-        export NIX_PATH="$NIX_PATH:$HOME/gits/dotFiles/nix/."
+        export NIX_PATH="$NIX_PATH:$HOME/gits/dotFiles/."
 
         set EDITOR "neovide --no-fork"
 
-        alias rebuild='sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/nix/.'
+        alias rebuild='sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/.'
         abbr --add ls 'lsd'
         abbr --add :q 'exit'
         abbr --add gh 'git push origin'

@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./programs
+    ./conf.nix
+  ];
+}

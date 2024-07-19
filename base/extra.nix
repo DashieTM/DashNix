@@ -1,0 +1,1 @@
+{ options, ... }: options.extra.extraHardwareConfig

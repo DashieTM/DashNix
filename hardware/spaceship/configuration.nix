@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    ../../modules/conf.nix
+    ../../modules
   ];
 
   # config variables
@@ -26,6 +26,7 @@ in
         # all others
         ",highrr,auto,1"
       ];
+
       workspace = [
         # workspaces
         # monitor middle
@@ -59,5 +60,30 @@ in
       extra_autostart = [ "streamdeck -n" ];
     };
     colorscheme = "catppuccin-mocha";
+  };
+  mods = {
+    extraDrives = [
+      {
+        name = "drive2";
+        drive =
+          {
+            device = "/dev/disk/by-label/DRIVE2";
+            fsType = "ext4";
+            options = [
+              "noatime"
+              "nodiratime"
+              "discard"
+            ];
+          };
+      }
+    ];
+    virtualbox.enable = true;
+    kde_connect.enable = true;
+    xone.enable = true;
+    amdgpu.enable = true;
+    vapi = {
+      enable = true;
+      rocm.enable = true;
+    };
   };
 }

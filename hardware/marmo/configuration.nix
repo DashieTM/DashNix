@@ -16,6 +16,11 @@
       # all others
       ",highrr,auto,1"
     ];
-    colorscheme="catppuccin-mocha";
+    colorscheme = "catppuccin-mocha";
+  };
+  mods = {
+    amdgpu.enable = true;
+    kde_connect.enable = true;
+    xone.enable = true;
   };
 }

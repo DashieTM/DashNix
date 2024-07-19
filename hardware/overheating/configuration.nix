@@ -22,4 +22,10 @@
     };
     colorscheme = "catppuccin-mocha";
   };
+  mods = {
+    amdgpu.enable = true;
+    kde_connect.enable = true;
+    bluetooth.enable = true;
+    acpid.enable = true;
+  };
 }
