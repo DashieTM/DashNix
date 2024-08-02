@@ -10,6 +10,9 @@ in
   # config variables
   conf = {
     monitor = "DP-1";
+    login_manager = {
+      resolution = "3440x1440@180";
+    };
     gaming = {
       enable = true;
     };

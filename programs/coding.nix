@@ -101,7 +101,7 @@
     gradle
     maven
     jdt-language-server
-    adoptopenjdk-jre-bin
+    temurin-jre-bin
 
     #.!
     dotnet-sdk_8

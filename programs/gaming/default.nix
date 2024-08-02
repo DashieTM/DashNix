@@ -9,6 +9,7 @@
     lutris
     wine
     adwsteamgtk
+    heroic
   ];
 
   programs.steam.enable = true;
@@ -19,10 +20,11 @@
       general = {
         governor = "performance";
       };
-      gpu = {
+      gpu = lib.mkIf config.conf.gaming.gamemode_gpu {
         apply_gpu_optimisations = "accept-responsibility";
         gpu_device = config.conf.gaming.device;
         amd_performance_level = "high";
+        nv_powermizer_mode = 1;
       };
       custom = {
         start = "notify-send -a 'Gamemode' 'Optimizations activated'";

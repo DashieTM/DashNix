@@ -36,10 +36,11 @@ in
     Hyprland
   '';
 
+  # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
   environment.etc."greetd/hyprgreet.conf".text = ''
     exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-    monitor=${config.conf.monitor},3440x1440@180,0x0,${config.conf.scale}
+    monitor=${config.conf.login_manager.monitor},${config.conf.login_manager.resolution},0x0,${config.conf.login_manager.scale}
     monitor=_,disable
 
     input {
@@ -47,8 +48,8 @@ in
     }
 
     misc {
-        disable_splash_rendering = true
-        disable_hyprland_logo = true
+        disable_splash_rendering = false
+        disable_hyprland_logo = false
     }
 
     exec-once=regreet --style /home/${username}/.config/gtk-3.0/gtk.css; hyprctl dispatch exit

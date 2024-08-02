@@ -79,6 +79,24 @@
           GPU device number
         '';
       };
+
+      kernel = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = ''
+          Install the gaming(xanmod) kernel.
+        '';
+      };
+
+      gamemode_gpu = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = ''
+          Use GPU optimization.
+        '';
+      };
     };
 
     streamdeck = {
@@ -169,6 +187,35 @@
       '';
     };
 
+    login_manager = {
+      monitor = lib.mkOption {
+        default = "${config.conf.monitor}";
+        example = "eDP-1";
+        type = lib.types.str;
+        description = ''
+          main monitor for the login screen.
+          By default the main monitor is used.
+        '';
+      };
+      scale = lib.mkOption {
+        default = "${config.conf.scale}";
+        example = "1.5";
+        type = lib.types.str;
+        description = ''
+          Scale used by the monitor in the login screen.
+          By default the scale of the main monitor is used. 
+        '';
+      };
+      resolution = lib.mkOption {
+        default = "auto";
+        example = "3440x1440@180";
+        type = lib.types.str;
+        description = ''
+          Resolution/refreshrate used by the monitor in the login screen. 
+        '';
+      };
+    };
+
     colorscheme = lib.mkOption {
       default = {
         # custom tokyo night
@@ -207,6 +254,6 @@
   };
 
   config = {
-    conf.kernel = lib.mkIf config.conf.gaming.enable pkgs.linuxPackages_xanmod_latest;
+    conf.kernel = lib.mkIf (config.conf.gaming.enable && config.conf.gaming.kernel) pkgs.linuxPackages_xanmod_latest;
   };
 }
