@@ -209,8 +209,8 @@
           };
 
           input = {
-            kb_layout = "{config.mods.xkb.layout}";
-            kb_variant = "{config.mods.xkb.variant}";
+            kb_layout = "${config.mods.xkb.layout}";
+            kb_variant = "${config.mods.xkb.variant}";
             repeat_delay = 200;
             force_no_accel = true;
             touchpad = {

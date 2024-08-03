@@ -15,7 +15,9 @@
     ./base_packages.nix
     ./home_packages.nix
     ./media.nix
+    ./coding.nix
     ./flatpak.nix
+    ./nextcloud.nix
     ./hyprland
   ];
 }
