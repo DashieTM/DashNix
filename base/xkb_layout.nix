@@ -19,5 +19,3 @@ in
     symbolsFile = "${layout}";
   };
 }
-
-

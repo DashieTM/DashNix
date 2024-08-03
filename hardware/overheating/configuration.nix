@@ -27,5 +27,8 @@
     kde_connect.enable = true;
     bluetooth.enable = true;
     acpid.enable = true;
+    greetd = {
+      resolution = "3440x1440@180";
+    };
   };
 }

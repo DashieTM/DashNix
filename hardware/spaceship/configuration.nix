@@ -10,9 +10,6 @@ in
   # config variables
   conf = {
     monitor = "DP-1";
-    login_manager = {
-      resolution = "3440x1440@180";
-    };
     gaming = {
       enable = true;
     };
@@ -22,7 +19,7 @@ in
       monitor = [
         # default
         "DP-2,2560x1440@165,0x0,1"
-        "DP-1,3440x1440@180,2560x0,1,vrr,1"
+        "DP-1,3440x1440@180,2560x0,1,vrr,0"
         "HDMI-A-1,1920x1200@60,6000x0,1"
         "HDMI-A-1,transform,1"
 
@@ -84,9 +81,13 @@ in
     kde_connect.enable = true;
     xone.enable = true;
     amdgpu.enable = true;
+    piper.enable = true;
     vapi = {
       enable = true;
       rocm.enable = true;
+    };
+    greetd = {
+      resolution = "3440x1440@180";
     };
   };
 }

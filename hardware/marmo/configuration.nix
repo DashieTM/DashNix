@@ -22,5 +22,8 @@
     amdgpu.enable = true;
     kde_connect.enable = true;
     xone.enable = true;
+    greetd = {
+      resolution = "3440x1440@180";
+    };
   };
 }

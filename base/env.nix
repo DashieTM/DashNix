@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}: {
+{ pkgs, config, ... }: {
   environment.variables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.glib.getSchemaPath pkgs.gsettings-desktop-schemas}";
     NEOVIDE_MAXIMIZED = "0";
@@ -13,7 +10,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     GOPATH = "$HOME/.go";
-    FLAKE = "home/${config.conf.username}/gits/dotFiles/nix";
+    FLAKE = config.conf.nix_path;
     # don't ask... marksman somehow requires this
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
   };

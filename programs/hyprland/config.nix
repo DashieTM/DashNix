@@ -151,7 +151,8 @@
     };
 
     input = {
-      #kb_layout = "dashie";
+      kb_layout = "{config.mods.xkb.layout}";
+      kb_variant = "{config.mods.xkb.variant}";
       repeat_delay = 200;
       force_no_accel = true;
       touchpad = {
@@ -168,11 +169,14 @@
       disable_hyprland_logo = true;
       swallow_regex = "^(.*)(kitty)(.*)$";
       initial_workspace_tracking = 1;
+      no_direct_scanout = false;
     };
 
     cursor = {
       # conversion seems to be borked right now, i want a smooth bibata :(
       enable_hyprcursor = false;
+      no_hardware_cursors = true;
+      no_break_fs_vrr = true;
     };
 
     gestures = {

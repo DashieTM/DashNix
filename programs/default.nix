@@ -33,12 +33,8 @@ in
   home-manager.users.${config.conf.username} = {
     imports = [
       ./hyprland/default.nix
-      ./flatpak.nix
       ./common.nix
-      ./coding.nix
       ./xdg.nix
-      ./media.nix
-      ./utils.nix
       ./oxi/default.nix
       ./themes/default.nix
       ./individual_configs/default.nix

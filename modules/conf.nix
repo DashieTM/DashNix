@@ -141,7 +141,7 @@
       monitor = lib.mkOption {
         default = [ ];
         example = [
-          "DP-1,3440x1440@180,2560x0,1,vrr,1"
+          "DP-1,3440x1440@180,2560x0,1,vrr,0"
         ];
         type = with lib.types; listOf str;
         description = ''
@@ -187,33 +187,31 @@
       '';
     };
 
-    login_manager = {
-      monitor = lib.mkOption {
-        default = "${config.conf.monitor}";
-        example = "eDP-1";
-        type = lib.types.str;
-        description = ''
-          main monitor for the login screen.
-          By default the main monitor is used.
-        '';
-      };
-      scale = lib.mkOption {
-        default = "${config.conf.scale}";
-        example = "1.5";
-        type = lib.types.str;
-        description = ''
-          Scale used by the monitor in the login screen.
-          By default the scale of the main monitor is used. 
-        '';
-      };
-      resolution = lib.mkOption {
-        default = "auto";
-        example = "3440x1440@180";
-        type = lib.types.str;
-        description = ''
-          Resolution/refreshrate used by the monitor in the login screen. 
-        '';
-      };
+    nix_path = lib.mkOption {
+      default = "/home${config.conf.username}/gits/dotFiles";
+      example = "yourpath";
+      type = lib.types.str;
+      description = ''
+        The default path for your configuration.
+      '';
+    };
+
+    kb_layout = lib.mkOption {
+      default = "dashie";
+      example = "us";
+      type = lib.types.str;
+      description = ''
+        The layout used in services. 
+      '';
+    };
+
+    system_state_version = lib.mkOption {
+      default = "unstable";
+      example = "24.05";
+      type = lib.types.str;
+      description = ''
+        System state version 
+      '';
     };
 
     colorscheme = lib.mkOption {
@@ -251,9 +249,15 @@
         or a path to a custom yaml file.
       '';
     };
+
+
   };
 
   config = {
     conf.kernel = lib.mkIf (config.conf.gaming.enable && config.conf.gaming.kernel) pkgs.linuxPackages_xanmod_latest;
-  };
+  } // (lib.optionalAttrs (options?system.stateVersion)
+    {
+      system.stateVersion = "unstable";
+    }
+  );
 }

@@ -11,7 +11,10 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
+  networking.useDHCP = lib.mkDefault true;
   networking.networkmanager.enable = true;
+  networking.hostName = config.conf.hostname;
+
   services.flatpak.enable = true;
 
   # Set your time zone.
@@ -23,25 +26,14 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.browsing = true;
-  services.printing.drivers = [ pkgs.hplip ];
-  services.printing.startWhenNeeded = true; # optional
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
+  nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
+  nix.settings.auto-optimise-store = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.fstrim.enable = lib.mkDefault true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -65,8 +57,6 @@ in
     "resume=\"PARTLABEL=SWAP\""
   ] ++ config.conf.boot_params;
 
-  networking.hostName = config.conf.hostname;
-
   # allows user change later on
   users.mutableUsers = true;
   users.users.${username} = {
@@ -81,8 +71,6 @@ in
     # e.g. login, then change to whatever else, this also ensures no public hash is available
     password = "firstlogin";
   };
-
-  system.stateVersion = "unstable";
 
   fileSystems."/" =
     {
@@ -115,10 +103,4 @@ in
 
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
-
-  nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
-  hardware.cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  services.fstrim.enable = lib.mkDefault true;
-  nix.settings.auto-optimise-store = true;
-  networking.useDHCP = lib.mkDefault true;
 }
