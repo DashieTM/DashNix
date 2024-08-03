@@ -16,5 +16,6 @@
     ./home_packages.nix
     ./media.nix
     ./flatpak.nix
+    ./hyprland
   ];
 }

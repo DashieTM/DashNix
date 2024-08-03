@@ -32,7 +32,6 @@ in
 
   home-manager.users.${config.conf.username} = {
     imports = [
-      ./hyprland/default.nix
       ./common.nix
       ./xdg.nix
       ./oxi/default.nix

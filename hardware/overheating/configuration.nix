@@ -10,6 +10,9 @@
     ironbar.modules = [
       { type = "upower"; class = "memory-usage"; }
     ];
+    colorscheme = "catppuccin-mocha";
+  };
+  mods = {
     hyprland = {
       monitor = [
         # default
@@ -20,9 +23,6 @@
       ];
       extra_autostart = [ "hyprdock --server" ];
     };
-    colorscheme = "catppuccin-mocha";
-  };
-  mods = {
     amdgpu.enable = true;
     kde_connect.enable = true;
     bluetooth.enable = true;

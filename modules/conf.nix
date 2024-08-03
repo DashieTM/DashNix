@@ -137,47 +137,6 @@
       '';
     };
 
-    hyprland = {
-      monitor = lib.mkOption {
-        default = [ ];
-        example = [
-          "DP-1,3440x1440@180,2560x0,1,vrr,0"
-        ];
-        type = with lib.types; listOf str;
-        description = ''
-          The monitor configuration for hyprland.
-        '';
-      };
-      workspace = lib.mkOption {
-        default = [ ];
-        example = [
-          "2,monitor:DP-1, default:true"
-        ];
-        type = with lib.types; listOf str;
-        description = ''
-          The workspace configuration for hyprland.
-        '';
-      };
-      hyprpaper = lib.mkOption {
-        default = '''';
-        example = ''
-          hyprpaper stuff
-        '';
-        type = lib.types.lines;
-        description = ''
-          hyprpaper
-        '';
-      };
-      extra_autostart = lib.mkOption {
-        default = [ ];
-        example = [ "your application" ];
-        type = lib.types.listOf lib.types.str;
-        description = ''
-          Extra exec_once.
-        '';
-      };
-    };
-
     nvim-colorscheme = lib.mkOption {
       default = { tokyonight = { enable = true; }; };
       example = { catppuccin = { enable = true; }; };

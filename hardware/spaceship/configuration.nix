@@ -15,6 +15,9 @@ in
     };
     streamdeck.enable = true;
     hostname = "spaceship";
+    colorscheme = "catppuccin-mocha";
+  };
+  mods = {
     hyprland = {
       monitor = [
         # default
@@ -45,7 +48,7 @@ in
         # monitor right
         "3,monitor:HDMI-A-1, default:true"
       ];
-      hyprpaper = ''
+      hyprpaper.config = ''
         #load
         preload = /home/${username}/Pictures/backgrounds/shinobu_2k.jpg
         preload = /home/${username}/Pictures/backgrounds/shino_wide.png
@@ -59,9 +62,6 @@ in
       '';
       extra_autostart = [ "streamdeck -n" ];
     };
-    colorscheme = "catppuccin-mocha";
-  };
-  mods = {
     extraDrives = [
       {
         name = "drive2";

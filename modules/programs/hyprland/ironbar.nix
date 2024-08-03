@@ -1,11 +1,23 @@
-{ config, ... }:
-let
-  username = config.conf.username;
-in
+{ lib, config, pkgs, options, ... }:
+      let
+    username = config.conf.username;
+  in
 {
+  options.mods = {
+    hyprland.ironbar = {
+      enable = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = "Enables ironbar";
+      };
+    };
+  };
+  config = lib.mkIf config.mods.hyprland.ironbar.enable
+    (lib.optionalAttrs (options?programs.ironbar)
+  {
 
-  programs.ironbar =
-    {
+  programs.ironbar = {
       enable = true;
       style = ''
         @import url("/home/${username}/.config/gtk-3.0/gtk.css");
@@ -258,4 +270,5 @@ in
         };
       };
     };
+  });
 }
