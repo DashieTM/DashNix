@@ -34,3 +34,4 @@ For package lists, please check the individual modules, as the lists can be long
 - printing : Enables and configures printing services
 - virtualbox : Enables and configures virtualbox
 - xone : Installs the xone driver
+- Hyprland: Installs and configures Hyprland with various additional packages
