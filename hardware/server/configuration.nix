@@ -323,4 +323,19 @@ in
 
   hardware.cpu.intel.updateMicrocode = true;
   system.stateVersion = "24.05";
+
+  nix = {
+    extraOptions = ''
+      !include ${config.sops.secrets.access.path}
+    '';
+  };
+
+  sops = {
+    gnupg = {
+      home = "~/.gnupg";
+      sshKeyPaths = [ ];
+    };
+    defaultSopsFile = ../secrets/secrets.yaml;
+    secrets.access = { };
+  };
 }

@@ -36,6 +36,7 @@ in
       enable = true;
       enableFishIntegration = true;
     };
+
   nix = {
     extraOptions = ''
       !include ${config.sops.secrets.access.path}
