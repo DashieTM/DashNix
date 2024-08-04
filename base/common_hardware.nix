@@ -7,7 +7,10 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
@@ -28,7 +31,15 @@ in
 
   nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
   nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d --delete-generations +5";
+    };
     settings = {
+      trusted-users = [
+        username
+      ];
       auto-optimise-store = true;
 
       experimental-features = "nix-command flakes";
@@ -52,10 +63,6 @@ in
     XDG_CACHE_HOME = "$HOME/.cache";
     DIRENV_LOG_FORMAT = "";
   };
-
-  nix.settings.trusted-users = [
-    username
-  ];
 
   boot.kernelPackages = config.conf.kernel;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
