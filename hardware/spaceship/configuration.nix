@@ -93,12 +93,12 @@ in
       synclist = [
         {
           name = "document_sync";
-          remote = "Documents";
+          remote = "/Documents";
           local = "/home/${config.conf.username}/Documents";
         }
         {
           name = "picture_sync";
-          remote = "Pictures";
+          remote = "/Pictures";
           local = "/home/${config.conf.username}/Pictures";
         }
         {

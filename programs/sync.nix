@@ -1,4 +1,5 @@
-{ config, pkgs, options, lib, ... }:
+# derived from NixOS wiki
+{ config, pkgs, lib, ... }:
 let
   username = config.mods.nextcloud.username;
   password = config.sops.secrets.nextcloud.path;
@@ -19,7 +20,7 @@ lib.mkIf config.mods.nextcloud.enable {
               };
               Service = {
                 Type = "simple";
-                ExecStart = "${pkgs.nextcloud-client}/bin/nextcloudcmd -h --path ${opts.remote} ${opts.local} https://${username}:$(bat ${password})@${url}";
+                ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.nextcloud-client}/bin/nextcloudcmd -h --path ${opts.remote} ${opts.local} https://${username}:$(bat ${password})@${url}'";
                 TimeoutStopSec = "180";
                 KillMode = "process";
                 KillSignal = "SIGINT";

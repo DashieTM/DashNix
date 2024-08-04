@@ -6,18 +6,18 @@
         ConfigVersion=2
 
         [Browser]
-        CustomProxyLocation=
         Enabled=true
 
         [GUI]
         ApplicationTheme=classic
         HidePasswords=true
+        MinimizeOnClose=true
+        MinimizeToTray=true
+        ShowTrayIcon=true
         TrayIconAppearance=monochrome-light
 
         [PasswordGenerator]
-        AdditionalChars=
-        ExcludedChars=
-        Length=18
+        Length=30
 
         [Security]
         EnableCopyOnDoubleClick=true

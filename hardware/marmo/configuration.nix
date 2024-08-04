@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   imports = [
     ../../modules
   ];
@@ -24,6 +24,15 @@
     xone.enable = true;
     greetd = {
       resolution = "3440x1440@180";
+    };
+    nextcloud = {
+      synclist = [
+        {
+          name = "document_sync";
+          remote = "/Documents";
+          local = "/home/${config.conf.username}/Documents";
+        }
+      ];
     };
   };
 }

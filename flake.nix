@@ -4,6 +4,7 @@
   inputs =
     {
       nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+      stable.url = "github:NixOs/nixpkgs/nixos-24.05";
 
       nix-flatpak = {
         url = "github:gmodena/nix-flatpak";
@@ -50,6 +51,12 @@
 
   outputs = { ... }@inputs:
     let
+      stable = import inputs.stable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
         overlays = [
@@ -62,7 +69,16 @@
       dashielib = import ./lib { inherit inputs pkgs; };
     in
     {
-      nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]);
+      nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
+        server = {
+          specialArgs = {
+            inherit inputs; pkgs = stable;
+          };
+          modules = [
+            ./hardware/server/configuration.nix
+          ];
+        };
+      };
     };
 
   nixConfig = {

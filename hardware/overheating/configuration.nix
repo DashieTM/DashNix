@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   imports = [
     ../../modules/conf.nix
   ];
@@ -30,5 +30,18 @@
     greetd = {
       resolution = "3440x1440@180";
     };
-  };
-}
+    nextcloud = {
+      synclist = [
+        {
+          name = "document_sync";
+          remote = "/Documents";
+          local = "/home/${config.conf.username}/Documents";
+        }
+        {
+          name = "picture_sync";
+          remote = "/Pictures";
+          local = "/home/${config.conf.username}/Pictures";
+        }
+      ];
+    };
+  }

@@ -12,6 +12,25 @@
       DisablePocket = true;
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "default-off";
+      CaptivePortal = false;
+      DisableFirefoxStudies = true;
+      DisableTelemetry = true;
+      DisableFirefoxAccounts = false;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      OfferToSaveLoginsDefault = false;
+      PasswordManagerEnabled = false;
+      FirefoxHome = {
+        Search = true;
+        Pocket = false;
+        Snippets = false;
+        TopSites = false;
+        Highlights = false;
+      };
+      UserMessaging = {
+        ExtensionRecommendations = false;
+        SkipOnboarding = true;
+      };
     };
     profiles.${config.conf.username} = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -22,7 +41,6 @@
         keepassxc-browser
         i-dont-care-about-cookies
         tokyo-night-v2
-
       ];
     };
   };
