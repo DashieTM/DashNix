@@ -75,6 +75,7 @@
             inherit inputs; pkgs = stable;
           };
           modules = [
+            inputs.sops-nix.nixosModules.sops
             ./hardware/server/configuration.nix
           ];
         };
