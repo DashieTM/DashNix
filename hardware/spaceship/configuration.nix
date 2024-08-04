@@ -89,5 +89,24 @@ in
     greetd = {
       resolution = "3440x1440@180";
     };
+    nextcloud = {
+      synclist = [
+        {
+          name = "document_sync";
+          remote = "Documents";
+          local = "/home/${config.conf.username}/Documents";
+        }
+        {
+          name = "picture_sync";
+          remote = "Pictures";
+          local = "/home/${config.conf.username}/Pictures";
+        }
+        {
+          name = "phone_sync";
+          remote = "Phone/Stuff";
+          local = "/home/${config.conf.username}/Videos/Phone/Stuff";
+        }
+      ];
+    };
   };
 }

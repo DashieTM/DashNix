@@ -1,6 +1,6 @@
 { config, lib, options, pkgs, ... }: {
   imports = [
-    
+
   ];
 
   options.mods = {
@@ -305,7 +305,8 @@
             "ironbar"
             "firefox"
             "oxipaste_daemon"
-            "nextcloud --background"
+            # should be taken care of with the new systemd services
+            # "nextcloud --background"
             "oxinoti"
           ] ++ config.mods.hyprland.extra_autostart;
 
