@@ -70,7 +70,7 @@
     in
     {
       nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
-        server = {
+        server = inputs.stable.lib.nixosSystem {
           specialArgs = {
             inherit inputs; pkgs = stable;
           };

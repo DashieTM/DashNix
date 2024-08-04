@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 let
-  nextcloud_pw = (config.sops.secrets.nextcloud_server.path);
-  forgejo_pw = (config.sops.secrets.forgejo_server.path);
-  matrix_pw = (config.sops.secrets.matrix_server.path);
-  mautrix_signal_pw = (config.sops.secrets.mautrix_signal_server.path);
-  mautrix_whatsapp_pw = (config.sops.secrets.mautrix_whatsapp_server.path);
-  mautrix_discord_pw = (config.sops.secrets.mautrix_discord_server.path);
+  nextcloud_pw = (builtins.readFile ./nextcloud);
+  forgejo_pw = (builtins.readFile ./dbpw/forgejo);
+  matrix_pw = (builtins.readFile ./dbpw/matrix-synapse);
+  mautrix_signal_pw = (builtins.readFile ./dbpw/mautrix_signal);
+  mautrix_whatsapp_pw = (builtins.readFile ./dbpw/mautrix_whatsapp);
+  mautrix_discord_pw = (builtins.readFile ./dbpw/mautrix_discord);
 
   fqdn = "matrix.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
@@ -18,7 +18,7 @@ let
   '';
 in
 {
-  networking.hostName = "server";
+  networking.hostName = "dashie";
   networking.domain = "dashie.org";
   imports = [
     ./hardware-configuration.nix
@@ -26,26 +26,10 @@ in
     ./mautrix-discord.nix
   ];
 
-  sops = {
-    gnupg = {
-      home = "~/.gnupg";
-      sshKeyPaths = [ ];
-    };
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    secrets.nextcloud_server = { };
-    secrets.nextcloud_admin = { };
-    secrets.forgejo_server = { };
-    secrets.matrix_server = { };
-    secrets.mautrix_signal_server = { };
-    secrets.mautrix_whatsapp_server = { };
-    secrets.mautrix_discord_server = { };
-  };
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
@@ -78,7 +62,7 @@ in
     server_name = "matrix.dashie.org";
     database.name = "psycopg2";
     database.args.user = "matrix-synapse";
-    database.args.passfile = "${matrix_pw}";
+    database.args.password = "${matrix_pw}";
     public_baseurl = "https://matrix.dashie.org";
     enable_registration = true;
     enable_registration_without_verification = true;
@@ -105,7 +89,7 @@ in
       id = "whatsapp";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_whatsapp?host=/run/postgresql&sslmode=disable&user=mautrix_whatsapp&passfile=${mautrix_whatsapp_pw}";
+        uri = "postgresql:///mautrix_whatsapp?host=/run/postgresql&sslmode=disable&user=mautrix_whatsapp&password=${mautrix_whatsapp_pw}";
       };
     };
     bridge = {
@@ -126,7 +110,7 @@ in
       id = "signal";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_signal?host=/run/postgresql&sslmode=disable&user=mautrix_signal&passfile=${mautrix_signal_pw}";
+        uri = "postgresql:///mautrix_signal?host=/run/postgresql&sslmode=disable&user=mautrix_signal&password=${mautrix_signal_pw}";
       };
     };
     bridge = {
@@ -147,7 +131,7 @@ in
       id = "discord";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_discord?host=/run/postgresql&sslmode=disable&user=mautrix_discord&passfile=${mautrix_discord_pw}";
+        uri = "postgresql:///mautrix_discord?host=/run/postgresql&sslmode=disable&user=mautrix_discord&password=${mautrix_discord_pw}";
       };
     };
     bridge = {
@@ -198,10 +182,8 @@ in
   };
 
   services.nginx.virtualHosts."matrix.dashie.org" = {
-    #addSSL = true;
     forceSSL = true;
     enableACME = true;
-    #locations."*" = {
     locations."/".extraConfig = ''
       	return 404;
     '';
@@ -224,12 +206,12 @@ in
   services.nextcloud.hostName = "cloud.dashie.org";
   services.nextcloud.https = true;
   services.nextcloud.config = {
-    adminpassFile = "${config.sops.nextcloud_admin.path}";
+    adminpassFile = "/etc/nixos/file2";
     dbuser = "nextcloud";
     dbhost = "/run/postgresql";
     dbname = "nextcloud";
     dbtype = "pgsql";
-    dbpassFile = "${config.sops.secrets.nextcloud_server.path}";
+    dbpassFile = "/etc/nixos/nextcloud";
   };
   services.nextcloud.settings = {
     port = 12001;
@@ -237,7 +219,7 @@ in
   };
   services.forgejo = {
     enable = true;
-    database.passwordFile = "${forgejo_pw}";
+    database.passwordFile = ./dbpw/forgejo;
     settings = {
       server.DOMAIN = "git.dashie.org";
       server.SSH_PORT = 12008;
@@ -264,27 +246,27 @@ in
     '';
     initialScript = pkgs.writeText "backend-initScript" ''
       CREATE DATABASE nextcloud;
-            CREATE USER nextcloud WITH ENCRYPTED PASSWORD pg_read_file(${nextcloud_pw});
+            CREATE USER nextcloud WITH ENCRYPTED PASSWORD '${nextcloud_pw}';
             GRANT ALL PRIVILEGES ON DATABASE nextcloud TO nextcloud;
 
       CREATE DATABASE forgejo;
-            CREATE USER forgejo WITH ENCRYPTED PASSWORD pg_read_file(${forgejo_pw});
+            CREATE USER forgejo WITH ENCRYPTED PASSWORD '${forgejo_pw}';
             GRANT ALL PRIVILEGES ON DATABASE forgejo TO forgejo;
 
 
-      CREATE USER "matrix-synapse" WITH ENCRYPTED PASSWORD pg_read_file(${matrix_pw})
+      CREATE USER "matrix-synapse" WITH ENCRYPTED PASSWORD '${matrix_pw}'
       SELECT 'CREATE DATABASE "matrix-synapse" LOCALE "C" ENCODING UTF8 TEMPLATE template0 OWNER "matrix-synapse"'
       WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'matrix-synapse')\gexec
 
-      CREATE USER mautrix_whatsapp WITH ENCRYPTED PASSWORD pg_read_file(${mautrix_whatsapp_pw})
+      CREATE USER mautrix_whatsapp WITH ENCRYPTED PASSWORD '${mautrix_whatsapp_pw}'
       SELECT 'CREATE DATABASE "mautrix_whatsapp" LOCALE "C" ENCODING UTF8 TEMPLATE template0 OWNER "mautrix_whatsapp"'
       WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'mautrix_whatsapp')\gexec
 
-      CREATE USER mautrix_signal WITH ENCRYPTED PASSWORD 'pg_read_file(${mautrix_signal_pw})
+      CREATE USER mautrix_signal WITH ENCRYPTED PASSWORD '${mautrix_signal_pw}'
       SELECT 'CREATE DATABASE "mautrix_signal" LOCALE "C" ENCODING UTF8 TEMPLATE template0 OWNER "mautrix_signal"'
       WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'mautrix_signal')\gexec
 
-      CREATE USER mautrix_discord WITH ENCRYPTED PASSWORD 'pg_read_file(${mautrix_discord_pw})
+      CREATE USER mautrix_discord WITH ENCRYPTED PASSWORD '${mautrix_discord_pw}'
       SELECT 'CREATE DATABASE "mautrix_discord" LOCALE "C" ENCODING UTF8 TEMPLATE template0 OWNER "mautrix_discord"'
       WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'mautrix_discord')\gexec
     '';
@@ -342,4 +324,3 @@ in
   hardware.cpu.intel.updateMicrocode = true;
   system.stateVersion = "24.05";
 }
-
