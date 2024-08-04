@@ -1,3 +1,4 @@
+# derived from mautrix signal on nixpkgs -> https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/servers/mautrix-signal/default.nix#L27
 { lib
 , config
 , pkgs
