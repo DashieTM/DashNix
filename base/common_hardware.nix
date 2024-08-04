@@ -33,9 +33,6 @@ in
 
       experimental-features = "nix-command flakes";
     };
-    extraOptions = ''
-      !include ${config.sops.secrets.access.path}
-    '';
   };
 
   # Enable sound with pipewire.
@@ -112,13 +109,4 @@ in
 
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
-
-  sops = {
-    gnupg = {
-      home = "/home/${config.conf.username}/.gnupg";
-      sshKeyPaths = [ ];
-    };
-    defaultSopsFile = ../secrets/secrets.yaml;
-    secrets.access = { };
-  };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 let
   nextcloud_pw = (builtins.readFile /etc/nixos/nextcloud);
   forgejo_pw = (builtins.readFile /etc/nixos/dbpw/forgejo);
@@ -39,11 +39,11 @@ in
   users.users.dashie = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      neovim
-      fuse
-      ntfs3g
-      rsync
+    packages = [
+      unstable.neovim
+      pkgs.fuse
+      pkgs.ntfs3g
+      pkgs.rsync
     ];
     openssh.authorizedKeys.keyFiles = [
       /home/dashie/server.pub

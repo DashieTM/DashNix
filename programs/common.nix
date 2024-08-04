@@ -36,6 +36,11 @@ in
       enable = true;
       enableFishIntegration = true;
     };
+  nix = {
+    extraOptions = ''
+      !include ${config.sops.secrets.access.path}
+    '';
+  };
 
   sops = {
     gnupg = {
@@ -47,6 +52,7 @@ in
     secrets.lab = { };
     secrets.${username} = { };
     secrets.nextcloud = { };
+    secrets.access = { };
   };
 
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
