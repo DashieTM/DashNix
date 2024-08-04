@@ -76,7 +76,7 @@
           };
           modules = [
             inputs.sops-nix.nixosModules.sops
-            (inputs.dashvim.nixosModules.dashvim { inherit pkgs; })
+            inputs.dashvim.nixosModules.dashvim
             ./hardware/server/configuration.nix
           ];
         };

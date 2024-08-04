@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, unstable, inputs, ... }:
 let
   nextcloud_pw = (builtins.readFile /etc/nixos/nextcloud);
   forgejo_pw = (builtins.readFile /etc/nixos/dbpw/forgejo);
@@ -18,7 +18,7 @@ let
   '';
 in
 {
-  networking.hostName = "dashie";
+  networking.hostName = "server";
   networking.domain = "dashie.org";
   imports = [
     ./hardware-configuration.nix
@@ -40,6 +40,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = [
+      inputs.dashvim.nixosModules.packages."x86_64-linux".default
       unstable.neovim
       pkgs.fuse
       pkgs.ntfs3g
@@ -338,7 +339,7 @@ in
       home = "~/.gnupg";
       sshKeyPaths = [ ];
     };
-    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFile = ../../secrets/secrets.yaml;
     secrets.access = { };
   };
 }
