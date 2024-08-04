@@ -42,6 +42,12 @@
           remote = "/Pictures";
           local = "/home/${config.conf.username}/Pictures";
         }
+        {
+          name = "pw_sync";
+          remote = "PWs";
+          local = "/home/${config.conf.username}/PWs";
+        }
       ];
     };
-  }
+  };
+}

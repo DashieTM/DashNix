@@ -28,9 +28,9 @@
     nextcloud = {
       synclist = [
         {
-          name = "document_sync";
-          remote = "/Documents";
-          local = "/home/${config.conf.username}/Documents";
+          name = "pw_sync";
+          remote = "/PWs";
+          local = "/home/${config.conf.username}/PWs";
         }
       ];
     };

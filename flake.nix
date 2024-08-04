@@ -26,7 +26,7 @@
       hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
       ironbar = {
-        url = "github:JakeStanger/ironbar";
+        url = "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
       };
 
       stylix.url = "github:danth/stylix";
