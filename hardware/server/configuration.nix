@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   nextcloud_pw = (builtins.readFile /etc/nixos/nextcloud);
   forgejo_pw = (builtins.readFile /etc/nixos/dbpw/forgejo);
@@ -41,7 +41,6 @@ in
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = [
       inputs.dashvim.nixosModules.packages."x86_64-linux".default
-      unstable.neovim
       pkgs.fuse
       pkgs.ntfs3g
       pkgs.rsync

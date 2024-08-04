@@ -72,7 +72,7 @@
       nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
         server = inputs.stable.lib.nixosSystem {
           specialArgs = {
-            inherit inputs; pkgs' = stable;
+            inherit inputs; pkgs = stable;
           };
           modules = [
             inputs.sops-nix.nixosModules.sops
