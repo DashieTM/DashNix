@@ -106,6 +106,11 @@ in
           remote = "Phone/Stuff";
           local = "/home/${config.conf.username}/Videos/Phone/Stuff";
         }
+        {
+          name = "pw_sync";
+          remote = "PWs";
+          local = "/home/${config.conf.username}/PWs";
+        }
       ];
     };
   };

@@ -24,7 +24,7 @@
         Search = true;
         Pocket = false;
         Snippets = false;
-        TopSites = false;
+        TopSites = true;
         Highlights = false;
       };
       UserMessaging = {
