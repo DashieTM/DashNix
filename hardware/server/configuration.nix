@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 let
-  nextcloud_pw = (builtins.readFile ./nextcloud);
-  forgejo_pw = (builtins.readFile ./dbpw/forgejo);
-  matrix_pw = (builtins.readFile ./dbpw/matrix-synapse);
-  mautrix_signal_pw = (builtins.readFile ./dbpw/mautrix_signal);
-  mautrix_whatsapp_pw = (builtins.readFile ./dbpw/mautrix_whatsapp);
-  mautrix_discord_pw = (builtins.readFile ./dbpw/mautrix_discord);
+  nextcloud_pw = (builtins.readFile /etc/nixos/nextcloud);
+  forgejo_pw = (builtins.readFile /etc/nixos/dbpw/forgejo);
+  matrix_pw = (builtins.readFile /etc/nixos/dbpw/matrix-synapse);
+  mautrix_signal_pw = (builtins.readFile /etc/nixos/dbpw/mautrix_signal);
+  mautrix_whatsapp_pw = (builtins.readFile /etc/nixos/dbpw/mautrix_whatsapp);
+  mautrix_discord_pw = (builtins.readFile /etc/nixos/dbpw/mautrix_discord);
 
   fqdn = "matrix.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
@@ -219,7 +219,7 @@ in
   };
   services.forgejo = {
     enable = true;
-    database.passwordFile = ./dbpw/forgejo;
+    database.passwordFile = /etc/nixos/dbpw/forgejo;
     settings = {
       server.DOMAIN = "git.dashie.org";
       server.SSH_PORT = 12008;

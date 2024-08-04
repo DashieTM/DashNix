@@ -64,8 +64,6 @@
             cantarell-fonts
           ];
 
-          nix.settings.experimental-features = "nix-command flakes";
-
           virtualisation.docker.enable = true;
 
           services.upower.enable = true;

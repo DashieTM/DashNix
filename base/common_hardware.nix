@@ -27,7 +27,16 @@ in
   services.xserver.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
-  nix.settings.auto-optimise-store = true;
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+
+      experimental-features = "nix-command flakes";
+    };
+    extraOptions = ''
+      !include ${config.sops.secrets.access.path}
+    '';
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -103,4 +112,13 @@ in
 
   swapDevices =
     [{ device = "/dev/disk/by-label/SWAP"; }];
+
+  sops = {
+    gnupg = {
+      home = "/home/${config.conf.username}/.gnupg";
+      sshKeyPaths = [ ];
+    };
+    defaultSopsFile = ../secrets/secrets.yaml;
+    secrets.access = { };
+  };
 }

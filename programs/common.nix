@@ -48,5 +48,6 @@ in
     secrets.${username} = { };
     secrets.nextcloud = { };
   };
+
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 }
