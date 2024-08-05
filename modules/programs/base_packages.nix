@@ -76,6 +76,12 @@
             nssmdns4 = true;
             openFirewall = true;
           };
+          programs.starship = {
+            enable = true;
+            interactiveOnly = true;
+            presets = [ "pastel-powerline" ];
+            settings = { };
+          };
 
           programs.fish.enable = true;
           programs.fish.promptInit = ''

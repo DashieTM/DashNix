@@ -233,8 +233,8 @@
           cursor = {
             # conversion seems to be borked right now, i want a smooth bibata :(
             enable_hyprcursor = false;
-            no_hardware_cursors = true;
-            no_break_fs_vrr = true;
+            # no_hardware_cursors = true;
+            # no_break_fs_vrr = true;
           };
 
           gestures = {
