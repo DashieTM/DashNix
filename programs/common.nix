@@ -31,11 +31,10 @@ in
     filesystems=xdg-config/gtk-3.0;xdg-config/gtk-4.0
   '';
 
-  programs.nix-index =
-    {
-      enable = true;
-      enableFishIntegration = true;
-    };
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
   nix = {
     extraOptions = ''
