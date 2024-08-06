@@ -61,44 +61,6 @@
       '';
     };
 
-    gaming = {
-      enable = lib.mkOption {
-        default = false;
-        example = true;
-        type = lib.types.bool;
-        description = ''
-          Install gaming related programs such as steam, gamemode, and more
-        '';
-      };
-
-      device = lib.mkOption {
-        default = 0;
-        example = 0;
-        type = lib.types.int;
-        description = ''
-          GPU device number
-        '';
-      };
-
-      kernel = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Install the gaming(xanmod) kernel.
-        '';
-      };
-
-      gamemode_gpu = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Use GPU optimization.
-        '';
-      };
-    };
-
     streamdeck = {
       enable = lib.mkOption {
         default = false;
@@ -176,7 +138,7 @@
   };
 
   config = {
-    conf.kernel = lib.mkIf (config.conf.gaming.enable && config.conf.gaming.kernel) pkgs.linuxPackages_xanmod_latest;
+    conf.kernel = lib.mkIf (config.mods.gaming.enable && config.mods.gaming.kernel) pkgs.linuxPackages_xanmod_latest;
   } // (lib.optionalAttrs (options?system.stateVersion)
     {
       system.stateVersion = "unstable";

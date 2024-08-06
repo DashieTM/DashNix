@@ -16,8 +16,14 @@
         heroic
       ];
       example = [ ];
-      type = with lib.types; listOf packages;
+      type = with lib.types; listOf package;
       description = "Install gaming related packages";
+    };
+    kernel = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = "Whether to use the xanmod kernel";
     };
     steam = lib.mkOption {
       default = true;

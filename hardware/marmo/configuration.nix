@@ -5,13 +5,13 @@
   # variables for system
   conf = {
     monitor = "DP-1";
-    gaming = {
-      enable = true;
-      device = 1;
-    };
     hostname = "marmo";
   };
   mods = {
+    gaming = {
+      enable = true;
+      gpu_device = 1;
+    };
     stylix.colorscheme = "catppuccin-mocha";
     hyprland.monitor = [
       # default

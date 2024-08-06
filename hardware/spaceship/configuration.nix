@@ -10,13 +10,13 @@ in
   # config variables
   conf = {
     monitor = "DP-1";
-    gaming = {
-      enable = true;
-    };
     streamdeck.enable = true;
     hostname = "spaceship";
   };
   mods = {
+    gaming = {
+      enable = true;
+    };
     stylix.colorscheme = "catppuccin-mocha";
     hyprland = {
       monitor = [
