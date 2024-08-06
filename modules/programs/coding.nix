@@ -23,7 +23,7 @@
   config = lib.mkIf config.mods.coding.enable (lib.optionalAttrs (options?home.packages) {
     programs.dashvim = lib.mkIf config.mods.coding.dashvim {
       enable = true;
-      colorscheme = config.conf.colorscheme;
+      colorscheme = config.mods.stylix.colorscheme;
     };
     home.packages = with pkgs; [
       #basics

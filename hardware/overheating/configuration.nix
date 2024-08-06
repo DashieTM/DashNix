@@ -10,9 +10,9 @@
     ironbar.modules = [
       { type = "upower"; class = "memory-usage"; }
     ];
-    colorscheme = "catppuccin-mocha";
   };
   mods = {
+    stylix.colorscheme = "catppuccin-mocha";
     hyprland = {
       monitor = [
         # default

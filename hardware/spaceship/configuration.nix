@@ -15,9 +15,9 @@ in
     };
     streamdeck.enable = true;
     hostname = "spaceship";
-    colorscheme = "catppuccin-mocha";
   };
   mods = {
+    stylix.colorscheme = "catppuccin-mocha";
     hyprland = {
       monitor = [
         # default

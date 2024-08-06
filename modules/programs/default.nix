@@ -18,6 +18,11 @@
     ./coding.nix
     ./flatpak.nix
     ./nextcloud.nix
+    ./starship.nix
+    ./git.nix
+    ./keepassxc.nix
+    ./gaming.nix
+    ./stylix.nix
     ./hyprland
   ];
 }

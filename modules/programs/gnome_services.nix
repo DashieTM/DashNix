@@ -1,5 +1,4 @@
 { lib, config, options, pkgs, ... }: {
-
   options.mods = {
     gnome_services.enable = lib.mkOption {
       default = true;

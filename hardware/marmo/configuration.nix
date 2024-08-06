@@ -10,9 +10,9 @@
       device = 1;
     };
     hostname = "marmo";
-    colorscheme = "catppuccin-mocha";
   };
   mods = {
+    stylix.colorscheme = "catppuccin-mocha";
     hyprland.monitor = [
       # default
       "DP-1,1920x1080@144,0x0,1"

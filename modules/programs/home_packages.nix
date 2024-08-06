@@ -50,7 +50,6 @@
         qt5ct
         qt6ct
         gnutar
-        fishPlugins.tide
         nix-index
         libnotify
         zenith
