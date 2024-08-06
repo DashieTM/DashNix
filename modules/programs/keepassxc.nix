@@ -1,8 +1,8 @@
 { lib, config, options, pkgs, ... }: {
   options.mods.keepassxc = {
     enable = lib.mkOption {
-      default = false;
-      example = true;
+      default = true;
+      example = false;
       type = lib.types.bool;
       description = "Enables the piper program and its daemon";
     };
@@ -27,6 +27,7 @@
   };
   config = lib.mkIf config.mods.keepassxc.enable
     (lib.optionalAttrs (options?home.file) {
+      home.packages = [ pkgs.keepassxc ];
       xdg.configFile."keepassxc/keepassxc.ini" = {
         text =
           ''
