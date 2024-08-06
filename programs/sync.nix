@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 let
   username = config.mods.nextcloud.username;
-  password = config.sops.secrets.nextcloud.path;
+  password = if (config.sops.secrets?nextcloud.path) then config.sops.secrets.nextcloud.path else "";
   url = config.mods.nextcloud.url;
   synclist = config.mods.nextcloud.synclist;
 in

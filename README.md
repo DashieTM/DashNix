@@ -34,4 +34,10 @@ For package lists, please check the individual modules, as the lists can be long
 - printing : Enables and configures printing services
 - virtualbox : Enables and configures virtualbox
 - xone : Installs the xone driver
+- starship : Configures the starship prompt
+- keepassxc : Configures keepassxc
+- gaming : Configures gaming related features (launchers, gamemode)
+- stylix : Configures system themes, can also be applied to dashvim if used.
+- git : Git key and config module
+- nextcloud : Handles synchronization via nextcloud cmd. (requires config.sops.secrets.nextcloud)
 - Hyprland: Installs and configures Hyprland with various additional packages
