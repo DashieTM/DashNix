@@ -1,6 +1,6 @@
 { config, ... }: {
   imports = [
-    ../../modules/conf.nix
+    ../../modules
   ];
   conf = {
     monitor = "eDP-1";
@@ -45,7 +45,7 @@
         {
           name = "pw_sync";
           remote = "PWs";
-          local = "/home/${config.conf.username}/PWs";
+          local = "/home/${config.conf.username}/Music";
         }
       ];
     };

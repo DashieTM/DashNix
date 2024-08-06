@@ -25,7 +25,6 @@
         home.packages = config.mods.home_packages.additional_packages;
       } // (lib.mkIf config.mods.home_packages.enable (lib.optionalAttrs (options?home.packages) {
       home.packages = with pkgs; [
-        keepassxc
         nheko
         nextcloud-client
         xournalpp
