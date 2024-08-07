@@ -40,4 +40,5 @@ For package lists, please check the individual modules, as the lists can be long
 - stylix : Configures system themes, can also be applied to dashvim if used.
 - git : Git key and config module
 - nextcloud : Handles synchronization via nextcloud cmd. (requires config.sops.secrets.nextcloud)
+- firefox: Enables and configures firefox (extensions and settings)
 - Hyprland: Installs and configures Hyprland with various additional packages
