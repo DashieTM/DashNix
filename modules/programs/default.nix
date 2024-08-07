@@ -23,6 +23,7 @@
     ./keepassxc.nix
     ./gaming.nix
     ./stylix.nix
+    ./firefox.nix
     ./hyprland
   ];
 }
