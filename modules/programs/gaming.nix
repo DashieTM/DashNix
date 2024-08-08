@@ -44,9 +44,9 @@
       description = "Whether to use GPU performance setting. NOTE: this is at your own risk!";
     };
     gpu_device = lib.mkOption {
-      default = "0";
-      example = "1";
-      type = lib.types.str;
+      default = 0;
+      example = 1;
+      type = lib.types.int;
       description = "Your gpu device.(Physical id of lshw)";
     };
   };
