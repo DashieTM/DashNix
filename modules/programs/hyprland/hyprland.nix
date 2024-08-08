@@ -245,7 +245,6 @@
               disable_hyprland_logo = true;
               swallow_regex = "^(.*)(kitty)(.*)$";
               initial_workspace_tracking = 1;
-              no_direct_scanout = false;
             };
 
             cursor = {
