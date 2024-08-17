@@ -1,0 +1,826 @@
+{
+    "brightness": {
+        "value": 75,
+        "overwrite": true
+    },
+    "background": {
+        "overwrite": false
+    },
+    "auto-change": {
+        "enable": true,
+        "wm_class": "",
+        "title": ""
+    },
+    "keys": {
+        "4x2": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/Assets/AssetManager/Assets/SmartSelect_20220307-191307_Samsung Internet.jpg",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "actions": [
+                        {
+                            "id": "com_core447_OSPlugin::RunCommand",
+                            "settings": {
+                                "command": "sh /home/dashie/gits/dotFiles/scripts/penguin2.sh"
+                            }
+                        }
+                    ],
+                    "image-control-action": null,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "3x2": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/Assets/AssetManager/Assets/SmartSelect_20220307-191307_Samsung Internet.jpg",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "actions": [
+                        {
+                            "id": "com_core447_OSPlugin::RunCommand",
+                            "settings": {
+                                "command": "sh /home/dashie/gits/dotFiles/scripts/penguin1.sh"
+                            }
+                        }
+                    ],
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "2x2": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_up-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "0x2": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_off-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "actions": [
+                        {
+                            "id": "com_core447_OSPlugin::RunCommand",
+                            "settings": {}
+                        }
+                    ],
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "0x1": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_down-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "1x1": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_up-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "3x0": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/play_arrow-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "3x1": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/play_arrow-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "4x1": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/skip_next-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "4x0": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/skip_next-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "1x0": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_up-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "0x0": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_down-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "actions": [
+                        {
+                            "id": "com_core447_OSPlugin::RunCommand",
+                            "settings": {
+                                "command": "playerctl "
+                            }
+                        }
+                    ],
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "1x2": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/volume_down-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "2x1": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/skip_previous-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "2x0": {
+            "states": {
+                "0": {
+                    "labels": {
+                        "top": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "center": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        },
+                        "bottom": {
+                            "text": "",
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "font-family": "",
+                            "font-size": 15
+                        }
+                    },
+                    "media": {
+                        "path": "/home/dashie/.var/app/com.core447.StreamController/data/icons/Core447::Material Icons/icons/skip_previous-inv.png",
+                        "loop": true,
+                        "fps": 30
+                    },
+                    "image-control-action": 0,
+                    "label-control-actions": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+        }
+    }
+}
