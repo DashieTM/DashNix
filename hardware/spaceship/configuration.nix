@@ -10,7 +10,7 @@ in
   # config variables
   conf = {
     monitor = "DP-1";
-    streamdeck.enable = true;
+    streamdeck.enable = false;
     hostname = "spaceship";
   };
   mods = {
@@ -23,8 +23,8 @@ in
         # default
         "DP-2,2560x1440@165,0x0,1"
         "DP-1,3440x1440@180,2560x0,1,vrr,0"
-        "HDMI-A-1,1920x1200@60,6000x0,1"
-        "HDMI-A-1,transform,1"
+        "DP-3,1920x1080@144,6000x0,1"
+        "DP-3,transform,1"
 
         # all others
         ",highrr,auto,1"
@@ -46,21 +46,21 @@ in
         "7,monitor:DP-2"
 
         # monitor right
-        "3,monitor:HDMI-A-1, default:true"
+        "3,monitor:DP-3, default:true"
       ];
       hyprpaper.config = ''
         #load
         preload = /home/${username}/Pictures/backgrounds/shinobu_2k.jpg
         preload = /home/${username}/Pictures/backgrounds/shino_wide.png
-        preload = /home/${username}/Pictures/backgrounds/shinobu_1200.jpg
+        preload = /home/${username}/Pictures/backgrounds/shinobu_1080.jpg
 
         #set
         wallpaper = DP-2,/home/${username}/Pictures/backgrounds/shinobu_2k.jpg
         wallpaper = DP-1,/home/${username}/Pictures/backgrounds/shino_wide.png
-        wallpaper = HDMI-A-1,/home/${username}/Pictures/backgrounds/shinobu_1200.jpg
+        wallpaper = DP-3,/home/${username}/Pictures/backgrounds/shinobu_1080.jpg
         splash = true
       '';
-      extra_autostart = [ "streamdeck -n" ];
+      extra_autostart = [ "flatpak run com.core447.StreamController -b" ];
     };
     extraDrives = [
       {
@@ -82,6 +82,7 @@ in
     xone.enable = true;
     amdgpu.enable = true;
     piper.enable = true;
+    flatpak.additional_packages = [ "com.core447.StreamController" ];
     vapi = {
       enable = true;
       rocm.enable = true;

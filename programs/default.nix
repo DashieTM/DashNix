@@ -25,6 +25,7 @@ in
     ];
   };
   home-manager.useGlobalPkgs = true;
+  # home-manager.backupFileExtension = "backup";
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
     inherit inputs;

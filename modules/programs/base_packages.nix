@@ -54,9 +54,10 @@
               kdePackages.breeze-icons
               seahorse
               upower
-              (lib.mkIf config.conf.streamdeck.enable (callPackage
-                ../../override/streamdeck.nix
-                { }))
+              thunderbird
+              podman-tui
+              podman-compose
+              dive
             ];
 
             gtk.iconCache.enable = false;
@@ -65,7 +66,11 @@
               cantarell-fonts
             ];
 
-            virtualisation.docker.enable = true;
+            virtualisation.podman = {
+              enable = true;
+              dockerCompat = true;
+              defaultNetwork.settings.dns_enabled = true;
+            };
 
             services.upower.enable = true;
             services.dbus.enable = true;

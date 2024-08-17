@@ -12,6 +12,9 @@ in
     configurationLimit = 5;
   };
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth = {
+    enable = true;
+  };
 
   # Enable networking
   networking.useDHCP = lib.mkDefault true;

@@ -77,7 +77,7 @@
           exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
           monitor=${config.mods.greetd.monitor},${config.mods.greetd.resolution},0x0,${config.mods.greetd.scale}
-          monitor=_,disable
+          monitor=,disable
 
           input {
               kb_layout = ${config.mods.xkb.layout}

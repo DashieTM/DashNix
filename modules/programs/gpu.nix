@@ -46,6 +46,7 @@
               base_packages = [
                 pkgs.libvdpau-va-gl
                 pkgs.vaapiVdpau
+                pkgs.mesa.drivers
               ];
               rocm_packages = [
                 pkgs.rocmPackages.clr.icd
