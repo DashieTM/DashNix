@@ -14,6 +14,7 @@ in
     hostname = "spaceship";
   };
   mods = {
+    coding = { jetbrains = true; };
     gaming = {
       enable = true;
     };

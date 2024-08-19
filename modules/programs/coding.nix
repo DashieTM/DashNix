@@ -17,6 +17,14 @@
           Enables dashvim package.
         '';
       };
+      jetbrains = lib.mkOption {
+        default = false;
+        example = true;
+        type = lib.types.bool;
+        description = ''
+          Enables jetbrains toolbox.
+        '';
+      };
     };
   };
 
@@ -26,6 +34,7 @@
       colorscheme = config.mods.stylix.colorscheme;
     };
     home.packages = with pkgs; [
+      (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
       #basics
       gitui
       gcc

@@ -65,9 +65,10 @@
               truncation_symbol = "…/";
             };
             git_branch = {
+              always_show_remote = true;
               symbol = "";
               style = "bg:#5256c3 fg:#${scheme.base05}";
-              format = "[ ](bg:#5256c3 fg:prev_bg)[$symbol $branch ]($style)";
+              format = "[ ](bg:#5256c3 fg:prev_bg)[$symbol ($remote_name )$branch ]($style)";
             };
             git_status = {
               staged = "+\${count} (fg:#C4A000)";

@@ -11,7 +11,5 @@
     NIXOS_OZONE_WL = "1";
     GOPATH = "$HOME/.go";
     FLAKE = config.conf.nix_path;
-    # don't ask... marksman somehow requires this
-    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
   };
 }

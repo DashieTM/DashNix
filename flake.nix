@@ -41,7 +41,7 @@
       hyprdock.url = "github:DashieTM/hyprdock";
       reset.url = "github:Xetibo/ReSet";
       reset-plugins.url = "github:Xetibo/ReSet-Plugins";
-      # nixvim.url = "github:nix-community/nixvim";
+
       dashvim = {
         url = "github:DashieTM/DashVim";
         inputs.nixpkgs.follows = "nixpkgs";
