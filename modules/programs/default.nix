@@ -29,5 +29,6 @@
     ./virtualbox.nix
     ./xone.nix
     ./yazi
+    ./kitty.nix
   ];
 }

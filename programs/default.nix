@@ -35,7 +35,6 @@ in {
         ./xdg.nix
         ./oxi/default.nix
         ./themes/default.nix
-        ./individual_configs/default.nix
         ./sync.nix
       ] ++ base_imports ++ lib.optional (builtins.pathExists mod) mod;
     };

@@ -8,7 +8,7 @@
     };
   };
   config = lib.mkIf config.mods.fish.enable
-    (lib.optionalAttrs (options ? programs.fish) { fish = { enable = true; }; }
+    (lib.optionalAttrs (options ? programs.fish) { programs.fish = { enable = true; }; }
       // lib.optionalAttrs (options ? xdg.configFile) {
         xdg.configFile."fish/config.fish" = {
           text = ''

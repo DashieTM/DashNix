@@ -84,7 +84,7 @@
       programs = {
         nix-ld = {
           enable = true;
-          nix-ld.libraries = with pkgs; [ jdk zlib ];
+          libraries = with pkgs; [ jdk zlib ];
         };
         direnv = {
           package = pkgs.direnv;
