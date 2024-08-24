@@ -26,8 +26,30 @@ let
   };
 in {
   options.mods = {
+    useSwap = {
+      enable = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = ''
+          Use default drive config
+        '';
+      };
+    };
+    defaultDrives = {
+      enable = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = ''
+          Use default drive config
+        '';
+      };
+    };
     extraDrives = lib.mkOption {
-      default = [ ];
+      default = [
+
+      ];
       example = [{
         name = "drive2";
         drive = {
@@ -49,6 +71,29 @@ in {
     fileSystems = builtins.listToAttrs (map ({ name, drive }: {
       name = "/" + name;
       value = drive;
-    }) config.mods.extraDrives);
+    }) config.mods.extraDrives)
+      // (lib.optionalAttrs config.mods.defaultDrives.enable) {
+        "/" = {
+          device = "/dev/disk/by-label/ROOT";
+          fsType = "btrfs";
+          options = [ "noatime" "nodiratime" "discard" ];
+        };
+
+        "/boot" = {
+          device = "/dev/disk/by-label/BOOT";
+          fsType = "vfat";
+          options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+        };
+
+        "/home" = {
+          device = "/dev/disk/by-label/HOME";
+          fsType = "btrfs";
+          options = [ "noatime" "nodiratime" "discard" ];
+        };
+      };
+    # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
+    swapDevices = lib.mkIf config.mods.useSwap.enable [{
+      device = "/dev/disk/by-label/SWAP";
+    }];
   });
 }

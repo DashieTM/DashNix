@@ -87,23 +87,4 @@ in {
     password = "firstlogin";
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/ROOT";
-    fsType = "btrfs";
-    options = [ "noatime" "nodiratime" "discard" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/BOOT";
-    fsType = "vfat";
-    options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/HOME";
-    fsType = "btrfs";
-    options = [ "noatime" "nodiratime" "discard" ];
-  };
-
-  swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
 }
