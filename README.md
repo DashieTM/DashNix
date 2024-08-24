@@ -53,7 +53,10 @@ Here is a minimal required configuration (the TODOs mention a required change):
   # variables for system
   conf = {
     # TODO change this to your monitor and your pc name
+    # should be something like DP-1
     monitor = "YOURMONITOR";
+    username = "YOURNAME";
+    # the name of your system
     hostname = "YOURNAME";
     # TODO only needed when you use intel -> amd is default
     # cpu = "intel";
@@ -113,3 +116,5 @@ For package lists, please check the individual modules, as the lists can be long
 - yazi: Installs yazi and sets custom keybinds
 - teams: For the poor souls that have to use this....
 - sops: Enables sops-nix
+- fish: Enables and configures fish shell
+- kitty: Enables and configures kitty terminal

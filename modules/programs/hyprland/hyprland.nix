@@ -77,8 +77,6 @@
       wayland.windowManager.hyprland.settings =
         lib.mkIf config.mods.hyprland.use_default_config {
           "$mod" = "SUPER";
-          "source" =
-            "/home/${config.conf.username}/.config/reset/keyboard.conf";
 
           bindm =
             [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];

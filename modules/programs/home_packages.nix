@@ -63,21 +63,28 @@
         brightnessctl
       ];
 
+      xdg.configFile."direnv/direnv.toml".source =
+        (pkgs.formats.toml { }).generate "direnv" {
+          global = { warn_timeout = "-1s"; };
+        };
+
       #my own programs
-      programs.oxicalc.enable = true;
-      programs.oxinoti.enable = true;
-      programs.oxidash.enable = true;
-      programs.oxishut.enable = true;
-      programs.oxipaste.enable = true;
-      programs.hyprdock.enable = true;
-      programs.ReSet.enable = true;
-      programs.ReSet.config.plugins = [
-        inputs.reset-plugins.packages."x86_64-linux".monitor
-        inputs.reset-plugins.packages."x86_64-linux".keyboard
-      ];
-      programs.ReSet.config.plugin_config = {
-        Keyboard = {
-          path = "/home/${config.conf.username}/.config/reset/keyboard.conf";
+      programs = {
+        oxicalc.enable = true;
+        oxinoti.enable = true;
+        oxidash.enable = true;
+        oxishut.enable = true;
+        oxipaste.enable = true;
+        hyprdock.enable = true;
+        ReSet.enable = true;
+        ReSet.config.plugins = [
+          inputs.reset-plugins.packages."x86_64-linux".monitor
+          inputs.reset-plugins.packages."x86_64-linux".keyboard
+        ];
+        ReSet.config.plugin_config = {
+          Keyboard = {
+            path = "/home/${config.conf.username}/.config/reset/keyboard.conf";
+          };
         };
       };
     })));

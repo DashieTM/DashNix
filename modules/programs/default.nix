@@ -6,6 +6,7 @@
     ./coding.nix
     ./drives.nix
     ./firefox.nix
+    ./fish.nix
     ./flatpak.nix
     ./gaming.nix
     ./git.nix
@@ -26,7 +27,7 @@
     ./stylix.nix
     ./teams.nix
     ./virtualbox.nix
-    ./yazi
     ./xone.nix
+    ./yazi
   ];
 }

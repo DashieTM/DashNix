@@ -101,9 +101,8 @@
       '';
     };
 
-    build-command = lib.mkOption {
-      default =
-        "sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/.";
+    nixos-config-path = lib.mkOption {
+      default = "/home/${config.conf.username}/gits/nixos/.";
       example = "yourpath/.";
       type = lib.types.str;
       description = ''

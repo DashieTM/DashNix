@@ -68,32 +68,36 @@
         };
       };
 
-      services.upower.enable = true;
-      services.dbus.enable = true;
-      services.dbus.packages = with pkgs; [ gnome2.GConf ];
-      services.avahi = {
-        enable = true;
-        nssmdns4 = true;
-        openFirewall = true;
-      };
-
-      programs.fish.enable = true;
-      programs.fish.promptInit = ''
-        ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-      '';
-      programs.nix-ld.enable = true;
-      programs.nix-ld.libraries = with pkgs; [ jdk zlib ];
-      programs.direnv = {
-        package = pkgs.direnv;
-        silent = false;
-        loadInNixShell = true;
-        direnvrcExtra = "";
-        nix-direnv = {
+      services = {
+        upower.enable = true;
+        dbus = {
           enable = true;
-          package = pkgs.nix-direnv;
+          packages = with pkgs; [ gnome2.GConf ];
+        };
+        avahi = {
+          enable = true;
+          nssmdns4 = true;
+          openFirewall = true;
         };
       };
-      programs.ssh.startAgent = true;
-      programs.gnupg.agent.enable = true;
+
+      programs = {
+        nix-ld = {
+          enable = true;
+          nix-ld.libraries = with pkgs; [ jdk zlib ];
+        };
+        direnv = {
+          package = pkgs.direnv;
+          silent = false;
+          loadInNixShell = true;
+          direnvrcExtra = "";
+          nix-direnv = {
+            enable = true;
+            package = pkgs.nix-direnv;
+          };
+        };
+        ssh.startAgent = true;
+        gnupg.agent.enable = true;
+      };
     })));
 }
