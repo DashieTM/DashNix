@@ -95,7 +95,7 @@
     username = lib.mkOption {
       default = lib.mkDefault "dashie";
       example = "pingpang";
-      type = lib.types.str;
+      # type = lib.types.str;
       description = ''
         The username.
       '';
