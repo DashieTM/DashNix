@@ -4,6 +4,7 @@
   conf = {
     monitor = "DP-1";
     hostname = "marmo";
+    cpu = "intel";
   };
   mods = {
     gaming = {
