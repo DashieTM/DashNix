@@ -1,5 +1,5 @@
 {
-  description = "Dashie dots";
+  description = "DashNix";
 
   inputs = {
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
