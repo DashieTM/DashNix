@@ -2,11 +2,6 @@
 let username = config.conf.username;
 in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-  boot = {
-    extraModulePackages =
-      [ pkgs.linuxKernel.packages.linux_xanmod_latest.v4l2loopback ];
-    kernelModules = [ "v4l2loopback" ];
-  };
 
   # Bootloader.
   boot.loader.systemd-boot = {

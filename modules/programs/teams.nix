@@ -9,9 +9,24 @@ in {
       description =
         "Enables teams via a chromium pwa (for the poor souls that have to use this for work)";
     };
+    loopback = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = "Enables loopback for screensharing -> teams sucks :)";
+    };
   };
   config = lib.mkIf config.mods.teams.enable
     (lib.optionalAttrs (options ? home.packages) {
       home.packages = [ (callPackage ../../override/teams.nix { }) ];
-    });
+    } // (lib.optionalAttrs (options ? boot.kernelModules) {
+      boot = {
+        extraModulePackages =
+          [ pkgs.linuxKernel.packages.linux_xanmod_latest.v4l2loopback ];
+        kernelModules = [ "v4l2loopback" ];
+        extraModprobeConfig = ''
+          options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+        '';
+      };
+    }));
 }
