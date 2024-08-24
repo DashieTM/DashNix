@@ -29,6 +29,14 @@
           The workspace configuration for hyprland.
         '';
       };
+      no_atomic = lib.mkOption {
+        default = false;
+        example = true;
+        type = lib.types.bool;
+        description = ''
+          Use tearing
+        '';
+      };
       extra_autostart = lib.mkOption {
         default = [ ];
         example = [ "your application" ];
@@ -195,7 +203,7 @@
             "col.active_border" =
               lib.mkForce "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
             # "col.inactive_border" = "0x66333333";
-            allow_tearing = true;
+            allow_tearing = lib.mkIf config.mods.hyprland.no_atomic true;
           };
 
           decoration = { rounding = 4; };
@@ -269,7 +277,7 @@
             "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
             "QT_SCALE_FACTOR,1"
             ''EDITOR,"neovide --novsync --nofork"''
-            "WLR_DRM_NO_ATOMIC,1"
+            (lib.mkIf config.mods.hyprland.no_atomic "WLR_DRM_NO_ATOMIC,1")
             "GTK_USE_PORTAL, 1"
           ];
 
