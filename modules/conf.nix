@@ -101,6 +101,16 @@
       '';
     };
 
+    build-command = lib.mkOption {
+      default =
+        "sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/.";
+      example = "yourpath/.";
+      type = lib.types.str;
+      description = ''
+        The path for your build command, you can then simply type rebuild to switch to a new configuration.
+      '';
+    };
+
     nvim-colorscheme = lib.mkOption {
       default = { tokyonight = { enable = true; }; };
       example = { catppuccin = { enable = true; }; };

@@ -218,11 +218,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1724498597,
-        "narHash": "sha256-rq3CS7CpkC5lLn/eDqmftyA2C7McUm+sYGUMpH2oJU4=",
+        "lastModified": 1724509876,
+        "narHash": "sha256-SvtppTW041MCVGmhKu8lsEbzVXwerLEIDcizdY0ZqEI=",
         "owner": "DashieTM",
         "repo": "DashVim",
-        "rev": "02e646467e4454633a7d248dfda7a7a7ecb4bf6b",
+        "rev": "309544615a01e9aa242ca71bff58f503273345ea",
         "type": "github"
       },
       "original": {

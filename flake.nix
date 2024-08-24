@@ -61,22 +61,12 @@
           allowUnfree = true;
         };
       };
-      dashielib = import ./lib { inherit inputs pkgs; };
     in {
-      nixosConfigurations =
-        (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
-          server = inputs.stable.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-              pkgs = stable;
-            };
-            modules = [
-              inputs.sops-nix.nixosModules.sops
-              inputs.dashvim.nixosModules.dashvim
-              ./hardware/server/configuration.nix
-            ];
-          };
-        };
+      dashNixLib = import ./lib { inherit inputs pkgs; };
+      dashNixInputs = inputs;
+      stablePkgs = stable;
+      unstablePkgs = pkgs;
+      modules = ./modules;
     };
 
   nixConfig = {

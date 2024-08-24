@@ -14,7 +14,7 @@
 
       set EDITOR "neovide --no-fork"
 
-      alias rebuild='sudo nixos-rebuild switch --flake /home/${config.conf.username}/gits/dotFiles/.'
+      alias rebuild='${config.conf.build-command}'
       abbr --add ls 'lsd'
       abbr --add :q 'exit'
       abbr --add gh 'git push origin'

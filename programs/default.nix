@@ -14,6 +14,7 @@ let
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.sops-nix.homeManagerModules.sops
     inputs.dashvim.homeManagerModules.dashvim
+    ../modules
   ];
 in {
   xdg = {
