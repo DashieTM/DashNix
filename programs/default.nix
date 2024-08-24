@@ -16,6 +16,7 @@ let
     inputs.dashvim.homeManagerModules.dashvim
     ../modules
   ];
+  usernamePassed = config.conf.username;
 in {
   xdg = {
     portal.config.common.default = "*";
@@ -29,7 +30,7 @@ in {
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
 
-    users.${config.conf.username} = {
+    users.${usernamePassed} = {
       imports = [
         ./common.nix
         ./xdg.nix
