@@ -20,13 +20,14 @@ let
     "e" = "d";
     "f" = "e";
   };
-  base = "#" + lib.strings.concatStrings ((lib.lists.take 5 (lib.strings.stringToCharacters scheme.base00)) ++ [ hexTable."${(lib.lists.last (lib.strings.stringToCharacters scheme.base00))}" ]);
-in
-{
+  base = "#" + lib.strings.concatStrings
+    ((lib.lists.take 5 (lib.strings.stringToCharacters scheme.base00)) ++ [
+      hexTable."${(lib.lists.last
+        (lib.strings.stringToCharacters scheme.base00))}"
+    ]);
+in {
 
-  stylix.targets.kitty = {
-    enable = false;
-  };
+  stylix.targets.kitty = { enable = false; };
   programs.kitty = {
     enable = true;
 

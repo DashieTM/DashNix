@@ -28,116 +28,118 @@
     };
   };
 
-  config = lib.mkIf config.mods.coding.enable (lib.optionalAttrs (options?home.packages) {
-    programs.dashvim = lib.mkIf config.mods.coding.dashvim {
-      enable = true;
-      colorscheme = config.mods.stylix.colorscheme;
-    };
-    home.packages = with pkgs; [
-      (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
-      #basics
-      gitui
-      gcc
-      meson
-      ninja
-      tree-sitter
-      unzip
-      pkg-config
-      sqlite
-      plantuml
-      d-spy
+  config = lib.mkIf config.mods.coding.enable
+    (lib.optionalAttrs (options ? home.packages) {
+      programs.dashvim = lib.mkIf config.mods.coding.dashvim {
+        enable = true;
+        colorscheme = config.mods.stylix.colorscheme;
+      };
+      home.packages = with pkgs; [
+        (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
+        #basics
+        gitui
+        gcc
+        meson
+        ninja
+        tree-sitter
+        unzip
+        pkg-config
+        sqlite
+        plantuml
+        d-spy
 
-      # cpp
-      bear
-      clang-tools
+        # cpp
+        bear
+        clang-tools
 
-      #sql
-      nodePackages.sql-formatter
-      sqls
+        #sql
+        nodePackages.sql-formatter
+        sqls
 
-      #assembly
-      asm-lsp
+        #assembly
+        asm-lsp
 
-      #yaml
-      yamlfmt
-      yamllint
-      yaml-language-server
+        #yaml
+        yamlfmt
+        yamllint
+        yaml-language-server
 
-      #markdown
-      marksman
-      mdformat
+        #markdown
+        marksman
+        mdformat
 
-      #bash
-      bash-language-server
-      shfmt
+        #bash
+        bash-language-server
+        shfmt
 
-      #fsharp
-      fsharp
-      fsautocomplete
+        #fsharp
+        fsharp
+        fsautocomplete
 
-      #haskell
-      haskellPackages.cabal-install
-      ghc
-      haskellPackages.haskell-language-server
+        #haskell
+        haskellPackages.cabal-install
+        ghc
+        haskellPackages.haskell-language-server
 
-      #html
-      html-tidy
+        #html
+        # html-tidy
 
-      #json
-      jq
-      nodePackages.vscode-json-languageserver
+        #json
+        jq
 
-      #css
-      tailwindcss
-      tailwindcss-language-server
-      vscode-langservers-extracted
+        #css
+        tailwindcss
+        tailwindcss-language-server
 
-      #editors
-      neovide
-      ##fallback
-      vscodium
+        #editors
+        neovide
+        ##fallback
+        vscodium
 
-      #rust
-      rustup
+        #rust
+        rustup
 
-      #python
-      python3
-      python312Packages.python-lsp-server
-      python312Packages.python-lsp-ruff
-      python312Packages.python-lsp-black
+        #python
+        python3
+        python312Packages.python-lsp-server
+        python312Packages.python-lsp-ruff
+        python312Packages.python-lsp-black
 
-      #ts/js
-      nodejs_20
-      deno
-      typescript
-      nodePackages.typescript-language-server
-      nodePackages.prettier
+        #ts/js
+        nodejs_20
+        deno
+        typescript
+        nodePackages.typescript-language-server
+        nodePackages.prettier
 
-      #go
-      go
-      gopls
+        #go
+        go
+        gopls
 
-      #typst
-      typst
-      tinymist
-      ltex-ls
+        #typst
+        typst
+        tinymist
+        ltex-ls
 
-      #java
-      gradle
-      maven
-      jdt-language-server
-      temurin-jre-bin
+        #java
+        gradle
+        maven
+        jdt-language-server
+        temurin-jre-bin
 
-      #.!
-      dotnet-sdk_8
-      omnisharp-roslyn
-      csharpier
-      netcoredbg
+        #.!
+        dotnet-sdk_8
+        omnisharp-roslyn
+        csharpier
+        netcoredbg
 
-      #zig
-      zig
-      zls
-    ];
+        #zig
+        zig
+        zls
 
-  });
+        tmux
+        tmate
+      ];
+
+    });
 }

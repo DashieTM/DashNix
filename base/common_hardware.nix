@@ -1,20 +1,20 @@
 { pkgs, config, lib, modulesPath, ... }:
-let
-  username = config.conf.username;
-in
-{
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+let username = config.conf.username;
+in {
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  boot = {
+    extraModulePackages =
+      [ pkgs.linuxKernel.packages.linux_xanmod_latest.v4l2loopback ];
+    kernelModules = [ "v4l2loopback" ];
+  };
+
   # Bootloader.
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 5;
   };
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth = {
-    enable = true;
-  };
+  boot.plymouth = { enable = true; };
 
   # Enable networking
   networking.useDHCP = lib.mkDefault true;
@@ -40,9 +40,7 @@ in
       options = "--delete-older-than 7d --delete-generations +5";
     };
     settings = {
-      trusted-users = [
-        username
-      ];
+      trusted-users = [ username ];
       auto-optimise-store = true;
 
       experimental-features = "nix-command flakes";
@@ -51,7 +49,8 @@ in
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  hardware.cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.${config.conf.cpu}.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   services.fstrim.enable = lib.mkDefault true;
   security.rtkit.enable = true;
@@ -68,55 +67,48 @@ in
   };
 
   boot.kernelPackages = config.conf.kernel;
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.kernelParams = [
-    "resume=\"PARTLABEL=SWAP\""
-  ] ++ config.conf.boot_params;
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.kernelParams = [ ''resume="PARTLABEL=SWAP"'' ]
+    ++ config.conf.boot_params;
 
   # allows user change later on
   users.mutableUsers = true;
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = [ "networkmanager" "wheel" "gamemode" "docker" "vboxusers" ];
-    packages = with pkgs; [
-      home-manager
-      xdg-desktop-portal-gtk
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "gamemode"
+      "docker"
+      "vboxusers"
+      "video"
+      "audio"
     ];
+    packages = with pkgs; [ home-manager xdg-desktop-portal-gtk ];
     # this password will only last for the first login
     # e.g. login, then change to whatever else, this also ensures no public hash is available
     password = "firstlogin";
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/ROOT";
-      fsType = "btrfs";
-      options = [
-        "noatime"
-        "nodiratime"
-        "discard"
-      ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/ROOT";
+    fsType = "btrfs";
+    options = [ "noatime" "nodiratime" "discard" ];
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/BOOT";
-      fsType = "vfat";
-      options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/BOOT";
+    fsType = "vfat";
+    options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+  };
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-label/HOME";
-      fsType = "btrfs";
-      options = [
-        "noatime"
-        "nodiratime"
-        "discard"
-      ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-label/HOME";
+    fsType = "btrfs";
+    options = [ "noatime" "nodiratime" "discard" ];
+  };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-label/SWAP"; }];
+  swapDevices = [{ device = "/dev/disk/by-label/SWAP"; }];
 }

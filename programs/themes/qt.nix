@@ -22,91 +22,82 @@ let
         border: none;
     }
   '';
-in
-{
-  xdg.configFile."qt5ct/colors/tokyonight.conf" = {
-    text = "${color}";
-  };
-  xdg.configFile."qt6ct/colors/tokyonight.conf" = {
-    text = "${color}";
-  };
-  xdg.configFile."qt5ct/qss/tab.qss" = {
-    text = "${qss}";
-  };
+in {
+  xdg.configFile."qt5ct/colors/tokyonight.conf" = { text = "${color}"; };
+  xdg.configFile."qt6ct/colors/tokyonight.conf" = { text = "${color}"; };
+  xdg.configFile."qt5ct/qss/tab.qss" = { text = "${qss}"; };
   xdg.configFile."qt5ct/qt5ct.conf" = {
-    text =
-      ''
-        [Appearance]
-        color_scheme_path=/home/${username}/.config/qt5ct/colors/tokyonight.conf
-        custom_palette=true
-        icon_theme=MoreWaita
-        standard_dialogs=gtk3
-        style=Breeze
+    text = ''
+      [Appearance]
+      color_scheme_path=/home/${username}/.config/qt5ct/colors/tokyonight.conf
+      custom_palette=true
+      icon_theme=MoreWaita
+      standard_dialogs=gtk3
+      style=Breeze
 
-        [Fonts]
-        fixed="Noto Sans,12,-1,5,50,0,0,0,0,0"
-        general="Noto Sans,12,-1,5,50,0,0,0,0,0"
+      [Fonts]
+      fixed="Noto Sans,12,-1,5,50,0,0,0,0,0"
+      general="Noto Sans,12,-1,5,50,0,0,0,0,0"
 
-        [Interface]
-        activate_item_on_single_click=2
-        buttonbox_layout=3
-        cursor_flash_time=1000
-        dialog_buttons_have_icons=0
-        double_click_interval=400
-        gui_effects=General, AnimateMenu, AnimateCombo, AnimateTooltip, AnimateToolBox
-        keyboard_scheme=4
-        menus_have_icons=true
-        show_shortcuts_in_context_menus=true
-        stylesheets=/home/${username}/.config/qt5ct/qss/tab.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/fusion-fixes.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/scrollbar-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/sliders-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/tooltip-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/traynotification-simple.qss
-        toolbutton_style=4
-        underline_shortcut=0
-        wheel_scroll_lines=3
+      [Interface]
+      activate_item_on_single_click=2
+      buttonbox_layout=3
+      cursor_flash_time=1000
+      dialog_buttons_have_icons=0
+      double_click_interval=400
+      gui_effects=General, AnimateMenu, AnimateCombo, AnimateTooltip, AnimateToolBox
+      keyboard_scheme=4
+      menus_have_icons=true
+      show_shortcuts_in_context_menus=true
+      stylesheets=/home/${username}/.config/qt5ct/qss/tab.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/fusion-fixes.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/scrollbar-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/sliders-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/tooltip-simple.qss, /nix/store/5713p1pv913a6fsn8j7z6ndikcwikbcd-qt5ct-1.8/share/qt5ct/qss/traynotification-simple.qss
+      toolbutton_style=4
+      underline_shortcut=0
+      wheel_scroll_lines=3
 
-        [SettingsWindow]
-        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q\0\0\n\0\0\0\0\0\0\0\r[\0\0\x5\x7f\0\0\0\0\x2\0\0\0\rp\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q)
+      [SettingsWindow]
+      geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q\0\0\n\0\0\0\0\0\0\0\r[\0\0\x5\x7f\0\0\0\0\x2\0\0\0\rp\0\0\n\0\0\0\0\0\0\0\rK\0\0\x5q)
 
-        [Troubleshooting]
-        force_raster_widgets=1
-        ignored_applications=@Invalid()
-      '';
+      [Troubleshooting]
+      force_raster_widgets=1
+      ignored_applications=@Invalid()
+    '';
   };
   xdg.configFile."qt6ct/qt6ct.conf" = {
-    text =
-      ''
-        [Appearance]
-        color_scheme_path=/home/${username}/.config/qt6ct/colors/toykonight.conf
-        custom_palette=true
-        standard_dialogs=default
-        style=Adwaita-Dark
+    text = ''
+      [Appearance]
+      color_scheme_path=/home/${username}/.config/qt6ct/colors/toykonight.conf
+      custom_palette=true
+      standard_dialogs=default
+      style=Adwaita-Dark
 
-        [Fonts]
-        fixed="DejaVu LGC Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
-        general="DejaVu LGC Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
+      [Fonts]
+      fixed="DejaVu LGC Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
+      general="DejaVu LGC Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
 
-        [Interface]
-        activate_item_on_single_click=2
-        buttonbox_layout=3
-        cursor_flash_time=1000
-        dialog_buttons_have_icons=0
-        double_click_interval=400
-        gui_effects=General, AnimateMenu, AnimateCombo, AnimateTooltip, AnimateToolBox
-        keyboard_scheme=4
-        menus_have_icons=true
-        show_shortcuts_in_context_menus=true
-        stylesheets=@Invalid()
-        toolbutton_style=4
-        underline_shortcut=1
-        wheel_scroll_lines=3
+      [Interface]
+      activate_item_on_single_click=2
+      buttonbox_layout=3
+      cursor_flash_time=1000
+      dialog_buttons_have_icons=0
+      double_click_interval=400
+      gui_effects=General, AnimateMenu, AnimateCombo, AnimateTooltip, AnimateToolBox
+      keyboard_scheme=4
+      menus_have_icons=true
+      show_shortcuts_in_context_menus=true
+      stylesheets=@Invalid()
+      toolbutton_style=4
+      underline_shortcut=1
+      wheel_scroll_lines=3
 
-        [PaletteEditor]
-        geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\a\x80\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4)
+      [PaletteEditor]
+      geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\a\x80\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4)
 
-        [SettingsWindow]
-        geometry="@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\rp\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,)"
+      [SettingsWindow]
+      geometry="@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\rp\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,)"
 
-        [Troubleshooting]
-        force_raster_widgets=1
-        ignored_applications=@Invalid()
-      '';
+      [Troubleshooting]
+      force_raster_widgets=1
+      ignored_applications=@Invalid()
+    '';
   };
 }

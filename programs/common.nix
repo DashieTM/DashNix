@@ -1,8 +1,6 @@
-{ config, ... }:
-let
-  username = config.conf.username;
-in
-{
+{ config, lib, options, ... }:
+let username = config.conf.username;
+in {
   manual = {
     html.enable = false;
     json.enable = false;
@@ -12,24 +10,22 @@ in
   fonts.fontconfig.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
-  home.stateVersion = "24.05";
+  home = {
+    username = username;
+    homeDirectory = "/home/${username}";
+    stateVersion = "24.05";
 
-  home.sessionPath = [
-    "$HOME/.cargo/bin"
-  ];
+    sessionPath = [ "$HOME/.cargo/bin" ];
 
-  home.sessionVariables = {
-    GOROOT = "$HOME/.go";
+    sessionVariables = { GOROOT = "$HOME/.go"; };
+
+    keyboard = null;
+
+    file.".local/share/flatpak/overrides/global".text = ''
+      [Context]
+      filesystems=xdg-config/gtk-3.0;xdg-config/gtk-4.0
+    '';
   };
-
-  home.keyboard = null;
-
-  home.file.".local/share/flatpak/overrides/global".text = ''
-    [Context]
-    filesystems=xdg-config/gtk-3.0;xdg-config/gtk-4.0
-  '';
 
   programs.nix-index = {
     enable = true;
@@ -37,23 +33,8 @@ in
   };
 
   nix = {
-    extraOptions = ''
+    extraOptions = lib.mkIf (options ? config.sops.secrets.access.path) ''
       !include ${config.sops.secrets.access.path}
     '';
   };
-
-  sops = {
-    gnupg = {
-      home = "~/.gnupg";
-      sshKeyPaths = [ ];
-    };
-    defaultSopsFile = ../secrets/secrets.yaml;
-    secrets.hub = { };
-    secrets.lab = { };
-    secrets.${username} = { };
-    secrets.nextcloud = { };
-    secrets.access = { };
-  };
-
-  systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 }

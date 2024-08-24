@@ -8,7 +8,7 @@
         description = "Enables Hyprpaper";
       };
       config = lib.mkOption {
-        default = '''';
+        default = "";
         example = ''
           Hyprpaper config
         '';
@@ -21,11 +21,11 @@
   };
 
   config = lib.mkIf config.mods.hyprland.hyprpaper.enable
-    (lib.optionalAttrs (options?xdg.configFile)
-      {
-        home.packages = with pkgs; [ hyprpaper ];
-        xdg.configFile."hypr/hyprpaper.conf" = lib.mkIf config.mods.hyprland.hyprpaper.enable {
+    (lib.optionalAttrs (options ? xdg.configFile) {
+      home.packages = with pkgs; [ hyprpaper ];
+      xdg.configFile."hypr/hyprpaper.conf" =
+        lib.mkIf config.mods.hyprland.hyprpaper.enable {
           text = config.mods.hyprland.hyprpaper.config;
         };
-      });
+    });
 }

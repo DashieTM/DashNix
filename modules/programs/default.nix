@@ -1,29 +1,32 @@
 {
   imports = [
-    ./virtualbox.nix
-    ./kde_connect.nix
-    ./gpu.nix
-    ./xone.nix
-    ./drives.nix
-    ./bluetooth.nix
     ./acpid.nix
-    ./piper.nix
-    ./greetd.nix
-    ./gnome_services.nix
-    ./printing.nix
-    ./layout.nix
     ./base_packages.nix
-    ./home_packages.nix
-    ./media.nix
+    ./bluetooth.nix
     ./coding.nix
-    ./flatpak.nix
-    ./nextcloud.nix
-    ./starship.nix
-    ./git.nix
-    ./keepassxc.nix
-    ./gaming.nix
-    ./stylix.nix
+    ./drives.nix
     ./firefox.nix
+    ./flatpak.nix
+    ./gaming.nix
+    ./git.nix
+    ./gnome_services.nix
+    ./gpu.nix
+    ./greetd.nix
+    ./home_packages.nix
     ./hyprland
+    ./kde_connect.nix
+    ./keepassxc.nix
+    ./layout.nix
+    ./media.nix
+    ./nextcloud.nix
+    ./piper.nix
+    ./printing.nix
+    ./sops.nix
+    ./starship.nix
+    ./stylix.nix
+    ./teams.nix
+    ./virtualbox.nix
+    ./yazi
+    ./xone.nix
   ];
 }

@@ -16,8 +16,7 @@ let
     add_header Access-Control-Allow-Origin *;
     return 200 '${builtins.toJSON data}';
   '';
-in
-{
+in {
   networking.hostName = "server";
   networking.domain = "dashie.org";
   imports = [
@@ -45,9 +44,7 @@ in
       pkgs.ntfs3g
       pkgs.rsync
     ];
-    openssh.authorizedKeys.keyFiles = [
-      /home/dashie/server.pub
-    ];
+    openssh.authorizedKeys.keyFiles = [ /home/dashie/server.pub ];
   };
 
   services.openssh = {
@@ -68,28 +65,25 @@ in
     enable_registration_without_verification = true;
     suppress_key_server_warning = true;
     max_upload_size = "1G";
-    listeners = [
-      {
-        port = 8008;
-        bind_addresses = [ "::1" ];
-        type = "http";
-        tls = false;
-        x_forwarded = true;
-        resources = [
-          {
-            names = [ "client" "federation" ];
-            compress = true;
-          }
-        ];
-      }
-    ];
+    listeners = [{
+      port = 8008;
+      bind_addresses = [ "::1" ];
+      type = "http";
+      tls = false;
+      x_forwarded = true;
+      resources = [{
+        names = [ "client" "federation" ];
+        compress = true;
+      }];
+    }];
   };
   services.mautrix-whatsapp-dashie.settings = {
     appservice = {
       id = "whatsapp";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_whatsapp?host=/run/postgresql&sslmode=disable&user=mautrix_whatsapp&password=${mautrix_whatsapp_pw}";
+        uri =
+          "postgresql:///mautrix_whatsapp?host=/run/postgresql&sslmode=disable&user=mautrix_whatsapp&password=${mautrix_whatsapp_pw}";
       };
     };
     bridge = {
@@ -98,7 +92,8 @@ in
         default = true;
         required = true;
       };
-      displayname_template = "{{if .BusinessName}}{{.BusinessName}}{{else if .PushName}}{{.PushName}}{{else}}{{.JID}}{{end}}";
+      displayname_template =
+        "{{if .BusinessName}}{{.BusinessName}}{{else if .PushName}}{{.PushName}}{{else}}{{.JID}}{{end}}";
       permissions = {
         "@fabio.lenherr:matrix.org" = "admin";
         "@dashie:matrix.dashie.org" = "admin";
@@ -110,7 +105,8 @@ in
       id = "signal";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_signal?host=/run/postgresql&sslmode=disable&user=mautrix_signal&password=${mautrix_signal_pw}";
+        uri =
+          "postgresql:///mautrix_signal?host=/run/postgresql&sslmode=disable&user=mautrix_signal&password=${mautrix_signal_pw}";
       };
     };
     bridge = {
@@ -119,7 +115,8 @@ in
         default = true;
         required = true;
       };
-      displayname_template = "{{or .ProfileName .PhoneNumber \"Unknown user\"}}";
+      displayname_template =
+        ''{{or .ProfileName .PhoneNumber "Unknown user"}}'';
       permissions = {
         "@fabio.lenherr:matrix.org" = "admin";
         "@dashie:matrix.dashie.org" = "admin";
@@ -131,11 +128,13 @@ in
       id = "discord";
       database = {
         type = "postgres";
-        uri = "postgresql:///mautrix_discord?host=/run/postgresql&sslmode=disable&user=mautrix_discord&password=${mautrix_discord_pw}";
+        uri =
+          "postgresql:///mautrix_discord?host=/run/postgresql&sslmode=disable&user=mautrix_discord&password=${mautrix_discord_pw}";
       };
     };
     bridge = {
-      displayname_template = "{{or .GlobalName .Username}}{{if .Bot}} (bot){{end}}";
+      displayname_template =
+        "{{or .GlobalName .Username}}{{if .Bot}} (bot){{end}}";
       permissions = {
         "@fabio.lenherr:matrix.org" = "admin";
         "@dashie:matrix.dashie.org" = "admin";
@@ -154,7 +153,12 @@ in
     enableACME = true;
     root = "/var/www/dashie.org/";
   };
-  security.acme.certs."dashie.org".extraDomainNames = [ "cloud.dashie.org" "matrix.dashie.org" "git.dashie.org" "navi.dashie.org" ];
+  security.acme.certs."dashie.org".extraDomainNames = [
+    "cloud.dashie.org"
+    "matrix.dashie.org"
+    "git.dashie.org"
+    "navi.dashie.org"
+  ];
   services.nginx.virtualHosts."cloud.dashie.org" = {
     addSSL = true;
     enableACME = true;
@@ -172,12 +176,10 @@ in
   };
 
   services.nginx.virtualHosts."localhost" = {
-    listen = [
-      {
-        addr = "0.0.0.0";
-        port = 8448;
-      }
-    ];
+    listen = [{
+      addr = "0.0.0.0";
+      port = 8448;
+    }];
     locations."/".proxyPass = "http://[::1]:8008";
   };
 
@@ -185,21 +187,19 @@ in
     forceSSL = true;
     enableACME = true;
     locations."/".extraConfig = ''
-      	return 404;
+      return 404;
     '';
-    locations."/_matrix" = {
-      proxyPass = "http://[::1]:8008";
-    };
+    locations."/_matrix" = { proxyPass = "http://[::1]:8008"; };
     locations."/_synapse/client".proxyPass = "http://[::1]:8008";
 
-    locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
+    locations."= /.well-known/matrix/server".extraConfig =
+      mkWellKnown serverConfig;
     # This is usually needed for homeserver discovery (from e.g. other Matrix clients).
     # Further reference can be found in the upstream docs at
     # https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
-    locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
-    extraConfig =
-      "client_max_body_size 2G;"
-    ;
+    locations."= /.well-known/matrix/client".extraConfig =
+      mkWellKnown clientConfig;
+    extraConfig = "client_max_body_size 2G;";
   };
 
   services.nextcloud.enable = true;
@@ -325,9 +325,7 @@ in
   system.stateVersion = "24.05";
 
   nix = {
-    settings = {
-      experimental-features = "nix-command flakes";
-    };
+    settings = { experimental-features = "nix-command flakes"; };
     extraOptions = ''
       !include ${config.sops.secrets.access.path}
     '';

@@ -19,51 +19,36 @@ let
         example = {
           device = "/dev/disk/by-label/DRIVE2";
           fsType = "ext4";
-          options = [
-            "noatime"
-            "nodiratime"
-            "discard"
-          ];
+          options = [ "noatime" "nodiratime" "discard" ];
         };
       };
     };
   };
-in
-{
+in {
   options.mods = {
-    extraDrives =
-      lib.mkOption {
-        default = [ ];
-        example = [
-          {
-            name = "drive2";
-            drive = {
-              device = "/dev/disk/by-label/DRIVE2";
-              fsType = "ext4";
-              options = [
-                "noatime"
-                "nodiratime"
-                "discard"
-              ];
-            };
-          }
-        ];
-        #  TODO:  how to make this work
-        # type = with lib.types; listOf (attrsOf driveModule);
-        type = with lib.types; listOf (attrsOf anything);
-        description = ''
-          Extra drives to add.
-        '';
-      };
+    extraDrives = lib.mkOption {
+      default = [ ];
+      example = [{
+        name = "drive2";
+        drive = {
+          device = "/dev/disk/by-label/DRIVE2";
+          fsType = "ext4";
+          options = [ "noatime" "nodiratime" "discard" ];
+        };
+      }];
+      #  TODO:  how to make this work
+      # type = with lib.types; listOf (attrsOf driveModule);
+      type = with lib.types; listOf (attrsOf anything);
+      description = ''
+        Extra drives to add.
+      '';
+    };
   };
 
-  config = (lib.optionalAttrs (options?fileSystems) {
-    fileSystems = builtins.listToAttrs
-      (map
-        ({ name, drive }: {
-          name = "/" + name;
-          value = drive;
-        })
-        config.mods.extraDrives);
+  config = (lib.optionalAttrs (options ? fileSystems) {
+    fileSystems = builtins.listToAttrs (map ({ name, drive }: {
+      name = "/" + name;
+      value = drive;
+    }) config.mods.extraDrives);
   });
 }

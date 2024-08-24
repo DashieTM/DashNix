@@ -4,7 +4,8 @@
     system = lib.mkOption {
       default = "x86_64-linux";
       # no fisherprice unix support
-      type = with lib.types; (enum [ "x86_64-linux" "aarch64-linux" "aarch64-linux-android" ]);
+      type = with lib.types;
+        (enum [ "x86_64-linux" "aarch64-linux" "aarch64-linux-android" ]);
       example = "aarch64-linux";
       description = ''
         System architecture.
@@ -42,9 +43,10 @@
     ironbar = {
       modules = lib.mkOption {
         default = [ ];
-        example = [
-          { type = "upower"; class = "memory-usage"; }
-        ];
+        example = [{
+          type = "upower";
+          class = "memory-usage";
+        }];
         type = with lib.types; listOf attrs;
         description = ''
           Adds modules to ironbar.
@@ -138,10 +140,10 @@
   };
 
   config = {
-    conf.kernel = lib.mkIf (config.mods.gaming.enable && config.mods.gaming.kernel) pkgs.linuxPackages_xanmod_latest;
-  } // (lib.optionalAttrs (options?system.stateVersion)
-    {
-      system.stateVersion = "unstable";
-    }
-  );
+    conf.kernel =
+      lib.mkIf (config.mods.gaming.enable && config.mods.gaming.kernel)
+      pkgs.linuxPackages_xanmod_latest;
+  } // (lib.optionalAttrs (options ? system.stateVersion) {
+    system.stateVersion = "unstable";
+  });
 }

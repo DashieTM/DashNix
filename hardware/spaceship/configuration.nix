@@ -1,11 +1,7 @@
 { config, ... }:
-let
-  username = config.conf.username;
-in
-{
-  imports = [
-    ../../modules
-  ];
+let username = config.conf.username;
+in {
+  imports = [ ../../modules ];
 
   # config variables
   conf = {
@@ -14,10 +10,10 @@ in
     hostname = "spaceship";
   };
   mods = {
+    # f to pay respect
+    teams.enable = true;
     coding = { jetbrains = true; };
-    gaming = {
-      enable = true;
-    };
+    gaming = { enable = true; };
     stylix.colorscheme = "catppuccin-mocha";
     hyprland = {
       monitor = [
@@ -63,21 +59,14 @@ in
       '';
       extra_autostart = [ "flatpak run com.core447.StreamController -b" ];
     };
-    extraDrives = [
-      {
-        name = "drive2";
-        drive =
-          {
-            device = "/dev/disk/by-label/DRIVE2";
-            fsType = "ext4";
-            options = [
-              "noatime"
-              "nodiratime"
-              "discard"
-            ];
-          };
-      }
-    ];
+    extraDrives = [{
+      name = "drive2";
+      drive = {
+        device = "/dev/disk/by-label/DRIVE2";
+        fsType = "ext4";
+        options = [ "noatime" "nodiratime" "discard" ];
+      };
+    }];
     virtualbox.enable = true;
     kde_connect.enable = true;
     xone.enable = true;
@@ -88,9 +77,7 @@ in
       enable = true;
       rocm.enable = true;
     };
-    greetd = {
-      resolution = "3440x1440@180";
-    };
+    greetd = { resolution = "3440x1440@180"; };
     nextcloud = {
       synclist = [
         {

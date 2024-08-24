@@ -42,3 +42,6 @@ For package lists, please check the individual modules, as the lists can be long
 - nextcloud : Handles synchronization via nextcloud cmd. (requires config.sops.secrets.nextcloud)
 - firefox: Enables and configures firefox (extensions and settings)
 - Hyprland: Installs and configures Hyprland with various additional packages
+- yazi: Installs yazi and sets custom keybinds
+- teams: For the poor souls that have to use this....
+- sops: Enables sops-nix

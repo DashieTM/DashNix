@@ -1,15 +1,14 @@
 { config, ... }: {
-  imports = [
-    ../../modules
-  ];
+  imports = [ ../../modules ];
   conf = {
     monitor = "eDP-1";
     scale = "2.0";
     hostname = "overheating";
     boot_params = [ "rtc_cmos.use_acpi_alarm=1" ];
-    ironbar.modules = [
-      { type = "upower"; class = "memory-usage"; }
-    ];
+    ironbar.modules = [{
+      type = "upower";
+      class = "memory-usage";
+    }];
   };
   mods = {
     stylix.colorscheme = "catppuccin-mocha";
@@ -27,9 +26,7 @@
     kde_connect.enable = true;
     bluetooth.enable = true;
     acpid.enable = true;
-    greetd = {
-      resolution = "3440x1440@180";
-    };
+    greetd = { resolution = "3440x1440@180"; };
     nextcloud = {
       synclist = [
         {

@@ -21,13 +21,11 @@
       };
       synclist = lib.mkOption {
         default = [ ];
-        example = [
-          {
-            name = "sync globi folder";
-            remote = "globi";
-            local = "/home/globi";
-          }
-        ];
+        example = [{
+          name = "sync globi folder";
+          remote = "globi";
+          local = "/home/globi";
+        }];
         description = ''
           A list of folders to synchronize.
           This has to be an attribute list with the name, remote and local field (all strings).

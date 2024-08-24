@@ -38,46 +38,36 @@
   };
 
   config = lib.mkIf config.mods.vapi.enable
-    (lib.optionalAttrs
-      (options?hardware.graphics)
-      {
-        boot = lib.mkIf config.mods.amdgpu.enable {
-          kernelModules = [ "kvm-amd" ];
-          initrd.kernelModules = [ "amdgpu" ];
-          kernelParams = [
-            "amdgpu.ppfeaturemask=0xffffffff"
-          ];
-        };
-
-        hardware = {
-          graphics =
-            let
-              base_packages = [
-                pkgs.libvdpau-va-gl
-                pkgs.vaapiVdpau
-                pkgs.mesa.drivers
-              ];
-              rocm_packages = [
-                pkgs.rocmPackages.clr.icd
-                pkgs.rocm-opencl-runtime
-              ];
-            in
-            {
-              enable = true;
-              enable32Bit = lib.mkDefault true;
-              extraPackages = base_packages ++
-                (lib.lists.optionals config.mods.vapi.rocm.enable rocm_packages);
-            };
-        };
-      } // lib.optionalAttrs (options?hardware.graphics) (lib.mkIf config.mods.nvidia.enable {
-      hardware.nvidia = {
-        modesetting.enable = true;
-        # powerManagement.enable = false;
-        # powerManagement.finegrained = true;
-        open = true;
-        nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    (lib.optionalAttrs (options ? hardware.graphics) {
+      boot = lib.mkIf config.mods.amdgpu.enable {
+        kernelModules = [ "kvm-amd" ];
+        initrd.kernelModules = [ "amdgpu" ];
+        kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
       };
-      services.xserver.videoDrivers = [ "nvidia" ];
-    }));
+
+      hardware = {
+        graphics = let
+          base_packages =
+            [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau pkgs.mesa.drivers ];
+          rocm_packages =
+            [ pkgs.rocmPackages.clr.icd pkgs.rocm-opencl-runtime ];
+        in {
+          enable = true;
+          enable32Bit = lib.mkDefault true;
+          extraPackages = base_packages
+            ++ (lib.lists.optionals config.mods.vapi.rocm.enable rocm_packages);
+        };
+      };
+    } // lib.optionalAttrs (options ? hardware.graphics)
+      (lib.mkIf config.mods.nvidia.enable {
+        hardware.nvidia = {
+          modesetting.enable = true;
+          # powerManagement.enable = false;
+          # powerManagement.finegrained = true;
+          open = true;
+          nvidiaSettings = true;
+          package = config.boot.kernelPackages.nvidiaPackages.stable;
+        };
+        services.xserver.videoDrivers = [ "nvidia" ];
+      }));
 }

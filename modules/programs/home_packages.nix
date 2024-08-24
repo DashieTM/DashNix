@@ -16,14 +16,10 @@
       '';
     };
   };
-  config =
-    let
-      callPackage = lib.callPackageWith pkgs;
-    in
-    (lib.optionalAttrs (options?home.packages)
-      {
-        home.packages = config.mods.home_packages.additional_packages;
-      } // (lib.mkIf config.mods.home_packages.enable (lib.optionalAttrs (options?home.packages) {
+  config = (lib.optionalAttrs (options ? home.packages) {
+    home.packages = config.mods.home_packages.additional_packages;
+  } // (lib.mkIf config.mods.home_packages.enable
+    (lib.optionalAttrs (options ? home.packages) {
       home.packages = with pkgs; [
         nheko
         nextcloud-client
@@ -60,14 +56,10 @@
         poppler_utils
         brave
         greetd.regreet
-        sops
         flake-checker
         ffmpeg
         system-config-printer
         brightnessctl
-        (callPackage
-          ../../override/cambalache.nix
-          { })
       ];
 
       #my own programs

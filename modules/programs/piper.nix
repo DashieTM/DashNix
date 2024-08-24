@@ -8,12 +8,9 @@
     };
   };
   config = lib.mkIf config.mods.piper.enable
-    (lib.optionalAttrs (options?services.ratbagd)
-      {
-        services.ratbagd.enable = true;
-      } // lib.optionalAttrs (options?home.packages) {
-      home.packages = with pkgs; [
-        piper
-      ];
+    (lib.optionalAttrs (options ? services.ratbagd) {
+      services.ratbagd.enable = true;
+    } // lib.optionalAttrs (options ? home.packages) {
+      home.packages = with pkgs; [ piper ];
     });
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   hardware.firmware = [
     (
       # lenovo is such a good manufacturer!!1!11!
@@ -12,7 +11,6 @@
           cp ${./firmware/TAS2XXX38BB.bin} $out/lib/firmware/TAS2XXX38BB.bin
           cp ${./firmware/TIAS2781RCA4.bin} $out/lib/firmware/TIAS2781RCA4.bin
         '';
-      }
-    )
+      })
   ];
 }

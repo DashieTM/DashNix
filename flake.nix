@@ -1,86 +1,82 @@
 {
   description = "Dashie dots";
 
-  inputs =
-    {
-      nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
-      stable.url = "github:NixOs/nixpkgs/nixos-24.05";
+  inputs = {
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    stable.url = "github:NixOs/nixpkgs/nixos-24.05";
 
-      nix-flatpak = {
-        url = "github:gmodena/nix-flatpak";
-      };
+    nix-flatpak = { url = "github:gmodena/nix-flatpak"; };
 
-      home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      sops-nix.url = "github:Mic92/sops-nix";
-
-      # Hyprspace = {
-      #   url = "github:KZDKM/Hyprspace";
-      #   inputs.hyprland.follows = "nixpkgs";
-      # };
-
-      nur.url = "github:nix-community/nur";
-      hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-      ironbar = {
-        url = "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
-      };
-
-      stylix.url = "github:danth/stylix";
-      base16.url = "github:SenchoPens/base16.nix";
-
-      anyrun.url = "github:Kirottu/anyrun";
-      oxicalc.url = "github:DashieTM/OxiCalc";
-      oxishut.url = "github:DashieTM/OxiShut";
-      oxinoti.url = "github:DashieTM/OxiNoti";
-      oxidash.url = "github:DashieTM/OxiDash";
-      oxipaste.url = "github:DashieTM/OxiPaste";
-      hyprdock.url = "github:DashieTM/hyprdock";
-      reset.url = "github:Xetibo/ReSet";
-      reset-plugins.url = "github:Xetibo/ReSet-Plugins";
-
-      dashvim = {
-        url = "github:DashieTM/DashVim";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.base16.follows = "base16";
-      };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix.url = "github:Mic92/sops-nix";
+
+    # Hyprspace = {
+    #   url = "github:KZDKM/Hyprspace";
+    #   inputs.hyprland.follows = "nixpkgs";
+    # };
+
+    nur.url = "github:nix-community/nur";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    ironbar = {
+      url =
+        "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
+    };
+
+    stylix.url = "github:danth/stylix";
+    base16.url = "github:SenchoPens/base16.nix";
+
+    anyrun.url = "github:Kirottu/anyrun";
+    oxicalc.url = "github:DashieTM/OxiCalc";
+    oxishut.url = "github:DashieTM/OxiShut";
+    oxinoti.url = "github:DashieTM/OxiNoti";
+    oxidash.url = "github:DashieTM/OxiDash";
+    oxipaste.url = "github:DashieTM/OxiPaste";
+    hyprdock.url = "github:DashieTM/hyprdock";
+    reset.url = "github:Xetibo/ReSet";
+    reset-plugins.url = "github:Xetibo/ReSet-Plugins";
+
+    dashvim = {
+      url = "github:DashieTM/DashVim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.base16.follows = "base16";
+    };
+  };
 
   outputs = { ... }@inputs:
     let
       stable = import inputs.stable {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
-        overlays = [
-          inputs.nur.overlay
-        ];
+        overlays = [ inputs.nur.overlay ];
         config = {
+          permittedInsecurePackages = [ "olm-3.2.16" ];
           allowUnfree = true;
         };
       };
       dashielib = import ./lib { inherit inputs pkgs; };
-    in
-    {
-      nixosConfigurations = (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
-        server = inputs.stable.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs; pkgs = stable;
+    in {
+      nixosConfigurations =
+        (dashielib.build_systems [ "marmo" "overheating" "spaceship" ]) // {
+          server = inputs.stable.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              pkgs = stable;
+            };
+            modules = [
+              inputs.sops-nix.nixosModules.sops
+              inputs.dashvim.nixosModules.dashvim
+              ./hardware/server/configuration.nix
+            ];
           };
-          modules = [
-            inputs.sops-nix.nixosModules.sops
-            inputs.dashvim.nixosModules.dashvim
-            ./hardware/server/configuration.nix
-          ];
         };
-      };
     };
 
   nixConfig = {

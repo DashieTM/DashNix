@@ -1,15 +1,13 @@
 # derived from mautrix signal on nixpkgs -> https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/servers/mautrix-signal/default.nix#L27
-{ lib
-, config
-, pkgs
-, ...
-}:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.services.mautrix-discord-dashie;
   dataDir = "/var/lib/mautrix-discord";
   registrationFile = "${dataDir}/discord-registration.yaml";
   settingsFile = "${dataDir}/config.yaml";
-  settingsFileUnsubstituted = settingsFormat.generate "mautrix-discord-config-unsubstituted.json" cfg.settings;
+  settingsFileUnsubstituted =
+    settingsFormat.generate "mautrix-discord-config-unsubstituted.json"
+    cfg.settings;
   settingsFormat = pkgs.formats.json { };
   appservicePort = 29334;
 
@@ -33,7 +31,8 @@ let
     };
     bridge = {
       username_template = "discord_{{.}}";
-      displayname_template = "{{or .ProfileName .PhoneNumber \"Unknown user\"}}";
+      displayname_template =
+        ''{{or .ProfileName .PhoneNumber "Unknown user"}}'';
       double_puppet_server_map = { };
       login_shared_secret_map = { };
       command_prefix = "!discord";
@@ -50,10 +49,10 @@ let
     };
   };
 
-in
-{
+in {
   options.services.mautrix-discord-dashie = {
-    enable = lib.mkEnableOption "mautrix-discord, a Matrix-Discord puppeting bridge.";
+    enable =
+      lib.mkEnableOption "mautrix-discord, a Matrix-Discord puppeting bridge.";
 
     settings = lib.mkOption {
       apply = lib.recursiveUpdate defaultConfig;
@@ -76,9 +75,7 @@ in
           ephemeral_events = false;
         };
         bridge = {
-          history_sync = {
-            request_full_sync = true;
-          };
+          history_sync = { request_full_sync = true; };
           private_chat_portal_meta = true;
           mute_bridging = true;
           encryption = {
@@ -86,12 +83,8 @@ in
             default = true;
             require = true;
           };
-          provisioning = {
-            shared_secret = "disable";
-          };
-          permissions = {
-            "example.com" = "user";
-          };
+          provisioning = { shared_secret = "disable"; };
+          permissions = { "example.com" = "user"; };
         };
       };
     };
@@ -112,8 +105,10 @@ in
 
     serviceDependencies = lib.mkOption {
       type = with lib.types; listOf str;
-      default = (lib.optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit)
-        ++ (lib.optional config.services.matrix-conduit.enable "conduit.service");
+      default = (lib.optional config.services.matrix-synapse.enable
+        config.services.matrix-synapse.serviceUnit)
+        ++ (lib.optional config.services.matrix-conduit.enable
+          "conduit.service");
       defaultText = lib.literalExpression ''
         (optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit)
         ++ (optional config.services.matrix-conduit.enable "conduit.service")
@@ -155,15 +150,16 @@ in
     };
 
     # Note: this is defined here to avoid the docs depending on `config`
-    services.mautrix-discord-dashie.settings.homeserver = optOneOf (with config.services; [
-      (lib.mkIf matrix-synapse.enable (mkDefaults {
-        domain = matrix-synapse.settings.server_name;
-      }))
-      (lib.mkIf matrix-conduit.enable (mkDefaults {
-        domain = matrix-conduit.settings.global.server_name;
-        address = "http://localhost:${toString matrix-conduit.settings.global.port}";
-      }))
-    ]);
+    services.mautrix-discord-dashie.settings.homeserver = optOneOf
+      (with config.services; [
+        (lib.mkIf matrix-synapse.enable
+          (mkDefaults { domain = matrix-synapse.settings.server_name; }))
+        (lib.mkIf matrix-conduit.enable (mkDefaults {
+          domain = matrix-conduit.settings.global.server_name;
+          address =
+            "http://localhost:${toString matrix-conduit.settings.global.port}";
+        }))
+      ]);
 
     systemd.services.mautrix-discord-dashie = {
       description = "mautrix-discord, a Matrix-Discord puppeting bridge.";
@@ -241,7 +237,7 @@ in
         SystemCallErrorNumber = "EPERM";
         SystemCallFilter = [ "@system-service" ];
         Type = "simple";
-        UMask = 0027;
+        UMask = 27;
       };
       restartTriggers = [ settingsFileUnsubstituted ];
     };

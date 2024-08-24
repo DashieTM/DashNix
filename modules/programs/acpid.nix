@@ -11,8 +11,9 @@
     };
   };
 
-  config = lib.mkIf config.mods.acpid.enable (lib.optionalAttrs (options?virtualisation.virtualbox.host) {
-    services.acpid.enable = true;
-  });
+  config = lib.mkIf config.mods.acpid.enable
+    (lib.optionalAttrs (options ? virtualisation.virtualbox.host) {
+      services.acpid.enable = true;
+    });
 }
 

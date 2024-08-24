@@ -42,7 +42,7 @@
       description = "Firefox policy configuration";
     };
     extensions = lib.mkOption {
-      default = with pkgs.nur.repos.rycee.firefox-addons;[
+      default = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         darkreader
         privacy-badger
@@ -57,11 +57,18 @@
     };
   };
   config = lib.mkIf config.mods.firefox.enable
-    (lib.optionalAttrs (options?programs.firefox.profiles) {
+    (lib.optionalAttrs (options ? programs.firefox.profiles) {
       programs.firefox = {
         enable = true;
         policies = config.mods.firefox.configuration;
         profiles.${config.conf.username} = {
+          isDefault = true;
+          id = 0;
+          extensions = config.mods.firefox.extensions;
+        };
+        profiles."special" = {
+          isDefault = false;
+          id = 1;
           extensions = config.mods.firefox.extensions;
         };
       };

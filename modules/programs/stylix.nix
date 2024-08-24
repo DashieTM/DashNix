@@ -36,7 +36,7 @@
       '';
     };
   };
-  config = (lib.optionalAttrs (options?stylix) {
+  config = (lib.optionalAttrs (options ? stylix) {
     stylix = {
       enable = true;
       image = ../../base/black.jpg;
@@ -75,8 +75,10 @@
         size = 24;
       };
 
-      base16Scheme =
-        (if builtins.isAttrs config.mods.stylix.colorscheme then config.mods.stylix.colorscheme else "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml");
+      base16Scheme = (if builtins.isAttrs config.mods.stylix.colorscheme then
+        config.mods.stylix.colorscheme
+      else
+        "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml");
     };
   });
 }

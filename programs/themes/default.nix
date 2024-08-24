@@ -1,6 +1,2 @@
-{
-  imports = [
-    ./qt.nix
-  ];
-}
+{ imports = [ ./qt.nix ]; }
 

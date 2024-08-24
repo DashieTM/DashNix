@@ -10,11 +10,12 @@
     };
   };
 
-  config = lib.mkIf config.mods.bluetooth.enable (lib.optionalAttrs (options?hardware.bluetooth) {
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-  });
+  config = lib.mkIf config.mods.bluetooth.enable
+    (lib.optionalAttrs (options ? hardware.bluetooth) {
+      hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+      };
+    });
 }
 

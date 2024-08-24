@@ -12,9 +12,8 @@ let
       echo kernel/firmware/acpi/ssdt6.aml | bsdcpio -v -o -H newc -R 0:0 > $out/lenotrolli-ssdt.img
     '';
   };
-in
 
-{
+in {
   boot.kernelParams = [ "mem_sleep_default=deep" ];
   boot.initrd.prepend = [ "${patched_ssdt}/lenotrolli-ssdt.img" ];
 }

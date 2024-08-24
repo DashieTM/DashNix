@@ -1,7 +1,5 @@
 { config, ... }: {
-  imports = [
-    ../../modules
-  ];
+  imports = [ ../../modules ];
   # variables for system
   conf = {
     monitor = "DP-1";
@@ -22,17 +20,13 @@
     amdgpu.enable = true;
     kde_connect.enable = true;
     xone.enable = true;
-    greetd = {
-      resolution = "3440x1440@180";
-    };
+    greetd = { resolution = "3440x1440@180"; };
     nextcloud = {
-      synclist = [
-        {
-          name = "pw_sync";
-          remote = "/PWs";
-          local = "/home/${config.conf.username}/Music";
-        }
-      ];
+      synclist = [{
+        name = "pw_sync";
+        remote = "/PWs";
+        local = "/home/${config.conf.username}/Music";
+      }];
     };
   };
 }

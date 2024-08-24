@@ -16,11 +16,10 @@
       '';
     };
   };
-  config =
-    (lib.optionalAttrs (options?home.packages)
-      {
-        home.packages = config.mods.media_packages.additional_packages;
-      } // (lib.mkIf config.mods.media_packages.enable (lib.optionalAttrs (options?home.packages) {
+  config = (lib.optionalAttrs (options ? home.packages) {
+    home.packages = config.mods.media_packages.additional_packages;
+  } // (lib.mkIf config.mods.media_packages.enable
+    (lib.optionalAttrs (options ? home.packages) {
       home.packages = with pkgs; [
         # base audio
         pipewire
@@ -49,8 +48,6 @@
         yt-dlp
       ];
       programs.obs-studio.enable = true;
-      programs.obs-studio.plugins = with pkgs; [
-        obs-studio-plugins.obs-vaapi
-      ];
+      programs.obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
     })));
 }

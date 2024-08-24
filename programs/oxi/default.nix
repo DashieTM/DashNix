@@ -1,9 +1,2 @@
-{
-  imports = [
-    ./oxipaste.nix
-    ./oxinoti.nix
-    ./oxishut.nix
-    ./oxidash.nix
-  ];
-}
+{ imports = [ ./oxipaste.nix ./oxinoti.nix ./oxishut.nix ./oxidash.nix ]; }
 

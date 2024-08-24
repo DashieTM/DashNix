@@ -10,8 +10,7 @@ let
       key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
     };
   '';
-in
-{
+in {
   environment.systemPackages = [ pkgs.xorg.xkbcomp ];
   services.xserver.xkb.extraLayouts.dashie = {
     description = "US layout with 'umlaut'";

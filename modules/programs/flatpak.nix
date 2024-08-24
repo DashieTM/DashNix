@@ -14,14 +14,13 @@
     };
   };
   config = lib.mkIf config.mods.flatpak.enable
-    (lib.optionalAttrs (options?services.flatpak.remote)
-      {
-        services.flatpak.remotes = lib.mkOptionDefault [{
-          name = "flathub-stable";
-          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-        }];
-        services.flatpak.uninstallUnmanaged = true;
-      } // lib.optionalAttrs (options?services.flatpak.packages) {
+    (lib.optionalAttrs (options ? services.flatpak.remote) {
+      services.flatpak.remotes = lib.mkOptionDefault [{
+        name = "flathub-stable";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      }];
+      services.flatpak.uninstallUnmanaged = true;
+    } // lib.optionalAttrs (options ? services.flatpak.packages) {
       services.flatpak.packages = [
         # fallback if necessary, but generally avoided as nix is superior :)
         # default flatseal installation since flatpak permissions are totally not a broken idea 

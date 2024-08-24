@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.mods.hyprland.anyrun.enable
-    (lib.optionalAttrs (options?programs.anyrun) {
+    (lib.optionalAttrs (options ? programs.anyrun) {
       programs.anyrun = {
         enable = true;
         config = {

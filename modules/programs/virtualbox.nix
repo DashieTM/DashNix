@@ -11,7 +11,8 @@
     };
   };
 
-  config = lib.optionalAttrs (options?virtualisation.virtualbox.host) {
-    virtualisation.virtualbox.host.enable = lib.mkIf config.mods.virtualbox.enable true;
+  config = lib.optionalAttrs (options ? virtualisation.virtualbox.host) {
+    virtualisation.virtualbox.host.enable =
+      lib.mkIf config.mods.virtualbox.enable true;
   };
 }

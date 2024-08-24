@@ -15,31 +15,28 @@ let
     inputs.sops-nix.homeManagerModules.sops
     inputs.dashvim.homeManagerModules.dashvim
   ];
-in
-{
-  xdg.portal.config.common.default = "*";
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
+in {
+  xdg = {
+    portal.config.common.default = "*";
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
   };
-  home-manager.useGlobalPkgs = true;
-  # home-manager.backupFileExtension = "backup";
-  home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = {
-    inherit inputs;
-  };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
 
-  home-manager.users.${config.conf.username} = {
-    imports = [
-      ./common.nix
-      ./xdg.nix
-      ./oxi/default.nix
-      ./themes/default.nix
-      ./individual_configs/default.nix
-      ./sync.nix
-    ] ++ base_imports
-    ++ lib.optional (builtins.pathExists mod) mod;
+    users.${config.conf.username} = {
+      imports = [
+        ./common.nix
+        ./xdg.nix
+        ./oxi/default.nix
+        ./themes/default.nix
+        ./individual_configs/default.nix
+        ./sync.nix
+      ] ++ base_imports ++ lib.optional (builtins.pathExists mod) mod;
+    };
   };
 }
