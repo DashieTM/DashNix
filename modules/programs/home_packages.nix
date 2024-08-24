@@ -26,7 +26,6 @@
         xournalpp
         vesktop
         kitty
-        fish
         ripgrep
         # TODO add fcp once fixed....
         rm-improved
