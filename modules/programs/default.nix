@@ -19,6 +19,7 @@
     ./keepassxc.nix
     ./layout.nix
     ./media.nix
+    ./ncspot.nix
     ./nextcloud.nix
     ./piper.nix
     ./printing.nix
