@@ -20,8 +20,6 @@ in
   home = {
     username = username;
     homeDirectory = "/home/${username}";
-    stateVersion = "24.05";
-
     sessionPath = [ "$HOME/.cargo/bin" ];
 
     sessionVariables = {

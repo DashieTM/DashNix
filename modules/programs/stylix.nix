@@ -105,5 +105,13 @@
         );
       };
     }
+    // lib.optionalAttrs (options ? environment.systemPackages) {
+      environment.systemPackages = [
+        config.mods.stylix.fonts.serif.package
+        config.mods.stylix.fonts.sansSerif.package
+        config.mods.stylix.fonts.monospace.package
+        config.mods.stylix.fonts.emoji.package
+      ];
+    }
   );
 }

@@ -182,20 +182,27 @@
       '';
     };
 
-    system_state_version = lib.mkOption {
+    state_version = lib.mkOption {
       default = "unstable";
       example = "24.05";
       type = lib.types.str;
       description = ''
-        System state version 
+        System and home state version 
       '';
     };
 
   };
 
-  config = {
-    conf.kernel = lib.mkIf (
-      config.mods.gaming.enable && config.mods.gaming.kernel
-    ) pkgs.linuxPackages_xanmod_latest;
-  } // (lib.optionalAttrs (options ? system.stateVersion) { system.stateVersion = "unstable"; });
+  config =
+    {
+      conf.kernel = lib.mkIf (
+        config.mods.gaming.enable && config.mods.gaming.kernel
+      ) pkgs.linuxPackages_xanmod_latest;
+    }
+    // (lib.optionalAttrs (options ? system.stateVersion) {
+      system.stateVersion = config.conf.state_version;
+    })
+    // (lib.optionalAttrs (options ? home.stateVersion) {
+      home.stateVersion = config.conf.state_version;
+    });
 }

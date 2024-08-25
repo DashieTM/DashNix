@@ -24,6 +24,7 @@
     ./nextcloud.nix
     ./oxi
     ./piper.nix
+    ./podman.nix
     ./printing.nix
     ./scripts.nix
     ./sops.nix

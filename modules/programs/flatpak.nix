@@ -22,6 +22,7 @@
   };
   config = lib.mkIf config.mods.flatpak.enable (
     lib.optionalAttrs (options ? services.flatpak.remote) {
+      environment.systemPackages = [ pkgs.flatpak ];
       services.flatpak.remotes = lib.mkOptionDefault [
         {
           name = "flathub-stable";

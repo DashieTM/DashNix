@@ -36,47 +36,30 @@
     // (lib.mkIf config.mods.default_base_packages.enable (
       lib.optionalAttrs (options ? environment.systemPackages) {
         environment.systemPackages = with pkgs; [
-          openssl
-          dbus
-          glib
-          gtk4
-          gtk3
-          libadwaita
-          gtk-layer-shell
-          gtk4-layer-shell
-          direnv
-          dconf
-          gsettings-desktop-schemas
-          gnome.nixos-gsettings-overrides
-          bibata-cursors
-          xorg.xkbutils
-          libxkbcommon
-          icon-library
           adwaita-icon-theme
+          dbus
+          dconf
+          direnv
+          glib
+          gnome.nixos-gsettings-overrides
+          gsettings-desktop-schemas
+          gtk-layer-shell
+          gtk3
+          gtk4
+          gtk4-layer-shell
           hicolor-icon-theme
-          morewaita-icon-theme
+          icon-library
           kdePackages.breeze-icons
+          libadwaita
+          libxkbcommon
+          nixfmt-rfc-style
+          openssl
           seahorse
           upower
-          thunderbird
-          podman-tui
-          podman-compose
-          dive
+          xorg.xkbutils
         ];
 
         gtk.iconCache.enable = false;
-
-        fonts.packages = with pkgs; [ cantarell-fonts ];
-
-        virtualisation = {
-          containers.enable = true;
-          podman = {
-            enable = true;
-            dockerCompat = true;
-            defaultNetwork.settings.dns_enabled = true;
-          };
-        };
-
         services = {
           upower.enable = true;
           dbus = {
