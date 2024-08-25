@@ -38,18 +38,19 @@ The hardware.nix specifies additional NixOS configuration, while home.nix specif
 
 |- flake.nix\
 |- flake.lock\
-|- system1/\
-|----- configuration.nix (required)\
-|----- hardware.nix (optional)\
-|----- home.nix (optional)\
-|- system2/\
-|----- configuration.nix (required)\
-|----- hardware.nix (optional)\
-|----- home.nix (optional)\
-|- system3/\
-|----- configuration.nix (required)\
-|----- hardware.nix (optional)\
-|----- home.nix (optional)
+|- hosts/\
+|--- system1/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)\
+|--- system2/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)\
+|--- system3/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)
 
 Here is a minimal required configuration.nix (the TODOs mention a required change):
 
