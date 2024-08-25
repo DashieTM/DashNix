@@ -1,6 +1,14 @@
-{ lib, config, pkgs, options, ... }:
-let username = config.conf.username;
-in {
+{
+  lib,
+  config,
+  pkgs,
+  options,
+  ...
+}:
+let
+  username = config.conf.username;
+in
+{
   options.mods = {
     hyprland.ironbar = {
       enable = lib.mkOption {
@@ -11,8 +19,8 @@ in {
       };
     };
   };
-  config = lib.mkIf config.mods.hyprland.ironbar.enable
-    (lib.optionalAttrs (options ? programs.ironbar) {
+  config = lib.mkIf config.mods.hyprland.ironbar.enable (
+    lib.optionalAttrs (options ? programs.ironbar) {
 
       programs.ironbar = {
         enable = true;
@@ -164,78 +172,78 @@ in {
               }
               {
                 type = "custom";
-                bar = [{
-                  type = "button";
-                  class = "popup-button";
-                  label = "";
-                  on_click = "popup:toggle";
-                }];
+                bar = [
+                  {
+                    type = "button";
+                    class = "popup-button";
+                    label = "";
+                    on_click = "popup:toggle";
+                  }
+                ];
                 class = "popup-button-box";
-                popup = [{
-                  type = "box";
-                  orientation = "vertical";
-                  class = "audio-box";
-                  widgets = [
-                    {
-                      type = "box";
-                      orientation = "horizontal";
-                      widgets = [
-                        {
-                          type = "button";
-                          class = "audio-button";
-                          label = "";
-                          on_click =
-                            "!/home/${username}/.config/eww/scripts/audio_control.sh bluetooth";
-                        }
-                        {
-                          type = "button";
-                          class = "audio-button";
-                          label = "󰋋";
-                          on_click =
-                            "!/home/${username}/.config/eww/scripts/audio_control.sh internal";
-                        }
-                      ];
-                      class = "audio-button-box";
-                    }
-                    {
-                      type = "label";
-                      label = "Output";
-                    }
-                    {
-                      type = "slider";
-                      class = "audio-slider";
-                      step = 1.0;
-                      length = 200;
-                      value =
-                        "pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
-                      on_change = "!pactl set-sink-volume @DEFAULT_SINK@ $0%";
-                    }
-                    {
-                      type = "label";
-                      label = "Input";
-                    }
-                    {
-                      type = "slider";
-                      class = "audio-slider";
-                      step = 1.0;
-                      length = 200;
-                      value =
-                        "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
-                      on_change =
-                        "!pactl set-source-volume @DEFAULT_SOURCE@ $0%";
-                    }
-                  ];
-                }];
+                popup = [
+                  {
+                    type = "box";
+                    orientation = "vertical";
+                    class = "audio-box";
+                    widgets = [
+                      {
+                        type = "box";
+                        orientation = "horizontal";
+                        widgets = [
+                          {
+                            type = "button";
+                            class = "audio-button";
+                            label = "";
+                            on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh bluetooth";
+                          }
+                          {
+                            type = "button";
+                            class = "audio-button";
+                            label = "󰋋";
+                            on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh internal";
+                          }
+                        ];
+                        class = "audio-button-box";
+                      }
+                      {
+                        type = "label";
+                        label = "Output";
+                      }
+                      {
+                        type = "slider";
+                        class = "audio-slider";
+                        step = 1.0;
+                        length = 200;
+                        value = "pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
+                        on_change = "!pactl set-sink-volume @DEFAULT_SINK@ $0%";
+                      }
+                      {
+                        type = "label";
+                        label = "Input";
+                      }
+                      {
+                        type = "slider";
+                        class = "audio-slider";
+                        step = 1.0;
+                        length = 200;
+                        value = "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
+                        on_change = "!pactl set-source-volume @DEFAULT_SOURCE@ $0%";
+                      }
+                    ];
+                  }
+                ];
               }
               {
                 type = "custom";
-                bar = [{
-                  type = "button";
-                  class = "popup-button";
-                  label = "";
-                  on_click =
-                    "!oxidash --css /home/${username}/gits/oxidash/style.css";
-                }];
+                bar = [
+                  {
+                    type = "button";
+                    class = "popup-button";
+                    label = "";
+                    on_click = "!oxidash --css /home/${username}/gits/oxidash/style.css";
+                  }
+                ];
                 class = "popup-button-box";
               }
               {
@@ -249,19 +257,24 @@ in {
             position = "top";
             height = 10;
             anchor_to_edges = true;
-            start = [{
-              type = "workspaces";
-              all_monitors = true;
-            }];
-            center = [{
-              type = "focused";
-              show_icon = true;
-              show_title = true;
-              icon_size = 20;
-              truncate = "end";
-            }];
+            start = [
+              {
+                type = "workspaces";
+                all_monitors = true;
+              }
+            ];
+            center = [
+              {
+                type = "focused";
+                show_icon = true;
+                show_title = true;
+                icon_size = 20;
+                truncate = "end";
+              }
+            ];
           };
         };
       };
-    });
+    }
+  );
 }

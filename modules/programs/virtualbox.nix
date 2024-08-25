@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
 
   options.mods = {
     virtualbox.enable = lib.mkOption {
@@ -12,7 +18,6 @@
   };
 
   config = lib.optionalAttrs (options ? virtualisation.virtualbox.host) {
-    virtualisation.virtualbox.host.enable =
-      lib.mkIf config.mods.virtualbox.enable true;
+    virtualisation.virtualbox.host.enable = lib.mkIf config.mods.virtualbox.enable true;
   };
 }

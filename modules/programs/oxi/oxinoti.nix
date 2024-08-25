@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods.oxi.oxinoti = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +13,8 @@
       description = "Enables and configures oxinoti";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxinoti.enable && config.mods.oxi.enable)
-    (lib.optionalAttrs (options ? xdg.configFile) {
+  config = lib.mkIf (config.mods.oxi.oxinoti.enable && config.mods.oxi.enable) (
+    lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxinoti.enable = true;
       xdg.configFile."oxinoti/style.css" = {
         text = # css
@@ -100,5 +106,6 @@
           dnd_override = 2
         '';
       };
-    });
+    }
+  );
 }

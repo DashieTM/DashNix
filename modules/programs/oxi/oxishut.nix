@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods.oxi.oxishut = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +13,8 @@
       description = "Enables and configures oxishut";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxishut.enable && config.mods.oxi.enable)
-    (lib.optionalAttrs (options ? xdg.configFile) {
+  config = lib.mkIf (config.mods.oxi.oxishut.enable && config.mods.oxi.enable) (
+    lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxishut.enable = true;
       xdg.configFile."oxishut/style.css" = {
         text = ''
@@ -32,5 +38,6 @@
           }
         '';
       };
-    });
+    }
+  );
 }

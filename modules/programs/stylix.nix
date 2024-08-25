@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.stylix = {
     colorscheme = lib.mkOption {
       default = {
@@ -27,7 +34,13 @@
         base0F = "F7768E";
       };
       example = "catppuccin-mocha";
-      type = with lib.types; oneOf [ str attrs path ];
+      type =
+        with lib.types;
+        oneOf [
+          str
+          attrs
+          path
+        ];
       description = ''
         Base16 colorscheme.
         Can be an attribute set with base00 to base0F,
@@ -35,18 +48,18 @@
         or a path to a custom yaml file.
       '';
     };
-  };
-  config = (lib.optionalAttrs (options ? stylix) {
-    stylix = {
-      enable = true;
-      image = ../../base/black.jpg;
-      polarity = "dark";
-      targets = {
-        nixvim.enable = false;
-        fish.enable = false;
+    cursor = lib.mkOption {
+      default = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Classic";
+        size = 24;
       };
-
-      fonts = {
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = "Xcursor config";
+    };
+    fonts = lib.mkOption {
+      default = {
         serif = {
           package = pkgs.cantarell-fonts;
           name = "Cantarell";
@@ -59,7 +72,6 @@
 
         monospace = {
           package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-          # name = "JetBrains Mono Nerd";
           name = "JetBrainsMono Nerd Font Mono";
         };
 
@@ -68,17 +80,30 @@
           name = "Noto Color Emoji";
         };
       };
-
-      cursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 24;
-      };
-
-      base16Scheme = (if builtins.isAttrs config.mods.stylix.colorscheme then
-        config.mods.stylix.colorscheme
-      else
-        "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml");
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = "font config";
     };
-  });
+  };
+  config = (
+    lib.optionalAttrs (options ? stylix) {
+      stylix = {
+        enable = true;
+        image = ../../base/black.jpg;
+        polarity = "dark";
+        targets = {
+          nixvim.enable = false;
+          fish.enable = false;
+        };
+        fonts = config.mods.stylix.fonts;
+        cursor = config.mods.stylix.cursor;
+        base16Scheme = (
+          if builtins.isAttrs config.mods.stylix.colorscheme then
+            config.mods.stylix.colorscheme
+          else
+            "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml"
+        );
+      };
+    }
+  );
 }

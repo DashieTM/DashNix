@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
 
   options.mods = {
     nvidia.enable = lib.mkOption {
@@ -37,8 +44,8 @@
     };
   };
 
-  config = lib.mkIf config.mods.vapi.enable
-    (lib.optionalAttrs (options ? hardware.graphics) {
+  config = lib.mkIf config.mods.vapi.enable (
+    lib.optionalAttrs (options ? hardware.graphics) {
       boot = lib.mkIf config.mods.amdgpu.enable {
         kernelModules = [ "kvm-amd" ];
         initrd.kernelModules = [ "amdgpu" ];
@@ -46,20 +53,27 @@
       };
 
       hardware = {
-        graphics = let
-          base_packages =
-            [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau pkgs.mesa.drivers ];
-          rocm_packages =
-            [ pkgs.rocmPackages.clr.icd pkgs.rocm-opencl-runtime ];
-        in {
-          enable = true;
-          enable32Bit = lib.mkDefault true;
-          extraPackages = base_packages
-            ++ (lib.lists.optionals config.mods.vapi.rocm.enable rocm_packages);
-        };
+        graphics =
+          let
+            base_packages = [
+              pkgs.libvdpau-va-gl
+              pkgs.vaapiVdpau
+              pkgs.mesa.drivers
+            ];
+            rocm_packages = [
+              pkgs.rocmPackages.clr.icd
+              pkgs.rocm-opencl-runtime
+            ];
+          in
+          {
+            enable = true;
+            enable32Bit = lib.mkDefault true;
+            extraPackages = base_packages ++ (lib.lists.optionals config.mods.vapi.rocm.enable rocm_packages);
+          };
       };
-    } // lib.optionalAttrs (options ? hardware.graphics)
-      (lib.mkIf config.mods.nvidia.enable {
+    }
+    // lib.optionalAttrs (options ? hardware.graphics) (
+      lib.mkIf config.mods.nvidia.enable {
         hardware.nvidia = {
           modesetting.enable = true;
           # powerManagement.enable = false;
@@ -69,5 +83,7 @@
           package = config.boot.kernelPackages.nvidiaPackages.beta;
         };
         services.xserver.videoDrivers = [ "nvidia" ];
-      }));
+      }
+    )
+  );
 }

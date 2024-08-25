@@ -1,4 +1,12 @@
-{ lib, config, pkgs, options, inputs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  options,
+  inputs,
+  ...
+}:
+{
   options.mods = {
     hyprland.anyrun = {
       enable = lib.mkOption {
@@ -10,8 +18,8 @@
     };
   };
 
-  config = lib.mkIf config.mods.hyprland.anyrun.enable
-    (lib.optionalAttrs (options ? programs.anyrun) {
+  config = lib.mkIf config.mods.hyprland.anyrun.enable (
+    lib.optionalAttrs (options ? programs.anyrun) {
       programs.anyrun = {
         enable = true;
         config = {
@@ -23,8 +31,12 @@
           ];
           #position = "center";
           hideIcons = false;
-          width = { fraction = 0.3; };
-          y = { fraction = 0.5; };
+          width = {
+            fraction = 0.3;
+          };
+          y = {
+            fraction = 0.5;
+          };
           layer = "overlay";
           hidePluginInfo = true;
           closeOnClick = true;
@@ -79,5 +91,6 @@
           }
         '';
       };
-    });
+    }
+  );
 }

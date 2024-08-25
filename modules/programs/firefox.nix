@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.firefox = {
     enable = lib.mkOption {
       default = true;
@@ -56,8 +63,8 @@
       description = "Firefox extensions (from nur)";
     };
   };
-  config = lib.mkIf config.mods.firefox.enable
-    (lib.optionalAttrs (options ? programs.firefox.profiles) {
+  config = lib.mkIf config.mods.firefox.enable (
+    lib.optionalAttrs (options ? programs.firefox.profiles) {
       programs.firefox = {
         enable = true;
         policies = config.mods.firefox.configuration;
@@ -72,5 +79,6 @@
           extensions = config.mods.firefox.extensions;
         };
       };
-    });
+    }
+  );
 }

@@ -1,5 +1,17 @@
-{ lib, config, options, inputs, ... }: {
-  imports = [ ./oxidash.nix ./oxinoti.nix ./oxishut.nix ./oxipaste.nix ];
+{
+  lib,
+  config,
+  options,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ./oxidash.nix
+    ./oxinoti.nix
+    ./oxishut.nix
+    ./oxipaste.nix
+  ];
   options.mods.oxi = {
     enable = lib.mkOption {
       default = true;
@@ -32,8 +44,8 @@
       };
     };
   };
-  config = lib.mkIf config.mods.oxi.enable
-    (lib.optionalAttrs (options ? home.packages) {
+  config = lib.mkIf config.mods.oxi.enable (
+    lib.optionalAttrs (options ? home.packages) {
       programs = {
         hyprdock.enable = lib.mkIf config.mods.oxi.hyprdock.enable true;
         oxicalc.enable = lib.mkIf config.mods.oxi.oxicalc.enable true;
@@ -46,12 +58,12 @@
             ];
             plugin_config = {
               Keyboard = {
-                path =
-                  "/home/${config.conf.username}/.config/reset/keyboard.conf";
+                path = "/home/${config.conf.username}/.config/reset/keyboard.conf";
               };
             };
           };
         };
       };
-    });
+    }
+  );
 }

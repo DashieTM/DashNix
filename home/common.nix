@@ -1,6 +1,13 @@
-{ config, lib, options, ... }:
-let username = config.conf.username;
-in {
+{
+  config,
+  lib,
+  options,
+  ...
+}:
+let
+  username = config.conf.username;
+in
+{
   manual = {
     html.enable = false;
     json.enable = false;
@@ -17,7 +24,9 @@ in {
 
     sessionPath = [ "$HOME/.cargo/bin" ];
 
-    sessionVariables = { GOROOT = "$HOME/.go"; };
+    sessionVariables = {
+      GOROOT = "$HOME/.go";
+    };
 
     keyboard = null;
 

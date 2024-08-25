@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   username = config.conf.username;
   # at time of using this here, stylix might not be evaluated yet
@@ -22,10 +27,17 @@ let
         border: none;
     }
   '';
-in {
-  xdg.configFile."qt5ct/colors/tokyonight.conf" = { text = "${color}"; };
-  xdg.configFile."qt6ct/colors/tokyonight.conf" = { text = "${color}"; };
-  xdg.configFile."qt5ct/qss/tab.qss" = { text = "${qss}"; };
+in
+{
+  xdg.configFile."qt5ct/colors/tokyonight.conf" = {
+    text = "${color}";
+  };
+  xdg.configFile."qt6ct/colors/tokyonight.conf" = {
+    text = "${color}";
+  };
+  xdg.configFile."qt5ct/qss/tab.qss" = {
+    text = "${qss}";
+  };
   xdg.configFile."qt5ct/qt5ct.conf" = {
     text = ''
       [Appearance]
@@ -101,4 +113,3 @@ in {
     '';
   };
 }
-

@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods.oxi.oxipaste = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +13,8 @@
       description = "Enables and configures oxipaste";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxipaste.enable && config.mods.oxi.enable)
-    (lib.optionalAttrs (options ? xdg.configFile) {
+  config = lib.mkIf (config.mods.oxi.oxipaste.enable && config.mods.oxi.enable) (
+    lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxipaste.enable = true;
       xdg.configFile."oxipaste/style.css" = {
         text = ''
@@ -38,5 +44,6 @@
           }
         '';
       };
-    });
+    }
+  );
 }

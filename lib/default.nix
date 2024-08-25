@@ -1,6 +1,8 @@
 { inputs, pkgs, ... }:
 {
   /**
+    # build_systems
+
     Builds system given a list of system names which are placed within your hosts/ directory. Note that each system has its own directory in hosts/ as well.
 
     A minimal configuration requires the file configuration.nix within each system directory, this will be the base config that is used across both NisOS and home-manager, specific optional files can also be added, hardware.nix for NisOS configuration and home.nix for home-manager configuration.

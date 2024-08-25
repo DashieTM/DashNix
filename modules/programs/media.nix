@@ -1,4 +1,11 @@
-{ lib, options, config, pkgs, ... }: {
+{
+  lib,
+  options,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.mods.media_packages = {
     enable = lib.mkOption {
       default = true;
@@ -16,38 +23,42 @@
       '';
     };
   };
-  config = (lib.optionalAttrs (options ? home.packages) {
-    home.packages = config.mods.media_packages.additional_packages;
-  } // (lib.mkIf config.mods.media_packages.enable
-    (lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [
-        # base audio
-        pipewire
-        wireplumber
-        # audio control
-        playerctl
-        # images
-        imv
-        # videos
-        mpv
-        # pdf
-        zathura
-        evince
-        libreoffice-fresh
-        onlyoffice-bin
-        pdftk
-        pdfpc
-        polylux2pdfpc
-        # spotify
-        # video editing
-        kdenlive
-        # image creation
-        inkscape
-        gimp
-        krita
-        yt-dlp
-      ];
-      programs.obs-studio.enable = true;
-      programs.obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
-    })));
+  config = (
+    lib.optionalAttrs (options ? home.packages) {
+      home.packages = config.mods.media_packages.additional_packages;
+    }
+    // (lib.mkIf config.mods.media_packages.enable (
+      lib.optionalAttrs (options ? home.packages) {
+        home.packages = with pkgs; [
+          # base audio
+          pipewire
+          wireplumber
+          # audio control
+          playerctl
+          # images
+          imv
+          # videos
+          mpv
+          # pdf
+          zathura
+          evince
+          libreoffice-fresh
+          onlyoffice-bin
+          pdftk
+          pdfpc
+          polylux2pdfpc
+          # spotify
+          # video editing
+          kdenlive
+          # image creation
+          inkscape
+          gimp
+          krita
+          yt-dlp
+        ];
+        programs.obs-studio.enable = true;
+        programs.obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
+      }
+    ))
+  );
 }

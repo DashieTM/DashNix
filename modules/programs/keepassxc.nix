@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.keepassxc = {
     enable = lib.mkOption {
       default = true;
@@ -10,8 +17,7 @@
       default = true;
       example = false;
       type = lib.types.bool;
-      description =
-        "Whether to overwrite the cache config of keepassxc. Note, this means that changes can't be applied via the program anymore!";
+      description = "Whether to overwrite the cache config of keepassxc. Note, this means that changes can't be applied via the program anymore!";
     };
     cache_config = lib.mkOption {
       default = ''
@@ -26,8 +32,8 @@
       description = "Cache config to be used.";
     };
   };
-  config = lib.mkIf config.mods.keepassxc.enable
-    (lib.optionalAttrs (options ? home.file) {
+  config = lib.mkIf config.mods.keepassxc.enable (
+    lib.optionalAttrs (options ? home.file) {
       home.packages = [ pkgs.keepassxc ];
       xdg.configFile."keepassxc/keepassxc.ini" = {
         text = ''
@@ -53,9 +59,9 @@
         '';
       };
 
-      home.file.".cache/keepassxc/keepassxc.ini" =
-        lib.mkIf config.mods.keepassxc.use_cache_config {
-          text = config.mods.keepassxc.cache_config;
-        };
-    });
+      home.file.".cache/keepassxc/keepassxc.ini" = lib.mkIf config.mods.keepassxc.use_cache_config {
+        text = config.mods.keepassxc.cache_config;
+      };
+    }
+  );
 }

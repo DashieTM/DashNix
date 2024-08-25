@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods.yazi = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +13,7 @@
       description = "Enables yazi";
     };
   };
-  config = lib.mkIf config.mods.yazi.enable
-    (lib.optionalAttrs (options ? home.packages) {
-      programs.yazi = import ./yazi.nix;
-    });
+  config = lib.mkIf config.mods.yazi.enable (
+    lib.optionalAttrs (options ? home.packages) { programs.yazi = import ./yazi.nix; }
+  );
 }

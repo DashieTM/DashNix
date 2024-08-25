@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.printing = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +14,8 @@
       description = "Enables the piper program and its daemon";
     };
   };
-  config = lib.mkIf config.mods.printing.enable
-    (lib.optionalAttrs (options ? services.printing) {
+  config = lib.mkIf config.mods.printing.enable (
+    lib.optionalAttrs (options ? services.printing) {
       # Enable CUPS to print documents.
       services.printing.enable = true;
       services.printing.browsing = true;
@@ -19,5 +26,6 @@
         nssmdns4 = true;
         openFirewall = true;
       };
-    });
+    }
+  );
 }

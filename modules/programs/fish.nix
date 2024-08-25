@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.fish = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +14,8 @@
       description = "Enables fish";
     };
   };
-  config = lib.mkIf config.mods.fish.enable
-    (lib.optionalAttrs (options ? programs.fish) {
+  config = lib.mkIf config.mods.fish.enable (
+    lib.optionalAttrs (options ? programs.fish) {
       programs.fish = {
         enable = true;
         shellInit = ''
@@ -147,5 +154,6 @@
           direnv hook fish | source
         '';
       };
-    });
+    }
+  );
 }

@@ -1,10 +1,19 @@
-{ pkgs, config, lib, modulesPath, ... }:
-let username = config.conf.username;
-in {
+{
+  pkgs,
+  config,
+  lib,
+  modulesPath,
+  ...
+}:
+let
+  username = config.conf.username;
+in
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   # Bootloader.
   boot = {
+    consoleLogLevel = 0;
     loader = {
       systemd-boot = {
         enable = true;
@@ -12,11 +21,26 @@ in {
       };
       efi.canTouchEfiVariables = true;
     };
-    plymouth = { enable = true; };
+    plymouth = {
+      enable = true;
+    };
     kernelPackages = config.conf.kernel;
-    initrd.availableKernelModules =
-      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-    kernelParams = [ ''resume="PARTLABEL=SWAP"'' ] ++ config.conf.boot_params;
+    initrd = {
+      verbose = false;
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+    };
+    kernelParams = [
+      ''resume="PARTLABEL=SWAP"''
+      ''quiet''
+      ''udev.log_level=3''
+    ] ++ config.conf.boot_params;
   };
 
   # Enable networking
@@ -66,8 +90,7 @@ in {
   # Enable sound with pipewire.
   hardware = {
     pulseaudio.enable = false;
-    cpu.${config.conf.cpu}.updateMicrocode =
-      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   security.rtkit.enable = true;
@@ -92,7 +115,10 @@ in {
         "video"
         "audio"
       ];
-      packages = with pkgs; [ home-manager xdg-desktop-portal-gtk ];
+      packages = with pkgs; [
+        home-manager
+        xdg-desktop-portal-gtk
+      ];
       # this password will only last for the first login
       # e.g. login, then change to whatever else, this also ensures no public hash is available
       password = "firstlogin";

@@ -1,1 +1,7 @@
-{ imports = [ ./env.nix ./xkb_layout.nix ./common_hardware.nix ]; }
+{
+  imports = [
+    ./env.nix
+    ./xkb_layout.nix
+    ./common_hardware.nix
+  ];
+}

@@ -1,4 +1,9 @@
-{ lib, config, options, ... }:
+{
+  lib,
+  config,
+  options,
+  ...
+}:
 let
 
   driveModule = lib.types.submodule {
@@ -19,12 +24,17 @@ let
         example = {
           device = "/dev/disk/by-label/DRIVE2";
           fsType = "ext4";
-          options = [ "noatime" "nodiratime" "discard" ];
+          options = [
+            "noatime"
+            "nodiratime"
+            "discard"
+          ];
         };
       };
     };
   };
-in {
+in
+{
   options.mods = {
     useSwap = {
       enable = lib.mkOption {
@@ -50,14 +60,20 @@ in {
       default = [
 
       ];
-      example = [{
-        name = "drive2";
-        drive = {
-          device = "/dev/disk/by-label/DRIVE2";
-          fsType = "ext4";
-          options = [ "noatime" "nodiratime" "discard" ];
-        };
-      }];
+      example = [
+        {
+          name = "drive2";
+          drive = {
+            device = "/dev/disk/by-label/DRIVE2";
+            fsType = "ext4";
+            options = [
+              "noatime"
+              "nodiratime"
+              "discard"
+            ];
+          };
+        }
+      ];
       #  TODO:  how to make this work
       # type = with lib.types; listOf (attrsOf driveModule);
       type = with lib.types; listOf (attrsOf anything);
@@ -67,33 +83,52 @@ in {
     };
   };
 
-  config = (lib.optionalAttrs (options ? fileSystems) {
-    fileSystems = builtins.listToAttrs (map ({ name, drive }: {
-      name = "/" + name;
-      value = drive;
-    }) config.mods.extraDrives)
-      // (lib.optionalAttrs config.mods.defaultDrives.enable) {
-        "/" = {
-          device = "/dev/disk/by-label/ROOT";
-          fsType = "btrfs";
-          options = [ "noatime" "nodiratime" "discard" ];
-        };
+  config = (
+    lib.optionalAttrs (options ? fileSystems) {
+      fileSystems =
+        builtins.listToAttrs (
+          map (
+            { name, drive }:
+            {
+              name = "/" + name;
+              value = drive;
+            }
+          ) config.mods.extraDrives
+        )
+        // (lib.optionalAttrs config.mods.defaultDrives.enable) {
+          "/" = {
+            device = "/dev/disk/by-label/ROOT";
+            fsType = "btrfs";
+            options = [
+              "noatime"
+              "nodiratime"
+              "discard"
+            ];
+          };
 
-        "/boot" = {
-          device = "/dev/disk/by-label/BOOT";
-          fsType = "vfat";
-          options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
-        };
+          "/boot" = {
+            device = "/dev/disk/by-label/BOOT";
+            fsType = "vfat";
+            options = [
+              "rw"
+              "fmask=0022"
+              "dmask=0022"
+              "noatime"
+            ];
+          };
 
-        "/home" = {
-          device = "/dev/disk/by-label/HOME";
-          fsType = "btrfs";
-          options = [ "noatime" "nodiratime" "discard" ];
+          "/home" = {
+            device = "/dev/disk/by-label/HOME";
+            fsType = "btrfs";
+            options = [
+              "noatime"
+              "nodiratime"
+              "discard"
+            ];
+          };
         };
-      };
-    # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
-    swapDevices = lib.mkIf config.mods.useSwap.enable [{
-      device = "/dev/disk/by-label/SWAP";
-    }];
-  });
+      # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
+      swapDevices = lib.mkIf config.mods.useSwap.enable [ { device = "/dev/disk/by-label/SWAP"; } ];
+    }
+  );
 }

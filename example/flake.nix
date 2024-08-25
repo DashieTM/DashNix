@@ -4,8 +4,7 @@
   inputs = {
     dashvim.url = "github:DashieTM/DashVim";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    ironbar.url =
-      "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
+    ironbar.url = "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
     anyrun.url = "github:Kirottu/anyrun";
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     stable.url = "github:NixOs/nixpkgs/nixos-24.05";
@@ -22,10 +21,11 @@
     };
   };
 
-  outputs = { ... }@inputs: {
-    nixosConfigurations =
-      (inputs.dashNix.dashNixLib.build_systems [ "example" ] ./.);
-  };
+  outputs =
+    { ... }@inputs:
+    {
+      nixosConfigurations = (inputs.dashNix.dashNixLib.build_systems [ "example" ] ./.);
+    };
 
   nixConfig = {
     builders-use-substitutes = true;

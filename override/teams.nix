@@ -1,4 +1,11 @@
-{ stdenv, lib, copyDesktopItems, makeDesktopItem, chromium, ... }:
+{
+  stdenv,
+  lib,
+  copyDesktopItems,
+  makeDesktopItem,
+  chromium,
+  ...
+}:
 stdenv.mkDerivation (final: {
   pname = "teams-pwa";
   name = final.pname;
@@ -10,8 +17,8 @@ stdenv.mkDerivation (final: {
       name = final.pname;
       icon = final.pname;
       exec = "${chromium}/bin/${
-          chromium.meta.mainProgram or chromium.pname
-        } --app=https://teams.microsoft.com";
+        chromium.meta.mainProgram or chromium.pname
+      } --app=https://teams.microsoft.com";
       desktopName = "Microsoft Teams PWA";
       genericName = "Progressive Web App for Microsoft Teams";
       categories = [ "Network" ];

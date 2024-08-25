@@ -24,7 +24,12 @@
         drive = {
           device = "/dev/disk/by-label/BOOT";
           fsType = "vfat";
-          options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+          options = [
+            "rw"
+            "fmask=0022"
+            "dmask=0022"
+            "noatime"
+          ];
         };
       }
       {
@@ -32,7 +37,11 @@
         drive = {
           device = "/dev/disk/by-label/ROOT";
           fsType = "ext4";
-          options = [ "noatime" "nodiratime" "discard" ];
+          options = [
+            "noatime"
+            "nodiratime"
+            "discard"
+          ];
         };
       }
     ];
@@ -50,6 +59,8 @@
     kde_connect.enable = true;
     # TODO change this to your main resolution
     # -> this will be your login manager
-    greetd = { resolution = "3440x1440@180"; };
+    greetd = {
+      resolution = "3440x1440@180";
+    };
   };
 }

@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, ... }: {
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods.flatpak = {
     enable = lib.mkOption {
       default = true;
@@ -13,18 +20,22 @@
       description = "Flatpak packages";
     };
   };
-  config = lib.mkIf config.mods.flatpak.enable
-    (lib.optionalAttrs (options ? services.flatpak.remote) {
-      services.flatpak.remotes = lib.mkOptionDefault [{
-        name = "flathub-stable";
-        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      }];
+  config = lib.mkIf config.mods.flatpak.enable (
+    lib.optionalAttrs (options ? services.flatpak.remote) {
+      services.flatpak.remotes = lib.mkOptionDefault [
+        {
+          name = "flathub-stable";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+      ];
       services.flatpak.uninstallUnmanaged = true;
-    } // lib.optionalAttrs (options ? services.flatpak.packages) {
+    }
+    // lib.optionalAttrs (options ? services.flatpak.packages) {
       services.flatpak.packages = [
         # fallback if necessary, but generally avoided as nix is superior :)
         # default flatseal installation since flatpak permissions are totally not a broken idea 
         "com.github.tchx84.Flatseal"
       ] ++ config.mods.flatpak.additional_packages;
-    });
+    }
+  );
 }

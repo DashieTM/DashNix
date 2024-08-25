@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods = {
     bluetooth.enable = lib.mkOption {
       default = false;
@@ -10,12 +16,12 @@
     };
   };
 
-  config = lib.mkIf config.mods.bluetooth.enable
-    (lib.optionalAttrs (options ? hardware.bluetooth) {
+  config = lib.mkIf config.mods.bluetooth.enable (
+    lib.optionalAttrs (options ? hardware.bluetooth) {
       hardware.bluetooth = {
         enable = true;
         powerOnBoot = true;
       };
-    });
+    }
+  );
 }
-

@@ -1,4 +1,11 @@
-{ lib, config, options, pkgs, inputs, ... }:
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   base16 = pkgs.callPackage inputs.base16.lib { };
   scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
@@ -20,12 +27,14 @@ let
     "e" = "d";
     "f" = "e";
   };
-  base = "#" + lib.strings.concatStrings
-    ((lib.lists.take 5 (lib.strings.stringToCharacters scheme.base00)) ++ [
-      hexTable."${(lib.lists.last
-        (lib.strings.stringToCharacters scheme.base00))}"
-    ]);
-in {
+  base =
+    "#"
+    + lib.strings.concatStrings (
+      (lib.lists.take 5 (lib.strings.stringToCharacters scheme.base00))
+      ++ [ hexTable."${(lib.lists.last (lib.strings.stringToCharacters scheme.base00))}" ]
+    );
+in
+{
   options.mods.kitty = {
     enable = lib.mkOption {
       default = true;
@@ -34,9 +43,11 @@ in {
       description = "Enables kitty";
     };
   };
-  config = lib.mkIf config.mods.kitty.enable
-    (lib.optionalAttrs (options ? home.packages) {
-      stylix.targets.kitty = { enable = false; };
+  config = lib.mkIf config.mods.kitty.enable (
+    lib.optionalAttrs (options ? home.packages) {
+      stylix.targets.kitty = {
+        enable = false;
+      };
       programs.kitty = {
         enable = true;
         settings = {
@@ -89,6 +100,6 @@ in {
         };
 
       };
-    });
+    }
+  );
 }
-

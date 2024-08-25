@@ -2,7 +2,9 @@
   # don't ask....
   enable = true;
   settings = {
-    log = { enabled = false; };
+    log = {
+      enabled = false;
+    };
     opener = {
 
       folder = [
@@ -16,14 +18,18 @@
           orphan = true;
         }
       ];
-      archive = [{
-        run = ''unar "$1"'';
-        display_name = "Extract here";
-      }];
-      text = [{
-        run = ''$EDITOR "$@"'';
-        orphan = true;
-      }];
+      archive = [
+        {
+          run = ''unar "$1"'';
+          display_name = "Extract here";
+        }
+      ];
+      text = [
+        {
+          run = ''$EDITOR "$@"'';
+          orphan = true;
+        }
+      ];
       image = [
         {
           run = ''imv "$@"'';
@@ -36,11 +42,13 @@
           display_name = "Show EXIF";
         }
       ];
-      pdf = [{
-        run = ''zathura "$@"'';
-        orphan = true;
-        display_name = "Open";
-      }];
+      pdf = [
+        {
+          run = ''zathura "$@"'';
+          orphan = true;
+          display_name = "Open";
+        }
+      ];
       video = [
         {
           run = ''mpv "$@"'';
@@ -216,7 +224,10 @@
       }
 
       {
-        on = [ "g" "g" ];
+        on = [
+          "g"
+          "g"
+        ];
         run = "arrow -99999999";
         desc = "Move cursor to the top";
       }
@@ -335,12 +346,20 @@
         desc = "Toggle the visibility of hidden files";
       }
       {
-        on = [ "<Space>" "f" "g>" ];
+        on = [
+          "<Space>"
+          "f"
+          "g>"
+        ];
         run = "search fd";
         desc = "Search files by name using fd";
       }
       {
-        on = [ "<Space>" "f" "G>" ];
+        on = [
+          "<Space>"
+          "f"
+          "G>"
+        ];
         run = "search rg";
         desc = "Search files by content using ripgrep";
       }
@@ -362,22 +381,34 @@
 
       # Copy
       {
-        on = [ "c" "c" ];
+        on = [
+          "c"
+          "c"
+        ];
         run = "copy path";
         desc = "Copy the absolute path";
       }
       {
-        on = [ "c" "d" ];
+        on = [
+          "c"
+          "d"
+        ];
         run = "copy dirname";
         desc = "Copy the path of the parent directory";
       }
       {
-        on = [ "c" "f" ];
+        on = [
+          "c"
+          "f"
+        ];
         run = "copy filename";
         desc = "Copy the name of the file";
       }
       {
-        on = [ "c" "n" ];
+        on = [
+          "c"
+          "n"
+        ];
         run = "copy name_without_ext";
         desc = "Copy the name of the file without the extension";
       }
@@ -402,52 +433,82 @@
 
       # Sorting
       {
-        on = [ "," "a" ];
+        on = [
+          ","
+          "a"
+        ];
         run = "sort alphabetical --dir_first";
         desc = "Sort alphabetically";
       }
       {
-        on = [ "," "A" ];
+        on = [
+          ","
+          "A"
+        ];
         run = "sort alphabetical --reverse --dir_first";
         desc = "Sort alphabetically (reverse)";
       }
       {
-        on = [ "," "c" ];
+        on = [
+          ","
+          "c"
+        ];
         run = "sort created --dir_first";
         desc = "Sort by creation time";
       }
       {
-        on = [ "," "C" ];
+        on = [
+          ","
+          "C"
+        ];
         run = "sort created --reverse --dir_first";
         desc = "Sort by creation time (reverse)";
       }
       {
-        on = [ "," "m" ];
+        on = [
+          ","
+          "m"
+        ];
         run = "sort modified --dir_first";
         desc = "Sort by modified time";
       }
       {
-        on = [ "," "M" ];
+        on = [
+          ","
+          "M"
+        ];
         run = "sort modified --reverse --dir_first";
         desc = "Sort by modified time (reverse)";
       }
       {
-        on = [ "," "n" ];
+        on = [
+          ","
+          "n"
+        ];
         run = "sort natural --dir_first";
         desc = "Sort naturally";
       }
       {
-        on = [ "," "N" ];
+        on = [
+          ","
+          "N"
+        ];
         run = "sort natural --reverse --dir_first";
         desc = "Sort naturally (reverse)";
       }
       {
-        on = [ "," "s" ];
+        on = [
+          ","
+          "s"
+        ];
         run = "sort size --dir_first";
         desc = "Sort by size";
       }
       {
-        on = [ "," "S" ];
+        on = [
+          ","
+          "S"
+        ];
         run = "sort size --reverse --dir_first";
         desc = "Sort by size (reverse)";
       }
@@ -536,27 +597,42 @@
 
       # Goto
       {
-        on = [ "g" "h" ];
+        on = [
+          "g"
+          "h"
+        ];
         run = "cd ~";
         desc = "Go to the home directory";
       }
       {
-        on = [ "g" "c" ];
+        on = [
+          "g"
+          "c"
+        ];
         run = "cd ~/.config";
         desc = "Go to the config directory";
       }
       {
-        on = [ "g" "d" ];
+        on = [
+          "g"
+          "d"
+        ];
         run = "cd ~/Downloads";
         desc = "Go to the downloads directory";
       }
       {
-        on = [ "g" "t" ];
+        on = [
+          "g"
+          "t"
+        ];
         run = "cd /tmp";
         desc = "Go to the temporary directory";
       }
       {
-        on = [ "g" "<Space>" ];
+        on = [
+          "g"
+          "<Space>"
+        ];
         run = "cd --interactive";
         desc = "Go to a directory interactively";
       }
@@ -718,7 +794,11 @@
       }
       {
         on = [ "V" ];
-        run = [ "move -999" "visual" "move 999" ];
+        run = [
+          "move -999"
+          "visual"
+          "move 999"
+        ];
         desc = "Enter visual mode and select all";
       }
 
@@ -746,12 +826,18 @@
       }
       {
         on = [ "I" ];
-        run = [ "move -999" "insert" ];
+        run = [
+          "move -999"
+          "insert"
+        ];
         desc = "Move to the BOL and enter insert mode";
       }
       {
         on = [ "A" ];
-        run = [ "move 999" "insert --append" ];
+        run = [
+          "move 999"
+          "insert --append"
+        ];
         desc = "Move to the EOL and enter append mode";
       }
 
@@ -790,7 +876,10 @@
       }
       {
         on = [ "D" ];
-        run = [ "delete --cut" "move 999" ];
+        run = [
+          "delete --cut"
+          "move 999"
+        ];
         desc = "Cut until the EOL";
       }
       {
@@ -800,12 +889,18 @@
       }
       {
         on = [ "C" ];
-        run = [ "delete --cut --insert" "move 999" ];
+        run = [
+          "delete --cut --insert"
+          "move 999"
+        ];
         desc = "Cut until the EOL and enter insert mode";
       }
       {
         on = [ "x" ];
-        run = [ "delete --cut" "move 1 --in-operating" ];
+        run = [
+          "delete --cut"
+          "move 1 --in-operating"
+        ];
         desc = "Cut the current character";
       }
 
@@ -1136,4 +1231,3 @@
   # };
   # };
 }
-

@@ -1,4 +1,11 @@
-{ config, lib, options, pkgs, ... }: {
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}:
+{
   options.mods = {
     hyprland = {
       enable = lib.mkOption {
@@ -61,8 +68,8 @@
     };
   };
 
-  config = lib.mkIf config.mods.hyprland.enable
-    (lib.optionalAttrs (options ? wayland.windowManager.hyprland) {
+  config = lib.mkIf config.mods.hyprland.enable (
+    lib.optionalAttrs (options ? wayland.windowManager.hyprland) {
       # install Hyprland related packages
       home.packages = with pkgs; [
         xorg.xprop
@@ -82,15 +89,16 @@
         lib.mkIf config.mods.hyprland.use_default_config {
           "$mod" = "SUPER";
 
-          bindm =
-            [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+          bindm = [
+            "$mod, mouse:272, movewindow"
+            "$mod, mouse:273, resizewindow"
+          ];
 
           bind = [
             # screenshots
             ''$mod SUPER,S,exec,grim -g "$(slurp)" - | wl-copy''
             ''$mod SUPERSHIFT,S,exec,grim -g "$(slurp)" - | satty -f -''
-            ''
-              $mod SUPERSHIFTALT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
+            ''$mod SUPERSHIFTALT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
 
             # regular programs
             "$mod SUPER,F,exec,firefox"
@@ -108,19 +116,14 @@
             "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
             # media keys
-            (lib.mkIf config.mods.scripts.audio-control
-              ",XF86AudioMute,exec, audio-control mute")
-            (lib.mkIf config.mods.scripts.audio-control
-              ",XF86AudioLowerVolume,exec, audio-control sink -5%")
-            (lib.mkIf config.mods.scripts.audio-control
-              ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
+            (lib.mkIf config.mods.scripts.audio-control ",XF86AudioMute,exec, audio-control mute")
+            (lib.mkIf config.mods.scripts.audio-control ",XF86AudioLowerVolume,exec, audio-control sink -5%")
+            (lib.mkIf config.mods.scripts.audio-control ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
             ",XF86AudioPlay,exec, playerctl play-pause"
             ",XF86AudioNext,exec, playerctl next"
             ",XF86AudioPrev,exec, playerctl previous"
-            (lib.mkIf config.mods.scripts.change-brightness
-              ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
-            (lib.mkIf config.mods.scripts.change-brightness
-              ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
+            (lib.mkIf config.mods.scripts.change-brightness ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
+            (lib.mkIf config.mods.scripts.change-brightness ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
 
             # hyprland keybinds
             # misc
@@ -199,13 +202,14 @@
           general = {
             gaps_out = "3,5,5,5";
             border_size = 3;
-            "col.active_border" =
-              lib.mkForce "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
+            "col.active_border" = lib.mkForce "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
             # "col.inactive_border" = "0x66333333";
             allow_tearing = lib.mkIf config.mods.hyprland.no_atomic true;
           };
 
-          decoration = { rounding = 4; };
+          decoration = {
+            rounding = 4;
+          };
 
           animations = {
             bezier = "penguin,0.05,0.9,0.1,1.0";
@@ -254,7 +258,9 @@
             # no_break_fs_vrr = true;
           };
 
-          gestures = { workspace_swipe = true; };
+          gestures = {
+            workspace_swipe = true;
+          };
 
           monitor = config.mods.hyprland.monitor;
           workspace = config.mods.hyprland.workspace;
@@ -265,10 +271,10 @@
             "XDG_CURRENT_DESKTOP=Hyprland"
             "XDG_SESSION_TYPE=wayland"
             "XDG_SESSION_DESKTOP=Hyprland"
-            "HYPRCURSOR_THEME,Bibata-Modern-Classic"
-            "HYPRCURSOR_SIZE,24"
-            "XCURSOR_THEME,Bibata-Modern-Classic"
-            "XCURSOR_SIZE,24"
+            "HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}"
+            "HYPRCURSOR_SIZE,${config.mods.stylix.cursor.size}"
+            "XCURSOR_THEME,${config.mods.stylix.cursor.name}"
+            "XCURSOR_SIZE,${config.mods.stylix.cursor.size}"
             "QT_QPA_PLATFORM,wayland"
             "QT_QPA_PLATFORMTHEME,qt5ct"
             "QT_WAYLAND_FORCE_DPI,96"
@@ -282,8 +288,7 @@
             (lib.mkIf config.mods.nvidia.enable "LIBVA_DRIVER_NAME,nvidia")
             (lib.mkIf config.mods.nvidia.enable "XDG_SESSION_TYPE,wayland")
             (lib.mkIf config.mods.nvidia.enable "GBM_BACKEND,nvidia-drm")
-            (lib.mkIf config.mods.nvidia.enable
-              "__GLX_VENDOR_LIBRARY_NAME,nvidia")
+            (lib.mkIf config.mods.nvidia.enable "__GLX_VENDOR_LIBRARY_NAME,nvidia")
           ];
 
           layerrule = [
@@ -338,9 +343,11 @@
           #     ];
           #   };
           # };
-        } // config.mods.hyprland.custom_config;
+        }
+        // config.mods.hyprland.custom_config;
       # wayland.windowManager.hyprland.plugins = [
       #   inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       # ];
-    });
+    }
+  );
 }

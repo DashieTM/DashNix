@@ -1,4 +1,11 @@
-{ lib, config, pkgs, options, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  options,
+  ...
+}:
+{
   options.mods = {
     coding = {
       enable = lib.mkOption {
@@ -28,8 +35,8 @@
     };
   };
 
-  config = lib.mkIf config.mods.coding.enable
-    (lib.optionalAttrs (options ? home.packages) {
+  config = lib.mkIf config.mods.coding.enable (
+    lib.optionalAttrs (options ? home.packages) {
       programs.dashvim = lib.mkIf config.mods.coding.dashvim {
         enable = true;
         colorscheme = config.mods.stylix.colorscheme;
@@ -141,5 +148,6 @@
         tmate
       ];
 
-    });
+    }
+  );
 }

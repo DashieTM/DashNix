@@ -1,11 +1,23 @@
-{ lib, config, pkgs, options, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  options,
+  ...
+}:
+{
   options.conf = {
 
     system = lib.mkOption {
       default = "x86_64-linux";
       # no fisherprice unix support
-      type = with lib.types;
-        (enum [ "x86_64-linux" "aarch64-linux" "aarch64-linux-android" ]);
+      type =
+        with lib.types;
+        (enum [
+          "x86_64-linux"
+          "aarch64-linux"
+          "aarch64-linux-android"
+        ]);
       example = "aarch64-linux";
       description = ''
         System architecture.
@@ -15,7 +27,12 @@
     cpu = lib.mkOption {
       # TODO: how to enable arm?
       default = "amd";
-      type = with lib.types; (enum [ "amd" "intel" ]);
+      type =
+        with lib.types;
+        (enum [
+          "amd"
+          "intel"
+        ]);
       example = "intel";
       description = ''
         cpu microcode.
@@ -43,10 +60,12 @@
     ironbar = {
       modules = lib.mkOption {
         default = [ ];
-        example = [{
-          type = "upower";
-          class = "memory-usage";
-        }];
+        example = [
+          {
+            type = "upower";
+            class = "memory-usage";
+          }
+        ];
         type = with lib.types; listOf attrs;
         description = ''
           Adds modules to ironbar.
@@ -129,8 +148,16 @@
     };
 
     nvim-colorscheme = lib.mkOption {
-      default = { tokyonight = { enable = true; }; };
-      example = { catppuccin = { enable = true; }; };
+      default = {
+        tokyonight = {
+          enable = true;
+        };
+      };
+      example = {
+        catppuccin = {
+          enable = true;
+        };
+      };
       type = lib.types.attrs;
       description = ''
         nixvim colorscheme.
@@ -167,10 +194,8 @@
   };
 
   config = {
-    conf.kernel =
-      lib.mkIf (config.mods.gaming.enable && config.mods.gaming.kernel)
-      pkgs.linuxPackages_xanmod_latest;
-  } // (lib.optionalAttrs (options ? system.stateVersion) {
-    system.stateVersion = "unstable";
-  });
+    conf.kernel = lib.mkIf (
+      config.mods.gaming.enable && config.mods.gaming.kernel
+    ) pkgs.linuxPackages_xanmod_latest;
+  } // (lib.optionalAttrs (options ? system.stateVersion) { system.stateVersion = "unstable"; });
 }

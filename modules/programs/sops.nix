@@ -1,4 +1,12 @@
-{ lib, pkgs, config, options, root, ... }: {
+{
+  lib,
+  pkgs,
+  config,
+  options,
+  root,
+  ...
+}:
+{
   options.mods.sops = {
     enable = lib.mkOption {
       default = true;
@@ -19,8 +27,8 @@
       description = "secrets for sops";
     };
   };
-  config = lib.mkIf config.mods.sops.enable
-    (lib.optionalAttrs (options ? home.packages) {
+  config = lib.mkIf config.mods.sops.enable (
+    lib.optionalAttrs (options ? home.packages) {
       home.packages = with pkgs; [ sops ];
       sops = {
         gnupg = {
@@ -32,5 +40,6 @@
       };
 
       systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
-    });
+    }
+  );
 }

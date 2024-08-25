@@ -1,1 +1,6 @@
-{ imports = [ ./programs ./conf.nix ]; }
+{
+  imports = [
+    ./programs
+    ./conf.nix
+  ];
+}

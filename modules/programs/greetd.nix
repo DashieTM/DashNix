@@ -1,4 +1,12 @@
-{ config, lib, inputs, pkgs, options, ... }: {
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  options,
+  ...
+}:
+{
   options.mods = {
     greetd = {
       enable = lib.mkOption {
@@ -38,60 +46,72 @@
     };
   };
 
-  config = let
-    username = config.conf.username;
-    session = {
-      command = "${
+  config =
+    let
+      username = config.conf.username;
+      session = {
+        command = "${
           lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
         } --config /etc/greetd/hyprgreet.conf";
-      user = username;
-    };
-  in lib.mkIf config.mods.greetd.enable
-  (lib.optionalAttrs (options ? environment) {
-    services.xserver.displayManager.session = [{
-      manage = "desktop";
-      name = "Hyprland";
-      start = ''
-        ${lib.getExe pkgs.hyprland} & waitPID=$!
-      '';
-    }];
-
-    # greetd display manager
-    programs.hyprland.enable = true;
-    services.greetd = {
-      enable = true;
-      settings = {
-        terminal.vt = 1;
-        default_session = session;
+        user = username;
       };
-    };
+    in
+    lib.mkIf config.mods.greetd.enable (
+      lib.optionalAttrs (options ? environment) {
+        services.xserver.displayManager.session = [
+          {
+            manage = "desktop";
+            name = "Hyprland";
+            start = ''
+              ${lib.getExe pkgs.hyprland} & waitPID=$!
+            '';
+          }
+        ];
 
-    environment.etc."greetd/environments".text = ''
-      Hyprland
-    '';
+        # greetd display manager
+        programs.hyprland.enable = true;
+        services.greetd = {
+          enable = true;
+          settings = {
+            terminal.vt = 1;
+            default_session = session;
+          };
+        };
 
-    # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
-    environment.etc."greetd/hyprgreet.conf".text = ''
-      exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        environment.etc."greetd/environments".text = ''
+          Hyprland
+        '';
 
-      monitor=${config.mods.greetd.monitor},${config.mods.greetd.resolution},0x0,${config.mods.greetd.scale}
-      monitor=,disable
+        # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
+        environment.etc."greetd/hyprgreet.conf".text = ''
+          exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-      input {
-          kb_layout = ${config.mods.xkb.layout}
-          kb_variant = ${config.mods.xkb.variant}
-          force_no_accel = true
+          monitor=${config.mods.greetd.monitor},${config.mods.greetd.resolution},0x0,${config.mods.greetd.scale}
+          monitor=,disable
+
+          input {
+              kb_layout = ${config.mods.xkb.layout}
+              kb_variant = ${config.mods.xkb.variant}
+              force_no_accel = true
+          }
+
+          cursor {
+              enable_hyprcursor = false
+          }
+
+          misc {
+              disable_splash_rendering = false
+              disable_hyprland_logo = false
+          }
+
+          env=XCURSOR_THEME,${config.mods.stylix.cursor.name}
+          env=XCURSOR_SIZE,${config.mods.stylix.cursor.size}
+
+          exec-once=regreet --style /home/${username}/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
+        '';
+
+        # unlock GPG keyring on login
+        security.pam.services.greetd.enableGnomeKeyring = true;
       }
-
-      misc {
-          disable_splash_rendering = false
-          disable_hyprland_logo = false
-      }
-
-      exec-once=regreet --style /home/${username}/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
-    '';
-
-    # unlock GPG keyring on login
-    security.pam.services.greetd.enableGnomeKeyring = true;
-  });
+    );
 }

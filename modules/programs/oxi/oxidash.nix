@@ -1,4 +1,10 @@
-{ lib, config, options, ... }: {
+{
+  lib,
+  config,
+  options,
+  ...
+}:
+{
   options.mods.oxi.oxidash = {
     enable = lib.mkOption {
       default = true;
@@ -7,8 +13,8 @@
       description = "Enables and configures oxidash";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxidash.enable && config.mods.oxi.enable)
-    (lib.optionalAttrs (options ? xdg.configFile) {
+  config = lib.mkIf (config.mods.oxi.oxidash.enable && config.mods.oxi.enable) (
+    lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxidash.enable = true;
       xdg.configFile."oxidash/style.css" = {
         text = ''
@@ -60,5 +66,6 @@
             }
         '';
       };
-    });
+    }
+  );
 }
