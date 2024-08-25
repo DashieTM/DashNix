@@ -3,27 +3,20 @@
   options,
   config,
   pkgs,
-  inputs,
   ...
 }:
 {
   options.mods.home_packages = {
-    noDefaultPackages = lib.mkOption {
-      default = false;
-      example = true;
-      type = lib.types.bool;
-      description = "No default packages (will use additional_packages only)";
-    };
-    enable = lib.mkOption {
+    useDefaultPackages = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
-      description = "Home manager packages";
+      description = "Use default packages (will use additional_packages only if disabled)";
     };
     additional_packages = lib.mkOption {
       default = [ ];
       example = [ pkgs.flatpak ];
-      type = lib.types.str;
+      type = with lib.types; listOf package;
       description = ''
         Additional Home manager packages.
         Will be installed regardless of default home manager packages are installed.
@@ -60,61 +53,60 @@
       description = "The email client";
     };
   };
-  config = (
-    lib.mkIf config.mods.home_packages.noDefaultPackages (
-      lib.optionalAttrs (options ? home.packages) {
-        home.packages = config.mods.home_packages.additional_packages;
-      }
-    )
-    // (lib.optionalAttrs (options ? home.packages) {
-      home.packages =
-        with pkgs;
-        [
-          # TODO add fcp once fixed....
-          (lib.mkIf config.mods.home_packages.ncspot ncspot)
-          (lib.mkIf config.mods.home_packages.vesktop vesktop)
-          (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
-          (lib.mkIf (options ? config.mods.home_pakcage.matrixClient) config.mods.home_packages.matrixClient)
-          (lib.mkIf (options ? config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
-          adw-gtk3
-          bat
-          brave
-          brightnessctl
-          dbus
-          fastfetch
-          fd
-          ffmpeg
-          flake-checker
-          gnome-keyring
-          gnutar
-          greetd.regreet
-          killall
-          kitty
-          libnotify
-          lsd
-          networkmanager
-          nh
-          nix-index
-          playerctl
-          poppler_utils
-          pulseaudio
-          qt5ct
-          qt6ct
-          ripgrep
-          rm-improved
-          system-config-printer
-          xournalpp
-          zenith
-          zoxide
-        ]
-        ++ config.mods.home_packages.additional_packages;
-
-      xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
-        global = {
-          warn_timeout = "-1s";
-        };
-      };
-
+  config =
+    (lib.optionalAttrs (options ? home.packages) {
+      home.packages = config.mods.home_packages.additional_packages;
     })
-  );
+    // lib.mkIf config.mods.home_packages.useDefaultPackages (
+      lib.optionalAttrs (options ? home.packages) {
+        home.packages =
+          with pkgs;
+          [
+            # TODO add fcp once fixed....
+            (lib.mkIf config.mods.home_packages.ncspot ncspot)
+            (lib.mkIf config.mods.home_packages.vesktop vesktop)
+            (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
+            (lib.mkIf (!isNull config.mods.home_packages.matrixClient) config.mods.home_packages.matrixClient)
+            (lib.mkIf (!isNull config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
+            adw-gtk3
+            bat
+            brave
+            brightnessctl
+            dbus
+            fastfetch
+            fd
+            ffmpeg
+            flake-checker
+            gnome-keyring
+            gnutar
+            greetd.regreet
+            killall
+            kitty
+            libnotify
+            lsd
+            networkmanager
+            nh
+            nix-index
+            playerctl
+            poppler_utils
+            pulseaudio
+            qt5ct
+            qt6ct
+            ripgrep
+            rm-improved
+            system-config-printer
+            xournalpp
+            zenith
+            zoxide
+          ]
+          ++ config.mods.home_packages.additional_packages;
+
+        xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
+          global = {
+            warn_timeout = "-1s";
+          };
+        };
+
+      }
+    );
 }
