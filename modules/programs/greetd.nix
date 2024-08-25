@@ -105,7 +105,7 @@
           }
 
           env=XCURSOR_THEME,${config.mods.stylix.cursor.name}
-          env=XCURSOR_SIZE,${config.mods.stylix.cursor.size}
+          env=XCURSOR_SIZE,${toString config.mods.stylix.cursor.size}
 
           exec-once=regreet --style /home/${username}/.config/gtk-3.0/gtk.css; hyprctl dispatch exit
         '';
