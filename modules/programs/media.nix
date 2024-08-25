@@ -7,27 +7,26 @@
 }:
 {
   options.mods.media_packages = {
-    enable = lib.mkOption {
+    useBasePackages = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
-      description = "Default media packages";
+      description = "Default media packages (If disabled, only the additional packages will be installed)";
     };
-    additional_packages = lib.mkOption {
+    additionalPackages = lib.mkOption {
       default = [ ];
       example = [ pkgs.flatpak ];
-      type = lib.types.str;
+      type = with lib.types; listOf package;
       description = ''
         Additional media packages.
-        Will be installed regardless of default media packages are installed.
       '';
     };
   };
   config = (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = config.mods.media_packages.additional_packages;
+      home.packages = config.mods.media_packages.additionalPackages;
     }
-    // (lib.mkIf config.mods.media_packages.enable (
+    // (lib.mkIf config.mods.media_packages.useBasePackages (
       lib.optionalAttrs (options ? home.packages) {
         home.packages = with pkgs; [
           # base audio

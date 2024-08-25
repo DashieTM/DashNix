@@ -85,8 +85,8 @@
       description = "font config";
     };
   };
-  config = (
-    lib.optionalAttrs (options ? stylix) {
+  config =
+    (lib.optionalAttrs (options ? stylix) {
       stylix = {
         enable = true;
         image = ../../base/black.jpg;
@@ -104,7 +104,7 @@
             "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml"
         );
       };
-    }
+    })
     // lib.optionalAttrs (options ? environment.systemPackages) {
       environment.systemPackages = [
         config.mods.stylix.fonts.serif.package
@@ -112,6 +112,5 @@
         config.mods.stylix.fonts.monospace.package
         config.mods.stylix.fonts.emoji.package
       ];
-    }
-  );
+    };
 }

@@ -10,25 +10,33 @@
   options.mods = {
     nvidia.enable = lib.mkOption {
       default = false;
-      type = lib.types.bool;
       example = true;
+      type = lib.types.bool;
       description = ''
         Enables nvidia support.
       '';
     };
     amdgpu.enable = lib.mkOption {
       default = false;
-      type = lib.types.bool;
       example = true;
+      type = lib.types.bool;
       description = ''
         Enables amdgpu support.
       '';
     };
+    intelgpu.enable = lib.mkOption {
+      default = false;
+      example = true;
+      type = lib.types.bool;
+      description = ''
+        Enables intel support.
+      '';
+    };
     vapi = {
       enable = lib.mkOption {
-        default = false;
+        default = true;
+        example = false;
         type = lib.types.bool;
-        example = true;
         description = ''
           Enables vapi.
         '';
@@ -44,8 +52,8 @@
     };
   };
 
-  config = lib.mkIf config.mods.vapi.enable (
-    lib.optionalAttrs (options ? hardware.graphics) {
+  config =
+    (lib.optionalAttrs (options ? hardware.graphics) {
       boot = lib.mkIf config.mods.amdgpu.enable {
         kernelModules = [ "kvm-amd" ];
         initrd.kernelModules = [ "amdgpu" ];
@@ -55,12 +63,14 @@
       hardware = {
         graphics =
           let
-            base_packages = [
-              pkgs.libvdpau-va-gl
-              pkgs.vaapiVdpau
-              pkgs.mesa.drivers
+            amdPackages = [
+              (lib.mkIf (config.mods.intelgpu && lib.mkIf config.mods.vapi.enable) pkgs.vpl-gpu-rt)
+              (lib.mkIf (config.mods.intelgpu && lib.mkIf config.mods.vapi.enable) pkgs.intel-media-driver)
+              (lib.mkIf config.mods.vapi.enable pkgs.libvdpau-va-gl)
+              (lib.mkIf config.mods.vapi.enable pkgs.vaapiVdpau)
+              (lib.mkIf (config.mods.intelgpu || config.mods.amdgpu) pkgs.mesa.drivers)
             ];
-            rocm_packages = [
+            rocmPackages = [
               pkgs.rocmPackages.clr.icd
               pkgs.rocm-opencl-runtime
             ];
@@ -68,10 +78,12 @@
           {
             enable = true;
             enable32Bit = lib.mkDefault true;
-            extraPackages = base_packages ++ (lib.lists.optionals config.mods.vapi.rocm.enable rocm_packages);
+            extraPackages =
+              amdPackages
+              ++ (lib.lists.optionals (config.mods.vapi.rocm.enable && config.mods.gpu.amdgpu) rocmPackages);
           };
       };
-    }
+    })
     // lib.optionalAttrs (options ? hardware.graphics) (
       lib.mkIf config.mods.nvidia.enable {
         hardware.nvidia = {
@@ -84,6 +96,5 @@
         };
         services.xserver.videoDrivers = [ "nvidia" ];
       }
-    )
-  );
+    );
 }

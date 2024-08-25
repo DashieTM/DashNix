@@ -43,6 +43,20 @@
           Resolution/refreshrate used by the monitor in the login screen. 
         '';
       };
+      environments = lib.mkOption {
+        default = ''
+          Hyprland
+        '';
+        # no idea if these are written correctly
+        example = ''
+          Niri
+          River
+        '';
+        type = lib.types.lines;
+        description = ''
+          List of environments that should be available in the login prompt. 
+        '';
+      };
     };
   };
 
@@ -78,9 +92,7 @@
           };
         };
 
-        environment.etc."greetd/environments".text = ''
-          Hyprland
-        '';
+        environment.etc."greetd/environments".text = config.mods.greetd.environments;
 
         # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
         environment.etc."greetd/hyprgreet.conf".text = ''

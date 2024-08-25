@@ -69,10 +69,10 @@ in
           sync_with_monitor = "no";
           background_opacity = "0.8";
 
-          font_family = "${config.mods.stylix.monospace.name}";
-          bold_font = "${config.mods.stylix.monospace.name} Extra Bold";
-          italic_font = "${config.mods.stylix.monospace.name} Extra Italic";
-          bold_italic_font = "${config.mods.stylix.monospace.name} Extra Bold Italic";
+          font_family = "${config.mods.stylix.fonts.monospace.name}";
+          bold_font = "${config.mods.stylix.fonts.monospace.name} Extra Bold";
+          italic_font = "${config.mods.stylix.fonts.monospace.name} Extra Italic";
+          bold_italic_font = "${config.mods.stylix.fonts.monospace.name} Extra Bold Italic";
 
           background = base;
           foreground = "#" + scheme.base05;

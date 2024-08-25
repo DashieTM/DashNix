@@ -52,6 +52,12 @@
       type = with lib.types; nullOr package;
       description = "The email client";
     };
+    additionalBrowser = lib.mkOption {
+      default = pkgs.brave;
+      example = null;
+      type = with lib.types; nullOr package;
+      description = "Additional browser -> second to firefox, the only installed browser if firefox is disabled";
+    };
   };
   config =
     (lib.optionalAttrs (options ? home.packages) {
@@ -68,9 +74,11 @@
             (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
             (lib.mkIf (!isNull config.mods.home_packages.matrixClient) config.mods.home_packages.matrixClient)
             (lib.mkIf (!isNull config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
+            (lib.mkIf (
+              !isNull config.mods.home_packages.additionalBrowser
+            ) config.mods.home_packages.additionalBrowser)
             adw-gtk3
             bat
-            brave
             brightnessctl
             dbus
             fastfetch

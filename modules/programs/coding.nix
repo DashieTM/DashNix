@@ -32,20 +32,358 @@
           Enables jetbrains toolbox.
         '';
       };
+      useDefaultPackages = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = "Use default base packages (only additionalPackages are installed if false)";
+      };
+      additionalPackages = lib.mkOption {
+        default = [ ];
+        example = [ ];
+        type = with lib.types; listOf package;
+        description = "Additional packages to be installed";
+      };
+      languages = {
+        haskell = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables haskell.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              haskellPackages.cabal-install
+              ghc
+              haskellPackages.haskell-language-server
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              haskell packages
+            '';
+          };
+        };
+        typst = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables typst.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              typst
+              tinymist
+              ltex-ls
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              typst packages
+            '';
+          };
+        };
+        go = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables go.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              go
+              gopls
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              Go packages
+            '';
+          };
+        };
+        rust = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables rust.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [ rustup ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              Rust packages
+            '';
+          };
+        };
+        ts-js = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables TS/JS.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              nodejs_20
+              deno
+              typescript
+              nodePackages.typescript-language-server
+              nodePackages.prettier
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              TS/JS packages
+            '';
+          };
+        };
+        zig = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables zig.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              zig
+              zls
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              zig packages
+            '';
+          };
+        };
+        java = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables java.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              gradle
+              maven
+              jdt-language-server
+              temurin-jre-bin
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              Java packages
+            '';
+          };
+        };
+        dotnet = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables C#/F#.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              #.!
+              dotnet-sdk_8
+              omnisharp-roslyn
+              csharpier
+              netcoredbg
+              #fsharp
+              fsharp
+              fsautocomplete
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              C#/F# packages
+            '';
+          };
+        };
+        C-CPP = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables C/C++.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              bear
+              gcc
+              clang-tools
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              C/C++ packages
+            '';
+          };
+        };
+        python = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables python.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              python3
+              python312Packages.python-lsp-server
+              python312Packages.python-lsp-ruff
+              python312Packages.python-lsp-black
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              python packages
+            '';
+          };
+        };
+        configFiles = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables Json/toml/yaml etc.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              #yaml
+              yamlfmt
+              yamllint
+              yaml-language-server
+
+              #json
+              jq
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              packages for said filetypes
+            '';
+          };
+        };
+        bash = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables bash.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              bash-language-server
+              shfmt
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              bash packages
+            '';
+          };
+        };
+        html-css = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables html/css.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              tailwindcss
+              tailwindcss-language-server
+              # html-tidy
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              html/css packages
+            '';
+          };
+        };
+        sql = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables sql.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [
+              nodePackages.sql-formatter
+              sqls
+            ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              sql packages
+            '';
+          };
+        };
+        asm = {
+          enable = lib.mkOption {
+            default = true;
+            example = false;
+            type = lib.types.bool;
+            description = ''
+              Enables assembly.
+            '';
+          };
+          packages = lib.mkOption {
+            default = with pkgs; [ asm-lsp ];
+            example = [ ];
+            type = with lib.types; listOf package;
+            description = ''
+              assembly packages
+            '';
+          };
+        };
+      };
     };
   };
 
-  config = lib.mkIf config.mods.coding.enable (
-    lib.optionalAttrs (options ? home.packages) {
-      programs.dashvim = lib.mkIf config.mods.coding.dashvim {
-        enable = true;
-        colorscheme = config.mods.stylix.colorscheme;
-      };
-      home.packages = with pkgs; [
-        (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
-        #basics
+  config =
+    let
+      basePackages = with pkgs; [
         gitui
-        gcc
         meson
         ninja
         tree-sitter
@@ -54,100 +392,39 @@
         sqlite
         plantuml
         d-spy
-
-        # cpp
-        bear
-        clang-tools
-
-        #sql
-        nodePackages.sql-formatter
-        sqls
-
-        #assembly
-        asm-lsp
-
-        #yaml
-        yamlfmt
-        yamllint
-        yaml-language-server
-
-        #markdown
-        marksman
-        mdformat
-
-        #bash
-        bash-language-server
-        shfmt
-
-        #fsharp
-        fsharp
-        fsautocomplete
-
-        #haskell
-        haskellPackages.cabal-install
-        ghc
-        haskellPackages.haskell-language-server
-
-        #html
-        # html-tidy
-
-        #json
-        jq
-
-        #css
-        tailwindcss
-        tailwindcss-language-server
-
-        #editors
-        neovide
-        ##fallback
-        vscodium
-
-        #rust
-        rustup
-
-        #python
-        python3
-        python312Packages.python-lsp-server
-        python312Packages.python-lsp-ruff
-        python312Packages.python-lsp-black
-
-        #ts/js
-        nodejs_20
-        deno
-        typescript
-        nodePackages.typescript-language-server
-        nodePackages.prettier
-
-        #go
-        go
-        gopls
-
-        #typst
-        typst
-        tinymist
-        ltex-ls
-
-        #java
-        gradle
-        maven
-        jdt-language-server
-        temurin-jre-bin
-
-        #.!
-        dotnet-sdk_8
-        omnisharp-roslyn
-        csharpier
-        netcoredbg
-
-        #zig
-        zig
-        zls
-
         tmux
         tmate
+        #editors
+        neovide
+        #fallback
+        vscodium
       ];
-
-    }
-  );
+    in
+    lib.mkIf config.mods.coding.enable (
+      lib.optionalAttrs (options ? home.packages) {
+        programs.dashvim = lib.mkIf config.mods.coding.dashvim {
+          enable = true;
+          colorscheme = config.mods.stylix.colorscheme;
+        };
+        home.packages =
+          with pkgs;
+          [ (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox) ]
+          ++ config.mods.coding.additionalPackages
+          ++ (lib.lists.optionals config.mods.coding.useDefaultPackages basePackages)
+          ++ (lib.lists.optionals config.mods.coding.languages.haskell.enable config.mods.coding.languages.haskell.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.rust.enable config.mods.coding.languages.rust.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.go.enable config.mods.coding.languages.go.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.java.enable config.mods.coding.languages.java.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.dotnet.enable config.mods.coding.languages.dotnet.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.bash.enable config.mods.coding.languages.bash.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.C-CPP.enable config.mods.coding.languages.C-CPP.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.asm.enable config.mods.coding.languages.asm.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.sql.enable config.mods.coding.languages.sql.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.html-css.enable config.mods.coding.languages.html-css.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.configFiles.enable config.mods.coding.languages.configFiles.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.ts-js.enable config.mods.coding.languages.ts-js.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.typst.enable config.mods.coding.languages.typst.packages)
+          ++ (lib.lists.optionals config.mods.coding.languages.zig.enable config.mods.coding.languages.zig.packages);
+      }
+    );
 }

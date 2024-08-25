@@ -61,23 +61,25 @@
     lib.optionalAttrs (options ? environment.systemPackages) {
       environment.systemPackages = config.mods.gaming.tools;
 
-      programs.steam.enable = config.mods.gaming.steam;
-      programs.gamemode.enable = true;
-      programs.gamemode = {
-        enableRenice = true;
-        settings = {
-          general = {
-            governor = "performance";
-          };
-          gpu = lib.mkIf config.mods.gaming.gpu_optimization {
-            apply_gpu_optimisations = "accept-responsibility";
-            gpu_device = config.mods.gaming.gpu_device;
-            amd_performance_level = "high";
-            nv_powermizer_mode = 1;
-          };
-          custom = {
-            start = "notify-send -a 'Gamemode' 'Optimizations activated'";
-            end = "notify-send -a 'Gamemode' 'Optimizations deactivated'";
+      programs = {
+        steam.enable = config.mods.gaming.steam;
+        gamemode.enable = true;
+        gamemode = {
+          enableRenice = true;
+          settings = {
+            general = {
+              governor = "performance";
+            };
+            gpu = lib.mkIf config.mods.gaming.gpu_optimization {
+              apply_gpu_optimisations = "accept-responsibility";
+              gpu_device = config.mods.gaming.gpu_device;
+              amd_performance_level = "high";
+              nv_powermizer_mode = 1;
+            };
+            custom = {
+              start = "notify-send -a 'Gamemode' 'Optimizations activated'";
+              end = "notify-send -a 'Gamemode' 'Optimizations deactivated'";
+            };
           };
         };
       };
