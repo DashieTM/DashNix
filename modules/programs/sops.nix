@@ -7,14 +7,14 @@
       description = "Enable sops secrets";
     };
     secrets = lib.mkOption {
-      default = {
+      default = { };
+      example = {
         hub = { };
         lab = { };
         ${config.conf.username} = { };
         nextcloud = { };
         access = { };
       };
-      example = { };
       type = with lib.types; attrsOf anything;
       description = "secrets for sops";
     };
