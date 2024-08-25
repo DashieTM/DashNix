@@ -24,7 +24,7 @@
 
   outputs = { ... }@inputs: {
     nixosConfigurations =
-      (inputs.dashNix.dashNixLib.build_systems [ "example" ] ./hosts/.);
+      (inputs.dashNix.dashNixLib.build_systems [ "example" ] ./.);
   };
 
   nixConfig = {

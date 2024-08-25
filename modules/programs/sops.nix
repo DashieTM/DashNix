@@ -1,4 +1,4 @@
-{ lib, pkgs, config, options, ... }: {
+{ lib, pkgs, config, options, root, ... }: {
   options.mods.sops = {
     enable = lib.mkOption {
       default = true;
@@ -15,7 +15,7 @@
           home = "~/.gnupg";
           sshKeyPaths = [ ];
         };
-        defaultSopsFile = ../../secrets/secrets.yaml;
+        defaultSopsFile = root + /secrets/secrets.yaml;
         secrets = {
           hub = { };
           lab = { };

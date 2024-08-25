@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, mod, additionalHomeConfig, ... }:
+{ inputs, pkgs, config, lib, mod, additionalHomeConfig, root, ... }:
 let
   base_imports = [
     inputs.anyrun.homeManagerModules.default
@@ -27,7 +27,7 @@ in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs root; };
 
     users.${config.conf.username} = {
       imports = [ ./common.nix ./xdg.nix ./themes ./sync.nix ] ++ base_imports

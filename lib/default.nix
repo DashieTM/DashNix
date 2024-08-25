@@ -5,11 +5,11 @@ in {
     builtins.listToAttrs (map (name: {
       name = name;
       value = let
-        mod = root + /${name}/configuration.nix;
-        additionalNixosConfig = root + /${name}/hardware.nix;
-        additionalHomeConfig = root + /${name}/home.nix;
+        mod = root + /hosts/${name}/configuration.nix;
+        additionalNixosConfig = root + /hosts/${name}/hardware.nix;
+        additionalHomeConfig = root + /hosts/${name}/home.nix;
       in inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs mod additionalHomeConfig; };
+        specialArgs = { inherit inputs pkgs mod additionalHomeConfig root; };
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
