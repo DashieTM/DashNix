@@ -1,6 +1,29 @@
-{ inputs, pkgs, ... }:
-let
-in {
+{ inputs, pkgs, ... }: {
+  /* *
+     Builds system given a list of system names which are placed within your hosts/ directory. Note that each system has its own directory in hosts/ as well.
+
+     A minimal configuration requires the file configuration.nix within each system directory, this will be the base config that is used across both NisOS and home-manager, specific optional files can also be added, hardware.nix for NisOS configuration and home.nix for home-manager configuration.
+
+     The second parameter is the root of your configuration, which should be ./. in most cases.
+
+     # Inputs
+
+     `systems`
+
+     : a list of strings with hostnames
+
+     `root`
+
+     : the root path of your configuration
+
+     # Example usage
+     :::{.example}
+     ```nix
+     nixosConfigurations =
+         (inputs.dashNix.dashNixLib.build_systems [ "nixos" ] ./.);
+     ```
+     :::
+  */
   build_systems = systems: root:
     builtins.listToAttrs (map (name: {
       name = name;
