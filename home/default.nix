@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, mod, ... }:
+{ inputs, pkgs, config, lib, mod, additionalHomeConfig, ... }:
 let
   base_imports = [
     inputs.anyrun.homeManagerModules.default
@@ -16,7 +16,6 @@ let
     inputs.dashvim.homeManagerModules.dashvim
     ../modules
   ];
-  usernamePassed = config.conf.username;
 in {
   xdg = {
     portal.config.common.default = "*";
@@ -30,14 +29,11 @@ in {
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
 
-    users.${usernamePassed} = {
-      imports = [
-        ./common.nix
-        ./xdg.nix
-        ./oxi/default.nix
-        ./themes/default.nix
-        ./sync.nix
-      ] ++ base_imports ++ lib.optional (builtins.pathExists mod) mod;
+    users.${config.conf.username} = {
+      imports = [ ./common.nix ./xdg.nix ./themes ./sync.nix ] ++ base_imports
+        ++ lib.optional (builtins.pathExists mod) mod
+        ++ lib.optional (builtins.pathExists additionalHomeConfig)
+        additionalHomeConfig;
     };
   };
 }

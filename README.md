@@ -34,35 +34,64 @@ nixosConfigurations = (inputs.dashNix.dashNixLib.build_systems [
 ```
 
 In order for your configuration to work, you are required to at least provide a single config file with a further config file being optional for custom configuration.
+The hardware.nix specifies additional NixOS configuration, while home.nix specifies additional home-manager configuration. (both optional)
 
 |- flake.nix\
 |- flake.lock\
 |- system1/\
-|---- system1.nix (required)\
-|---- configuration.nix (optional)\
+|---- configuration.nix (required)\
+|---- hardware.nix (optional)\
+|---- home.nix (optional)
 |- system2/\
-|---- system2.nix (required)\
-|---- configuration.nix (optional)\
+|---- configuration.nix (required)\
+|---- hardware.nix (optional)\
+|---- home.nix (optional)
 |- system3/\
-|---- system3.nix (required)\
-|---- configuration.nix (optional)
+|---- configuration.nix (required)
+|---- hardware.nix (optional)\
+|---- home.nix (optional)
 
-Here is a minimal required configuration (the TODOs mention a required change):
+Here is a minimal required configuration.nix (the TODOs mention a required change):
+
 ```nix
 {
   # variables for system
+  # TODO important changes
   conf = {
-    # TODO change this to your monitor and your pc name
+    # change this to your monitor and your pc name
     # should be something like DP-1
     monitor = "YOURMONITOR";
+    # your username
     username = "YOURNAME";
     # the name of your system
     hostname = "YOURNAME";
     # TODO only needed when you use intel -> amd is default
     # cpu = "intel";
+    locale = "something.UTF-8";
+    timezone = "CONTINENT/CITY";
   };
   # modules
   mods = {
+    # default disk config has root home boot and swap partition, overwrite if you want something different
+    defaultDrives.enable = false;
+    extraDrives = [
+      {
+        name = "boot";
+        drive = {
+          device = "/dev/disk/by-label/BOOT";
+          fsType = "vfat";
+          options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+        };
+      }
+      {
+        name = "";
+        drive = {
+          device = "/dev/disk/by-label/ROOT";
+          fsType = "ext4";
+          options = [ "noatime" "nodiratime" "discard" ];
+        };
+      }
+    ];
     sops.enable = false;
     nextcloud.enable = false;
     hyprland.monitor = [
@@ -81,6 +110,8 @@ Here is a minimal required configuration (the TODOs mention a required change):
   };
 }
 ```
+## First Login
+After logging in the first time, your password will be set to "firstlogin", please change this to whatever you like.
 
 # Modules
 
@@ -118,3 +149,4 @@ For package lists, please check the individual modules, as the lists can be long
 - sops: Enables sops-nix
 - fish: Enables and configures fish shell
 - kitty: Enables and configures kitty terminal
+- oxi: My own programs, can be selectively disabled, or as a whole

@@ -101,6 +101,24 @@
       '';
     };
 
+    timezone = lib.mkOption {
+      default = "Europe/Zurich";
+      example = "Europe/Berlin";
+      type = lib.types.str;
+      description = ''
+        The timezone.
+      '';
+    };
+
+    locale = lib.mkOption {
+      default = "en_US.UTF-8";
+      example = "de_DE.UTF-8";
+      type = lib.types.str;
+      description = ''
+        The locale.
+      '';
+    };
+
     nixos-config-path = lib.mkOption {
       default = "/home/${config.conf.username}/gits/nixos/.";
       example = "yourpath/.";

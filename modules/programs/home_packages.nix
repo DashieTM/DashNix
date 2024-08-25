@@ -69,12 +69,8 @@
 
       #my own programs
       programs = {
-        oxicalc.enable = true;
-        oxinoti.enable = true;
-        oxidash.enable = true;
-        oxishut.enable = true;
-        oxipaste.enable = true;
         hyprdock.enable = true;
+        oxicalc.enable = true;
         ReSet.enable = true;
         ReSet.config.plugins = [
           inputs.reset-plugins.packages."x86_64-linux".monitor

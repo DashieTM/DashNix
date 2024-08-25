@@ -1,8 +1,4 @@
 { config, lib, options, pkgs, ... }: {
-  imports = [
-
-  ];
-
   options.mods = {
     hyprland = {
       enable = lib.mkOption {
@@ -92,11 +88,9 @@
           bind = [
             # screenshots
             ''$mod SUPER,S,exec,grim -g "$(slurp)" - | wl-copy''
-            ''
-              $mod SUPERSHIFTALT,S,exec, grim -g "$(slurp)" $HOME/gits/ost-5semester/Screenshots/$(date +'%Y_%m_%d_%I_%M_%S.png') && (date +'%Y_%m_%d_%I_%M_%S.png') | wl-copy''
             ''$mod SUPERSHIFT,S,exec,grim -g "$(slurp)" - | satty -f -''
             ''
-              $mod SUPERCONTROLSHIFT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
+              $mod SUPERSHIFTALT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
 
             # regular programs
             "$mod SUPER,F,exec,firefox"
@@ -114,14 +108,19 @@
             "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
             # media keys
-            ",XF86AudioMute,exec, $HOME/.config/scripts/audio_control.sh mute"
-            ",XF86AudioLowerVolume,exec, $HOME/.config/scripts/audio_control.sh sink -5%"
-            ",XF86AudioRaiseVolume,exec, $HOME/.config/scripts/audio_control.sh sink +5%"
+            (lib.mkIf config.mods.scripts.audio-control
+              ",XF86AudioMute,exec, audio-control mute")
+            (lib.mkIf config.mods.scripts.audio-control
+              ",XF86AudioLowerVolume,exec, audio-control sink -5%")
+            (lib.mkIf config.mods.scripts.audio-control
+              ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
             ",XF86AudioPlay,exec, playerctl play-pause"
             ",XF86AudioNext,exec, playerctl next"
             ",XF86AudioPrev,exec, playerctl previous"
-            ",XF86MonBrightnessDown,exec, $HOME/.config/scripts/change-brightness brightness 10%-"
-            ",XF86MonBrightnessUp,exec, $HOME/.config/scripts/change-brightness brightness +10%"
+            (lib.mkIf config.mods.scripts.change-brightness
+              ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
+            (lib.mkIf config.mods.scripts.change-brightness
+              ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
 
             # hyprland keybinds
             # misc

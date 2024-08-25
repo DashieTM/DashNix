@@ -17,12 +17,15 @@
     ./hyprland
     ./kde_connect.nix
     ./keepassxc.nix
+    ./kitty.nix
     ./layout.nix
     ./media.nix
     ./ncspot.nix
     ./nextcloud.nix
+    ./oxi
     ./piper.nix
     ./printing.nix
+    ./scripts.nix
     ./sops.nix
     ./starship.nix
     ./stylix.nix
@@ -30,6 +33,5 @@
     ./virtualbox.nix
     ./xone.nix
     ./yazi
-    ./kitty.nix
   ];
 }

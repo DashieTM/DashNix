@@ -4,28 +4,49 @@ in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   # Bootloader.
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 5;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
+      };
+      efi.canTouchEfiVariables = true;
+    };
+    plymouth = { enable = true; };
+    kernelPackages = config.conf.kernel;
+    initrd.availableKernelModules =
+      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    kernelParams = [ ''resume="PARTLABEL=SWAP"'' ] ++ config.conf.boot_params;
   };
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth = { enable = true; };
 
   # Enable networking
-  networking.useDHCP = lib.mkDefault true;
-  networking.networkmanager.enable = true;
-  networking.hostName = config.conf.hostname;
-
-  services.flatpak.enable = true;
+  networking = {
+    useDHCP = lib.mkDefault true;
+    networkmanager.enable = true;
+    hostName = config.conf.hostname;
+  };
 
   # Set your time zone.
-  time.timeZone = "Europe/Zurich";
+  time.timeZone = config.conf.timezone;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = config.conf.locale;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services = {
+    flatpak.enable = true;
+    xserver.enable = true;
+    fstrim.enable = lib.mkDefault true;
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      jack.enable = true;
+      pulse.enable = true;
+    };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault config.conf.system;
   nix = {
@@ -43,48 +64,39 @@ in {
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  hardware.cpu.${config.conf.cpu}.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  services.fstrim.enable = lib.mkDefault true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  hardware = {
+    pulseaudio.enable = false;
+    cpu.${config.conf.cpu}.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
+
+  security.rtkit.enable = true;
 
   environment.variables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     DIRENV_LOG_FORMAT = "";
   };
 
-  boot.kernelPackages = config.conf.kernel;
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.kernelParams = [ ''resume="PARTLABEL=SWAP"'' ]
-    ++ config.conf.boot_params;
-
   # allows user change later on
-  users.mutableUsers = true;
-  users.users.${username} = {
-    isNormalUser = true;
-    description = username;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "gamemode"
-      "docker"
-      "vboxusers"
-      "video"
-      "audio"
-    ];
-    packages = with pkgs; [ home-manager xdg-desktop-portal-gtk ];
-    # this password will only last for the first login
-    # e.g. login, then change to whatever else, this also ensures no public hash is available
-    password = "firstlogin";
+  users = {
+    mutableUsers = true;
+    users.${username} = {
+      isNormalUser = true;
+      description = username;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "gamemode"
+        "docker"
+        "vboxusers"
+        "video"
+        "audio"
+      ];
+      packages = with pkgs; [ home-manager xdg-desktop-portal-gtk ];
+      # this password will only last for the first login
+      # e.g. login, then change to whatever else, this also ensures no public hash is available
+      password = "firstlogin";
+    };
   };
 
 }

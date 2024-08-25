@@ -1,21 +1,26 @@
 {
   # variables for system
+  # TODO important changes
   conf = {
-    # TODO change this to your monitor and your pc name
+    # change this to your monitor and your pc name
     # should be something like DP-1
     monitor = "YOURMONITOR";
+    # your username
     username = "YOURNAME";
     # the name of your system
     hostname = "YOURNAME";
     # TODO only needed when you use intel -> amd is default
     # cpu = "intel";
+    locale = "something.UTF-8";
+    timezone = "CONTINENT/CITY";
   };
   # modules
   mods = {
+    # default disk config has root home boot and swap partition, overwrite if you want something different
     defaultDrives.enable = false;
     extraDrives = [
       {
-        name = "/boot";
+        name = "boot";
         drive = {
           device = "/dev/disk/by-label/BOOT";
           fsType = "vfat";
@@ -23,7 +28,7 @@
         };
       }
       {
-        name = "/root";
+        name = "";
         drive = {
           device = "/dev/disk/by-label/ROOT";
           fsType = "ext4";
