@@ -182,12 +182,20 @@
       '';
     };
 
-    state_version = lib.mkOption {
+    systemStateVersion = lib.mkOption {
       default = "unstable";
       example = "24.05";
       type = lib.types.str;
       description = ''
-        System and home state version 
+        System state version 
+      '';
+    };
+    homeStateVersion = lib.mkOption {
+      default = "24.05";
+      example = "23.05";
+      type = lib.types.str;
+      description = ''
+        Home state version 
       '';
     };
 
@@ -200,9 +208,9 @@
       ) pkgs.linuxPackages_xanmod_latest;
     }
     // (lib.optionalAttrs (options ? system.stateVersion) {
-      system.stateVersion = config.conf.state_version;
+      system.stateVersion = config.conf.systemStateVersion;
     })
     // (lib.optionalAttrs (options ? home.stateVersion) {
-      home.stateVersion = config.conf.state_version;
+      home.stateVersion = config.conf.homeStateVersion;
     });
 }
