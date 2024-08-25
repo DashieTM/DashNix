@@ -251,7 +251,7 @@
           cursor = {
             # conversion seems to be borked right now, i want a smooth bibata :(
             enable_hyprcursor = false;
-            # no_hardware_cursors = true;
+            no_hardware_cursors = lib.mkIf config.mods.nvidia.enable true;
             # no_break_fs_vrr = true;
           };
 
@@ -279,6 +279,12 @@
             ''EDITOR,"neovide --novsync --nofork"''
             (lib.mkIf config.mods.hyprland.no_atomic "WLR_DRM_NO_ATOMIC,1")
             "GTK_USE_PORTAL, 1"
+
+            (lib.mkIf config.mods.nvidia.enable "LIBVA_DRIVER_NAME,nvidia")
+            (lib.mkIf config.mods.nvidia.enable "XDG_SESSION_TYPE,wayland")
+            (lib.mkIf config.mods.nvidia.enable "GBM_BACKEND,nvidia-drm")
+            (lib.mkIf config.mods.nvidia.enable
+              "__GLX_VENDOR_LIBRARY_NAME,nvidia")
           ];
 
           layerrule = [
