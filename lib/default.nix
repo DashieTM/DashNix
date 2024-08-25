@@ -1,48 +1,63 @@
-{ inputs, pkgs, ... }: {
-  /* *
-     Builds system given a list of system names which are placed within your hosts/ directory. Note that each system has its own directory in hosts/ as well.
+{ inputs, pkgs, ... }:
+{
+  /**
+    Builds system given a list of system names which are placed within your hosts/ directory. Note that each system has its own directory in hosts/ as well.
 
-     A minimal configuration requires the file configuration.nix within each system directory, this will be the base config that is used across both NisOS and home-manager, specific optional files can also be added, hardware.nix for NisOS configuration and home.nix for home-manager configuration.
+    A minimal configuration requires the file configuration.nix within each system directory, this will be the base config that is used across both NisOS and home-manager, specific optional files can also be added, hardware.nix for NisOS configuration and home.nix for home-manager configuration.
 
-     The second parameter is the root of your configuration, which should be ./. in most cases.
+    The second parameter is the root of your configuration, which should be ./. in most cases.
 
-     # Inputs
+    # Inputs
 
-     `systems`
+    `systems`
 
-     : a list of strings with hostnames
+    : a list of strings with hostnames
 
-     `root`
+    `root`
 
-     : the root path of your configuration
+    : the root path of your configuration
 
-     # Example usage
-     :::{.example}
-     ```nix
-     nixosConfigurations =
-         (inputs.dashNix.dashNixLib.build_systems [ "nixos" ] ./.);
-     ```
-     :::
+    # Example usage
+    :::{.example}
+    ```nix
+    nixosConfigurations =
+        (build_systems [ "nixos" ] ./.);
+    ```
+    :::
   */
-  build_systems = systems: root:
-    builtins.listToAttrs (map (name: {
-      name = name;
-      value = let
-        mod = root + /hosts/${name}/configuration.nix;
-        additionalNixosConfig = root + /hosts/${name}/hardware.nix;
-        additionalHomeConfig = root + /hosts/${name}/home.nix;
-      in inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs mod additionalHomeConfig root; };
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ../base
-          ../home
-          ../modules
-          mod
-        ] ++ inputs.nixpkgs.lib.optional
-          (builtins.pathExists additionalNixosConfig) additionalNixosConfig
-          ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
-      };
-    }) systems);
+  build_systems =
+    systems: root:
+    builtins.listToAttrs (
+      map (name: {
+        name = name;
+        value =
+          let
+            mod = root + /hosts/${name}/configuration.nix;
+            additionalNixosConfig = root + /hosts/${name}/hardware.nix;
+            additionalHomeConfig = root + /hosts/${name}/home.nix;
+          in
+          inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit
+                inputs
+                pkgs
+                mod
+                additionalHomeConfig
+                root
+                ;
+            };
+            modules =
+              [
+                inputs.home-manager.nixosModules.home-manager
+                inputs.stylix.nixosModules.stylix
+                ../base
+                ../home
+                ../modules
+                mod
+              ]
+              ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
+              ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
+          };
+      }) systems
+    );
 }
