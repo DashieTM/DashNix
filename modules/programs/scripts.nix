@@ -26,7 +26,7 @@
           set_brightness() {
           brightnessctl set "$1"
           CURRENT=$(brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}')
-          dunstify -a "changeBrightness" -r 3 -u low -i brightness-high -h int:value:"$CURRENT" "Brightness: $\{CURRENT\}%"
+          dunstify -a "changeBrightness" -r 3 -u low -i brightness-high -h int:value:"$CURRENT" "Brightness: ''${CURRENT}%"
           }
 
           if [ "$1" == "brightness" ]; then
@@ -40,7 +40,7 @@
           	CHANGE=$(pactl list sink-inputs short | rg "$NUM" | awk -F ' ' ' { print $1 }' | tr -d ' \t\n')
           	pactl set-sink-input-volume "$CHANGE" "$1"
           	VOLUME=$(pactl list sink-inputs | rg "$NUM" -A7 | rg "Volume:" | awk -F ' ' ' { print $5 }' | tr -d '%')
-          	notify-send -a "ncspot" -r 990 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Spotify Volume: $\{VOLUME\}%"
+          	notify-send -a "ncspot" -r 990 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Spotify Volume: ''${VOLUME}%"
           }
 
           firefox() {
@@ -48,13 +48,13 @@
           	# NUMS=',' read -r -a array <<< "$STRING"
           	readarray -td, NUMS <<<"$STRING"
           	declare -p NUMS
-          	for index in "$\{!NUMS[@]\}"; do #"$\{!array[@]\}"
-          		NUM=$(echo "$\{NUMS[index]\}" | tr -d ' \t\n')
+          	for index in "''${!NUMS[@]}"; do #"''${!array[@]}"
+          		NUM=$(echo "''${NUMS[index]}" | tr -d ' \t\n')
           		CHANGE=$(pactl list sink-inputs short | rg "$NUM" | awk -F ' ' ' { print $1 }' | tr -d ' \t\n')
           		pactl set-sink-input-volume "$CHANGE" "$1"
           	done
-          	VOLUME=$(pactl list sink-inputs | rg "$\{NUMS[0]\}" -A7 | rg "Volume:" | awk -F ' ' ' { print $5 }' | tr -d '%')
-          	notify-send -a "Firefox" -r 991 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Firefox Volume: $\{VOLUME\}%"
+          	VOLUME=$(pactl list sink-inputs | rg "''${NUMS[0]}" -A7 | rg "Volume:" | awk -F ' ' ' { print $5 }' | tr -d '%')
+          	notify-send -a "Firefox" -r 991 -u low -i audio-volume-high -h int:progress:"$VOLUME" "Firefox Volume: ''${VOLUME}%"
           }
 
           internal() {
@@ -72,13 +72,13 @@
           set_volume_sink() {
           	pactl set-sink-volume @DEFAULT_SINK@ "$1"
           	CURRENT=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %')
-          	notify-send -a "System Volume" -r 1001 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Output Volume: $\{CURRENT\}%"
+          	notify-send -a "System Volume" -r 1001 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Output Volume: ''${CURRENT}%"
           }
 
           set_volume_source() {
           	pactl set-source-volume @DEFAULT_SOURCE@ "$1"
           	CURRENT=$(pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %')
-          	notify-send -a "System Volume" -r 1001 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Input Volume: $\{CURRENT\}%"
+          	notify-send -a "System Volume" -r 1001 -u low -i audio-volume-high -h int:progress:"$CURRENT" "Input Volume: ''${CURRENT}%"
           }
 
           bluetooth() {
