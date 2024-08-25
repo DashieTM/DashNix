@@ -6,6 +6,18 @@
       type = lib.types.bool;
       description = "Enable sops secrets";
     };
+    secrets = lib.mkOption {
+      default = {
+        hub = { };
+        lab = { };
+        ${config.conf.username} = { };
+        nextcloud = { };
+        access = { };
+      };
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = "secrets for sops";
+    };
   };
   config = lib.mkIf config.mods.sops.enable
     (lib.optionalAttrs (options ? home.packages) {
@@ -16,13 +28,7 @@
           sshKeyPaths = [ ];
         };
         defaultSopsFile = root + /secrets/secrets.yaml;
-        secrets = {
-          hub = { };
-          lab = { };
-          ${config.conf.username} = { };
-          nextcloud = { };
-          access = { };
-        };
+        secrets = config.mods.sops.secrets;
       };
 
       systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
