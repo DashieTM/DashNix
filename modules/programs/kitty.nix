@@ -27,6 +27,7 @@ let
     "e" = "d";
     "f" = "e";
   };
+  # don't ask :)
   base =
     "#"
     + lib.strings.concatStrings (
@@ -41,6 +42,15 @@ in
       example = false;
       type = lib.types.bool;
       description = "Enables kitty";
+    };
+    additionalConfig = lib.mkOption {
+      default = { };
+      example = {
+        # for the insane people out there :P
+        enable_audio_bell = "yes";
+      };
+      type = with lib.types; attrsOf anything;
+      description = "Additional kitty configuration";
     };
   };
   config = lib.mkIf config.mods.kitty.enable (
@@ -59,10 +69,10 @@ in
           sync_with_monitor = "no";
           background_opacity = "0.8";
 
-          font_family = "JetBrainsMono Nerd Font Mono";
-          bold_font = "JetBrainsMono Nerd Font Mono Extra Bold";
-          italic_font = "JetBrainsMono Nerd Font Mono Extra Italic";
-          bold_italic_font = "JetBrainsMono Nerd Font Mono Extra Bold Italic";
+          font_family = "${config.mods.stylix.monospace.name}";
+          bold_font = "${config.mods.stylix.monospace.name} Extra Bold";
+          italic_font = "${config.mods.stylix.monospace.name} Extra Italic";
+          bold_italic_font = "${config.mods.stylix.monospace.name} Extra Bold Italic";
 
           background = base;
           foreground = "#" + scheme.base05;
@@ -96,9 +106,8 @@ in
           color14 = "#" + scheme.base0C;
           color15 = "#" + scheme.base07;
 
-          shell = "fish";
-        };
-
+          shell = lib.mkIf config.mods.fish.enable "fish";
+        } // config.mods.kitty.additionalConfig;
       };
     }
   );
