@@ -93,14 +93,14 @@
       };
     };
 
-    kernel = lib.mkOption {
-      default = pkgs.linuxPackages_latest;
-      example = pkgs.linuxPackages_xanmod_latest;
-      type = with lib.types; nullOr attrs;
-      description = ''
-        kernel to be used
-      '';
-    };
+    #kernel = lib.mkOption {
+    #  default = pkgs.linuxPackages_latest;
+    #  example = pkgs.linuxPackages_xanmod_latest;
+    #  type = with lib.types; nullOr attrs;
+    #  description = ''
+    #    kernel to be used
+    #  '';
+    #};
 
     hostname = lib.mkOption {
       default = "nixos";
@@ -203,9 +203,9 @@
 
   config =
     {
-      conf.kernel = lib.mkIf (
-        config.mods.gaming.enable && config.mods.gaming.kernel
-      ) pkgs.linuxPackages_xanmod_latest;
+      # conf.kernel = lib.mkIf (
+      #   config.mods.gaming.enable && config.mods.gaming.kernel
+      # ) pkgs.linuxPackages_xanmod_latest;
     }
     // (lib.optionalAttrs (options ? system.stateVersion) {
       system.stateVersion = config.conf.systemStateVersion;

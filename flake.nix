@@ -66,8 +66,12 @@
         };
       };
     in
-    {
+    rec {
       dashNixLib = import ./lib { inherit inputs pkgs; };
+      docs = import ./docs {
+        inherit inputs pkgs;
+        build_systems = dashNixLib.build_systems;
+      };
       dashNixInputs = inputs;
       stablePkgs = stable;
       unstablePkgs = pkgs;

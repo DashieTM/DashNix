@@ -20,7 +20,7 @@
       additional_packages = lib.mkOption {
         default = [ ];
         example = [ pkgs.openssl ];
-        type = with lib.types; listOf packages;
+        type = with lib.types; listOf package;
         description = ''
           Additional packages to install.
           Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.

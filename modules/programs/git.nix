@@ -22,12 +22,12 @@
     ssh_config = lib.mkOption {
       default = ''
         Host github.com
-          ${if (config.sops.secrets ? hub.path) then "IdentityFile ${config.sops.secrets.hub.path}" else ""}
+          ${if (config ? sops.secrets ? hub.path) then "IdentityFile ${config.sops.secrets.hub.path}" else ""}
         Host gitlab.com
-          ${if (config.sops.secrets ? lab.path) then "IdentityFile ${config.sops.secrets.lab.path}" else ""}
+          ${if (config ? sops.secrets ? lab.path) then "IdentityFile ${config.sops.secrets.lab.path}" else ""}
         Host dashie.org
           ${
-            if (config.sops.secrets ? dashie.path) then
+            if (config ? sops.secrets ? dashie.path) then
               "IdentityFile ${config.sops.secrets.dashie.path}"
             else
               ""
