@@ -1,2 +1,6 @@
-[Options](dashNix.md)
+[README](README.md)
+
+# Options
+
+- [Options](dashNix.md)
 
