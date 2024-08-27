@@ -111,8 +111,35 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
   };
 }
 ```
+
 ## First Login
+
 After logging in the first time, your password will be set to "firstlogin", please change this to whatever you like.
+
+## Modules
+
+You can add additional modules or remove all of them by overriding parameters to the build_systems command:
+
+```nix
+nixosConfigurations =
+    let
+        additionalMods = {
+            nixos = [
+            # your modules
+            ]; home = [
+            # your modules
+            ];
+        }
+        # passing this parameter will override the existing modules
+        mods = {
+            nixos = [];
+            home = [];
+        }
+    in
+    (inputs.dashNix.dashNixLib.build_systems [
+        "system1"
+    ] ./. mods additionalMods);
+```
 
 # Modules
 

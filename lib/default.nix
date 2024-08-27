@@ -1,6 +1,10 @@
 {
   inputs,
   pkgs,
+  additionalMods ? {
+    nixos = [ ];
+    home = [ ];
+  },
   mods ? {
     nixos = [
       inputs.home-manager.nixosModules.home-manager
@@ -25,10 +29,6 @@
       inputs.dashvim.homeManagerModules.dashvim
       ../modules
     ];
-  },
-  additionalMods ? {
-    nixos = [ ];
-    home = [ ];
   },
   ...
 }:
