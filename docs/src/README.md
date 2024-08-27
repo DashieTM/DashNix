@@ -116,7 +116,7 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
 
 After logging in the first time, your password will be set to "firstlogin", please change this to whatever you like.
 
-## Modules
+## Nixos and Home-manager Modules
 
 You can add additional modules or remove all of them by overriding parameters to the build_systems command:
 

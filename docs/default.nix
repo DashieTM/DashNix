@@ -13,7 +13,8 @@ let
         option
         // {
           visible =
-            option.visible
+            builtins.elemAt option.loc 0 != "kernel"
+            && option.visible
             && (builtins.elemAt option.loc 0 == "conf" || builtins.elemAt option.loc 0 == "mods");
         };
     };

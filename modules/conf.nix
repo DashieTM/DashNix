@@ -93,14 +93,15 @@
       };
     };
 
-    #kernel = lib.mkOption {
-    #  default = pkgs.linuxPackages_latest;
-    #  example = pkgs.linuxPackages_xanmod_latest;
-    #  type = with lib.types; nullOr attrs;
-    #  description = ''
-    #    kernel to be used
-    #  '';
-    #};
+    kernelOverride = lib.mkOption {
+      default = null;
+      type = with lib.types; nullOr package;
+      description = ''
+        kernel to be used
+        Has no examples as doc complains...
+        #example = pkgs.linuxPackages_xanmod_latest;
+      '';
+    };
 
     hostname = lib.mkOption {
       default = "nixos";
@@ -202,12 +203,8 @@
   };
 
   config =
-    {
-      # conf.kernel = lib.mkIf (
-      #   config.mods.gaming.enable && config.mods.gaming.kernel
-      # ) pkgs.linuxPackages_xanmod_latest;
-    }
-    // (lib.optionalAttrs (options ? system.stateVersion) {
+    (lib.optionalAttrs (options ? system.stateVersion) {
+      boot.kernelPackages = lib.mkIf (config.conf.kernelOverride != null) config.conf.kernel;
       system.stateVersion = config.conf.systemStateVersion;
     })
     // (lib.optionalAttrs (options ? home.stateVersion) {

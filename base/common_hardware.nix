@@ -24,8 +24,7 @@ in
     plymouth = {
       enable = true;
     };
-    #kernelPackages = config.conf.kernel;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     initrd = {
       verbose = false;
       availableKernelModules = [
