@@ -5,27 +5,10 @@
   lib,
   mod,
   additionalHomeConfig,
+  homeMods,
   root,
   ...
 }:
-let
-  base_imports = [
-    inputs.anyrun.homeManagerModules.default
-    inputs.ironbar.homeManagerModules.default
-    inputs.oxicalc.homeManagerModules.default
-    inputs.oxishut.homeManagerModules.default
-    inputs.oxinoti.homeManagerModules.default
-    inputs.oxidash.homeManagerModules.default
-    inputs.oxipaste.homeManagerModules.default
-    inputs.hyprdock.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
-    inputs.reset.homeManagerModules.default
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    inputs.sops-nix.homeManagerModules.sops
-    inputs.dashvim.homeManagerModules.dashvim
-    ../modules
-  ];
-in
 {
   xdg = {
     portal.config.common.default = "*";
@@ -49,7 +32,7 @@ in
           ./themes
           ./sync.nix
         ]
-        ++ base_imports
+        ++ homeMods
         ++ lib.optional (builtins.pathExists mod) mod
         ++ lib.optional (builtins.pathExists additionalHomeConfig) additionalHomeConfig;
     };

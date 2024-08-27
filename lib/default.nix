@@ -1,4 +1,34 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  mods ? {
+    nixos = [
+      inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
+      ../base
+      ../home
+      ../modules
+    ];
+    home = [
+      inputs.anyrun.homeManagerModules.default
+      inputs.ironbar.homeManagerModules.default
+      inputs.oxicalc.homeManagerModules.default
+      inputs.oxishut.homeManagerModules.default
+      inputs.oxinoti.homeManagerModules.default
+      inputs.oxidash.homeManagerModules.default
+      inputs.oxipaste.homeManagerModules.default
+      inputs.hyprdock.homeManagerModules.default
+      inputs.hyprland.homeManagerModules.default
+      inputs.reset.homeManagerModules.default
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.dashvim.homeManagerModules.dashvim
+      ../modules
+    ];
+  },
+
+  ...
+}:
 {
   /**
     # build_systems
@@ -47,16 +77,11 @@
                 additionalHomeConfig
                 root
                 ;
+              homeMods = mods.home;
             };
             modules =
-              [
-                inputs.home-manager.nixosModules.home-manager
-                inputs.stylix.nixosModules.stylix
-                ../base
-                ../home
-                ../modules
-                mod
-              ]
+              [ mod ]
+              ++ mods.nixos
               ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
               ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
           };
