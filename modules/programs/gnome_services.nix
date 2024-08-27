@@ -26,30 +26,30 @@
     };
   };
 
-  config =
-    lib.mkIf config.mods.gnome_services.enable (
-      lib.optionalAttrs (options ? services.gnome.gnome-keyring) {
-        programs.dconf.enable = true;
-        services = {
-          # needed for GNOME services outside of GNOME Desktop
-          dbus.packages = with pkgs; [
-            gcr
-            gnome.gnome-settings-daemon
-          ];
+  config = lib.mkIf config.mods.gnome_services.enable (
+    lib.optionalAttrs (options ? services.gnome.gnome-keyring) {
+      programs.dconf.enable = true;
+      services = {
+        # needed for GNOME services outside of GNOME Desktop
+        dbus.packages = with pkgs; [
+          gcr
+          gnome.gnome-settings-daemon
+        ];
 
-          gnome.gnome-keyring.enable = true;
-          gvfs.enable = true;
-        };
-      }
-    )
+        gnome.gnome-keyring.enable = true;
+        gvfs.enable = true;
+      };
+    }
     // lib.optionalAttrs (options ? home.packages) {
-      home.packages = lib.mkIf config.mods.gnome_services.nautilus.enable (
-        with pkgs;
-        [
-          nautilus
-          sushi
-          nautilus-python
-        ]
-      );
-    };
+      home.packages =
+        let
+          packages = with pkgs; [
+            nautilus
+            sushi
+            nautilus-python
+          ];
+        in
+        lib.mkIf config.mods.nautilus.enable packages;
+    }
+  );
 }
