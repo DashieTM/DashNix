@@ -26,7 +26,10 @@
       ../modules
     ];
   },
-
+  additionalMods ? {
+    nixos = [ ];
+    home = [ ];
+  },
   ...
 }:
 {
@@ -78,10 +81,12 @@
                 root
                 ;
               homeMods = mods.home;
+              additionalHomeMods = additionalMods.home;
             };
             modules =
               [ mod ]
               ++ mods.nixos
+              ++ additionalMods.nixos
               ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
               ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
           };

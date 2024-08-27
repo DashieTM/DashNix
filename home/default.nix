@@ -6,6 +6,7 @@
   mod,
   additionalHomeConfig,
   homeMods,
+  additionalHomeMods,
   root,
   ...
 }:
@@ -33,6 +34,7 @@
           ./sync.nix
         ]
         ++ homeMods
+        ++ additionalHomeMods
         ++ lib.optional (builtins.pathExists mod) mod
         ++ lib.optional (builtins.pathExists additionalHomeConfig) additionalHomeConfig;
     };
