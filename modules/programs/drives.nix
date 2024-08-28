@@ -36,50 +36,52 @@ let
 in
 {
   options.mods = {
-    useSwap = {
-      enable = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Use default drive config
-        '';
+    drives = {
+      useSwap = {
+        enable = lib.mkOption {
+          default = true;
+          example = false;
+          type = lib.types.bool;
+          description = ''
+            Use default drive config
+          '';
+        };
       };
-    };
-    defaultDrives = {
-      enable = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Use default drive config
-        '';
+      defaultDrives = {
+        enable = lib.mkOption {
+          default = true;
+          example = false;
+          type = lib.types.bool;
+          description = ''
+            Use default drive config
+          '';
+        };
       };
-    };
-    extraDrives = lib.mkOption {
-      default = [
+      extraDrives = lib.mkOption {
+        default = [
 
-      ];
-      example = [
-        {
-          name = "drive2";
-          drive = {
-            device = "/dev/disk/by-label/DRIVE2";
-            fsType = "ext4";
-            options = [
-              "noatime"
-              "nodiratime"
-              "discard"
-            ];
-          };
-        }
-      ];
-      #  TODO:  how to make this work
-      # type = with lib.types; listOf (attrsOf driveModule);
-      type = with lib.types; listOf (attrsOf anything);
-      description = ''
-        Extra drives to add.
-      '';
+        ];
+        example = [
+          {
+            name = "drive2";
+            drive = {
+              device = "/dev/disk/by-label/DRIVE2";
+              fsType = "ext4";
+              options = [
+                "noatime"
+                "nodiratime"
+                "discard"
+              ];
+            };
+          }
+        ];
+        #  TODO:  how to make this work
+        # type = with lib.types; listOf (attrsOf driveModule);
+        type = with lib.types; listOf (attrsOf anything);
+        description = ''
+          Extra drives to add.
+        '';
+      };
     };
   };
 
@@ -93,9 +95,9 @@ in
               name = "/" + name;
               value = drive;
             }
-          ) config.mods.extraDrives
+          ) config.mods.drives.extraDrives
         )
-        // (lib.optionalAttrs config.mods.defaultDrives.enable) {
+        // (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
           "/" = {
             device = "/dev/disk/by-label/ROOT";
             fsType = "btrfs";
@@ -128,7 +130,7 @@ in
           };
         };
       # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
-      swapDevices = lib.mkIf config.mods.useSwap.enable [ { device = "/dev/disk/by-label/SWAP"; } ];
+      swapDevices = lib.mkIf config.mods.drives.useSwap.enable [ { device = "/dev/disk/by-label/SWAP"; } ];
     }
   );
 }

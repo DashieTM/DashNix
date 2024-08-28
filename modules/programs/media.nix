@@ -6,7 +6,7 @@
   ...
 }:
 {
-  options.mods.media_packages = {
+  options.mods.media = {
     useBasePackages = lib.mkOption {
       default = true;
       example = false;
@@ -24,9 +24,9 @@
   };
   config = (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = config.mods.media_packages.additionalPackages;
+      home.packages = config.mods.media.additionalPackages;
     }
-    // (lib.mkIf config.mods.media_packages.useBasePackages (
+    // (lib.mkIf config.mods.media.useBasePackages (
       lib.optionalAttrs (options ? home.packages) {
         home.packages = with pkgs; [
           # base audio

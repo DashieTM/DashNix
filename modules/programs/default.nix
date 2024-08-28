@@ -18,7 +18,7 @@
     ./kde_connect.nix
     ./keepassxc.nix
     ./kitty.nix
-    ./layout.nix
+    ./xkb.nix
     ./media.nix
     ./ncspot.nix
     ./nextcloud.nix

@@ -8,32 +8,34 @@
 }:
 {
   options.mods = {
-    default_base_packages = {
-      enable = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Enables default system packages.
-        '';
-      };
-      additional_packages = lib.mkOption {
-        default = [ ];
-        example = [ pkgs.openssl ];
-        type = with lib.types; listOf package;
-        description = ''
-          Additional packages to install.
-          Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
-        '';
+    base_packages = {
+      default_base_packages = {
+        enable = lib.mkOption {
+          default = true;
+          example = false;
+          type = lib.types.bool;
+          description = ''
+            Enables default system packages.
+          '';
+        };
+        additional_packages = lib.mkOption {
+          default = [ ];
+          example = [ pkgs.openssl ];
+          type = with lib.types; listOf package;
+          description = ''
+            Additional packages to install.
+            Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
+          '';
+        };
       };
     };
   };
 
   config = (
     lib.optionalAttrs (options ? environment.systemPackages) {
-      environment.systemPackages = config.mods.default_base_packages.additional_packages;
+      environment.systemPackages = config.mods.base_packages.default_base_packages.additional_packages;
     }
-    // (lib.mkIf config.mods.default_base_packages.enable (
+    // (lib.mkIf config.mods.base_packages.default_base_packages.enable (
       lib.optionalAttrs (options ? environment.systemPackages) {
         environment.systemPackages = with pkgs; [
           adwaita-icon-theme

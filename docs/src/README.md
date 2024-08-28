@@ -74,25 +74,27 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
   # modules
   mods = {
     # default disk config has root home boot and swap partition, overwrite if you want something different
-    defaultDrives.enable = false;
-    extraDrives = [
-      {
-        name = "boot";
-        drive = {
-          device = "/dev/disk/by-label/BOOT";
-          fsType = "vfat";
-          options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
-        };
-      }
-      {
-        name = "";
-        drive = {
-          device = "/dev/disk/by-label/ROOT";
-          fsType = "ext4";
-          options = [ "noatime" "nodiratime" "discard" ];
-        };
-      }
-    ];
+    drives = {
+        defaultDrives.enable = false;
+        extraDrives = [
+          {
+            name = "boot";
+            drive = {
+              device = "/dev/disk/by-label/BOOT";
+              fsType = "vfat";
+              options = [ "rw" "fmask=0022" "dmask=0022" "noatime" ];
+            };
+          }
+          {
+            name = "";
+            drive = {
+              device = "/dev/disk/by-label/ROOT";
+              fsType = "ext4";
+              options = [ "noatime" "nodiratime" "discard" ];
+            };
+          }
+        ];
+    };
     sops.enable = false;
     nextcloud.enable = false;
     hyprland.monitor = [
@@ -103,7 +105,7 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
       ",highrr,auto,1"
     ];
     # or amd, whatever you have
-    nvidia.enable = true;
+    gpu.nvidia.enable = true;
     kde_connect.enable = true;
     # TODO change this to your main resolution
     # -> this will be your login manager

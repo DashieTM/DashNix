@@ -70,6 +70,7 @@
       dashNixLib = import ./lib { inherit inputs pkgs; };
       docs = import ./docs {
         inherit inputs pkgs;
+        lib = inputs.nixpkgs.lib;
         build_systems = dashNixLib.build_systems;
       };
       dashNixInputs = inputs;
