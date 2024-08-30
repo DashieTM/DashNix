@@ -9,16 +9,18 @@
     ./fish.nix
     ./flatpak.nix
     ./gaming.nix
+    ./gdm.nix
     ./git.nix
+    ./gnome.nix
     ./gnome_services.nix
     ./gpu.nix
     ./greetd.nix
     ./home_packages.nix
     ./hyprland
+    ./kde.nix
     ./kde_connect.nix
     ./keepassxc.nix
     ./kitty.nix
-    ./xkb.nix
     ./media.nix
     ./ncspot.nix
     ./nextcloud.nix
@@ -27,11 +29,13 @@
     ./podman.nix
     ./printing.nix
     ./scripts.nix
+    ./sddm.nix
     ./sops.nix
     ./starship.nix
     ./stylix.nix
     ./teams.nix
     ./virtualbox.nix
+    ./xkb.nix
     ./xone.nix
     ./yazi
   ];

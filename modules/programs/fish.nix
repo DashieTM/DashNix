@@ -168,7 +168,7 @@
             ''
             + config.mods.fish.additionalConfig
           else
-            config.mods.fish.additionalPackages;
+            config.mods.fish.additionalConfig;
       };
     }
   );
