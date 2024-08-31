@@ -394,11 +394,10 @@
         d-spy
         tmux
         tmate
-        #editors
-        neovide
         #fallback
         vscodium
       ];
+      font_family = "${config.mods.stylix.fonts.monospace.name}";
     in
     lib.mkIf config.mods.coding.enable (
       lib.optionalAttrs (options ? home.packages) {
@@ -406,9 +405,35 @@
           enable = true;
           colorscheme = config.mods.stylix.colorscheme;
         };
+        xdg.configFile."neovide/config.toml".source = lib.mkIf config.mods.coding.dashvim (
+          (pkgs.formats.toml { }).generate "neovide" {
+            font = {
+              size = 12;
+              normal = {
+                family = font_family;
+                style = "";
+              };
+              bold = {
+                family = font_family;
+                style = "ExtraBold";
+              };
+              italic = {
+                family = font_family;
+                style = "Italic";
+              };
+              bold_italic = {
+                family = font_family;
+                style = "Bold Italic";
+              };
+            };
+          }
+        );
         home.packages =
           with pkgs;
-          [ (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox) ]
+          [
+            (lib.mkIf config.mods.coding.dashvim neovide)
+            (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
+          ]
           ++ config.mods.coding.additionalPackages
           ++ (lib.lists.optionals config.mods.coding.useDefaultPackages basePackages)
           ++ (lib.lists.optionals config.mods.coding.languages.haskell.enable config.mods.coding.languages.haskell.packages)

@@ -9,7 +9,6 @@
 {
   options.mods = {
     base_packages = {
-      default_base_packages = {
         enable = lib.mkOption {
           default = true;
           example = false;
@@ -26,16 +25,15 @@
             Additional packages to install.
             Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
           '';
-        };
       };
     };
   };
 
   config = (
     lib.optionalAttrs (options ? environment.systemPackages) {
-      environment.systemPackages = config.mods.base_packages.default_base_packages.additional_packages;
+      environment.systemPackages = config.mods.base_packages.additional_packages;
     }
-    // (lib.mkIf config.mods.base_packages.default_base_packages.enable (
+    // (lib.mkIf config.mods.base_packages.enable (
       lib.optionalAttrs (options ? environment.systemPackages) {
         environment.systemPackages = with pkgs; [
           adwaita-icon-theme
