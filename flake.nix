@@ -49,7 +49,7 @@
   };
 
   outputs =
-    { ... }@inputs:
+    { self, ... }@inputs:
     let
       stable = import inputs.stable {
         system = "x86_64-linux";
@@ -67,7 +67,10 @@
       };
     in
     rec {
-      dashNixLib = import ./lib { inherit inputs pkgs; };
+      dashNixLib = import ./lib {
+        inherit self inputs pkgs;
+        lib = inputs.nixpkgs.lib;
+      };
       docs = import ./docs {
         inherit inputs pkgs;
         lib = inputs.nixpkgs.lib;
@@ -77,6 +80,7 @@
       stablePkgs = stable;
       unstablePkgs = pkgs;
       modules = ./modules;
+      iso = dashNixLib.buildIso.config.system.build.isoImage;
     };
 
   nixConfig = {

@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   # variables for system
   # TODO important changes
@@ -7,8 +8,6 @@
     monitor = "YOURMONITOR";
     # your username
     username = "YOURNAME";
-    # the name of your system
-    hostname = "YOURNAME";
     # TODO only needed when you use intel -> amd is default
     # cpu = "intel";
     locale = "something.UTF-8";
@@ -52,7 +51,7 @@
     hyprland.monitor = [
       # default
       # TODO change this to your resolution
-      "DP-1,1920x1080@144,0x0,1"
+      "${config.conf.monitor},1920x1080@144,0x0,1"
       # all others
       ",highrr,auto,1"
     ];

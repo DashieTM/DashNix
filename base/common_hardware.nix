@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  hostName,
   modulesPath,
   ...
 }:
@@ -47,7 +48,7 @@ in
   networking = {
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
-    hostName = config.conf.hostname;
+    hostName = hostName;
   };
 
   # Set your time zone.

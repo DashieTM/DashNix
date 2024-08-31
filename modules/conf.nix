@@ -103,15 +103,6 @@
       '';
     };
 
-    hostname = lib.mkOption {
-      default = "nixos";
-      example = "spaceship";
-      type = lib.types.str;
-      description = ''
-        The name of the system
-      '';
-    };
-
     username = lib.mkOption {
       default = "dashie";
       example = "pingpang";

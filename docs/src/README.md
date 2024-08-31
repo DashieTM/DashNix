@@ -26,12 +26,11 @@ dashNix = {
 You can then configure your systems in your flake outputs with a provided library command:
 
 ```nix
-nixosConfigurations = (inputs.dashNix.dashNixLib.build_systems [
-  "system1"
-  "system2"
-  "system3"
-] ./.);
+nixosConfigurations = (inputs.dashNix.dashNixLib.build_systems ./.);
 ```
+
+The paremeter specifies where your hosts directory will be placed, in said directory you can then create a directory for each system.
+Note, the name of the systems directory is also its hostname.
 
 In order for your configuration to work, you are required to at least provide a single config file with a further config file being optional for custom configuration.
 The hardware.nix specifies additional NixOS configuration, while home.nix specifies additional home-manager configuration. (both optional)
@@ -55,7 +54,7 @@ The hardware.nix specifies additional NixOS configuration, while home.nix specif
 Here is a minimal required configuration.nix (the TODOs mention a required change):
 
 ```nix
-{
+{config, ...}: {
   # variables for system
   # TODO important changes
   conf = {
@@ -64,8 +63,6 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
     monitor = "YOURMONITOR";
     # your username
     username = "YOURNAME";
-    # the name of your system
-    hostname = "YOURNAME";
     # TODO only needed when you use intel -> amd is default
     # cpu = "intel";
     locale = "something.UTF-8";
@@ -100,7 +97,7 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
     hyprland.monitor = [
       # default
       # TODO change this to your resolution
-      "DP-1,1920x1080@144,0x0,1"
+      "${config.conf.monitor},1920x1080@144,0x0,1"
       # all others
       ",highrr,auto,1"
     ];

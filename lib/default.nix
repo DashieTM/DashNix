@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  self,
+  lib,
   additionalMods ? {
     nixos = [ ];
     home = [ ];
@@ -42,12 +44,6 @@
 
     The second parameter is the root of your configuration, which should be ./. in most cases.
 
-    # Inputs
-
-    `systems`
-
-    : a list of strings with hostnames
-
     `root`
 
     : the root path of your configuration
@@ -60,36 +56,60 @@
     ```
     :::
   */
+  # let
+  #   paths = builtins.readDir ;
+  #   names = lib.lists.remove "default" (
+  #     map (name: lib.strings.removeSuffix ".nix" name) (lib.attrsets.mapAttrsToList (name: _: name) paths)
+  #   );
+
+  # in
   build_systems =
-    systems: root:
+    root:
     builtins.listToAttrs (
-      map (name: {
-        name = name;
-        value =
-          let
-            mod = root + /hosts/${name}/configuration.nix;
-            additionalNixosConfig = root + /hosts/${name}/hardware.nix;
-            additionalHomeConfig = root + /hosts/${name}/home.nix;
-          in
-          inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit
-                inputs
-                pkgs
-                mod
-                additionalHomeConfig
-                root
-                ;
-              homeMods = mods.home;
-              additionalHomeMods = additionalMods.home;
+      map
+        (name: {
+          name = name;
+          value =
+            let
+              mod = root + /hosts/${name}/configuration.nix;
+              additionalNixosConfig = root + /hosts/${name}/hardware.nix;
+              additionalHomeConfig = root + /hosts/${name}/home.nix;
+            in
+            inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit
+                  self
+                  inputs
+                  pkgs
+                  mod
+                  additionalHomeConfig
+                  root
+                  ;
+                hostName = name;
+                homeMods = mods.home;
+                additionalHomeMods = additionalMods.home;
+              };
+              modules =
+                [ mod ]
+                ++ mods.nixos
+                ++ additionalMods.nixos
+                ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
+                ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
             };
-            modules =
-              [ mod ]
-              ++ mods.nixos
-              ++ additionalMods.nixos
-              ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
-              ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
-          };
-      }) systems
+        })
+        (
+          lib.lists.remove "" (
+            lib.attrsets.mapAttrsToList (name: fType: if fType == "directory" then name else "") (
+              builtins.readDir (root + /hosts)
+            )
+          )
+        )
     );
+
+  buildIso = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = {
+      inherit self inputs pkgs;
+    };
+    modules = [ ../iso/configuration.nix ];
+  };
 }
