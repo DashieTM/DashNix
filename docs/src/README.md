@@ -140,6 +140,14 @@ nixosConfigurations =
     ] ./. mods additionalMods);
 ```
 
+# Installation
+
+You can find a custom ISO on my NextCloud server: [Link](https://cloud.dashie.org/s/z7G3zS9SXeEt2ER).
+With this, you will receive the example config in /iso/example alongside the gnome desktop environment,
+as well as a few tools like gnome-disks, neovim, vscodium, a browser etc.
+
+Alternatively, you can use whatever NixOS installer and just install your config from there, just make sure to set the drive configuration before.
+
 # Modules
 
 This configuration features several modules that can be used as preconfigured "recipies".
