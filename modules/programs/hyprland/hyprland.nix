@@ -65,6 +65,14 @@
           Will be merged with default configuration if enabled.
         '';
       };
+      plugins = lib.mkOption {
+        default = [ ];
+        example = [ ];
+        type = with lib.types; listOf package;
+        description = ''
+          Plugins to be added to Hyprland.
+        '';
+      };
     };
   };
 
@@ -346,9 +354,8 @@
             # };
           }
           // config.mods.hyprland.custom_config;
-        # wayland.windowManager.hyprland.plugins = [
-        #   inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-        # ];
+        plugins = config.mods.hyprland.plugins;
+        #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       };
     }
   );
