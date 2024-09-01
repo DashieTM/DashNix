@@ -405,8 +405,8 @@
           enable = true;
           colorscheme = config.mods.stylix.colorscheme;
         };
-        xdg.configFile."neovide/config.toml".source = lib.mkIf config.mods.coding.dashvim (
-          (pkgs.formats.toml { }).generate "neovide" {
+        xdg.configFile."neovide/config.toml" = lib.mkIf config.mods.coding.dashvim {
+          source = (pkgs.formats.toml { }).generate "neovide" {
             font = {
               size = 12;
               normal = {
@@ -426,8 +426,8 @@
                 style = "Bold Italic";
               };
             };
-          }
-        );
+          };
+        };
         home.packages =
           with pkgs;
           [
