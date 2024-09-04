@@ -1,10 +1,9 @@
-{
-  pkgs,
-  config,
-  lib,
-  hostName,
-  modulesPath,
-  ...
+{ pkgs
+, config
+, lib
+, hostName
+, modulesPath
+, ...
 }:
 let
   username = config.conf.username;
@@ -99,6 +98,7 @@ in
   environment.variables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     DIRENV_LOG_FORMAT = "";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   # allows user change later on
