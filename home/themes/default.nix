@@ -44,7 +44,7 @@ in
       color_scheme_path=/home/${username}/.config/qt5ct/colors/tokyonight.conf
       custom_palette=true
       icon_theme=MoreWaita
-      standard_dialogs=gtk3
+      standard_dialogs=xdgdesktopportal
       style=Breeze
 
       [Fonts]
@@ -77,10 +77,10 @@ in
   xdg.configFile."qt6ct/qt6ct.conf" = {
     text = ''
       [Appearance]
-      color_scheme_path=/home/${username}/.config/qt6ct/colors/toykonight.conf
+      color_scheme_path=/home/${username}/.config/qt6ct/colors/tokyonight.conf
       custom_palette=true
-      standard_dialogs=default
-      style=Adwaita-Dark
+      standard_dialogs=xdgdesktopportal
+      style=Breeze
 
       [Fonts]
       fixed="DejaVu LGC Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
@@ -100,12 +100,6 @@ in
       toolbutton_style=4
       underline_shortcut=1
       wheel_scroll_lines=3
-
-      [PaletteEditor]
-      geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4\0\0\0\0\0\0\0\0\a\x80\0\0\0\0\0\0\0\0\0\0\x2\x30\0\0\x1\xf4)
-
-      [SettingsWindow]
-      geometry="@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,\0\0\0\0\0\0\0\0\rp\0\0\0\0\0\0\0\0\0\0\x3\xec\0\0\x3,)"
 
       [Troubleshooting]
       force_raster_widgets=1

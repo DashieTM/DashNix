@@ -9,22 +9,22 @@
 {
   options.mods = {
     base_packages = {
-        enable = lib.mkOption {
-          default = true;
-          example = false;
-          type = lib.types.bool;
-          description = ''
-            Enables default system packages.
-          '';
-        };
-        additional_packages = lib.mkOption {
-          default = [ ];
-          example = [ pkgs.openssl ];
-          type = with lib.types; listOf package;
-          description = ''
-            Additional packages to install.
-            Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
-          '';
+      enable = lib.mkOption {
+        default = true;
+        example = false;
+        type = lib.types.bool;
+        description = ''
+          Enables default system packages.
+        '';
+      };
+      additional_packages = lib.mkOption {
+        default = [ ];
+        example = [ pkgs.openssl ];
+        type = with lib.types; listOf package;
+        description = ''
+          Additional packages to install.
+          Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
+        '';
       };
     };
   };
@@ -50,6 +50,7 @@
           hicolor-icon-theme
           icon-library
           kdePackages.breeze-icons
+          kdePackages.breeze
           libadwaita
           libxkbcommon
           nixfmt-rfc-style
