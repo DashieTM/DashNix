@@ -53,7 +53,7 @@
       example = "3440x1440@180";
       type = lib.types.str;
       description = ''
-        main monitor
+        main monitor mode: width x height @ refreshrate
       '';
     };
 
