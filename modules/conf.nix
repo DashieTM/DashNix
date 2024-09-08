@@ -177,7 +177,7 @@
     };
 
     nix_path = lib.mkOption {
-      default = "/home${config.conf.username}/gits/nixos";
+      default = "/home/${config.conf.username}/gits/nixos";
       example = "yourpath";
       type = lib.types.str;
       description = ''

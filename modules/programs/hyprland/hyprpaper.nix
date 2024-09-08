@@ -17,7 +17,8 @@
       config = lib.mkOption {
         default = "";
         example = ''
-          Hyprpaper config
+          preload = path/to/wallpaper 
+          wallpaper = YOURMONITOR,path/to/wallpaper
         '';
         type = lib.types.lines;
         description = ''

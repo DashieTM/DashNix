@@ -46,6 +46,7 @@
               set EDITOR "neovide --no-fork"
 
               alias rebuild='sudo nixos-rebuild switch --flake ${config.conf.nixos-config-path}'
+              alias update='sudo nixos-rebuild switch --flake ${config.conf.nixos-config-path}'
               abbr --add ls 'lsd'
               abbr --add :q 'exit'
               abbr --add gh 'git push origin'
