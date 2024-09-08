@@ -39,6 +39,17 @@
       '';
     };
 
+    additionalBootKernalParams = lib.mkOption {
+      default = [
+        "video=${config.conf.defaultMonitor}:${config.conf.defaultMonitorMode}"
+      ];
+      example = [ ];
+      type = with lib.types; listOf str;
+      description = ''
+        additional kernelParams passed to bootloader
+      '';
+    };
+
     defaultMonitor = lib.mkOption {
       default = "";
       example = "eDP-1";
@@ -204,7 +215,10 @@
 
   config =
     (lib.optionalAttrs (options ? system.stateVersion) {
-      boot.kernelPackages = lib.mkIf (config.conf.kernelOverride != null) config.conf.kernel;
+      boot = {
+        kernelPackages = lib.mkIf (config.conf.kernelOverride != null) config.conf.kernel;
+        kernelParams = config.conf.additionalBootKernalParams;
+      };
       system.stateVersion = config.conf.systemStateVersion;
     })
     // (lib.optionalAttrs (options ? home.stateVersion) {

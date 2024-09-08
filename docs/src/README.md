@@ -105,6 +105,8 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
     #   hyprland.monitor = [
     #     # default
     #     "${config.conf.defaultMonitor},${config.conf.defaultMonitorMode},0x0,${config.conf.defaultMonitorScale}"
+    #     # second example monitor
+    #     "DP-2,3440x1440@180,auto,1"
     #     # all others
     #     ",highrr,auto,1"
     #   ];
