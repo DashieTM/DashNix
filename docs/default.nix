@@ -1,12 +1,8 @@
 # with friendly help by stylix: https://github.com/danth/stylix/blob/master/docs/default.nix
-{
-  pkgs,
-  build_systems,
-  lib,
-  ...
-}:
+{ pkgs, build_systems, lib, ... }:
 let
-  makeOptionsDoc = configuration: pkgs.nixosOptionsDoc { options = configuration; };
+  makeOptionsDoc = configuration:
+    pkgs.nixosOptionsDoc { options = configuration; };
   generateDocs = obj: ''
     touch src/${obj.fst}.md
     sed '/*Declared by:*/,/^$/d' <${obj.snd.optionsCommonMark} >> src/${obj.fst}.md
@@ -15,17 +11,18 @@ let
     echo "- [${name}](${name}.md)" >> src/SUMMARY.md
   '';
   system = (build_systems ../example/.)."example".options;
-  makeOptionsDocPrograms = name: pkgs.nixosOptionsDoc { options = system.mods.${name}; };
+  makeOptionsDocPrograms = name:
+    pkgs.nixosOptionsDoc { options = system.mods.${name}; };
   conf = makeOptionsDoc system.conf;
   paths = builtins.readDir ../modules/programs;
-  names = lib.lists.remove "default" (
-    map (name: lib.strings.removeSuffix ".nix" name) (lib.attrsets.mapAttrsToList (name: _: name) paths)
-  );
+  names = lib.lists.remove "default"
+    (map (name: lib.strings.removeSuffix ".nix" name)
+      (lib.attrsets.mapAttrsToList (name: _: name) paths));
   mods = map makeOptionsDocPrograms names;
-  docs = lib.strings.concatLines (map generateDocs (lib.lists.zipLists names mods));
+  docs =
+    lib.strings.concatLines (map generateDocs (lib.lists.zipLists names mods));
   summary = lib.strings.concatStringsSep " " (map summaryAppend names);
-in
-pkgs.stdenvNoCC.mkDerivation {
+in pkgs.stdenvNoCC.mkDerivation {
   name = "dashNix-book";
   src = ./.;
 

@@ -26,11 +26,13 @@ dashNix = {
 You can then configure your systems in your flake outputs with a provided library command:
 
 ```nix
-nixosConfigurations = (inputs.dashNix.dashNixLib.build_systems ./.);
+nixosConfigurations = inputs.dashNix.dashNixLib.build_systems ./.;
 ```
 
-The paremeter specifies where your hosts directory will be placed, in said directory you can then create a directory for each system.
-Note, the name of the systems directory is also its hostname.
+This command will build each system that is placed within the hosts/ directory.
+In this directory create one directory for each system you want to configure with DashNix.
+This will automatically pick up the hostname for the system and look for 3 different files that are explained below.
+(Optionally, you can also change the parameter root (./.) to define a different starting directory than hosts/)
 
 In order for your configuration to work, you are required to at least provide a single config file with a further config file being optional for custom configuration.
 The hardware.nix specifies additional NixOS configuration, while home.nix specifies additional home-manager configuration. (both optional)
