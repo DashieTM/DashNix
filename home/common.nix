@@ -24,6 +24,7 @@ in
 
     sessionVariables = {
       GOROOT = "$HOME/.go";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
     };
 
     keyboard = null;
