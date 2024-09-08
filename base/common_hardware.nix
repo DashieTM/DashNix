@@ -1,9 +1,10 @@
-{ pkgs
-, config
-, lib
-, hostName
-, modulesPath
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  hostName,
+  modulesPath,
+  ...
 }:
 let
   username = config.conf.username;

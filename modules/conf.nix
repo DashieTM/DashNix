@@ -175,8 +175,8 @@
     };
 
     systemStateVersion = lib.mkOption {
-      default = "unstable";
       example = "24.05";
+      default = "23.05";
       type = lib.types.str;
       description = ''
         System state version 
