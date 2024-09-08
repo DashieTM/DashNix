@@ -33,7 +33,7 @@
 
           input-field = [
             {
-              monitor = "${config.conf.monitor}";
+              monitor = "${config.conf.defaultMonitor}";
 
               placeholder_text = "password or something";
             }
@@ -41,7 +41,7 @@
 
           label = [
             {
-              monitor = "${config.conf.monitor}";
+              monitor = "${config.conf.defaultMonitor}";
               text = "$TIME";
               font_size = 50;
               position = "0, 200";

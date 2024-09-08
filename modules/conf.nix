@@ -39,7 +39,7 @@
       '';
     };
 
-    monitor = lib.mkOption {
+    defaultMonitor = lib.mkOption {
       default = "";
       example = "eDP-1";
       type = lib.types.str;
@@ -48,12 +48,21 @@
       '';
     };
 
-    scale = lib.mkOption {
-      default = "1.0";
-      example = "1.0";
+    defaultMonitorMode = lib.mkOption {
+      default = "";
+      example = "3440x1440@180";
       type = lib.types.str;
       description = ''
-        Scale for the monitor
+        main monitor
+      '';
+    };
+
+    defaultMonitorScale = lib.mkOption {
+      default = "1";
+      example = "1.5";
+      type = lib.types.str;
+      description = ''
+        main monitor scaling
       '';
     };
 

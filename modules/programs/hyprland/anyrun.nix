@@ -42,9 +42,13 @@
           '';
         };
         custom_css = lib.mkOption {
-          default = { };
-          example = { };
-          type = with lib.types; attrsOf anything;
+          default = '''';
+          example = ''
+            #window {
+              border-radius: none;
+            }
+          '';
+          type = lib.types.lines;
           description = ''
             Custom anyrun css.
             Will be merged with default css if enabled.
@@ -133,7 +137,7 @@
                 border-radius: 10px;
               }
             ''
-            ++ config.mods.hyprland.anyrun.custom_css
+            + config.mods.hyprland.anyrun.custom_css
           else
             config.mods.hyprland.anyrun.custom_css;
       };

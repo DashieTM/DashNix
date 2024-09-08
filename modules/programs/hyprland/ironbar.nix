@@ -162,7 +162,7 @@ in
           #"another_feature"
         ];
         config = {
-          monitors."${config.conf.monitor}" = {
+          monitors."${config.conf.defaultMonitor}" = {
             end = config.conf.ironbar.modules ++ [
               {
                 type = "sys_info";

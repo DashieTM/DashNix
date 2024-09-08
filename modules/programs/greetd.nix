@@ -1,9 +1,10 @@
-{ config
-, lib
-, inputs
-, pkgs
-, options
-, ...
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  options,
+  ...
 }:
 {
   options.mods = {
@@ -17,7 +18,7 @@
         '';
       };
       monitor = lib.mkOption {
-        default = "${config.conf.monitor}";
+        default = "${config.conf.defaultMonitor}";
         example = "eDP-1";
         type = lib.types.str;
         description = ''
@@ -26,7 +27,7 @@
         '';
       };
       scale = lib.mkOption {
-        default = "${config.conf.scale}";
+        default = "${config.conf.defaultMonitorScale}";
         example = "1.5";
         type = lib.types.str;
         description = ''
@@ -35,7 +36,7 @@
         '';
       };
       resolution = lib.mkOption {
-        default = "auto";
+        default = "${config.conf.defaultMonitorMode}";
         example = "3440x1440@180";
         type = lib.types.str;
         description = ''

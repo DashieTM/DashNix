@@ -17,7 +17,12 @@
         '';
       };
       monitor = lib.mkOption {
-        default = [ ];
+        default = [
+          # main monitor
+          "${config.conf.defaultMonitor},${config.conf.defaultMonitorMode},0x0,${config.conf.defaultMonitorScale}"
+          # all others
+          ",highrr,auto,1"
+        ];
         example = [ "DP-1,3440x1440@180,2560x0,1,vrr,0" ];
         type = with lib.types; listOf str;
         description = ''
