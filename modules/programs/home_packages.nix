@@ -22,6 +22,22 @@
         Will be installed regardless of default home manager packages are installed.
       '';
     };
+    special_programs = lib.mkOption {
+      default = { };
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = ''
+        special program configuration to be added which require programs.something notation.
+      '';
+    };
+    special_services = lib.mkOption {
+      default = { };
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = ''
+        special services configuration to be added which require an services.something notation.
+      '';
+    };
     matrixClient = lib.mkOption {
       default = pkgs.nheko;
       example = null;
@@ -59,62 +75,68 @@
       description = "Additional browser -> second to firefox, the only installed browser if firefox is disabled";
     };
   };
-  config =
-    (lib.optionalAttrs (options ? home.packages) {
-      home.packages = config.mods.home_packages.additional_packages;
-    })
-    // lib.mkIf config.mods.home_packages.useDefaultPackages (
-      lib.optionalAttrs (options ? home.packages) {
-        home.packages =
-          with pkgs;
-          [
-            # TODO add fcp once fixed....
-            (lib.mkIf config.mods.home_packages.ncspot ncspot)
-            (lib.mkIf config.mods.home_packages.vesktop vesktop)
-            (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
-            (lib.mkIf (!isNull config.mods.home_packages.matrixClient) config.mods.home_packages.matrixClient)
-            (lib.mkIf (!isNull config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
-            (lib.mkIf (
-              !isNull config.mods.home_packages.additionalBrowser
-            ) config.mods.home_packages.additionalBrowser)
-            adw-gtk3
-            bat
-            brightnessctl
-            dbus
-            fastfetch
-            fd
-            ffmpeg
-            flake-checker
-            gnome-keyring
-            gnutar
-            greetd.regreet
-            killall
-            kitty
-            libnotify
-            lsd
-            networkmanager
-            nh
-            nix-index
-            playerctl
-            poppler_utils
-            pulseaudio
-            qt5ct
-            qt6ct
-            ripgrep
-            rm-improved
-            system-config-printer
-            xournalpp
-            zenith
-            zoxide
-          ]
-          ++ config.mods.home_packages.additional_packages;
+  config = lib.optionalAttrs (options ? home.packages) {
+    home.packages =
+      if config.mods.home_packages.useDefaultPackages then
+        with pkgs;
+        [
+          # TODO add fcp once fixed....
+          (lib.mkIf config.mods.home_packages.ncspot ncspot)
+          (lib.mkIf config.mods.home_packages.vesktop vesktop)
+          (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
+          (lib.mkIf (!isNull config.mods.home_packages.matrixClient) config.mods.home_packages.matrixClient)
+          (lib.mkIf (!isNull config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
+          (lib.mkIf (
+            !isNull config.mods.home_packages.additionalBrowser
+          ) config.mods.home_packages.additionalBrowser)
+          adw-gtk3
+          bat
+          brightnessctl
+          dbus
+          fastfetch
+          fd
+          ffmpeg
+          flake-checker
+          gnome-keyring
+          gnutar
+          greetd.regreet
+          killall
+          kitty
+          libnotify
+          lsd
+          networkmanager
+          nh
+          nix-index
+          playerctl
+          poppler_utils
+          pulseaudio
+          qt5ct
+          qt6ct
+          ripgrep
+          rm-improved
+          system-config-printer
+          xournalpp
+          zenith
+          zoxide
+        ]
+        ++ config.mods.home_packages.additional_packages
+      else
+        config.mods.home_packages.additional_packages;
 
-        xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
-          global = {
-            warn_timeout = "-1s";
-          };
-        };
-
-      }
-    );
+    xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
+      global = {
+        warn_timeout = "-1s";
+      };
+    };
+    programs =
+      if config.mods.home_packages.useDefaultPackages then
+        config.mods.home_packages.special_programs
+      else
+        config.mods.home_packages.special_programs;
+    services =
+      if config.mods.home_packages.useDefaultPackages then
+        config.mods.home_packages.special_services
+      else
+        config.mods.home_packages.special_services;
+  };
 }

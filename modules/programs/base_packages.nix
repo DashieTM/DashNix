@@ -26,16 +26,30 @@
           Note that these are installed even if base packages is disabled, e.g. you can also use this as the only packages to install.
         '';
       };
+      special_programs = lib.mkOption {
+        default = { };
+        example = { };
+        type = with lib.types; attrsOf anything;
+        description = ''
+          special program configuration to be added which require programs.something notation.
+        '';
+      };
+      special_services = lib.mkOption {
+        default = { };
+        example = { };
+        type = with lib.types; attrsOf anything;
+        description = ''
+          special services configuration to be added which require an services.something notation.
+        '';
+      };
     };
   };
 
-  config = (
-    lib.optionalAttrs (options ? environment.systemPackages) {
-      environment.systemPackages = config.mods.base_packages.additional_packages;
-    }
-    // (lib.mkIf config.mods.base_packages.enable (
-      lib.optionalAttrs (options ? environment.systemPackages) {
-        environment.systemPackages = with pkgs; [
+  config = lib.optionalAttrs (options ? environment.systemPackages) {
+    environment.systemPackages =
+      if config.mods.base_packages.enable then
+        with pkgs;
+        [
           adwaita-icon-theme
           dbus
           dconf
@@ -58,10 +72,15 @@
           seahorse
           upower
           xorg.xkbutils
-        ];
+        ]
+        ++ config.mods.base_packages.additional_packages
+      else
+        config.mods.base_packages.additional_packages;
 
-        gtk.iconCache.enable = false;
-        services = {
+    gtk.iconCache.enable = false;
+    services =
+      if config.mods.base_packages.enable then
+        {
           upower.enable = true;
           dbus = {
             enable = true;
@@ -72,9 +91,14 @@
             nssmdns4 = true;
             openFirewall = true;
           };
-        };
+        }
+        // config.mods.base_packages.special_services
+      else
+        config.mods.base_packages.special_services;
 
-        programs = {
+    programs =
+      if config.mods.base_packages.enable then
+        {
           nix-ld = {
             enable = true;
             libraries = with pkgs; [
@@ -94,8 +118,10 @@
           };
           ssh.startAgent = true;
           gnupg.agent.enable = true;
-        };
-      }
-    ))
-  );
+        }
+        // config.mods.base_packages.special_programs
+      else
+        config.mods.base_packages.special_programs;
+  };
+
 }

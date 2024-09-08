@@ -21,14 +21,28 @@
         Additional media packages.
       '';
     };
+    special_programs = lib.mkOption {
+      default = { };
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = ''
+        special program configuration to be added which require programs.something notation.
+      '';
+    };
+    special_services = lib.mkOption {
+      default = { };
+      example = { };
+      type = with lib.types; attrsOf anything;
+      description = ''
+        special services configuration to be added which require an services.something notation.
+      '';
+    };
   };
-  config = (
-    lib.optionalAttrs (options ? home.packages) {
-      home.packages = config.mods.media.additionalPackages;
-    }
-    // (lib.mkIf config.mods.media.useBasePackages (
-      lib.optionalAttrs (options ? home.packages) {
-        home.packages = with pkgs; [
+  config = lib.optionalAttrs (options ? home.packages) {
+    home.packages =
+      if config.mods.media.useBasePackages then
+        with pkgs;
+        [
           # base audio
           pipewire
           wireplumber
@@ -54,10 +68,23 @@
           gimp
           krita
           yt-dlp
-        ];
-        programs.obs-studio.enable = true;
-        programs.obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
-      }
-    ))
-  );
+        ]
+        ++ config.mods.media.additionalPackages
+      else
+        config.mods.media.additionalPackages;
+    programs =
+      if config.mods.media.useBasePackages then
+        {
+          obs-studio.enable = true;
+          obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
+        }
+        // config.mods.media.special_programs
+      else
+        config.mods.media.special_programs;
+    services =
+      if config.mods.media.useBasePackages then
+        config.mods.media.special_services
+      else
+        config.mods.media.special_services;
+  };
 }
