@@ -8,7 +8,8 @@
 {
   options.mods.stylix = {
     colorscheme = lib.mkOption {
-      default = {
+      default = "catppuccin-mocha";
+      example = {
         # custom tokyo night
         base00 = "1A1B26";
         # base01 = "16161E";
@@ -21,7 +22,7 @@
         base06 = "CBCCD1";
         base07 = "D5D6DB";
         base08 = "C0CAF5";
-        base09 = "A9B1D6";
+        base09 = "A9B1D7";
         base0A = "0DB9D7";
         base0B = "9ECE6A";
         base0C = "B4F9F8";
@@ -33,7 +34,6 @@
         base0E = "BB9AF7";
         base0F = "F7768E";
       };
-      example = "catppuccin-mocha";
       type =
         with lib.types;
         oneOf [
