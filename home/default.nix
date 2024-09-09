@@ -29,7 +29,6 @@
       imports =
         [
           ./common.nix
-          ./xdg.nix
           ./themes
           ./sync.nix
         ]

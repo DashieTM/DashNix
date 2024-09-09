@@ -37,7 +37,7 @@
           The workspace configuration for hyprland.
         '';
       };
-      no_atomic = lib.mkOption {
+      noAtomic = lib.mkOption {
         default = false;
         example = true;
         type = lib.types.bool;
@@ -45,7 +45,7 @@
           Use tearing
         '';
       };
-      extra_autostart = lib.mkOption {
+      extraAutostart = lib.mkOption {
         default = [ ];
         example = [ "your application" ];
         type = lib.types.listOf lib.types.str;
@@ -53,7 +53,7 @@
           Extra exec_once.
         '';
       };
-      use_default_config = lib.mkOption {
+      useDefaultConfig = lib.mkOption {
         default = true;
         example = false;
         type = lib.types.bool;
@@ -61,7 +61,7 @@
           Use preconfigured Hyprland config.
         '';
       };
-      custom_config = lib.mkOption {
+      customConfig = lib.mkOption {
         default = { };
         example = { };
         type = with lib.types; attrsOf anything;
@@ -100,7 +100,7 @@
       wayland.windowManager.hyprland = {
         enable = true;
         settings =
-          if config.mods.hyprland.use_default_config then
+          if config.mods.hyprland.useDefaultConfig then
             {
               "$mod" = "SUPER";
 
@@ -131,14 +131,14 @@
                 "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
                 # media keys
-                (lib.mkIf config.mods.scripts.audio-control ",XF86AudioMute,exec, audio-control mute")
-                (lib.mkIf config.mods.scripts.audio-control ",XF86AudioLowerVolume,exec, audio-control sink -5%")
-                (lib.mkIf config.mods.scripts.audio-control ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioMute,exec, audio-control mute")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioLowerVolume,exec, audio-control sink -5%")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
                 ",XF86AudioPlay,exec, playerctl play-pause"
                 ",XF86AudioNext,exec, playerctl next"
                 ",XF86AudioPrev,exec, playerctl previous"
-                (lib.mkIf config.mods.scripts.change-brightness ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
-                (lib.mkIf config.mods.scripts.change-brightness ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
+                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
+                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
 
                 # hyprland keybinds
                 # misc
@@ -219,7 +219,7 @@
                 border_size = 3;
                 "col.active_border" = lib.mkOverride 51 "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
                 # "col.inactive_border" = "0x66333333";
-                allow_tearing = lib.mkIf config.mods.hyprland.no_atomic true;
+                allow_tearing = lib.mkIf config.mods.hyprland.noAtomic true;
               };
 
               decoration = {
@@ -297,7 +297,7 @@
                 "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
                 "QT_SCALE_FACTOR,1"
                 ''EDITOR,"neovide --novsync --nofork"''
-                (lib.mkIf config.mods.hyprland.no_atomic "WLR_DRM_NO_ATOMIC,1")
+                (lib.mkIf config.mods.hyprland.noAtomic "WLR_DRM_NO_ATOMIC,1")
                 "GTK_USE_PORTAL, 1"
 
                 (lib.mkIf config.mods.gpu.nvidia.enable "LIBVA_DRIVER_NAME,nvidia")
@@ -349,7 +349,7 @@
                 # should be taken care of with the new systemd services
                 # "nextcloud --background"
                 "oxinoti"
-              ] ++ config.mods.hyprland.extra_autostart;
+              ] ++ config.mods.hyprland.extraAutostart;
 
               # plugin = {
               #   hyprspace = {
@@ -359,9 +359,9 @@
               #   };
               # };
             }
-            // config.mods.hyprland.custom_config
+            // config.mods.hyprland.customConfig
           else
-            lib.mkForce config.mods.hyprland.custom_config;
+            lib.mkForce config.mods.hyprland.customConfig;
         plugins = config.mods.hyprland.plugins;
         #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       };

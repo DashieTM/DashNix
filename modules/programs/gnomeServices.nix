@@ -7,7 +7,7 @@
 }:
 {
   options.mods = {
-    gnome_services.enable = lib.mkOption {
+    gnomeServices.enable = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
@@ -26,7 +26,7 @@
     };
   };
 
-  config = lib.mkIf config.mods.gnome_services.enable (
+  config = lib.mkIf config.mods.gnomeServices.enable (
     lib.optionalAttrs (options ? services.gnome.gnome-keyring) {
       programs.dconf.enable = true;
       services = {

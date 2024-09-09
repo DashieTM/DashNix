@@ -2,7 +2,6 @@
   lib,
   config,
   options,
-  pkgs,
   ...
 }:
 {
@@ -19,7 +18,7 @@
       type = lib.types.str;
       description = "Git email";
     };
-    ssh_config = lib.mkOption {
+    sshConfig = lib.mkOption {
       default = ''
         Host github.com
           ${
@@ -63,7 +62,7 @@
           };
         };
       };
-      home.file.".ssh/config".text = config.mods.git.ssh_config;
+      home.file.".ssh/config".text = config.mods.git.sshConfig;
     }
   );
 }

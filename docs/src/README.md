@@ -198,4 +198,6 @@ For package lists, please check the individual modules, as the lists can be long
 - fish: Enables and configures fish shell
 - kitty: Enables and configures kitty terminal
 - oxi: My own programs, can be selectively disabled, or as a whole
+- mime: Mime type configuration
+- xkb:  Keyboard layout configuration
 - scripts: Various preconfigured scripts with the ability to add more

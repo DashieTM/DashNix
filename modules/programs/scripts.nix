@@ -7,13 +7,13 @@
 }:
 {
   options.mods.scripts = {
-    change-brightness = lib.mkOption {
+    changeBrightness = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
       description = "Enables the change-brightness script";
     };
-    audio-control = lib.mkOption {
+    audioControl = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
@@ -28,8 +28,8 @@
   config = (
     lib.optionalAttrs (options ? home.packages) {
       home.packages = [
-        (lib.mkIf config.mods.scripts.change-brightness (
-          pkgs.writeShellScriptBin "change-brightness" ''
+        (lib.mkIf config.mods.scripts.changeBrightness (
+          pkgs.writeShellScriptBin "changeBrightness" ''
             set_brightness() {
             brightnessctl set "$1"
             CURRENT=$(brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}')
@@ -41,8 +41,8 @@
             fi
           ''
         ))
-        (lib.mkIf config.mods.scripts.audio-control (
-          pkgs.writeShellScriptBin "audio-control" ''
+        (lib.mkIf config.mods.scripts.audioControl (
+          pkgs.writeShellScriptBin "audioControl" ''
             ncspot() {
             	NUM=$(pactl list clients short | rg "ncspot" | awk -F 'PipeWire' ' { print $1 } ' | tr -d ' \t\n')
             	CHANGE=$(pactl list sink-inputs short | rg "$NUM" | awk -F ' ' ' { print $1 }' | tr -d ' \t\n')

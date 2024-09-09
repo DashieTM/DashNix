@@ -66,7 +66,7 @@
     #   ];
     # or amd, whatever you have
     gpu.nvidia.enable = true;
-    kde_connect.enable = true;
+    kdeConnect.enable = true;
     # login manager:
     # default is greetd
     # greetd = { };

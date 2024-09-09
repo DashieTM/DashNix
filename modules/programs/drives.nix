@@ -130,7 +130,9 @@ in
           };
         };
       # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
-      swapDevices = lib.mkIf config.mods.drives.useSwap.enable [ { device = "/dev/disk/by-label/SWAP"; } ];
+      swapDevices = lib.mkIf config.mods.drives.useSwap.enable [
+        { device = "/dev/disk/by-label/SWAP"; }
+      ];
     }
   );
 }

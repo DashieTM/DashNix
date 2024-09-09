@@ -21,7 +21,7 @@
         Additional media packages.
       '';
     };
-    special_programs = lib.mkOption {
+    specialPrograms = lib.mkOption {
       default = { };
       example = { };
       type = with lib.types; attrsOf anything;
@@ -29,7 +29,7 @@
         special program configuration to be added which require programs.something notation.
       '';
     };
-    special_services = lib.mkOption {
+    specialServices = lib.mkOption {
       default = { };
       example = { };
       type = with lib.types; attrsOf anything;
@@ -78,13 +78,13 @@
           obs-studio.enable = true;
           obs-studio.plugins = with pkgs; [ obs-studio-plugins.obs-vaapi ];
         }
-        // config.mods.media.special_programs
+        // config.mods.media.specialPrograms
       else
-        config.mods.media.special_programs;
+        config.mods.media.specialPrograms;
     services =
       if config.mods.media.useBasePackages then
-        config.mods.media.special_services
+        config.mods.media.specialServices
       else
-        config.mods.media.special_services;
+        config.mods.media.specialServices;
   };
 }

@@ -17,7 +17,7 @@
           Enables starship prompt
         '';
       };
-      use_default_prompt = lib.mkOption {
+      useDefaultPrompt = lib.mkOption {
         default = true;
         example = false;
         type = lib.types.bool;
@@ -25,7 +25,7 @@
           Enables preconfigured prompt
         '';
       };
-      custom_prompt = lib.mkOption {
+      customPrompt = lib.mkOption {
         default = { };
         example = { };
         type = with lib.types; attrsOf anything;
@@ -49,9 +49,9 @@
         {
           enable = true;
           interactiveOnly = true;
-          presets = lib.mkIf config.mods.starship.use_default_prompt [ "pastel-powerline" ];
+          presets = lib.mkIf config.mods.starship.useDefaultPrompt [ "pastel-powerline" ];
           settings =
-            lib.mkIf config.mods.starship.use_default_prompt {
+            lib.mkIf config.mods.starship.useDefaultPrompt {
               # derived from https://starship.rs/presets/pastel-powerline
               format = "$username$directory$git_branch$git_status$git_metrics[ ](bg:none fg:prev_bg)";
               right_format = "$c$elixir$elm$golang$gradle$haskell$java$julia$nodejs$nim$rust$scala$python$ocaml$opa$perl$zig$dart$dotnet$nix_shell$shell$solidity[](bg:prev_bg fg:#3465A4)$time$os";
@@ -170,7 +170,7 @@
                 format = "[ $time ]($style)";
               };
             }
-            // config.mods.starship.custom_prompt;
+            // config.mods.starship.customPrompt;
         };
     }
   );

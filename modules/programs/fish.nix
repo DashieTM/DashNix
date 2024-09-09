@@ -54,6 +54,7 @@
               abbr --add gl 'git pull origin'
               abbr --add gm 'git commit -m'
               abbr --add ga "git add -A"
+              abbr --add gc "git commit --amend --no-edit"
               abbr --add g+ 'bear -- g++ -Wextra -Werror -std=c++20'
               abbr --add s "kitty +kitten ssh"
               abbr --add zl 'z "" '

@@ -6,14 +6,14 @@
   ...
 }:
 {
-  options.mods.home_packages = {
+  options.mods.homePackages = {
     useDefaultPackages = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
       description = "Use default packages (will use additional_packages only if disabled)";
     };
-    additional_packages = lib.mkOption {
+    additionalPackages = lib.mkOption {
       default = [ ];
       example = [ pkgs.flatpak ];
       type = with lib.types; listOf package;
@@ -22,7 +22,7 @@
         Will be installed regardless of default home manager packages are installed.
       '';
     };
-    special_programs = lib.mkOption {
+    specialPrograms = lib.mkOption {
       default = { };
       example = { };
       type = with lib.types; attrsOf anything;
@@ -30,7 +30,7 @@
         special program configuration to be added which require programs.something notation.
       '';
     };
-    special_services = lib.mkOption {
+    specialServices = lib.mkOption {
       default = { };
       example = { };
       type = with lib.types; attrsOf anything;
@@ -77,18 +77,18 @@
   };
   config = lib.optionalAttrs (options ? home.packages) {
     home.packages =
-      if config.mods.home_packages.useDefaultPackages then
+      if config.mods.homePackages.useDefaultPackages then
         with pkgs;
         [
           # TODO add fcp once fixed....
-          (lib.mkIf config.mods.home_packages.ncspot ncspot)
-          (lib.mkIf config.mods.home_packages.vesktop vesktop)
-          (lib.mkIf config.mods.home_packages.nextcloudClient nextcloud-client)
-          (lib.mkIf (!isNull config.mods.home_packages.matrixClient) config.mods.home_packages.matrixClient)
-          (lib.mkIf (!isNull config.mods.home_packages.mailClient) config.mods.home_packages.mailClient)
+          (lib.mkIf config.mods.homePackages.ncspot ncspot)
+          (lib.mkIf config.mods.homePackages.vesktop vesktop)
+          (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
+          (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
+          (lib.mkIf (!isNull config.mods.homePackages.mailClient) config.mods.homePackages.mailClient)
           (lib.mkIf (
-            !isNull config.mods.home_packages.additionalBrowser
-          ) config.mods.home_packages.additionalBrowser)
+            !isNull config.mods.homePackages.additionalBrowser
+          ) config.mods.homePackages.additionalBrowser)
           adw-gtk3
           bat
           brightnessctl
@@ -119,9 +119,9 @@
           zenith
           zoxide
         ]
-        ++ config.mods.home_packages.additional_packages
+        ++ config.mods.homePackages.additionalPackages
       else
-        config.mods.home_packages.additional_packages;
+        config.mods.homePackages.additionalPackages;
 
     xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
       global = {
@@ -129,14 +129,14 @@
       };
     };
     programs =
-      if config.mods.home_packages.useDefaultPackages then
-        config.mods.home_packages.special_programs
+      if config.mods.homePackages.useDefaultPackages then
+        config.mods.homePackages.specialPrograms
       else
-        config.mods.home_packages.special_programs;
+        config.mods.homePackages.specialPrograms;
     services =
-      if config.mods.home_packages.useDefaultPackages then
-        config.mods.home_packages.special_services
+      if config.mods.homePackages.useDefaultPackages then
+        config.mods.homePackages.specialServices
       else
-        config.mods.home_packages.special_services;
+        config.mods.homePackages.specialServices;
   };
 }

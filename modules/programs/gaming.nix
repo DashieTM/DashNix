@@ -44,13 +44,13 @@
       type = lib.types.bool;
       description = "Whether to use gamemode";
     };
-    gpu_optimization = lib.mkOption {
+    gpuOptimization = lib.mkOption {
       default = true;
       example = false;
       type = lib.types.bool;
       description = "Whether to use GPU performance setting. NOTE: this is at your own risk!";
     };
-    gpu_device = lib.mkOption {
+    gpuDevice = lib.mkOption {
       default = 0;
       example = 1;
       type = lib.types.int;
@@ -71,9 +71,9 @@
             general = {
               governor = "performance";
             };
-            gpu = lib.mkIf config.mods.gaming.gpu_optimization {
+            gpu = lib.mkIf config.mods.gaming.gpuOptimization {
               apply_gpu_optimisations = "accept-responsibility";
-              gpu_device = config.mods.gaming.gpu_device;
+              gpu_device = config.mods.gaming.gpuDevice;
               amd_performance_level = "high";
               nv_powermizer_mode = 1;
             };

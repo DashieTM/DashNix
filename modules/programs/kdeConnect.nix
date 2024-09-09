@@ -8,7 +8,7 @@
 {
 
   options.mods = {
-    kde_connect.enable = lib.mkOption {
+    kdeConnect.enable = lib.mkOption {
       default = false;
       type = lib.types.bool;
       example = true;
@@ -18,7 +18,7 @@
     };
   };
 
-  config = lib.mkIf config.mods.kde_connect.enable (
+  config = lib.mkIf config.mods.kdeConnect.enable (
     lib.optionalAttrs (options ? networking.firewall) {
       networking.firewall = {
         allowedTCPPortRanges = [

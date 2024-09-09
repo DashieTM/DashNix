@@ -1,7 +1,7 @@
 {
   imports = [
     ./acpid.nix
-    ./base_packages.nix
+    ./basePackages.nix
     ./bluetooth.nix
     ./coding.nix
     ./drives.nix
@@ -12,13 +12,13 @@
     ./gdm.nix
     ./git.nix
     ./gnome.nix
-    ./gnome_services.nix
+    ./gnomeServices.nix
     ./gpu.nix
     ./greetd.nix
-    ./home_packages.nix
+    ./homePackages.nix
     ./hyprland
     ./kde.nix
-    ./kde_connect.nix
+    ./kdeConnect.nix
     ./keepassxc.nix
     ./kitty.nix
     ./media.nix
@@ -35,6 +35,7 @@
     ./stylix.nix
     ./teams.nix
     ./virtualbox.nix
+    ./mime.nix
     ./xkb.nix
     ./xone.nix
     ./yazi

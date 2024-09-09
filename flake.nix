@@ -5,7 +5,9 @@
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
     stable.url = "github:NixOs/nixpkgs/nixos-24.05";
 
-    nix-flatpak = { url = "github:gmodena/nix-flatpak"; };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,8 +25,7 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     ironbar = {
-      url =
-        "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
+      url = "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
     };
 
     stylix.url = "github:danth/stylix";
@@ -47,11 +48,14 @@
     };
   };
 
-  outputs = { self, ... }@inputs:
+  outputs =
+    { self, ... }@inputs:
     let
       stable = import inputs.stable {
         system = "x86_64-linux";
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
@@ -61,7 +65,8 @@
           allowUnfree = true;
         };
       };
-    in rec {
+    in
+    rec {
       dashNixLib = import ./lib {
         inherit self inputs pkgs;
         lib = inputs.nixpkgs.lib;

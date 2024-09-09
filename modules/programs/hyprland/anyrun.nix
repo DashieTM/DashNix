@@ -16,7 +16,7 @@
           type = lib.types.bool;
           description = "Enables anyrun";
         };
-        use_default_config = lib.mkOption {
+        useDefaultConfig = lib.mkOption {
           default = true;
           example = false;
           type = lib.types.bool;
@@ -24,7 +24,7 @@
             Use preconfigured anyrun config.
           '';
         };
-        custom_config = lib.mkOption {
+        customConfig = lib.mkOption {
           default = { };
           example = { };
           type = with lib.types; attrsOf anything;
@@ -33,7 +33,7 @@
             Will be merged with default configuration if enabled.
           '';
         };
-        use_default_css = lib.mkOption {
+        useDefaultCss = lib.mkOption {
           default = true;
           example = false;
           type = lib.types.bool;
@@ -41,7 +41,7 @@
             Use preconfigured anyrun css.
           '';
         };
-        custom_css = lib.mkOption {
+        customCss = lib.mkOption {
           default = '''';
           example = ''
             #window {
@@ -63,7 +63,7 @@
       programs.anyrun = {
         enable = true;
         config =
-          if config.mods.hyprland.anyrun.use_default_config then
+          if config.mods.hyprland.anyrun.useDefaultConfig then
             {
               plugins = [
                 inputs.anyrun.packages.${pkgs.system}.applications
@@ -83,12 +83,12 @@
               hidePluginInfo = true;
               closeOnClick = true;
             }
-            // config.mods.hyprland.anyrun.custom_config
+            // config.mods.hyprland.anyrun.customConfig
           else
-            config.mods.hyprland.anyrun.custom_config;
+            config.mods.hyprland.anyrun.customConfig;
 
         extraCss =
-          if config.mods.hyprland.anyrun.use_default_css then
+          if config.mods.hyprland.anyrun.useDefaultCss then
             ''
               #window {
                 border-radius: 10px;
@@ -137,9 +137,9 @@
                 border-radius: 10px;
               }
             ''
-            + config.mods.hyprland.anyrun.custom_css
+            + config.mods.hyprland.anyrun.customCss
           else
-            config.mods.hyprland.anyrun.custom_css;
+            config.mods.hyprland.anyrun.customCss;
       };
     }
   );
