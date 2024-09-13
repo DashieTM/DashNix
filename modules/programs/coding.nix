@@ -32,6 +32,22 @@
           Enables jetbrains toolbox.
         '';
       };
+      vscodium = {
+        enable = lib.mkOption {
+          default = false;
+          example = true;
+          type = lib.types.bool;
+          description = ''
+            Enables vscodium.
+          '';
+        };
+        extensions = lib.mkOption {
+          default = [ ];
+          example = [ ];
+          type = with lib.types; listOf package;
+          description = "Extensions to be installed";
+        };
+      };
       useDefaultPackages = lib.mkOption {
         default = true;
         example = false;
@@ -394,8 +410,6 @@
         d-spy
         tmux
         tmate
-        #fallback
-        vscodium
       ];
       font_family = "${config.mods.stylix.fonts.monospace.name}";
     in
@@ -404,6 +418,11 @@
         programs.dashvim = lib.mkIf config.mods.coding.dashvim {
           enable = true;
           colorscheme = config.mods.stylix.colorscheme;
+        };
+        programs.vscode = lib.mkIf config.mods.coding.vscodium.enable {
+          enable = true;
+          package = pkgs.vscodium;
+          extensions = config.mods.coding.vscodium.extensions;
         };
         xdg.configFile."neovide/config.toml" = lib.mkIf config.mods.coding.dashvim {
           source = (pkgs.formats.toml { }).generate "neovide" {
