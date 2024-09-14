@@ -22,10 +22,10 @@
     cache_config = lib.mkOption {
       default = ''
         [General]
-        LastDatabases=/home/${config.conf.username}/Music/Passwords.kdbx
-        LastActiveDatabase=/home/${config.conf.username}/Music/Passwords.kdbx
-        LastOpenedDatabases=/home/${config.conf.username}/Music/Passwords.kdbx
-        LastKeyFiles=@Variant(\0\0\0\x1c\0\0\0\x1\0\0\0\x42\0/\0h\0o\0m\0\x65\0/\0\x64\0\x61\0s\0h\0i\0\x65\0/\0M\0u\0s\0i\0\x63\0/\0P\0\x61\0s\0s\0w\0o\0r\0\x64\0s\0.\0k\0\x64\0\x62\0x\0\0\0\n\0\0\0\x42\0/\0h\0o\0m\0\x65\0/\0\x64\0\x61\0s\0h\0i\0\x65\0/\0M\0u\0s\0i\0\x63\0/\0l\0o\0g\0i\0n\0_\0k\0\x65\0y\0.\0k\0\x65\0y\0x)
+        LastDatabases=/home/${config.conf.username}/pws/Passwords.kdbx
+        LastActiveDatabase=/home/${config.conf.username}/pws/Passwords.kdbx
+        LastOpenedDatabases=/home/${config.conf.username}/pws/Passwords.kdbx
+        LastKeyFiles=@Variant(\0\0\0\x1c\0\0\0\x1\0\0\0>\0/\0h\0o\0m\0\x65\0/\0\x64\0\x61\0s\0h\0i\0\x65\0/\0p\0w\0s\0/\0P\0\x61\0s\0s\0w\0o\0r\0\x64\0s\0.\0k\0\x64\0\x62\0x\0\0\0\n\0\0\0>\0/\0h\0o\0m\0\x65\0/\0\x64\0\x61\0s\0h\0i\0\x65\0/\0p\0w\0s\0/\0l\0o\0g\0i\0n\0_\0k\0\x65\0y\0.\0k\0\x65\0y\0x)
       '';
       example = "";
       type = lib.types.lines;

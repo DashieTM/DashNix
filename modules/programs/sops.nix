@@ -26,6 +26,23 @@
       type = with lib.types; attrsOf anything;
       description = "secrets for sops";
     };
+    sopsPath = lib.mkOption {
+      default = root + /secrets/secrets.yaml;
+      example = "/your/path";
+      type =
+        with lib.types;
+        oneOf [
+          string
+          path
+        ];
+      description = "sops secrets path";
+    };
+    validateSopsFile = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = "Whether to validate the sops file -> set this to false when using full paths";
+    };
   };
   config = lib.mkIf config.mods.sops.enable (
     lib.optionalAttrs (options ? home.packages) {
@@ -35,7 +52,8 @@
           home = "~/.gnupg";
           sshKeyPaths = [ ];
         };
-        defaultSopsFile = root + /secrets/secrets.yaml;
+        defaultSopsFile = config.mods.sops.sopsPath;
+        validateSopsFiles = config.mods.sops.validateSopsFile;
         secrets = config.mods.sops.secrets;
       };
 
