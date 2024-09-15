@@ -32,7 +32,7 @@
       type =
         with lib.types;
         oneOf [
-          string
+          str
           path
         ];
       description = "sops secrets path";
