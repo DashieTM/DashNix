@@ -27,6 +27,31 @@ let
         border: none;
     }
   '';
+
+  ## test
+  #cfg = config.stylix.targets.qt;
+  kvconfig = config.lib.stylix.colors {
+    template = ./kvconfig.mustache;
+    extension = ".kvconfig";
+  };
+  svg = config.lib.stylix.colors {
+    template = ./kvantum-svg.mustache;
+    extension = "svg";
+  };
+  kvantumPackage = pkgs.runCommandLocal "base16-kvantum" { } ''
+    directory="$out/share/Kvantum/Base16Kvantum"
+    mkdir --parents "$directory"
+    cat ${kvconfig} >>"$directory/Base16Kvantum.kvconfig"
+    cat ${svg} >>"$directory/Base16Kvantum.svg"
+  '';
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".source =
+    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
+      {
+        General.theme = "Base16Kvantum";
+      };
+
+  xdg.configFile."Kvantum/Base16Kvantum".source = "${kvantumPackage}/share/Kvantum/Base16Kvantum";
 in
 {
   xdg.configFile."qt5ct/colors/tokyonight.conf" = {
@@ -38,6 +63,32 @@ in
   xdg.configFile."qt5ct/qss/tab.qss" = {
     text = "${qss}";
   };
+  qt = {
+    enable = true;
+    style.package = pkgs.libsForQt5.breeze-qt5;
+    style.name = "breeze-dark";
+  };
+
+  # ## test
+  # xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
+  #     General.theme = "Base16Kvantum";
+  #   };
+
+  #   xdg.configFile."Kvantum/Base16Kvantum".source = "${kvantumPackage}/share/Kvantum/Base16Kvantum";
+
+  # xdg.configFile."qt5ct/qt5ct.conf".text = ''
+  #   [Appearance]
+  #   style=kvantum
+  # '';
+
+  #   #icon_theme=${cfg.iconThemeName}
+
+  # xdg.configFile."qt6ct/qt6ct.conf".text = ''
+  #   [Appearance]
+  #   style=kvantum
+  # '';
+  #   #icon_theme=${cfg.iconThemeName}
+
   xdg.configFile."qt5ct/qt5ct.conf" = {
     text = ''
       [Appearance]

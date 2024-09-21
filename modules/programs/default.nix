@@ -27,6 +27,7 @@
     ./oxi
     ./piper.nix
     ./podman.nix
+    ./docker.nix
     ./printing.nix
     ./scripts.nix
     ./sddm.nix

@@ -65,6 +65,9 @@
           icon-library
           kdePackages.breeze-icons
           kdePackages.breeze
+          libsForQt5.breeze-qt5
+          kdePackages.qtstyleplugin-kvantum
+          libsForQt5.qtstyleplugin-kvantum
           libadwaita
           libxkbcommon
           nixfmt-rfc-style
