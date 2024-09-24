@@ -125,7 +125,7 @@
                 "$mod SUPER,R,exec,anyrun"
                 "$mod SUPER,G,exec,oxicalc"
                 "$mod SUPER,D,exec,oxishut"
-                "$mod SUPER,A,exec,oxipaste"
+                "$mod SUPER,A,exec,oxipaste-iced"
                 "$mod SUPERSHIFT,P,exec,hyprdock --gui"
                 "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend"
                 "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
