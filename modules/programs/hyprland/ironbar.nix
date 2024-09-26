@@ -237,14 +237,14 @@ in
                               {
                                 type = "button";
                                 class = "audio-button";
-                                label = "";
-                                on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh bluetooth";
+                                label = "";
+                                on_click = (lib.mkIf config.mods.scripts.audioControl "!audioControl bluetooth");
                               }
                               {
                                 type = "button";
                                 class = "audio-button";
                                 label = "󰋋";
-                                on_click = "!/home/${username}/.config/eww/scripts/audio_control.sh internal";
+                                on_click = (lib.mkIf config.mods.scripts.audioControl "!audioControl internal");
                               }
                             ];
                             class = "audio-button-box";

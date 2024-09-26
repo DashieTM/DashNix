@@ -17,7 +17,7 @@
       default = true;
       example = false;
       type = lib.types.bool;
-      description = "Enables the audio-control script";
+      description = "Enables the audioControl script";
     };
     scripts = lib.mkOption {
       default = [ ];

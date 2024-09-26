@@ -131,9 +131,9 @@
                 "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate"
 
                 # media keys
-                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioMute,exec, audio-control mute")
-                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioLowerVolume,exec, audio-control sink -5%")
-                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioRaiseVolume,exec, audio-control sink +5%")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioMute,exec, audioControl mute")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioLowerVolume,exec, audioControl sink -5%")
+                (lib.mkIf config.mods.scripts.audioControl ",XF86AudioRaiseVolume,exec, audioControl sink +5%")
                 ",XF86AudioPlay,exec, playerctl play-pause"
                 ",XF86AudioNext,exec, playerctl next"
                 ",XF86AudioPrev,exec, playerctl previous"
