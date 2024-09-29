@@ -24,7 +24,7 @@
   outputs =
     { ... }@inputs:
     {
-      nixosConfigurations = inputs.dashNix.dashNixLib.build_systems ./.;
+      nixosConfigurations = inputs.dashNix.dashNixLib.build_systems { root = ./.; };
     };
 
   nixConfig = {

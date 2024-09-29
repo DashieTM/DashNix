@@ -6,10 +6,10 @@
   ...
 }:
 {
-  options.mods.firefox = {
+  options.mods.browser.firefox = {
     enable = lib.mkOption {
-      default = true;
-      example = false;
+      default = false;
+      example = true;
       type = lib.types.bool;
       description = "Enables firefox";
     };
@@ -62,22 +62,45 @@
       type = with lib.types; listOf package;
       description = "Firefox extensions (from nur)";
     };
+    profiles = lib.mkOption {
+      default = [
+        {
+          name = "${config.conf.username}";
+          value = {
+            isDefault = true;
+            id = 0;
+            extensions = config.mods.browser.firefox.extensions;
+          };
+        }
+        {
+          name = "special";
+          value = {
+            isDefault = false;
+            id = 1;
+            extensions = config.mods.browser.firefox.extensions;
+          };
+        }
+      ];
+      example = [
+        {
+          name = "custom";
+          value = {
+            isDefault = true;
+            id = 0;
+            extensions = config.mods.browser.firefox.extensions;
+          };
+        }
+      ];
+      type = with lib.types; listOf (attrsOf anything);
+      description = "Firefox extensions (from nur)";
+    };
   };
-  config = lib.mkIf config.mods.firefox.enable (
+  config = lib.mkIf config.mods.browser.firefox.enable (
     lib.optionalAttrs (options ? programs.firefox.profiles) {
       programs.firefox = {
         enable = true;
-        policies = config.mods.firefox.configuration;
-        profiles.${config.conf.username} = {
-          isDefault = true;
-          id = 0;
-          extensions = config.mods.firefox.extensions;
-        };
-        profiles."special" = {
-          isDefault = false;
-          id = 1;
-          extensions = config.mods.firefox.extensions;
-        };
+        policies = config.mods.browser.firefox.configuration;
+        profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
       };
     }
   );

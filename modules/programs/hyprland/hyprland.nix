@@ -5,6 +5,17 @@
   pkgs,
   ...
 }:
+let
+  browserName =
+    if (builtins.isString config.mods.homePackages.browser) then
+      config.mods.homePackages.browser
+    else if
+      config.mods.homePackages.browser ? meta && config.mods.homePackages.browser.meta ? mainProgram
+    then
+      config.mods.homePackages.browser.meta.mainProgram
+    else
+      config.mods.homePackages.browser.pname;
+in
 {
   options.mods = {
     hyprland = {
@@ -106,7 +117,7 @@
 
               bindm = [
                 "$mod, mouse:272, movewindow"
-                "$mod, mouse:273, resizewindow"
+                "$mod, mouse:273, resizeactive"
               ];
 
               bind = [
@@ -116,8 +127,10 @@
                 ''$mod SUPERSHIFTALT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
 
                 # regular programs
-                "$mod SUPER,F,exec,firefox"
-                "$mod SUPERSHIFT,F,exec,firefox -p special"
+                "$mod SUPER,F,exec,${browserName}"
+                (lib.mkIf (
+                  browserName == "firefox" || browserName == "zen"
+                ) "$mod SUPERSHIFT,F,exec,${browserName} -p special")
                 "$mod SUPER,T,exec,kitty -1"
                 "$mod SUPER,E,exec,nautilus -w"
                 "$mod SUPER,N,exec,neovide"

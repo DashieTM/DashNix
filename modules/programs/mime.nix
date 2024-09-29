@@ -6,6 +6,17 @@
   options,
   ...
 }:
+let
+  browserName =
+    if (builtins.isString config.mods.homePackages.browser) then
+      config.mods.homePackages.browser
+    else if
+      config.mods.homePackages.browser ? meta && config.mods.homePackages.browser.meta ? mainProgram
+    then
+      config.mods.homePackages.browser.meta.mainProgram
+    else
+      config.mods.homePackages.browser.pname;
+in
 {
   options.mods.mime = {
     enable = lib.mkOption {
@@ -72,7 +83,7 @@
       description = "Browser X mime handlers";
     };
     browserApplications = lib.mkOption {
-      default = [ "firefox" ];
+      default = [ "${browserName}" ];
       example = [ ];
       type = with lib.types; listOf str;
       description = "Applications used for handling browser mime types";

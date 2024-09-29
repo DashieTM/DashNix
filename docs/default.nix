@@ -14,7 +14,7 @@ let
   summaryAppend = name: ''
     echo "- [${name}](${name}.md)" >> src/SUMMARY.md
   '';
-  system = (build_systems ../example/.)."example".options;
+  system = (build_systems { root = ../example/.; })."example".options;
   makeOptionsDocPrograms = name: pkgs.nixosOptionsDoc { options = system.mods.${name}; };
   conf = makeOptionsDoc system.conf;
   paths = builtins.readDir ../modules/programs;

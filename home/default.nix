@@ -7,6 +7,7 @@
   additionalHomeConfig,
   homeMods,
   additionalHomeMods,
+  additionalInputs,
   root,
   ...
 }:
@@ -22,7 +23,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs root;
+      inherit inputs root additionalInputs;
     };
 
     users.${config.conf.username} = {

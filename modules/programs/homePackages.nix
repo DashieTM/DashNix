@@ -3,6 +3,7 @@
   options,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -68,11 +69,17 @@
       type = with lib.types; nullOr package;
       description = "The email client";
     };
-    additionalBrowser = lib.mkOption {
-      default = pkgs.brave;
-      example = null;
-      type = with lib.types; nullOr package;
-      description = "Additional browser -> second to firefox, the only installed browser if firefox is disabled";
+    browser = lib.mkOption {
+      default = inputs.zen-browser.packages.${pkgs.system}.specific;
+      example = "firefox";
+      type =
+        with lib.types;
+        nullOr (
+          either (enum [
+            "firefox"
+          ]) package
+        );
+      description = "The browser (the enum variants have preconfigured modules)";
     };
   };
   config = lib.optionalAttrs (options ? home.packages) {
@@ -87,8 +94,9 @@
           (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
           (lib.mkIf (!isNull config.mods.homePackages.mailClient) config.mods.homePackages.mailClient)
           (lib.mkIf (
-            !isNull config.mods.homePackages.additionalBrowser
-          ) config.mods.homePackages.additionalBrowser)
+            # NOTE: This should be package, but nix doesn't have that....
+            builtins.isAttrs config.mods.homePackages.browser && !isNull config.mods.homePackages.browser
+          ) config.mods.homePackages.browser)
           adw-gtk3
           bat
           brightnessctl
@@ -129,10 +137,19 @@
       };
     };
     programs =
-      if config.mods.homePackages.useDefaultPackages then
-        config.mods.homePackages.specialPrograms
-      else
-        config.mods.homePackages.specialPrograms;
+      config.mods.homePackages.specialPrograms
+      // (
+        if config.mods.homePackages.browser == "firefox" then
+          {
+            firefox = {
+              enable = true;
+              policies = config.mods.browser.firefox.configuration;
+              profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
+            };
+          }
+        else
+          { }
+      );
     services =
       if config.mods.homePackages.useDefaultPackages then
         config.mods.homePackages.specialServices

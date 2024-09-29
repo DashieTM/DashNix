@@ -3,9 +3,9 @@
     ./acpid.nix
     ./basePackages.nix
     ./bluetooth.nix
+    ./browser
     ./coding.nix
     ./drives.nix
-    ./firefox.nix
     ./fish.nix
     ./flatpak.nix
     ./gaming.nix

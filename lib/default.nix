@@ -3,35 +3,6 @@
   pkgs,
   self,
   lib,
-  additionalMods ? {
-    nixos = [ ];
-    home = [ ];
-  },
-  mods ? {
-    nixos = [
-      inputs.home-manager.nixosModules.home-manager
-      inputs.stylix.nixosModules.stylix
-      ../base
-      ../home
-      ../modules
-    ];
-    home = [
-      inputs.anyrun.homeManagerModules.default
-      inputs.ironbar.homeManagerModules.default
-      inputs.oxicalc.homeManagerModules.default
-      inputs.oxishut.homeManagerModules.default
-      inputs.oxinoti.homeManagerModules.default
-      inputs.oxidash.homeManagerModules.default
-      inputs.oxipaste.homeManagerModules.default
-      inputs.hyprdock.homeManagerModules.default
-      inputs.hyprland.homeManagerModules.default
-      inputs.reset.homeManagerModules.default
-      inputs.nix-flatpak.homeManagerModules.nix-flatpak
-      inputs.sops-nix.homeManagerModules.sops
-      inputs.dashvim.homeManagerModules.dashvim
-      ../modules
-    ];
-  },
   ...
 }:
 {
@@ -52,8 +23,7 @@
     # Example usage
     :::{.example}
     ```nix
-    nixosConfigurations =
-        (build_systems [ "nixos" ] ./.);
+    nixosConfigurations = build_systems { root = ./.; };
     ```
     :::
   */
@@ -65,7 +35,40 @@
 
   # in
   build_systems =
-    root:
+    {
+      root,
+      additionalMods ? {
+        nixos = [ ];
+        home = [ ];
+      },
+      mods ? {
+        nixos = [
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ../base
+          ../home
+          ../modules
+        ];
+        home = [
+          inputs.anyrun.homeManagerModules.default
+          inputs.ironbar.homeManagerModules.default
+          inputs.oxicalc.homeManagerModules.default
+          inputs.oxishut.homeManagerModules.default
+          inputs.oxinoti.homeManagerModules.default
+          inputs.oxidash.homeManagerModules.default
+          inputs.oxipaste.homeManagerModules.default
+          inputs.hyprdock.homeManagerModules.default
+          inputs.hyprland.homeManagerModules.default
+          inputs.reset.homeManagerModules.default
+          inputs.nix-flatpak.homeManagerModules.nix-flatpak
+          inputs.sops-nix.homeManagerModules.sops
+          inputs.dashvim.homeManagerModules.dashvim
+          ../modules
+        ];
+      },
+      additionalInputs ? { },
+      ...
+    }:
     builtins.listToAttrs (
       map
         (name: {
@@ -89,6 +92,7 @@
                 hostName = name;
                 homeMods = mods.home;
                 additionalHomeMods = additionalMods.home;
+                additionalInputs = additionalInputs;
               };
               modules =
                 [ mod ]
