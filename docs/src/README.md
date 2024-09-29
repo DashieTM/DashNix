@@ -26,7 +26,7 @@ dashNix = {
 You can then configure your systems in your flake outputs with a provided library command:
 
 ```nix
-nixosConfigurations = inputs.dashNix.dashNixLib.build_systems ./.;
+nixosConfigurations = inputs.dashNix.dashNixLib.build_systems { root = ./.; };
 ```
 
 This command will build each system that is placed within the hosts/ directory.
@@ -148,9 +148,7 @@ nixosConfigurations =
             home = [];
         }
     in
-    (inputs.dashNix.dashNixLib.build_systems [
-        "system1"
-    ] ./. mods additionalMods);
+    inputs.dashNix.dashNixLib.build_systems { root = ./.; inherit mods additionalMods; };
 ```
 
 # Installation
@@ -199,5 +197,5 @@ For package lists, please check the individual modules, as the lists can be long
 - kitty: Enables and configures kitty terminal
 - oxi: My own programs, can be selectively disabled, or as a whole
 - mime: Mime type configuration
-- xkb:  Keyboard layout configuration
+- xkb: Keyboard layout configuration
 - scripts: Various preconfigured scripts with the ability to add more
