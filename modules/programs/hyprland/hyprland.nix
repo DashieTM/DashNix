@@ -357,10 +357,8 @@ in
                 # other programs
                 "hyprpaper"
                 "ironbar"
-                "firefox"
+                "${browserName}"
                 "oxipaste_daemon"
-                # should be taken care of with the new systemd services
-                # "nextcloud --background"
                 "oxinoti"
               ] ++ config.mods.hyprland.extraAutostart;
 

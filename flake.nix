@@ -28,7 +28,7 @@
       url = "github:JakeStanger/ironbar?ref=3a1c60442382f970cdb7669814b6ef3594d9f048";
     };
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:fufexan/zen-browser-flake";
 
     stylix.url = "github:danth/stylix";
     base16.url = "github:SenchoPens/base16.nix";

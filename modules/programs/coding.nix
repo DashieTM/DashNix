@@ -230,7 +230,7 @@
               netcoredbg
               #fsharp
               fsharp
-              fsautocomplete
+              #fsautocomplete
             ];
             example = [ ];
             type = with lib.types; listOf package;
@@ -250,7 +250,8 @@
           };
           packages = lib.mkOption {
             default = with pkgs; [
-              bear
+              # broke
+              #bear
               gcc
               clang-tools
             ];
