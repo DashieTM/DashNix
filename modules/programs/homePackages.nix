@@ -118,7 +118,7 @@
           playerctl
           poppler_utils
           pulseaudio
-          qt5ct
+          libsForQt5.qt5ct
           qt6ct
           ripgrep
           rm-improved

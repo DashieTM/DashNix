@@ -37,6 +37,8 @@
         ];
       };
     }
-    // lib.optionalAttrs (options ? home.packages) { home.packages = with pkgs; [ kdeconnect ]; }
+    // lib.optionalAttrs (options ? home.packages) {
+      home.packages = with pkgs; [ kdePackages.kdeconnect-kde ];
+    }
   );
 }
