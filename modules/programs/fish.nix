@@ -64,6 +64,8 @@
               abbr --add cat 'bat'
               abbr --add find 'fd'
               abbr --add rm 'rip'
+              abbr --add cp 'fcp'
+              abbr --add cd 'z'
 
               set fish_greeting
               # pwd based on the value of _ZO_RESOLVE_SYMLINKS.

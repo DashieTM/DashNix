@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  options,
   ...
 }:
 let
@@ -41,7 +40,7 @@ in
   };
 
   nix = {
-    extraOptions = lib.mkIf (options ? config.sops.secrets.access.path) ''
+    extraOptions = lib.mkIf (config ? sops.secrets && config.sops.secrets ? access.path) ''
       !include ${config.sops.secrets.access.path}
     '';
   };

@@ -5,6 +5,7 @@
     ./bluetooth.nix
     ./browser
     ./coding.nix
+    ./containers.nix
     ./drives.nix
     ./fish.nix
     ./flatpak.nix
@@ -22,12 +23,11 @@
     ./keepassxc.nix
     ./kitty.nix
     ./media.nix
+    ./mime.nix
     ./ncspot.nix
     ./nextcloud.nix
     ./oxi
     ./piper.nix
-    ./podman.nix
-    ./docker.nix
     ./printing.nix
     ./scripts.nix
     ./sddm.nix
@@ -36,7 +36,6 @@
     ./stylix.nix
     ./teams.nix
     ./virtualbox.nix
-    ./mime.nix
     ./xkb.nix
     ./xone.nix
     ./yazi

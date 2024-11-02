@@ -87,7 +87,6 @@
       if config.mods.homePackages.useDefaultPackages then
         with pkgs;
         [
-          # TODO add fcp once fixed....
           (lib.mkIf config.mods.homePackages.ncspot ncspot)
           (lib.mkIf config.mods.homePackages.vesktop vesktop)
           (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
@@ -120,6 +119,7 @@
           pulseaudio
           libsForQt5.qt5ct
           qt6ct
+          fcp
           ripgrep
           rm-improved
           system-config-printer
