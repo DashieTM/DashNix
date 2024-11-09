@@ -66,6 +66,7 @@
               abbr --add rm 'rip'
               abbr --add cp 'fcp'
               abbr --add cd 'z'
+              abbr --add yazi 'y'
 
               set fish_greeting
               # pwd based on the value of _ZO_RESOLVE_SYMLINKS.

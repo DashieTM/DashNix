@@ -57,15 +57,15 @@
           List of environments that should be available in the login prompt. 
         '';
       };
-    };
-    regreet = {
-      customSettings = lib.mkOption {
-        default = { };
-        example = { };
-        type = with lib.types; attrsOf anything;
-        description = ''
-          Custom regret settings. See https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml for more information.
-        '';
+      regreet = {
+        customSettings = lib.mkOption {
+          default = { };
+          example = { };
+          type = with lib.types; attrsOf anything;
+          description = ''
+            Custom regret settings. See https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml for more information.
+          '';
+        };
       };
     };
   };
@@ -135,8 +135,11 @@
 
         # unlock GPG keyring on login
         security.pam.services.greetd.enableGnomeKeyring = true;
-      } // lib.optionalAttrs (options ? home) {
-        xdg.configFile."regreet/regreet.toml".source = (pkgs.formats.toml { }).generate "regreet" config.mods.regreet.customSettings;
+      }
+      // lib.optionalAttrs (options ? home) {
+        xdg.configFile."regreet/regreet.toml".source =
+          (pkgs.formats.toml { }).generate "regreet"
+            config.mods.greetd.regreet.customSettings;
       }
     );
 }
