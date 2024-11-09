@@ -46,8 +46,7 @@
               set EDITOR "neovide --no-fork"
 
               alias rebuild='nh os switch'
-              alias update='nix flake update $FLAKE'
-              alias updateLock='nix flake lock $FLAKE --update-input'
+              alias update='nix flake update --flake $FLAKE'
               abbr --add ls 'lsd'
               abbr --add :q 'exit'
               abbr --add gh 'git push origin'
