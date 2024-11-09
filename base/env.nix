@@ -12,7 +12,7 @@
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       GOPATH = "$HOME/.go";
-      FLAKE = config.conf.nix_path;
+      FLAKE = config.conf.nixosConfigPath;
     };
   };
 }

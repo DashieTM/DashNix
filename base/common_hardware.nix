@@ -41,7 +41,7 @@ in
       ''resume="PARTLABEL=SWAP"''
       ''quiet''
       ''udev.log_level=3''
-    ] ++ config.conf.boot_params;
+    ] ++ config.conf.bootParams;
   };
 
   # Enable networking

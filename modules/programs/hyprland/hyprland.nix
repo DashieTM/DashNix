@@ -3,6 +3,7 @@
   lib,
   options,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -87,6 +88,23 @@ in
         type = with lib.types; listOf package;
         description = ''
           Plugins to be added to Hyprland.
+        '';
+      };
+      pluginConfig = lib.mkOption {
+        default = { };
+        example = { };
+        type = with lib.types; attrsOf anything;
+        description = ''
+          Plugin configuration to be added to Hyprland.
+        '';
+      };
+      hyprspaceEnable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        example = true;
+        description = ''
+          Enables Hyprspace plugin for hyprland.
+          Please note, plugins tend to break VERY often.
         '';
       };
     };
@@ -362,19 +380,20 @@ in
                 "oxinoti"
               ] ++ config.mods.hyprland.extraAutostart;
 
-              # plugin = {
-              #   hyprspace = {
-              #     bind = [
-              #       "SUPER, W, overview:toggle, toggle"
-              #     ];
-              #   };
-              # };
+              plugin = {
+                hyprspace = lib.mkIf config.mods.hyprland.hyprspaceEnable {
+                  bind = [
+                    "SUPER, W, overview:toggle, toggle"
+                  ];
+                };
+              } // config.mods.hyprland.pluginConfig;
             }
             // config.mods.hyprland.customConfig
           else
             lib.mkForce config.mods.hyprland.customConfig;
-        plugins = config.mods.hyprland.plugins;
-        #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+        plugins = [
+          (lib.mkIf config.mods.hyprland.hyprspaceEnable inputs.Hyprspace.packages.${pkgs.system}.Hyprspace)
+        ] ++ config.mods.hyprland.plugins;
       };
     }
   );

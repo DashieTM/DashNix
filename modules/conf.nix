@@ -93,7 +93,7 @@
       };
     };
 
-    boot_params = lib.mkOption {
+    bootParams = lib.mkOption {
       default = [ ];
       example = [ "resume=something" ];
       type = with lib.types; listOf str;
@@ -150,47 +150,12 @@
       '';
     };
 
-    nixos-config-path = lib.mkOption {
+    nixosConfigPath = lib.mkOption {
       default = "/home/${config.conf.username}/gits/nixos/.";
       example = "yourpath/.";
       type = lib.types.str;
       description = ''
         The path for your build command, you can then simply type rebuild to switch to a new configuration.
-      '';
-    };
-
-    nvim-colorscheme = lib.mkOption {
-      default = {
-        tokyonight = {
-          enable = true;
-        };
-      };
-      example = {
-        catppuccin = {
-          enable = true;
-        };
-      };
-      type = lib.types.attrs;
-      description = ''
-        nixvim colorscheme.
-      '';
-    };
-
-    nix_path = lib.mkOption {
-      default = "/home/${config.conf.username}/gits/nixos";
-      example = "yourpath";
-      type = lib.types.str;
-      description = ''
-        The default path for your configuration.
-      '';
-    };
-
-    kb_layout = lib.mkOption {
-      default = "dashie";
-      example = "us";
-      type = lib.types.str;
-      description = ''
-        The layout used in services. 
       '';
     };
 

@@ -41,7 +41,7 @@
               # Utility functions for zoxide.
               #
 
-              export NIX_PATH="$NIX_PATH:${config.conf.nixos-config-path}"
+              export NIX_PATH="$NIX_PATH:${config.conf.nixosConfigPath}"
 
               set EDITOR "neovide --no-fork"
 
