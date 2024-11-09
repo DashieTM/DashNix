@@ -37,13 +37,17 @@
       description = "Additional keymap for yazi";
     };
   };
-  config = lib.mkIf config.mods.yazi.enable (
-    lib.optionalAttrs (options ? home.packages) { programs.yazi = import ./yazi.nix; }
-    // {
-      programs.yazi.settings = {
-        settings = config.mods.yazi.additionalKeymap;
-        keymap = config.mods.yazi.additionalConfig;
-      };
-    }
-  );
+  config =
+    let
+      conf = import ./yazi.nix;
+    in
+    lib.optionalAttrs (options ? home.packages) (
+      lib.mkIf config.mods.yazi.enable {
+        programs.yazi = {
+          enable = conf.enable;
+          settings = conf.settings // config.mods.yazi.additionalKeymap;
+          keymap = conf.keymap // config.mods.yazi.additionalConfig;
+        };
+      }
+    );
 }

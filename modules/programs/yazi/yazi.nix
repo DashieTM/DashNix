@@ -1,4 +1,3 @@
-{ lib, config, ... }:
 {
   # don't ask....
   enable = true;
