@@ -19,6 +19,9 @@
 
   config = lib.mkIf config.mods.hyprland.hyprlock.enable (
     lib.optionalAttrs (options ? xdg.configFile) {
+      stylix.targets.hyprlock = {
+        enable = false;
+      };
       home.packages = with pkgs; [ hyprlock ];
       programs.hyprlock = lib.mkIf config.mods.hyprland.hyprlock.enable {
         enable = true;

@@ -153,7 +153,7 @@ nixosConfigurations =
 
 # Installation
 
-You can find a custom ISO on my NextCloud server: [Link](https://cloud.dashie.org/s/z7G3zS9SXeEt2ER).
+You can find a custom ISO on my NextCloud server: [Link](https://cloud.dashie.org/s/z7G3zS9SXeEt2ERD).
 With this, you will receive the example config in /iso/example alongside the gnome desktop environment,
 as well as a few tools like gnome-disks, neovim, vscodium, a browser etc.
 
@@ -199,3 +199,9 @@ For package lists, please check the individual modules, as the lists can be long
 - mime: Mime type configuration
 - xkb: Keyboard layout configuration
 - scripts: Various preconfigured scripts with the ability to add more
+
+# Credits
+
+- [Fufexan]( https://github.com/fufexan) for the xdg-mime config:
+- [Catppuccin]( https://github.com/catppuccin) for base16 colors
+- [Danth]( https://github.com/danth) for providing a base for the nix docs

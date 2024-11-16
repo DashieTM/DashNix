@@ -18,6 +18,7 @@
 
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
     };
 
     nur.url = "github:nix-community/nur";
