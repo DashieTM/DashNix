@@ -451,7 +451,8 @@
         home.packages =
           with pkgs;
           [
-            (lib.mkIf config.mods.coding.dashvim neovide)
+            # TODO re-enable, fucking amazing experience right now
+            # (lib.mkIf config.mods.coding.dashvim neovide)
             (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
           ]
           ++ config.mods.coding.additionalPackages

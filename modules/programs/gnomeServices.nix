@@ -29,6 +29,9 @@
   config = lib.mkIf config.mods.gnomeServices.enable (
     lib.optionalAttrs (options ? services.gnome.gnome-keyring) {
       programs.dconf.enable = true;
+      environment.extraInit = ''
+        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh" 
+      '';
       services = {
         # needed for GNOME services outside of GNOME Desktop
         dbus.packages = with pkgs; [
@@ -41,15 +44,19 @@
       };
     }
     // lib.optionalAttrs (options ? home.packages) {
-      home.packages =
-        let
-          packages = with pkgs; [
-            nautilus
-            sushi
-            nautilus-python
-          ];
-        in
-        lib.mkIf config.mods.nautilus.enable packages;
+      services.gnome-keyring.enable = true;
+      home = {
+        packages =
+          let
+            packages = with pkgs; [
+              gcr
+              nautilus
+              sushi
+              nautilus-python
+            ];
+          in
+          lib.mkIf config.mods.nautilus.enable packages;
+      };
     }
   );
 }

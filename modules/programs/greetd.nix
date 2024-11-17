@@ -135,6 +135,8 @@
 
         # unlock GPG keyring on login
         security.pam.services.greetd.enableGnomeKeyring = true;
+        security.pam.services.greetd.sshAgentAuth = true;
+        security.pam.sshAgentAuth.enable = true;
       }
       // lib.optionalAttrs (options ? home) {
         xdg.configFile."regreet/regreet.toml".source =

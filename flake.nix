@@ -14,7 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    # wow... major fuckup -> TODO remove
+    sops-nix.url = "github:Mic92/sops-nix?ref=d2bd7f433b28db6bc7ae03d5eca43564da0af054";
 
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
@@ -63,6 +64,7 @@
         system = "x86_64-linux";
         overlays = [ inputs.nur.overlay ];
         config = {
+          allowUnsupportedSystem = true;
           permittedInsecurePackages = [ "olm-3.2.16" ];
           allowUnfree = true;
         };
