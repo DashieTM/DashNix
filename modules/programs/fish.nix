@@ -1,9 +1,15 @@
 {
   lib,
+  pkgs,
+  inputs,
   config,
   options,
   ...
 }:
+let
+  base16 = pkgs.callPackage inputs.base16.lib { };
+  scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
+in
 {
   options.mods.fish = {
     enable = lib.mkOption {
@@ -66,6 +72,10 @@
               abbr --add cp 'fcp'
               abbr --add cd 'z'
               abbr --add y 'yazi'
+
+              set fish_color_autosuggestion '${scheme.base07}'
+              set fish_color_param '${scheme.base06}'
+              set fish_color_operator '${scheme.base0E}'
 
               set fish_greeting
               # pwd based on the value of _ZO_RESOLVE_SYMLINKS.

@@ -88,23 +88,48 @@ in
           inactive_tab_foreground = "#" + scheme.base04;
           tab_bar_background = "#" + scheme.base01;
 
-          color0 = base;
+          mark1_foreground = "#" + scheme.base00;
+          mark1_background = "#" + scheme.base07;
+          mark2_foreground = "#" + scheme.base00;
+          mark2_background = "#" + scheme.base0E;
+          mark3_foreground = "#" + scheme.base00;
+          mark3_background = "#" + scheme.base08;
+
+          color0 = "#" + scheme.base03;
           color1 = "#" + scheme.base08;
           color2 = "#" + scheme.base0B;
           color3 = "#" + scheme.base0A;
           color4 = "#" + scheme.base0D;
-          color5 = "#" + scheme.base0E;
+          color5 = "#" + scheme.base06;
           color6 = "#" + scheme.base0C;
-          color7 = "#" + scheme.base05;
+          color7 = "#" + scheme.base07;
 
-          color8 = "#" + scheme.base03;
+          color8 = "#" + scheme.base04;
           color9 = "#" + scheme.base08;
           color10 = "#" + scheme.base0B;
           color11 = "#" + scheme.base0A;
           color12 = "#" + scheme.base0D;
-          color13 = "#" + scheme.base0E;
+          color13 = "#" + scheme.base06;
           color14 = "#" + scheme.base0C;
-          color15 = "#" + scheme.base07;
+          color15 = "#" + scheme.base0B;
+
+          # color0 = base;
+          # color1 = "#" + scheme.base08;
+          # color2 = "#" + scheme.base0B;
+          # color3 = "#" + scheme.base0A;
+          # color4 = "#" + scheme.base0D;
+          # color5 = "#" + scheme.base0E;
+          # color6 = "#" + scheme.base0C;
+          # color7 = "#" + scheme.base05;
+          #
+          # color8 = "#" + scheme.base03;
+          # color9 = "#" + scheme.base08;
+          # color10 = "#" + scheme.base0B;
+          # color11 = "#" + scheme.base0A;
+          # color12 = "#" + scheme.base0D;
+          # color13 = "#" + scheme.base0E;
+          # color14 = "#" + scheme.base0C;
+          # color15 = "#" + scheme.base07;
 
           shell = lib.mkIf config.mods.fish.enable "fish";
         } // config.mods.kitty.additionalConfig;
