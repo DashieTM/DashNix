@@ -18,6 +18,22 @@
       type = lib.types.str;
       description = "Git email";
     };
+    additionalConfig = lib.mkOption {
+      default = {
+        merge = {
+          tool = "nvimdiff";
+        };
+        diff = {
+          tool = "nvimdiff";
+        };
+        pull.rebase = true;
+      };
+      example = {
+        pull.rebase = false;
+      };
+      type = with lib.types; attrsOf anything;
+      description = "Additional git config";
+    };
     sshConfig = lib.mkOption {
       default = ''
         Host github.com
@@ -53,14 +69,7 @@
         enable = true;
         userName = config.mods.git.username;
         userEmail = config.mods.git.email;
-        extraConfig = {
-          merge = {
-            tool = "nvimdiff";
-          };
-          diff = {
-            tool = "nvimdiff";
-          };
-        };
+        extraConfig = config.mods.git.additionalConfig;
       };
       home.file.".ssh/config".text = config.mods.git.sshConfig;
     }
