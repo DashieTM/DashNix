@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
-    stable.url = "github:NixOs/nixpkgs/nixos-24.05";
+    stable.url = "github:NixOs/nixpkgs/nixos-24.11";
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
@@ -14,8 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # wow... major fuckup -> TODO remove
-    sops-nix.url = "github:Mic92/sops-nix?ref=d2bd7f433b28db6bc7ae03d5eca43564da0af054";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";

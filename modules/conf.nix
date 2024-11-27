@@ -160,7 +160,7 @@
     };
 
     systemStateVersion = lib.mkOption {
-      example = "24.05";
+      example = "24.11";
       default = "23.05";
       type = lib.types.str;
       description = ''
@@ -168,7 +168,7 @@
       '';
     };
     homeStateVersion = lib.mkOption {
-      default = "24.05";
+      default = "24.11";
       example = "23.05";
       type = lib.types.str;
       description = ''

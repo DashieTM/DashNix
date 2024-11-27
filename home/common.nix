@@ -21,6 +21,7 @@ in
     homeDirectory = "/home/${username}";
     sessionPath = [ "$HOME/.cargo/bin" ];
 
+    enableNixpkgsReleaseCheck = false;
     sessionVariables = {
       GOROOT = "$HOME/.go";
       QT_QPA_PLATFORMTHEME = "qt5ct";

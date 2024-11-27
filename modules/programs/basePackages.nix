@@ -119,7 +119,6 @@
               package = pkgs.nix-direnv;
             };
           };
-          #ssh.startAgent = true;
           gnupg.agent.enable = true;
         }
         // config.mods.basePackages.specialPrograms
