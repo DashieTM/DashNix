@@ -63,6 +63,11 @@
                 disable-user-extensions = false;
                 enabled-extensions = map (extension: extension.extensionUuid) defaultExtensions;
               };
+              "org/gnome/desktop/interface" = {
+                cursor-theme = "${config.mods.stylix.cursor.name}";
+                cursor-size = config.mods.stylix.cursor.size;
+                color-scheme = "prefer-dark";
+              };
             };
           };
         }

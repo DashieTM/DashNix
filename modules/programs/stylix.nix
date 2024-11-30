@@ -50,8 +50,11 @@
     };
     cursor = lib.mkOption {
       default = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
+        # broken
+        #package = pkgs.bibata-cursors;
+        #name = "Bibata-Modern-Classic";
+        package = pkgs.catppuccin-cursors.mochaLavender;
+        name = "catppuccin-mocha-lavender-cursors";
         size = 24;
       };
       example = { };

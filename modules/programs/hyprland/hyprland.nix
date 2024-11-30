@@ -298,8 +298,7 @@ in
               };
 
               cursor = {
-                # conversion seems to be borked right now, i want a smooth bibata :(
-                enable_hyprcursor = false;
+                enable_hyprcursor = true;
                 no_hardware_cursors = lib.mkIf config.mods.gpu.nvidia.enable true;
                 # no_break_fs_vrr = true;
               };

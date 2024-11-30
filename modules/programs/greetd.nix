@@ -106,8 +106,6 @@
 
         # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
         environment.etc."greetd/hyprgreet.conf".text = ''
-          exec-once=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-
           monitor=${config.mods.greetd.monitor},${config.mods.greetd.resolution},0x0,${config.mods.greetd.scale}
           monitor=,disable
 
@@ -117,15 +115,13 @@
               force_no_accel = true
           }
 
-          cursor {
-              enable_hyprcursor = false
-          }
-
           misc {
               disable_splash_rendering = false
               disable_hyprland_logo = false
           }
 
+          "HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}"
+          "HYPRCURSOR_SIZE,${toString config.mods.stylix.cursor.size}"
           env=XCURSOR_THEME,${config.mods.stylix.cursor.name}
           env=XCURSOR_SIZE,${toString config.mods.stylix.cursor.size}
           env=QT_QPA_PLATFORMTHEME,qt5ct

@@ -45,6 +45,13 @@
     }
     // lib.optionalAttrs (options ? home.packages) {
       services.gnome-keyring.enable = true;
+      dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          cursor-theme = "${config.mods.stylix.cursor.name}";
+          cursor-size = config.mods.stylix.cursor.size;
+          color-scheme = "prefer-dark";
+        };
+      };
       home = {
         packages =
           let
