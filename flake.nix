@@ -70,6 +70,8 @@
             # well done dotnet...
             # this is just for omnisharp
             "dotnet-core-combined"
+            "dotnet-wrapped-combined"
+            "dotnet-combined"
             "dotnet-sdk-6.0.428"
             "dotnet-sdk-wrapped-6.0.428"
             "dotnet-sdk-6.0.136"
