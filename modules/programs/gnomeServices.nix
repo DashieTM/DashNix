@@ -28,7 +28,20 @@
 
   config = lib.mkIf config.mods.gnomeServices.enable (
     lib.optionalAttrs (options ? services.gnome.gnome-keyring) {
-      programs.dconf.enable = true;
+      programs.dconf = {
+        enable = true;
+        profiles.user.databases = [
+          {
+            settings = {
+              "org/gnome/desktop/interface" = {
+                cursor-theme = config.mods.stylix.cursor.name;
+                cursor-size = lib.gvariant.mkInt32 config.mods.stylix.cursor.size;
+                color-scheme = "prefer-dark";
+              };
+            };
+          }
+        ];
+      };
       environment.extraInit = ''
         export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh" 
       '';
