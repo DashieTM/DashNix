@@ -151,6 +151,42 @@ nixosConfigurations =
     inputs.dashNix.dashNixLib.build_systems { root = ./.; inherit mods additionalMods; };
 ```
 
+## Additional Inputs
+
+Just like modules, you can add additional inputs to your configuration.
+
+```nix
+nixosConfigurations =
+    let
+        additionalInputs = {
+            something.url = "yoururl"
+        }
+    in
+    inputs.dashNix.dashNixLib.build_systems { root = ./.; inherit additionalInputs; };
+```
+
+## Stable/Unstable
+
+Sometimes you want to differentiate between systems that are stable and unstable, e.g. for servers and desktops/laptops.
+This can be done with the overridePkgs flag for the lib function:
+
+```nix
+ nixosConfigurations =
+   inputs.dashNix.dashNixLib.build_systems {
+     root = ./stable;
+     inherit additionalInputs;
+     overridePkgs = true;
+   }
+   // inputs.dashNix.dashNixLib.build_systems {
+     root = ./unstable;
+     inherit additionalInputs;
+   };
+```
+
+You can now place your systems in the respective directories.
+Keep in mind that the hosts directory will still need to exist in each variant. 
+E.g. stable/hosts/yourserver and unstable/hosts/yourdesktop
+
 # Installation
 
 You can find a custom ISO on my NextCloud server: [Link](https://cloud.dashie.org/s/z7G3zS9SXeEt2ERD).
@@ -165,43 +201,44 @@ This configuration features several modules that can be used as preconfigured "r
 These modules attempt to combine the home-manager and nixos packages/options to one single configuration file for each new system.
 For package lists, please check the individual modules, as the lists can be long.
 
-- base packages : A list of system packages to be installed by default
-- home packages : A list of home packages to be installed by default
-- media packages : A list of media packages to be installed by default
-- coding packages : A list of coding packages to be installed by default
+- Hyprland: Installs and configures Hyprland with various additional packages
 - acpid : Enables the acpid daemon
+- base packages : A list of system packages to be installed by default
 - bluetooth : Configures/enables bluetooth and installs tools for bluetooth
+- coding packages : A list of coding packages to be installed by default
 - drives : A drive configuration module
+- firefox: Enables and configures firefox (extensions and settings)
+- fish: Enables and configures fish shell
 - flatpak : Installs and enables declarative flatpak
+- gaming : Configures gaming related features (launchers, gamemode)
+- git : Git key and config module
 - gnome_services : Gnome services for minimal enviroments -> Window managers etc
 - gpu : GPU settings (AMD)
 - greetd : Enables and configures the greetd/regreet login manager with Hyprland
+- home packages : A list of home packages to be installed by default
 - kde_connect : Enables KDE connect and opens its ports
-- layout : Modules to configure keyboard layout system wide
-- piper : Installs and enables piper alongside its daemon
-- printing : Enables and configures printing services
-- virtualbox : Enables and configures virtualbox
-- xone : Installs the xone driver
-- starship : Configures the starship prompt
 - keepassxc : Configures keepassxc
-- gaming : Configures gaming related features (launchers, gamemode)
-- stylix : Configures system themes, can also be applied to dashvim if used.
-- git : Git key and config module
-- nextcloud : Handles synchronization via nextcloud cmd. (requires config.sops.secrets.nextcloud)
-- firefox: Enables and configures firefox (extensions and settings)
-- Hyprland: Installs and configures Hyprland with various additional packages
-- yazi: Installs yazi and sets custom keybinds
-- teams: For the poor souls that have to use this....
-- sops: Enables sops-nix
-- fish: Enables and configures fish shell
 - kitty: Enables and configures kitty terminal
-- oxi: My own programs, can be selectively disabled, or as a whole
+- layout : Modules to configure keyboard layout system wide
+- media packages : A list of media packages to be installed by default
 - mime: Mime type configuration
-- xkb: Keyboard layout configuration
+- nextcloud : Handles synchronization via nextcloud cmd. (requires config.sops.secrets.nextcloud)
+- oxi: My own programs, can be selectively disabled, or as a whole
+- piper : Installs and enables piper alongside its daemon
+- plymouth: enable or disable plymouth
+- printing : Enables and configures printing services
 - scripts: Various preconfigured scripts with the ability to add more
+- sops: Enables sops-nix
+- starship : Configures the starship prompt
+- stylix : Configures system themes, can also be applied to dashvim if used.
+- teams: For the poor souls that have to use this....
+- virtualbox : Enables and configures virtualbox
+- xkb: Keyboard layout configuration
+- xone : Installs the xone driver
+- yazi: Installs yazi and sets custom keybinds
 
 # Credits
 
-- [Fufexan]( https://github.com/fufexan) for the xdg-mime config:
-- [Catppuccin]( https://github.com/catppuccin) for base16 colors
-- [Danth]( https://github.com/danth) for providing a base for the nix docs
+- [Fufexan](https://github.com/fufexan) for the xdg-mime config:
+- [Catppuccin](https://github.com/catppuccin) for base16 colors
+- [Danth](https://github.com/danth) for providing a base for the nix docs
