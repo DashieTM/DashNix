@@ -62,7 +62,7 @@
       };
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
-        overlays = [ inputs.nur.overlay ];
+        overlays = [ inputs.nur.overlays.default ];
         config = {
           allowUnsupportedSystem = true;
           permittedInsecurePackages = [
