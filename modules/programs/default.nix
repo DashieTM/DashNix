@@ -28,6 +28,7 @@
     ./nextcloud.nix
     ./oxi
     ./piper.nix
+    ./plymouth.nix
     ./printing.nix
     ./scripts.nix
     ./sddm.nix

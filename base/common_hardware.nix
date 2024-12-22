@@ -22,9 +22,6 @@ in
       };
       efi.canTouchEfiVariables = true;
     };
-    plymouth = {
-      enable = true;
-    };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     initrd = {
       verbose = false;
