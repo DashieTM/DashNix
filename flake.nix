@@ -54,10 +54,28 @@
   outputs =
     { self, ... }@inputs:
     let
+      permittedPackages = [
+        "olm-3.2.16"
+        # well done dotnet...
+        # this is just for omnisharp
+        "dotnet-core-combined"
+        "dotnet-wrapped-combined"
+        "dotnet-combined"
+        "dotnet-sdk-6.0.428"
+        "dotnet-sdk-wrapped-6.0.428"
+        "dotnet-sdk-6.0.136"
+        "dotnet-sdk-wrapped-6.0.136"
+        "dotnet-sdk-7.0.120"
+        "dotnet-sdk-wrapped-7.0.120"
+        "dotnet-sdk-7.0.410"
+        "dotnet-sdk-wrapped-7.0.410"
+        "jitsi-meet-1.0.8043"
+      ];
       stable = import inputs.stable {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
+          permittedInsecurePackages = permittedPackages;
         };
       };
       pkgs = import inputs.nixpkgs {
@@ -65,33 +83,23 @@
         overlays = [ inputs.nur.overlays.default ];
         config = {
           allowUnsupportedSystem = true;
-          permittedInsecurePackages = [
-            "olm-3.2.16"
-            # well done dotnet...
-            # this is just for omnisharp
-            "dotnet-core-combined"
-            "dotnet-wrapped-combined"
-            "dotnet-combined"
-            "dotnet-sdk-6.0.428"
-            "dotnet-sdk-wrapped-6.0.428"
-            "dotnet-sdk-6.0.136"
-            "dotnet-sdk-wrapped-6.0.136"
-            "dotnet-sdk-7.0.120"
-            "dotnet-sdk-wrapped-7.0.120"
-            "dotnet-sdk-7.0.410"
-            "dotnet-sdk-wrapped-7.0.410"
-          ];
+          permittedInsecurePackages = permittedPackages;
           allowUnfree = true;
         };
       };
     in
     rec {
       dashNixLib = import ./lib {
-        inherit self inputs pkgs;
+        inherit
+          self
+          inputs
+          pkgs
+          stable
+          ;
         lib = inputs.nixpkgs.lib;
       };
       docs = import ./docs {
-        inherit inputs pkgs;
+        inherit inputs pkgs stable;
         lib = inputs.nixpkgs.lib;
         build_systems = dashNixLib.build_systems;
       };

@@ -91,7 +91,8 @@ in
   # Enable sound with pipewire.
   hardware = {
     pulseaudio.enable = false;
-    cpu.${config.conf.cpu}.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.${config.conf.cpu}.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   security.rtkit.enable = true;

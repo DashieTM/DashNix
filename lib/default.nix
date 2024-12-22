@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   self,
+  stable,
   lib,
   ...
 }:
@@ -68,7 +69,6 @@
       },
       additionalInputs ? { },
       overridePkgs ? false,
-      pkgOverrides ? pkgs,
       ...
     }:
     builtins.listToAttrs (
@@ -90,7 +90,8 @@
                   additionalHomeConfig
                   root
                   ;
-                pkgs = if overridePkgs then pkgs else pkgOverrides;
+                pkgs = if overridePkgs then pkgs else stable;
+                alternativePkgs = if overridePkgs then stable else pkgs;
                 hostName = name;
                 homeMods = mods.home;
                 additionalHomeMods = additionalMods.home;
