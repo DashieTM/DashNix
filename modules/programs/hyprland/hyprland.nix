@@ -300,7 +300,8 @@ in
               cursor = {
                 enable_hyprcursor = true;
                 no_hardware_cursors = lib.mkIf config.mods.gpu.nvidia.enable true;
-                # no_break_fs_vrr = true;
+                # done with nix, this would break the current setup otherwise
+                sync_gsettings_theme = false;
               };
 
               gestures = {

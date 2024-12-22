@@ -67,6 +67,8 @@
         ];
       },
       additionalInputs ? { },
+      overridePkgs ? false,
+      pkgOverrides ? pkgs,
       ...
     }:
     builtins.listToAttrs (
@@ -84,11 +86,11 @@
                 inherit
                   self
                   inputs
-                  pkgs
                   mod
                   additionalHomeConfig
                   root
                   ;
+                pkgs = if overridePkgs then pkgs else pkgOverrides;
                 hostName = name;
                 homeMods = mods.home;
                 additionalHomeMods = additionalMods.home;
