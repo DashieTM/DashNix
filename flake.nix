@@ -70,6 +70,7 @@
         "dotnet-sdk-7.0.410"
         "dotnet-sdk-wrapped-7.0.410"
         "jitsi-meet-1.0.8043"
+        "nextcloud-27.1.11"
       ];
       stable = import inputs.stable {
         system = "x86_64-linux";
