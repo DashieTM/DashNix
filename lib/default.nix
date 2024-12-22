@@ -90,8 +90,8 @@
                   additionalHomeConfig
                   root
                   ;
-                pkgs = if overridePkgs then pkgs else stable;
-                alternativePkgs = if overridePkgs then stable else pkgs;
+                pkgs = if overridePkgs then stable else pkgs;
+                alternativePkgs = if overridePkgs then pkgs else stable;
                 hostName = name;
                 homeMods = mods.home;
                 additionalHomeMods = additionalMods.home;
