@@ -2,7 +2,6 @@
   lib,
   config,
   options,
-  pkgs,
   ...
 }:
 {
@@ -48,20 +47,6 @@
       type = with lib.types; attrsOf anything;
       description = "Firefox policy configuration. See https://mozilla.github.io/policy-templates/ for more information.";
     };
-    extensions = lib.mkOption {
-      default = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        darkreader
-        privacy-badger
-        vimium
-        keepassxc-browser
-        i-dont-care-about-cookies
-        tokyo-night-v2
-      ];
-      example = [ ];
-      type = with lib.types; listOf package;
-      description = "Firefox extensions (from nur)";
-    };
     profiles = lib.mkOption {
       default = [
         {
@@ -69,7 +54,6 @@
           value = {
             isDefault = true;
             id = 0;
-            extensions = config.mods.browser.firefox.extensions;
           };
         }
         {
@@ -77,7 +61,6 @@
           value = {
             isDefault = false;
             id = 1;
-            extensions = config.mods.browser.firefox.extensions;
           };
         }
       ];
@@ -87,12 +70,11 @@
           value = {
             isDefault = true;
             id = 0;
-            extensions = config.mods.browser.firefox.extensions;
           };
         }
       ];
       type = with lib.types; listOf (attrsOf anything);
-      description = "Firefox extensions (from nur)";
+      description = "Firefox profiles";
     };
   };
   config = lib.mkIf config.mods.browser.firefox.enable (

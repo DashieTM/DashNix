@@ -21,7 +21,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    nur.url = "github:nix-community/nur";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     ironbar = {
@@ -81,7 +80,6 @@
       };
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
-        overlays = [ inputs.nur.overlays.default ];
         config = {
           allowUnsupportedSystem = true;
           permittedInsecurePackages = permittedPackages;
