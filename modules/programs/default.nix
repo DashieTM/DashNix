@@ -36,7 +36,7 @@
     ./starship.nix
     ./stylix.nix
     ./teams.nix
-    ./virtualbox.nix
+    ./virtmanager.nix
     ./xkb.nix
     ./xone.nix
     ./yazi
