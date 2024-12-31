@@ -87,7 +87,6 @@
           upower.enable = true;
           dbus = {
             enable = true;
-            packages = with pkgs; [ gnome2.GConf ];
           };
           avahi = {
             enable = true;
