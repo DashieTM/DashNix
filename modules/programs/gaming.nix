@@ -21,6 +21,7 @@
         wine
         adwsteamgtk
         heroic
+        mangohud
       ];
       example = [ ];
       type = with lib.types; listOf package;
