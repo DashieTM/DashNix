@@ -20,7 +20,8 @@
         lutris
         wine
         adwsteamgtk
-        heroic
+        # TODO broken
+        #heroic
         mangohud
       ];
       example = [ ];
