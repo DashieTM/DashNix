@@ -28,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:fufexan/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
 
     stylix.url = "github:danth/stylix";
     base16.url = "github:SenchoPens/base16.nix";

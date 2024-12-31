@@ -70,7 +70,7 @@
       description = "The email client";
     };
     browser = lib.mkOption {
-      default = inputs.zen-browser.packages.${pkgs.system}.specific;
+      default = inputs.zen-browser.packages.${pkgs.system}.default;
       example = "firefox";
       type =
         with lib.types;
