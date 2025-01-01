@@ -22,7 +22,9 @@ in
       type = lib.types.bool;
       example = true;
       description = ''
-        Enables virt-manager kvm.
+        
+                
+                        Enables virt-manager kvm.
       '';
     };
   };
@@ -53,7 +55,11 @@ in
       };
       services.spice-vdagentd.enable = true;
 
-      users.users.${config.conf.username}.extraGroups = [ "libvirtd" ];
+      users.users.${config.conf.username}.extraGroups = [
+        "libvirtd"
+        "kvm"
+        "qemu-libvirtd"
+      ];
 
     }
     // lib.optionalAttrs (options ? dconf.settings) {
