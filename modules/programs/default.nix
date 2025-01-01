@@ -35,6 +35,7 @@
     ./sops.nix
     ./starship.nix
     ./stylix.nix
+    ./supersonic.nix
     ./teams.nix
     ./virtmanager.nix
     ./xkb.nix

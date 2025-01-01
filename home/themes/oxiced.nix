@@ -5,7 +5,6 @@
   ...
 }:
 let
-  username = config.conf.username;
   # at time of using this here, stylix might not be evaluated yet
   # hence ensure it is by using base16 mkSchemeAttrs
   base16 = pkgs.callPackage inputs.base16.lib { };
