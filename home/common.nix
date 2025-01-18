@@ -14,7 +14,6 @@ in
   };
 
   fonts.fontconfig.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
   home = {
     username = username;
