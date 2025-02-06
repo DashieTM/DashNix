@@ -1,10 +1,11 @@
-```
-██████   █████  ███████ ██   ██ ███    ██ ██ ██   ██
-██   ██ ██   ██ ██      ██   ██ ████   ██ ██  ██ ██
-██   ██ ███████ ███████ ███████ ██ ██  ██ ██   ███
-██   ██ ██   ██      ██ ██   ██ ██  ██ ██ ██  ██ ██
-██████  ██   ██ ███████ ██   ██ ██   ████ ██ ██   ██
-```
+
+<div align = center>
+
+# $${\color{cyan}DashNix}$$
+
+![Logo of DashNix](./logo.svg)
+
+</div>
 
 A very opinionated (technically only for me) configuration that allows easy adding and removing of systems alongside custom configurations for each system.
 
@@ -242,3 +243,4 @@ For package lists, please check the individual modules, as the lists can be long
 - [Fufexan](https://github.com/fufexan) for the xdg-mime config:
 - [Catppuccin](https://github.com/catppuccin) for base16 colors
 - [Danth](https://github.com/danth) for providing a base for the nix docs
+- [Nix-Artwork](https://github.com/NixOS/nixos-artwork/tree/master/logo) for the Nix/NixOS logo (Tim Cuthbertson (@timbertson))
