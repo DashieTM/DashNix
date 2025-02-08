@@ -73,6 +73,7 @@
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
+          allowBroken = true;
           permittedInsecurePackages = permittedPackages;
         };
       };
@@ -81,6 +82,7 @@
         config = {
           allowUnsupportedSystem = true;
           permittedInsecurePackages = permittedPackages;
+          allowBroken = true;
           allowUnfree = true;
         };
       };
