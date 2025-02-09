@@ -64,13 +64,13 @@
     fonts = lib.mkOption {
       default = {
         serif = {
-          package = pkgs.cantarell-fonts;
-          name = "Cantarell";
+          package = pkgs.adwaita-fonts;
+          name = "Adwaita Sans";
         };
 
         sansSerif = {
-          package = pkgs.cantarell-fonts;
-          name = "Cantarell";
+          package = pkgs.adwaita-fonts;
+          name = "Adwaita Sans";
         };
 
         monospace = {
