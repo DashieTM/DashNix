@@ -5,7 +5,10 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  # TODO remove when chromium works again
+  fixedVesktop = pkgs.vesktop.override {electron = pkgs.electron_33;};
+in {
   options.mods.homePackages = {
     useDefaultPackages = lib.mkOption {
       default = true;
@@ -88,7 +91,7 @@
         with pkgs;
           [
             (lib.mkIf config.mods.homePackages.ncspot ncspot)
-            (lib.mkIf config.mods.homePackages.vesktop vesktop)
+            (lib.mkIf config.mods.homePackages.vesktop fixedVesktop)
             (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
             (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
             (lib.mkIf (!isNull config.mods.homePackages.mailClient) config.mods.homePackages.mailClient)

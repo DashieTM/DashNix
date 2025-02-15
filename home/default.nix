@@ -9,6 +9,7 @@
   mod,
   pkgs,
   root,
+  alternativePkgs,
   ...
 }: {
   xdg = {
@@ -22,7 +23,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs root additionalInputs;
+      inherit inputs root additionalInputs alternativePkgs;
     };
 
     users.${config.conf.username} = {
