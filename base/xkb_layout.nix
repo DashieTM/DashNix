@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   layout = pkgs.writeText "dashie" ''
     xkb_symbols "dashie"
     {
@@ -10,12 +9,11 @@ let
       key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
     };
   '';
-in
-{
-  environment.systemPackages = [ pkgs.xorg.xkbcomp ];
+in {
+  environment.systemPackages = [pkgs.xorg.xkbcomp];
   services.xserver.xkb.extraLayouts.dashie = {
     description = "US layout with 'umlaut'";
-    languages = [ "eng" ];
+    languages = ["eng"];
     symbolsFile = "${layout}";
   };
 }

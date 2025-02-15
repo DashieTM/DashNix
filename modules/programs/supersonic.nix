@@ -5,12 +5,10 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  base16 = pkgs.callPackage inputs.base16.lib { };
+}: let
+  base16 = pkgs.callPackage inputs.base16.lib {};
   scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
-in
-{
+in {
   options.mods.supersonic = {
     enable = lib.mkOption {
       default = false;
@@ -31,42 +29,45 @@ in
   config = lib.mkIf config.mods.supersonic.enable (
     lib.optionalAttrs (options ? home.packages) {
       home.packages = with pkgs; [
-        (if config.mods.supersonic.variant == "wayland" then supersonic-wayland else supersonic)
+        (
+          if config.mods.supersonic.variant == "wayland"
+          then supersonic-wayland
+          else supersonic
+        )
       ];
       xdg.configFile."supersonic/themes/custom.toml".source =
-        (pkgs.formats.toml { }).generate "customTheme"
-          {
-            SupersonicTheme = {
-              Name = "Custom";
-              Version = "0.2";
-              SupportsDark = true;
-              SupportsLight = true;
-            };
-
-            DarkColors = {
-              PageBackground = "#${scheme.base00}";
-              ListHeader = "#${scheme.base02}";
-              PageHeader = "#${scheme.base02}";
-              Background = "#${scheme.base01}";
-              ScrollBar = "#${scheme.base02}";
-              Button = "#${scheme.base02}";
-              Foreground = "#${scheme.base04}";
-              InputBackground = "#${scheme.base02}";
-            };
-
-            # just define the same as base 16 doesn't define if it is light or not
-            LightColors = {
-              PageBackground = "#${scheme.base00}";
-              ListHeader = "#${scheme.base02}";
-              PageHeader = "#${scheme.base02}";
-              Background = "#${scheme.base01}";
-              ScrollBar = "#${scheme.base02}";
-              Button = "#${scheme.base02}";
-              Foreground = "#${scheme.base04}";
-              InputBackground = "#${scheme.base02}";
-            };
+        (pkgs.formats.toml {}).generate "customTheme"
+        {
+          SupersonicTheme = {
+            Name = "Custom";
+            Version = "0.2";
+            SupportsDark = true;
+            SupportsLight = true;
           };
-    }
 
+          DarkColors = {
+            PageBackground = "#${scheme.base00}";
+            ListHeader = "#${scheme.base02}";
+            PageHeader = "#${scheme.base02}";
+            Background = "#${scheme.base01}";
+            ScrollBar = "#${scheme.base02}";
+            Button = "#${scheme.base02}";
+            Foreground = "#${scheme.base04}";
+            InputBackground = "#${scheme.base02}";
+          };
+
+          # just define the same as base 16 doesn't define if it is light or not
+          LightColors = {
+            PageBackground = "#${scheme.base00}";
+            ListHeader = "#${scheme.base02}";
+            PageHeader = "#${scheme.base02}";
+            Background = "#${scheme.base01}";
+            ScrollBar = "#${scheme.base02}";
+            Button = "#${scheme.base02}";
+            Foreground = "#${scheme.base04}";
+            InputBackground = "#${scheme.base02}";
+          };
+        };
+    }
   );
 }

@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.oxi.oxidash = {
     enable = lib.mkOption {
       default = true;

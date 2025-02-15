@@ -3,9 +3,7 @@
   config,
   options,
   ...
-}:
-let
-
+}: let
   driveModule = lib.types.submodule {
     options = {
       name = lib.mkOption {
@@ -20,7 +18,7 @@ let
       drive = lib.mkOption {
         type = lib.types.attrsOf lib.types.anything;
         description = "The attrs of the drive";
-        default = { };
+        default = {};
         example = {
           device = "/dev/disk/by-label/DRIVE2";
           fsType = "ext4";
@@ -33,8 +31,7 @@ let
       };
     };
   };
-in
-{
+in {
   options.mods = {
     drives = {
       useSwap = {
@@ -59,7 +56,6 @@ in
       };
       extraDrives = lib.mkOption {
         default = [
-
         ];
         example = [
           {
@@ -90,12 +86,15 @@ in
       fileSystems =
         builtins.listToAttrs (
           map (
-            { name, drive }:
             {
+              name,
+              drive,
+            }: {
               name = "/" + name;
               value = drive;
             }
-          ) config.mods.drives.extraDrives
+          )
+          config.mods.drives.extraDrives
         )
         // (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
           "/" = {
@@ -131,7 +130,7 @@ in
         };
       # TODO make this convert to choice of drives -> thanks to funny types this doesn't work...
       swapDevices = lib.mkIf config.mods.drives.useSwap.enable [
-        { device = "/dev/disk/by-label/SWAP"; }
+        {device = "/dev/disk/by-label/SWAP";}
       ];
     }
   );

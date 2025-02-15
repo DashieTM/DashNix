@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   username = config.conf.username;
-in
-{
+in {
   manual = {
     html.enable = false;
     json.enable = false;
@@ -18,7 +16,7 @@ in
   home = {
     username = username;
     homeDirectory = "/home/${username}";
-    sessionPath = [ "$HOME/.cargo/bin" ];
+    sessionPath = ["$HOME/.cargo/bin"];
 
     enableNixpkgsReleaseCheck = false;
     sessionVariables = {

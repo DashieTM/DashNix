@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.browser.firefox = {
     enable = lib.mkOption {
       default = false;
@@ -43,7 +42,7 @@
           SkipOnboarding = true;
         };
       };
-      example = { };
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "Firefox policy configuration. See https://mozilla.github.io/policy-templates/ for more information.";
     };

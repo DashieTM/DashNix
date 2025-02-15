@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.gaming = {
     enable = lib.mkOption {
       default = false;
@@ -24,7 +23,7 @@
         #heroic
         mangohud
       ];
-      example = [ ];
+      example = [];
       type = with lib.types; listOf package;
       description = "Install gaming related packages";
     };

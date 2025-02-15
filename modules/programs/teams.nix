@@ -3,12 +3,11 @@
   config,
   options,
   pkgs,
+  stable,
   ...
-}:
-let
+}: let
   callPackage = lib.callPackageWith pkgs;
-in
-{
+in {
   options.mods.teams = {
     enable = lib.mkOption {
       default = false;
@@ -25,12 +24,12 @@ in
   };
   config = lib.mkIf config.mods.teams.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = [ (callPackage ../../override/teams.nix { }) ];
+      home.packages = [(callPackage ../../override/teams.nix {pkgs = stable;})];
     }
     // (lib.optionalAttrs (options ? boot.kernelModules) {
       boot = {
-        extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-        kernelModules = [ "v4l2loopback" ];
+        extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+        kernelModules = ["v4l2loopback"];
         extraModprobeConfig = ''
           options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
         '';

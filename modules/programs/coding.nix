@@ -4,8 +4,7 @@
   pkgs,
   options,
   ...
-}:
-{
+}: {
   options.mods = {
     coding = {
       enable = lib.mkOption {
@@ -42,8 +41,8 @@
           '';
         };
         extensions = lib.mkOption {
-          default = [ ];
-          example = [ ];
+          default = [];
+          example = [];
           type = with lib.types; listOf package;
           description = "Extensions to be installed";
         };
@@ -55,8 +54,8 @@
         description = "Use default base packages (only additionalPackages are installed if false)";
       };
       additionalPackages = lib.mkOption {
-        default = [ ];
-        example = [ ];
+        default = [];
+        example = [];
         type = with lib.types; listOf package;
         description = "Additional packages to be installed";
       };
@@ -76,7 +75,7 @@
               ghc
               haskellPackages.haskell-language-server
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               haskell packages
@@ -98,7 +97,7 @@
               tinymist
               ltex-ls
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               typst packages
@@ -119,7 +118,7 @@
               go
               gopls
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               Go packages
@@ -136,8 +135,8 @@
             '';
           };
           packages = lib.mkOption {
-            default = with pkgs; [ rustup ];
-            example = [ ];
+            default = with pkgs; [rustup];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               Rust packages
@@ -161,7 +160,7 @@
               nodePackages.typescript-language-server
               nodePackages.prettier
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               TS/JS packages
@@ -182,7 +181,7 @@
               zig
               zls
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               zig packages
@@ -205,7 +204,7 @@
               jdt-language-server
               temurin-jre-bin
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               Java packages
@@ -232,7 +231,7 @@
               fsharp
               #fsautocomplete
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               C#/F# packages
@@ -255,7 +254,7 @@
               gcc
               clang-tools
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               C/C++ packages
@@ -278,7 +277,7 @@
               python312Packages.python-lsp-ruff
               python312Packages.python-lsp-black
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               python packages
@@ -304,7 +303,7 @@
               #json
               jq
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               packages for said filetypes
@@ -325,7 +324,7 @@
               bash-language-server
               shfmt
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               bash packages
@@ -347,7 +346,7 @@
               tailwindcss-language-server
               # html-tidy
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               html/css packages
@@ -368,7 +367,7 @@
               nodePackages.sql-formatter
               sqls
             ];
-            example = [ ];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               sql packages
@@ -385,8 +384,8 @@
             '';
           };
           packages = lib.mkOption {
-            default = with pkgs; [ gleam ];
-            example = [ ];
+            default = with pkgs; [gleam];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               gleam packages
@@ -403,8 +402,8 @@
             '';
           };
           packages = lib.mkOption {
-            default = with pkgs; [ asm-lsp ];
-            example = [ ];
+            default = with pkgs; [asm-lsp];
+            example = [];
             type = with lib.types; listOf package;
             description = ''
               assembly packages
@@ -415,23 +414,22 @@
     };
   };
 
-  config =
-    let
-      basePackages = with pkgs; [
-        gitui
-        meson
-        ninja
-        tree-sitter
-        unzip
-        pkg-config
-        sqlite
-        plantuml
-        d-spy
-        tmux
-        tmate
-      ];
-      font_family = "${config.mods.stylix.fonts.monospace.name}";
-    in
+  config = let
+    basePackages = with pkgs; [
+      gitui
+      meson
+      ninja
+      tree-sitter
+      unzip
+      pkg-config
+      sqlite
+      plantuml
+      d-spy
+      tmux
+      tmate
+    ];
+    font_family = "${config.mods.stylix.fonts.monospace.name}";
+  in
     lib.mkIf config.mods.coding.enable (
       lib.optionalAttrs (options ? home.packages) {
         programs.dashvim = lib.mkIf config.mods.coding.dashvim {
@@ -444,7 +442,7 @@
           extensions = config.mods.coding.vscodium.extensions;
         };
         xdg.configFile."neovide/config.toml" = lib.mkIf config.mods.coding.dashvim {
-          source = (pkgs.formats.toml { }).generate "neovide" {
+          source = (pkgs.formats.toml {}).generate "neovide" {
             font = {
               size = 12;
               normal = {
@@ -466,8 +464,7 @@
             };
           };
         };
-        home.packages =
-          with pkgs;
+        home.packages = with pkgs;
           [
             (lib.mkIf config.mods.coding.dashvim neovide)
             (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)

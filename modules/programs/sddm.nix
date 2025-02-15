@@ -3,8 +3,7 @@
   options,
   config,
   ...
-}:
-{
+}: {
   options.mods.sddm = {
     enable = lib.mkOption {
       default = false;
@@ -19,7 +18,7 @@
       description = "Use default options provided by module. If disabled, will only apply extraOptions.";
     };
     extraOptions = lib.mkOption {
-      default = { };
+      default = {};
       example = {
         wayland.enable = false;
       };

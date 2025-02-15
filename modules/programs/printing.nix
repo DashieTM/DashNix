@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.printing = {
     enable = lib.mkOption {
       default = true;
@@ -21,7 +20,7 @@
         printing = {
           enable = true;
           browsing = true;
-          drivers = [ pkgs.hplip ];
+          drivers = [pkgs.hplip];
           startWhenNeeded = true; # optional
         };
         avahi = {

@@ -3,9 +3,7 @@
   config,
   options,
   ...
-}:
-{
-
+}: {
   options.mods = {
     acpid.enable = lib.mkOption {
       default = false;
@@ -18,6 +16,6 @@
   };
 
   config = lib.mkIf config.mods.acpid.enable (
-    lib.optionalAttrs (options ? virtualisation.virtualbox.host) { services.acpid.enable = true; }
+    lib.optionalAttrs (options ? virtualisation.virtualbox.host) {services.acpid.enable = true;}
   );
 }

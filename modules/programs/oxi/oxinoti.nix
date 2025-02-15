@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.oxi.oxinoti = {
     enable = lib.mkOption {
       default = true;
@@ -17,7 +16,8 @@
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxinoti.enable = true;
       xdg.configFile."oxinoti/style.css" = {
-        text = # css
+        text =
+          # css
           ''
             @import url("/home/${config.conf.username}/.config/gtk-3.0/gtk.css");
 

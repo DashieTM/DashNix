@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.flatpak = {
     enable = lib.mkOption {
       default = true;
@@ -14,15 +13,15 @@
       description = "Enables the flatpak package manager";
     };
     additional_packages = lib.mkOption {
-      default = [ ];
-      example = [ ];
+      default = [];
+      example = [];
       type = with lib.types; listOf str;
       description = "Flatpak packages";
     };
   };
   config = lib.mkIf config.mods.flatpak.enable (
     lib.optionalAttrs (options ? services.flatpak.remote) {
-      environment.systemPackages = [ pkgs.flatpak ];
+      environment.systemPackages = [pkgs.flatpak];
       services.flatpak.remotes = lib.mkOptionDefault [
         {
           name = "flathub-stable";
@@ -32,11 +31,13 @@
       services.flatpak.uninstallUnmanaged = true;
     }
     // lib.optionalAttrs (options ? services.flatpak.packages) {
-      services.flatpak.packages = [
-        # fallback if necessary, but generally avoided as nix is superior :)
-        # default flatseal installation since flatpak permissions are totally not a broken idea 
-        "com.github.tchx84.Flatseal"
-      ] ++ config.mods.flatpak.additional_packages;
+      services.flatpak.packages =
+        [
+          # fallback if necessary, but generally avoided as nix is superior :)
+          # default flatseal installation since flatpak permissions are totally not a broken idea
+          "com.github.tchx84.Flatseal"
+        ]
+        ++ config.mods.flatpak.additional_packages;
     }
   );
 }

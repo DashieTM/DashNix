@@ -3,8 +3,7 @@
   options,
   config,
   ...
-}:
-{
+}: {
   options.mods.gdm = {
     enable = lib.mkOption {
       default = false;
@@ -13,8 +12,8 @@
       description = "Enables the gdm displayManager";
     };
     extraOptions = lib.mkOption {
-      default = { };
-      example = { };
+      default = {};
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "Extra options to be applied to the gnome config";
     };

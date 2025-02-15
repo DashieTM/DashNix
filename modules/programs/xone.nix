@@ -3,9 +3,7 @@
   config,
   options,
   ...
-}:
-{
-
+}: {
   options.mods = {
     xone.enable = lib.mkOption {
       default = false;
@@ -17,5 +15,5 @@
     };
   };
 
-  config = lib.optionalAttrs (options ? hardware) { hardware.xone.enable = true; };
+  config = lib.optionalAttrs (options ? hardware) {hardware.xone.enable = true;};
 }

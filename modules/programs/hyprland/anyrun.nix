@@ -5,8 +5,7 @@
   options,
   inputs,
   ...
-}:
-{
+}: {
   options.mods = {
     hyprland = {
       anyrun = {
@@ -25,8 +24,8 @@
           '';
         };
         customConfig = lib.mkOption {
-          default = { };
-          example = { };
+          default = {};
+          example = {};
           type = with lib.types; attrsOf anything;
           description = ''
             Custom anyrun configuration.
@@ -63,7 +62,8 @@
       programs.anyrun = {
         enable = true;
         config =
-          if config.mods.hyprland.anyrun.useDefaultConfig then
+          if config.mods.hyprland.anyrun.useDefaultConfig
+          then
             {
               plugins = [
                 inputs.anyrun.packages.${pkgs.system}.applications
@@ -84,15 +84,15 @@
               closeOnClick = true;
             }
             // config.mods.hyprland.anyrun.customConfig
-          else
-            config.mods.hyprland.anyrun.customConfig;
+          else config.mods.hyprland.anyrun.customConfig;
 
         extraCss =
-          if config.mods.hyprland.anyrun.useDefaultCss then
+          if config.mods.hyprland.anyrun.useDefaultCss
+          then
             ''
               #window {
                 border-radius: 10px;
-                background-color: none; 
+                background-color: none;
               }
 
               box#main {
@@ -138,8 +138,7 @@
               }
             ''
             + config.mods.hyprland.anyrun.customCss
-          else
-            config.mods.hyprland.anyrun.customCss;
+          else config.mods.hyprland.anyrun.customCss;
       };
     }
   );

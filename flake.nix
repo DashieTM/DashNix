@@ -48,66 +48,62 @@
     };
   };
 
-  outputs =
-    { self, ... }@inputs:
-    let
-      permittedPackages = [
-        "olm-3.2.16"
-        # well done dotnet...
-        # this is just for omnisharp
-        "dotnet-core-combined"
-        "dotnet-wrapped-combined"
-        "dotnet-combined"
-        "dotnet-sdk-6.0.428"
-        "dotnet-sdk-wrapped-6.0.428"
-        "dotnet-sdk-6.0.136"
-        "dotnet-sdk-wrapped-6.0.136"
-        "dotnet-sdk-7.0.120"
-        "dotnet-sdk-wrapped-7.0.120"
-        "dotnet-sdk-7.0.410"
-        "dotnet-sdk-wrapped-7.0.410"
-        "jitsi-meet-1.0.8043"
-        "nextcloud-27.1.11"
-      ];
-      stable = import inputs.stable {
-        system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-          allowBroken = true;
-          permittedInsecurePackages = permittedPackages;
-        };
+  outputs = {self, ...} @ inputs: let
+    permittedPackages = [
+      "olm-3.2.16"
+      # well done dotnet...
+      # this is just for omnisharp
+      "dotnet-core-combined"
+      "dotnet-wrapped-combined"
+      "dotnet-combined"
+      "dotnet-sdk-6.0.428"
+      "dotnet-sdk-wrapped-6.0.428"
+      "dotnet-sdk-6.0.136"
+      "dotnet-sdk-wrapped-6.0.136"
+      "dotnet-sdk-7.0.120"
+      "dotnet-sdk-wrapped-7.0.120"
+      "dotnet-sdk-7.0.410"
+      "dotnet-sdk-wrapped-7.0.410"
+      "jitsi-meet-1.0.8043"
+      "nextcloud-27.1.11"
+    ];
+    stable = import inputs.stable {
+      system = "x86_64-linux";
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = permittedPackages;
       };
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-        config = {
-          allowUnsupportedSystem = true;
-          permittedInsecurePackages = permittedPackages;
-          allowBroken = true;
-          allowUnfree = true;
-        };
-      };
-    in
-    rec {
-      dashNixLib = import ./lib {
-        inherit
-          self
-          inputs
-          pkgs
-          stable
-          ;
-        lib = inputs.nixpkgs.lib;
-      };
-      docs = import ./docs {
-        inherit inputs pkgs stable;
-        lib = inputs.nixpkgs.lib;
-        build_systems = dashNixLib.build_systems;
-      };
-      dashNixInputs = inputs;
-      stablePkgs = stable;
-      unstablePkgs = pkgs;
-      modules = ./modules;
-      iso = dashNixLib.buildIso.config.system.build.isoImage;
     };
+    pkgs = import inputs.nixpkgs {
+      system = "x86_64-linux";
+      config = {
+        allowUnsupportedSystem = true;
+        permittedInsecurePackages = permittedPackages;
+        allowBroken = true;
+        allowUnfree = true;
+      };
+    };
+  in rec {
+    dashNixLib = import ./lib {
+      inherit
+        self
+        inputs
+        pkgs
+        stable
+        ;
+      lib = inputs.nixpkgs.lib;
+    };
+    docs = import ./docs {
+      inherit inputs pkgs stable;
+      lib = inputs.nixpkgs.lib;
+      build_systems = dashNixLib.build_systems;
+    };
+    dashNixInputs = inputs;
+    stablePkgs = stable;
+    unstablePkgs = pkgs;
+    modules = ./modules;
+    iso = dashNixLib.buildIso.config.system.build.isoImage;
+  };
 
   nixConfig = {
     builders-use-substitutes = true;

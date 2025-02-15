@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.browser.chromium = {
     enable = lib.mkOption {
       default = false;
@@ -17,7 +16,7 @@
   };
   config = lib.mkIf config.mods.browser.chromium.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [ chromium ];
+      home.packages = with pkgs; [chromium];
     }
   );
 }

@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.keepassxc = {
     enable = lib.mkOption {
       default = true;
@@ -34,7 +33,7 @@
   };
   config = lib.mkIf config.mods.keepassxc.enable (
     lib.optionalAttrs (options ? home.file) {
-      home.packages = [ pkgs.keepassxc ];
+      home.packages = [pkgs.keepassxc];
       xdg.configFile."keepassxc/keepassxc.ini" = {
         text = ''
           [General]

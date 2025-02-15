@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.oxi.oxipaste = {
     enable = lib.mkOption {
       default = true;

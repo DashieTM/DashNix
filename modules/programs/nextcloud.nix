@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   options.mods = {
     nextcloud = {
       enable = lib.mkOption {
@@ -21,7 +20,7 @@
         description = "Your url";
       };
       synclist = lib.mkOption {
-        default = [ ];
+        default = [];
         example = [
           {
             name = "sync globi folder";
@@ -36,5 +35,4 @@
       };
     };
   };
-
 }

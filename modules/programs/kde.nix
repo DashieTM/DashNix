@@ -3,8 +3,7 @@
   options,
   config,
   ...
-}:
-{
+}: {
   options.mods.kde = {
     enable = lib.mkOption {
       default = false;
@@ -20,5 +19,4 @@
       services.desktopManager.plasma6.enable = true;
     }
   );
-
 }

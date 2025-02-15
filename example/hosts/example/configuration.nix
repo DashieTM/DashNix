@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   # variables for system
   # TODO important changes
   conf = {

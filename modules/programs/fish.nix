@@ -5,12 +5,10 @@
   config,
   options,
   ...
-}:
-let
-  base16 = pkgs.callPackage inputs.base16.lib { };
-  scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
-in
-{
+}: let
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
+in {
   options.mods.fish = {
     enable = lib.mkOption {
       default = true;
@@ -36,7 +34,8 @@ in
       programs.fish = {
         enable = true;
         shellInit =
-          if config.mods.fish.useDefaultConfig then
+          if config.mods.fish.useDefaultConfig
+          then
             ''
               if status is-interactive
                   # Commands to run in interactive sessions can go here
@@ -182,8 +181,7 @@ in
               direnv hook fish | source
             ''
             + config.mods.fish.additionalConfig
-          else
-            config.mods.fish.additionalConfig;
+          else config.mods.fish.additionalConfig;
       };
     }
   );

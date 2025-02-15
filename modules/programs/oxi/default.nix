@@ -4,8 +4,7 @@
   options,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./oxidash.nix
     ./oxinoti.nix

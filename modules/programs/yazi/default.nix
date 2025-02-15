@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.yazi = {
     enable = lib.mkOption {
       default = true;
@@ -19,8 +18,8 @@
       description = "Use default yazi config (if disabled only additionalConfig is used)";
     };
     additionalConfig = lib.mkOption {
-      default = { };
-      example = { };
+      default = {};
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "Additional config for yazi";
     };
@@ -31,16 +30,15 @@
       description = "Use default yazi keymap (if disabled only additionalKeymap is used)";
     };
     additionalKeymap = lib.mkOption {
-      default = { };
-      example = { };
+      default = {};
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "Additional keymap for yazi";
     };
   };
-  config =
-    let
-      conf = import ./yazi.nix;
-    in
+  config = let
+    conf = import ./yazi.nix;
+  in
     lib.optionalAttrs (options ? home.packages) (
       lib.mkIf config.mods.yazi.enable {
         programs.yazi = {

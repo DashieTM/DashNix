@@ -4,20 +4,16 @@
   pkgs,
   options,
   ...
-}:
-{
+}: {
   options.conf = {
-
     system = lib.mkOption {
       default = "x86_64-linux";
       # no fisherprice unix support
-      type =
-        with lib.types;
-        (enum [
-          "x86_64-linux"
-          "aarch64-linux"
-          "aarch64-linux-android"
-        ]);
+      type = with lib.types; (enum [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-linux-android"
+      ]);
       example = "aarch64-linux";
       description = ''
         System architecture.
@@ -27,12 +23,10 @@
     cpu = lib.mkOption {
       # TODO: how to enable arm?
       default = "amd";
-      type =
-        with lib.types;
-        (enum [
-          "amd"
-          "intel"
-        ]);
+      type = with lib.types; (enum [
+        "amd"
+        "intel"
+      ]);
       example = "intel";
       description = ''
         cpu microcode.
@@ -43,7 +37,7 @@
       default = [
         "video=${config.conf.defaultMonitor}:${config.conf.defaultMonitorMode}"
       ];
-      example = [ ];
+      example = [];
       type = with lib.types; listOf str;
       description = ''
         additional kernelParams passed to bootloader
@@ -79,7 +73,7 @@
 
     ironbar = {
       modules = lib.mkOption {
-        default = [ ];
+        default = [];
         example = [
           {
             type = "upower";
@@ -94,8 +88,8 @@
     };
 
     bootParams = lib.mkOption {
-      default = [ ];
-      example = [ "resume=something" ];
+      default = [];
+      example = ["resume=something"];
       type = with lib.types; listOf str;
       description = ''
         Boot params
@@ -164,7 +158,7 @@
       default = "23.05";
       type = lib.types.str;
       description = ''
-        System state version 
+        System state version
       '';
     };
     homeStateVersion = lib.mkOption {
@@ -172,10 +166,9 @@
       example = "23.05";
       type = lib.types.str;
       description = ''
-        Home state version 
+        Home state version
       '';
     };
-
   };
 
   config =

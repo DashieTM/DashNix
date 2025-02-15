@@ -9,7 +9,7 @@
 stdenv.mkDerivation (final: {
   pname = "teams-pwa";
   name = final.pname;
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [copyDesktopItems];
   dontUnpack = true;
 
   desktopItems = [
@@ -21,15 +21,15 @@ stdenv.mkDerivation (final: {
       } --app=https://teams.microsoft.com";
       desktopName = "Microsoft Teams PWA";
       genericName = "Progressive Web App for Microsoft Teams";
-      categories = [ "Network" ];
-      mimeTypes = [ "x-scheme-handler/msteams" ];
+      categories = ["Network"];
+      mimeTypes = ["x-scheme-handler/msteams"];
     })
   ];
 
   meta = with lib; {
     description = "Microsoft Teams PWA";
     homepage = "https://teams.microsoft.com";
-    maintainers = with maintainers; [ ners ];
+    maintainers = with maintainers; [ners];
     platforms = chromium.meta.platforms;
   };
 })

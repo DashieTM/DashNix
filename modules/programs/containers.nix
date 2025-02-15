@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.containers = {
     variant = lib.mkOption {
       default = "";
@@ -22,7 +21,7 @@
         podman-tui
         podman-compose
       ];
-      example = [ ];
+      example = [];
       type = with lib.types; listOf package;
       description = "Podman packages";
     };
@@ -30,7 +29,7 @@
       default = with pkgs; [
         docker-compose
       ];
-      example = [ ];
+      example = [];
       type = with lib.types; listOf package;
       description = "Docker packages";
     };
@@ -38,7 +37,7 @@
       default = with pkgs; [
         dive
       ];
-      example = [ ];
+      example = [];
       type = with lib.types; listOf package;
       description = "Container packages";
     };
@@ -47,33 +46,35 @@
     lib.optionalAttrs (options ? environment.systemPackages) {
       environment.systemPackages =
         (lib.lists.optionals (
-          config.mods.containers.variant == "podman"
-        ) config.mods.containers.podmanPackages)
+            config.mods.containers.variant == "podman"
+          )
+          config.mods.containers.podmanPackages)
         ++ (lib.lists.optionals (
-          config.mods.containers.variant == "docker"
-        ) config.mods.containers.dockerPackages)
+            config.mods.containers.variant == "docker"
+          )
+          config.mods.containers.dockerPackages)
         ++ (lib.lists.optionals (
-          config.mods.containers.variant == "podman" || config.mods.containers.variant == "docker"
-        ) config.mods.containers.combinedPackages);
+            config.mods.containers.variant == "podman" || config.mods.containers.variant == "docker"
+          )
+          config.mods.containers.combinedPackages);
       virtualisation =
-        if (config.mods.containers.variant == "podman") then
-          {
-            containers.enable = true;
-            podman = {
-              enable = true;
-              dockerCompat = true;
-              defaultNetwork.settings.dns_enabled = true;
-            };
-          }
-        else if (config.mods.containers.variant == "docker") then
-          {
-            containers.enable = true;
-            docker = {
-              enable = true;
-            };
-          }
-        else
-          { };
+        if (config.mods.containers.variant == "podman")
+        then {
+          containers.enable = true;
+          podman = {
+            enable = true;
+            dockerCompat = true;
+            defaultNetwork.settings.dns_enabled = true;
+          };
+        }
+        else if (config.mods.containers.variant == "docker")
+        then {
+          containers.enable = true;
+          docker = {
+            enable = true;
+          };
+        }
+        else {};
     }
   );
 }

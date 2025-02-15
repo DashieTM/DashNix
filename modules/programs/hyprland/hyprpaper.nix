@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods = {
     hyprland.hyprpaper = {
       enable = lib.mkOption {
@@ -17,7 +16,7 @@
       config = lib.mkOption {
         default = "";
         example = ''
-          preload = path/to/wallpaper 
+          preload = path/to/wallpaper
           wallpaper = YOURMONITOR,path/to/wallpaper
         '';
         type = lib.types.lines;
@@ -30,7 +29,7 @@
 
   config = lib.mkIf config.mods.hyprland.hyprpaper.enable (
     lib.optionalAttrs (options ? xdg.configFile) {
-      home.packages = with pkgs; [ hyprpaper ];
+      home.packages = with pkgs; [hyprpaper];
       xdg.configFile."hypr/hyprpaper.conf" = lib.mkIf config.mods.hyprland.hyprpaper.enable {
         text = config.mods.hyprland.hyprpaper.config;
       };

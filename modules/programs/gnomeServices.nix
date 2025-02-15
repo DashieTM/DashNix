@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods = {
     gnomeServices.enable = lib.mkOption {
       default = true;
@@ -43,7 +42,7 @@
         ];
       };
       environment.extraInit = ''
-        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh" 
+        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
       '';
       services = {
         # needed for GNOME services outside of GNOME Desktop
@@ -66,15 +65,14 @@
         };
       };
       home = {
-        packages =
-          let
-            packages = with pkgs; [
-              gcr
-              nautilus
-              sushi
-              nautilus-python
-            ];
-          in
+        packages = let
+          packages = with pkgs; [
+            gcr
+            nautilus
+            sushi
+            nautilus-python
+          ];
+        in
           lib.mkIf config.mods.nautilus.enable packages;
       };
     }

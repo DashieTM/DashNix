@@ -3,16 +3,14 @@
   inputs,
   pkgs,
   ...
-}:
-let
+}: let
   # at time of using this here, stylix might not be evaluated yet
   # hence ensure it is by using base16 mkSchemeAttrs
-  base16 = pkgs.callPackage inputs.base16.lib { };
-  scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
-in
-{
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
+in {
   xdg.configFile."oxiced/theme.toml" = {
-    source = (pkgs.formats.toml { }).generate "oxiced" {
+    source = (pkgs.formats.toml {}).generate "oxiced" {
       name = scheme.scheme;
       base00 = scheme.base00;
       base01 = scheme.base01;

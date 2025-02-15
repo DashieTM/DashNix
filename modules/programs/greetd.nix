@@ -5,8 +5,7 @@
   pkgs,
   options,
   ...
-}:
-{
+}: {
   options.mods = {
     greetd = {
       enable = lib.mkOption {
@@ -32,7 +31,7 @@
         type = lib.types.str;
         description = ''
           Scale used by the monitor in the login screen.
-          By default the scale of the main monitor is used. 
+          By default the scale of the main monitor is used.
         '';
       };
       resolution = lib.mkOption {
@@ -40,7 +39,7 @@
         example = "3440x1440@180";
         type = lib.types.str;
         description = ''
-          Resolution/refreshrate used by the monitor in the login screen. 
+          Resolution/refreshrate used by the monitor in the login screen.
         '';
       };
       environments = lib.mkOption {
@@ -54,13 +53,13 @@
         '';
         type = lib.types.lines;
         description = ''
-          List of environments that should be available in the login prompt. 
+          List of environments that should be available in the login prompt.
         '';
       };
       regreet = {
         customSettings = lib.mkOption {
-          default = { };
-          example = { };
+          default = {};
+          example = {};
           type = with lib.types; attrsOf anything;
           description = ''
             Custom regret settings. See https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml for more information.
@@ -70,16 +69,15 @@
     };
   };
 
-  config =
-    let
-      username = config.conf.username;
-      session = {
-        command = "${
-          lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
-        } --config /etc/greetd/hyprgreet.conf";
-        user = username;
-      };
-    in
+  config = let
+    username = config.conf.username;
+    session = {
+      command = "${
+        lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
+      } --config /etc/greetd/hyprgreet.conf";
+      user = username;
+    };
+  in
     lib.mkIf config.mods.greetd.enable (
       lib.optionalAttrs (options ? environment) {
         services.xserver.displayManager.session = [
@@ -136,8 +134,8 @@
       }
       // lib.optionalAttrs (options ? home) {
         xdg.configFile."regreet/regreet.toml".source =
-          (pkgs.formats.toml { }).generate "regreet"
-            config.mods.greetd.regreet.customSettings;
+          (pkgs.formats.toml {}).generate "regreet"
+          config.mods.greetd.regreet.customSettings;
       }
     );
 }

@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods = {
     bluetooth.enable = lib.mkOption {
       default = false;

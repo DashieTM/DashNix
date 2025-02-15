@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.browser.brave = {
     enable = lib.mkOption {
       default = false;
@@ -17,7 +16,7 @@
   };
   config = lib.mkIf config.mods.browser.brave.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [ brave ];
+      home.packages = with pkgs; [brave];
     }
   );
 }

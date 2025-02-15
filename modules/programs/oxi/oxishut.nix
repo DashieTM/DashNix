@@ -3,8 +3,7 @@
   config,
   options,
   ...
-}:
-{
+}: {
   options.mods.oxi.oxishut = {
     enable = lib.mkOption {
       default = true;

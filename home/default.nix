@@ -1,22 +1,21 @@
 {
-  inputs,
-  pkgs,
-  config,
-  lib,
-  mod,
   additionalHomeConfig,
-  homeMods,
   additionalHomeMods,
   additionalInputs,
+  config,
+  homeMods,
+  inputs,
+  lib,
+  mod,
+  pkgs,
   root,
   ...
-}:
-{
+}: {
   xdg = {
     portal.config.common.default = "*";
     portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
   };
   home-manager = {

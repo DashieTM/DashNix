@@ -5,12 +5,13 @@
   hostName,
   modulesPath,
   ...
-}:
-let
+}: let
   username = config.conf.username;
-in
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+in {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    #(modulesPath + "/misc/nixpkgs/read-only.nix")
+  ];
 
   # Bootloader.
   boot = {
@@ -34,11 +35,13 @@ in
         "sd_mod"
       ];
     };
-    kernelParams = [
-      ''resume="PARTLABEL=SWAP"''
-      ''quiet''
-      ''udev.log_level=3''
-    ] ++ config.conf.bootParams;
+    kernelParams =
+      [
+        ''resume="PARTLABEL=SWAP"''
+        ''quiet''
+        ''udev.log_level=3''
+      ]
+      ++ config.conf.bootParams;
   };
 
   # Enable networking
@@ -59,6 +62,8 @@ in
     flatpak.enable = true;
     xserver.enable = true;
     fstrim.enable = lib.mkDefault true;
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa = {
@@ -78,16 +83,14 @@ in
       options = "--delete-older-than 7d --delete-generations +5";
     };
     settings = {
-      trusted-users = [ username ];
+      trusted-users = [username];
       auto-optimise-store = true;
 
       experimental-features = "nix-command flakes";
     };
   };
 
-  # Enable sound with pipewire.
   hardware = {
-    pulseaudio.enable = false;
     cpu.${config.conf.cpu}.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
@@ -124,5 +127,4 @@ in
       password = "firstlogin";
     };
   };
-
 }

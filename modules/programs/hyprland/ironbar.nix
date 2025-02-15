@@ -3,11 +3,9 @@
   config,
   options,
   ...
-}:
-let
+}: let
   username = config.conf.username;
-in
-{
+in {
   options.mods = {
     hyprland.ironbar = {
       enable = lib.mkOption {
@@ -25,8 +23,8 @@ in
         '';
       };
       customConfig = lib.mkOption {
-        default = { };
-        example = { };
+        default = {};
+        example = {};
         type = with lib.types; attrsOf anything;
         description = ''
           Custom ironbar configuration.
@@ -61,7 +59,8 @@ in
       programs.ironbar = {
         enable = true;
         style =
-          if config.mods.hyprland.ironbar.useDefaultCss then
+          if config.mods.hyprland.ironbar.useDefaultCss
+          then
             ''
               @import url("/home/${username}/.config/gtk-3.0/gtk.css");
 
@@ -197,106 +196,108 @@ in
               }
             ''
             + config.mods.hyprland.ironbar.customCss
-          else
-            config.mods.hyprland.ironbar.customCss;
+          else config.mods.hyprland.ironbar.customCss;
         features = [
           #"another_feature"
         ];
         config = {
           monitors."${config.conf.defaultMonitor}" =
-            if config.mods.hyprland.ironbar.useDefaultConfig then
+            if config.mods.hyprland.ironbar.useDefaultConfig
+            then
               {
-                end = config.conf.ironbar.modules ++ [
-                  {
-                    type = "sys_info";
-                    format = [ " {memory_percent}" ];
-                    interval.memory = 30;
-                    class = "memory-usage";
-                  }
-                  {
-                    type = "custom";
-                    bar = [
-                      {
-                        type = "button";
-                        class = "popup-button";
-                        label = "";
-                        on_click = "popup:toggle";
-                      }
-                    ];
-                    class = "popup-button-box";
-                    popup = [
-                      {
-                        type = "box";
-                        orientation = "vertical";
-                        class = "audio-box";
-                        widgets = [
-                          {
-                            type = "box";
-                            orientation = "horizontal";
-                            widgets = [
-                              {
-                                type = "button";
-                                class = "audio-button";
-                                label = "";
-                                on_click = (lib.mkIf config.mods.scripts.audioControl "!audioControl bluetooth");
-                              }
-                              {
-                                type = "button";
-                                class = "audio-button";
-                                label = "󰋋";
-                                on_click = (lib.mkIf config.mods.scripts.audioControl "!audioControl internal");
-                              }
-                            ];
-                            class = "audio-button-box";
-                          }
-                          {
-                            type = "label";
-                            label = "Output";
-                          }
-                          {
-                            type = "slider";
-                            class = "audio-slider";
-                            step = 1.0;
-                            length = 200;
-                            value = "pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
-                            on_change = "!pactl set-sink-volume @DEFAULT_SINK@ $0%";
-                          }
-                          {
-                            type = "label";
-                            label = "Input";
-                          }
-                          {
-                            type = "slider";
-                            class = "audio-slider";
-                            step = 1.0;
-                            length = 200;
-                            value = "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
-                            on_change = "!pactl set-source-volume @DEFAULT_SOURCE@ $0%";
-                          }
-                        ];
-                      }
-                    ];
-                  }
-                  {
-                    type = "custom";
-                    bar = [
-                      {
-                        type = "button";
-                        class = "popup-button";
-                        label = "";
-                        on_click = "!oxidash --css /home/${username}/gits/oxidash/style.css";
-                      }
-                    ];
-                    class = "popup-button-box";
-                  }
-                  {
-                    type = "clock";
-                    format = "%I:%M";
-                    format_popup = "%I:%M:%S";
-                    locale = "en_US";
-                  }
-                  { type = "tray"; }
-                ];
+                end =
+                  config.conf.ironbar.modules
+                  ++ [
+                    {
+                      type = "sys_info";
+                      format = [" {memory_percent}"];
+                      interval.memory = 30;
+                      class = "memory-usage";
+                    }
+                    {
+                      type = "custom";
+                      bar = [
+                        {
+                          type = "button";
+                          class = "popup-button";
+                          label = "";
+                          on_click = "popup:toggle";
+                        }
+                      ];
+                      class = "popup-button-box";
+                      popup = [
+                        {
+                          type = "box";
+                          orientation = "vertical";
+                          class = "audio-box";
+                          widgets = [
+                            {
+                              type = "box";
+                              orientation = "horizontal";
+                              widgets = [
+                                {
+                                  type = "button";
+                                  class = "audio-button";
+                                  label = "";
+                                  on_click = lib.mkIf config.mods.scripts.audioControl "!audioControl bluetooth";
+                                }
+                                {
+                                  type = "button";
+                                  class = "audio-button";
+                                  label = "󰋋";
+                                  on_click = lib.mkIf config.mods.scripts.audioControl "!audioControl internal";
+                                }
+                              ];
+                              class = "audio-button-box";
+                            }
+                            {
+                              type = "label";
+                              label = "Output";
+                            }
+                            {
+                              type = "slider";
+                              class = "audio-slider";
+                              step = 1.0;
+                              length = 200;
+                              value = "pactl get-sink-volume @DEFAULT_SINK@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
+                              on_change = "!pactl set-sink-volume @DEFAULT_SINK@ $0%";
+                            }
+                            {
+                              type = "label";
+                              label = "Input";
+                            }
+                            {
+                              type = "slider";
+                              class = "audio-slider";
+                              step = 1.0;
+                              length = 200;
+                              value = "pactl get-source-volume @DEFAULT_SOURCE@ | awk -F'/' '{ print $2 }' | tr -d ' %'";
+                              on_change = "!pactl set-source-volume @DEFAULT_SOURCE@ $0%";
+                            }
+                          ];
+                        }
+                      ];
+                    }
+                    {
+                      type = "custom";
+                      bar = [
+                        {
+                          type = "button";
+                          class = "popup-button";
+                          label = "";
+                          on_click = "!oxidash --css /home/${username}/gits/oxidash/style.css";
+                        }
+                      ];
+                      class = "popup-button-box";
+                    }
+                    {
+                      type = "clock";
+                      format = "%I:%M";
+                      format_popup = "%I:%M:%S";
+                      locale = "en_US";
+                    }
+                    {type = "tray";}
+                  ];
                 position = "top";
                 height = 10;
                 anchor_to_edges = true;
@@ -317,8 +318,7 @@ in
                 ];
               }
               // config.mods.hyprland.ironbar.customConfig
-            else
-              config.mods.hyprland.ironbar.customConfig;
+            else config.mods.hyprland.ironbar.customConfig;
         };
       };
     }

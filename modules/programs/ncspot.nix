@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.ncspot = {
     enable = lib.mkOption {
       default = false;
@@ -16,13 +15,13 @@
   };
   config = lib.mkIf config.mods.ncspot.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [ ncspot ];
-      xdg.configFile."ncspot/config.toml".source = (pkgs.formats.toml { }).generate "ncspot" {
+      home.packages = with pkgs; [ncspot];
+      xdg.configFile."ncspot/config.toml".source = (pkgs.formats.toml {}).generate "ncspot" {
         notify = true;
         shuffle = true;
         cover_max_scale = 2;
         initial_screen = "library";
-        library_tabs = [ "playlists" ];
+        library_tabs = ["playlists"];
         theme = {
           background = "#1a1b26";
           primary = "#9aa5ce";

@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods = {
     hyprland.hyprlock = {
       enable = lib.mkOption {
@@ -22,7 +21,7 @@
       stylix.targets.hyprlock = {
         enable = false;
       };
-      home.packages = with pkgs; [ hyprlock ];
+      home.packages = with pkgs; [hyprlock];
       programs.hyprlock = lib.mkIf config.mods.hyprland.hyprlock.enable {
         enable = true;
         settings = {

@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   environment = {
     variables = {
       GSETTINGS_SCHEMA_DIR = "${pkgs.glib.getSchemaPath pkgs.gsettings-desktop-schemas}";

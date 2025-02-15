@@ -21,11 +21,9 @@
     };
   };
 
-  outputs =
-    { ... }@inputs:
-    {
-      nixosConfigurations = inputs.dashNix.dashNixLib.build_systems { root = ./.; };
-    };
+  outputs = {...} @ inputs: {
+    nixosConfigurations = inputs.dashNix.dashNixLib.build_systems {root = ./.;};
+  };
 
   nixConfig = {
     builders-use-substitutes = true;

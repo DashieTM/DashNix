@@ -4,8 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
+}: {
   options.mods.stylix = {
     colorscheme = lib.mkOption {
       default = "catppuccin-mocha";
@@ -34,8 +33,7 @@
         base0E = "BB9AF7";
         base0F = "F7768E";
       };
-      type =
-        with lib.types;
+      type = with lib.types;
         oneOf [
           str
           attrs
@@ -57,7 +55,7 @@
         name = "catppuccin-mocha-lavender-cursors";
         size = 24;
       };
-      example = { };
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "Xcursor config";
     };
@@ -83,7 +81,7 @@
           name = "Noto Color Emoji";
         };
       };
-      example = { };
+      example = {};
       type = with lib.types; attrsOf anything;
       description = "font config";
     };
@@ -101,10 +99,9 @@
         fonts = config.mods.stylix.fonts;
         cursor = config.mods.stylix.cursor;
         base16Scheme = (
-          if builtins.isAttrs config.mods.stylix.colorscheme then
-            config.mods.stylix.colorscheme
-          else
-            "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml"
+          if builtins.isAttrs config.mods.stylix.colorscheme
+          then config.mods.stylix.colorscheme
+          else "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml"
         );
       };
     })

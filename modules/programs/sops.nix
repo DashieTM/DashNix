@@ -5,8 +5,7 @@
   options,
   root,
   ...
-}:
-{
+}: {
   options.mods.sops = {
     enable = lib.mkOption {
       default = true;
@@ -15,13 +14,13 @@
       description = "Enable sops secrets";
     };
     secrets = lib.mkOption {
-      default = { };
+      default = {};
       example = {
-        hub = { };
-        lab = { };
-        ${config.conf.username} = { };
-        nextcloud = { };
-        access = { };
+        hub = {};
+        lab = {};
+        ${config.conf.username} = {};
+        nextcloud = {};
+        access = {};
       };
       type = with lib.types; attrsOf anything;
       description = "secrets for sops";
@@ -29,8 +28,7 @@
     sopsPath = lib.mkOption {
       default = root + /secrets/secrets.yaml;
       example = "/your/path";
-      type =
-        with lib.types;
+      type = with lib.types;
         oneOf [
           str
           path
@@ -46,18 +44,18 @@
   };
   config = lib.mkIf config.mods.sops.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [ sops ];
+      home.packages = with pkgs; [sops];
       sops = {
         gnupg = {
           home = "~/.gnupg";
-          sshKeyPaths = [ ];
+          sshKeyPaths = [];
         };
         defaultSopsFile = config.mods.sops.sopsPath;
         validateSopsFiles = config.mods.sops.validateSopsFile;
         secrets = config.mods.sops.secrets;
       };
 
-      systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
+      systemd.user.services.mbsync.Unit.After = ["sops-nix.service"];
     }
   );
 }

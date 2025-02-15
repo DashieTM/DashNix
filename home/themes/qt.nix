@@ -4,23 +4,25 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   username = config.conf.username;
   # at time of using this here, stylix might not be evaluated yet
   # hence ensure it is by using base16 mkSchemeAttrs
-  base16 = pkgs.callPackage inputs.base16.lib { };
-  scheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
   # active_colors=#ffc0caf5, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ffc0caf5, #ffc0caf5, #ffc0caf5, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ffc0caf5, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ffc0caf5, #ffc0caf5
   # disabled_colors=#ff6d728d, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d
   # inactive_colors=#ff6d728d, #${scheme.base00}, #ff373949, #ff2b2c3b, #ff1a1b26, #ff2b2c3b, #ff6d728d, #ff6d728d, #ff6d728d, #ff1a1b26, #ff1a1b26, #19000000, #ff2b2c3b, #ff6d728d, #ff3584e4, #ff1b6acb, #ff1a1b26, #ff242530, #ff1a1b26, #ff6d728d, #ff6d728d
   color = ''
+
+
     [ColorScheme]
     active_colors=#ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base00}, #ff${scheme.base05}, #ff${scheme.base04}, #ff${scheme.base05}, #ff${scheme.base00}, #ff${scheme.base00}, #00${scheme.base01}, #ff${scheme.base02}, #ff${scheme.base04}, #ff${scheme.base08}, #ff${scheme.base04}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base04}
     disabled_colors=#ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base00}, #ff${scheme.base05}, #ff${scheme.base04}, #ff${scheme.base05}, #ff${scheme.base00}, #ff${scheme.base00}, #00${scheme.base01}, #ff${scheme.base02}, #ff${scheme.base04}, #ff${scheme.base08}, #ff${scheme.base04}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base04}
     inactive_colors=#ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base00}, #ff${scheme.base05}, #ff${scheme.base04}, #ff${scheme.base05}, #ff${scheme.base00}, #ff${scheme.base00}, #00${scheme.base01}, #ff${scheme.base02}, #ff${scheme.base04}, #ff${scheme.base08}, #ff${scheme.base04}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base04}
   '';
   qss = ''
+
     QTabBar::tab:selected {
         color: palette(highlight);
     }
@@ -28,33 +30,7 @@ let
         border: none;
     }
   '';
-
-  ## test
-  #cfg = config.stylix.targets.qt;
-  kvconfig = config.lib.stylix.colors {
-    template = ./kvconfig.mustache;
-    extension = ".kvconfig";
-  };
-  svg = config.lib.stylix.colors {
-    template = ./kvantum-svg.mustache;
-    extension = "svg";
-  };
-  kvantumPackage = pkgs.runCommandLocal "base16-kvantum" { } ''
-    directory="$out/share/Kvantum/Base16Kvantum"
-    mkdir --parents "$directory"
-    cat ${kvconfig} >>"$directory/Base16Kvantum.kvconfig"
-    cat ${svg} >>"$directory/Base16Kvantum.svg"
-  '';
-
-  xdg.configFile."Kvantum/kvantum.kvconfig".source =
-    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
-      {
-        General.theme = "Base16Kvantum";
-      };
-
-  xdg.configFile."Kvantum/Base16Kvantum".source = "${kvantumPackage}/share/Kvantum/Base16Kvantum";
-in
-{
+in {
   xdg.configFile."qt5ct/colors/tokyonight.conf" = {
     text = "${color}";
   };
@@ -64,34 +40,18 @@ in
   xdg.configFile."qt5ct/qss/tab.qss" = {
     text = "${qss}";
   };
+  stylix.targets.qt = {
+    enable = false;
+  };
   qt = {
     enable = true;
     style.package = pkgs.libsForQt5.breeze-qt5;
     style.name = lib.mkForce "breeze-dark";
   };
 
-  # ## test
-  # xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-  #     General.theme = "Base16Kvantum";
-  #   };
-
-  #   xdg.configFile."Kvantum/Base16Kvantum".source = "${kvantumPackage}/share/Kvantum/Base16Kvantum";
-
-  # xdg.configFile."qt5ct/qt5ct.conf".text = ''
-  #   [Appearance]
-  #   style=kvantum
-  # '';
-
-  #   #icon_theme=${cfg.iconThemeName}
-
-  # xdg.configFile."qt6ct/qt6ct.conf".text = ''
-  #   [Appearance]
-  #   style=kvantum
-  # '';
-  #   #icon_theme=${cfg.iconThemeName}
-
   xdg.configFile."qt5ct/qt5ct.conf" = {
     text = ''
+
       [Appearance]
       color_scheme_path=/home/${username}/.config/qt5ct/colors/tokyonight.conf
       custom_palette=true
@@ -128,6 +88,7 @@ in
   };
   xdg.configFile."qt6ct/qt6ct.conf" = {
     text = ''
+
       [Appearance]
       color_scheme_path=/home/${username}/.config/qt6ct/colors/tokyonight.conf
       custom_palette=true

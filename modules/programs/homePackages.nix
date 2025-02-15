@@ -5,8 +5,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   options.mods.homePackages = {
     useDefaultPackages = lib.mkOption {
       default = true;
@@ -15,8 +14,8 @@
       description = "Use default packages (will use additional_packages only if disabled)";
     };
     additionalPackages = lib.mkOption {
-      default = [ ];
-      example = [ pkgs.flatpak ];
+      default = [];
+      example = [pkgs.flatpak];
       type = with lib.types; listOf package;
       description = ''
         Additional Home manager packages.
@@ -24,16 +23,16 @@
       '';
     };
     specialPrograms = lib.mkOption {
-      default = { };
-      example = { };
+      default = {};
+      example = {};
       type = with lib.types; attrsOf anything;
       description = ''
         special program configuration to be added which require programs.something notation.
       '';
     };
     specialServices = lib.mkOption {
-      default = { };
-      example = { };
+      default = {};
+      example = {};
       type = with lib.types; attrsOf anything;
       description = ''
         special services configuration to be added which require an services.something notation.
@@ -72,66 +71,67 @@
     browser = lib.mkOption {
       default = inputs.zen-browser.packages.${pkgs.system}.default;
       example = "firefox";
-      type =
-        with lib.types;
+      type = with lib.types;
         nullOr (
           either (enum [
             "firefox"
-          ]) package
+          ])
+          package
         );
       description = "The browser (the enum variants have preconfigured modules)";
     };
   };
   config = lib.optionalAttrs (options ? home.packages) {
     home.packages =
-      if config.mods.homePackages.useDefaultPackages then
+      if config.mods.homePackages.useDefaultPackages
+      then
         with pkgs;
-        [
-          (lib.mkIf config.mods.homePackages.ncspot ncspot)
-          (lib.mkIf config.mods.homePackages.vesktop vesktop)
-          (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
-          (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
-          (lib.mkIf (!isNull config.mods.homePackages.mailClient) config.mods.homePackages.mailClient)
-          (lib.mkIf (
-            # NOTE: This should be package, but nix doesn't have that....
-            builtins.isAttrs config.mods.homePackages.browser && !isNull config.mods.homePackages.browser
-          ) config.mods.homePackages.browser)
-          adw-gtk3
-          bat
-          brightnessctl
-          dbus
-          fastfetch
-          fd
-          ffmpeg
-          flake-checker
-          gnome-keyring
-          gnutar
-          greetd.regreet
-          killall
-          kitty
-          libnotify
-          lsd
-          networkmanager
-          nh
-          nix-index
-          playerctl
-          poppler_utils
-          pulseaudio
-          libsForQt5.qt5ct
-          qt6ct
-          fcp
-          ripgrep
-          rm-improved
-          system-config-printer
-          xournalpp
-          zenith
-          zoxide
-        ]
-        ++ config.mods.homePackages.additionalPackages
-      else
-        config.mods.homePackages.additionalPackages;
+          [
+            (lib.mkIf config.mods.homePackages.ncspot ncspot)
+            (lib.mkIf config.mods.homePackages.vesktop vesktop)
+            (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
+            (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
+            (lib.mkIf (!isNull config.mods.homePackages.mailClient) config.mods.homePackages.mailClient)
+            (lib.mkIf (
+                # NOTE: This should be package, but nix doesn't have that....
+                builtins.isAttrs config.mods.homePackages.browser && !isNull config.mods.homePackages.browser
+              )
+              config.mods.homePackages.browser)
+            adw-gtk3
+            bat
+            brightnessctl
+            dbus
+            fastfetch
+            fd
+            ffmpeg
+            flake-checker
+            gnome-keyring
+            gnutar
+            greetd.regreet
+            killall
+            kitty
+            libnotify
+            lsd
+            networkmanager
+            nh
+            nix-index
+            playerctl
+            poppler_utils
+            pulseaudio
+            libsForQt5.qt5ct
+            qt6ct
+            fcp
+            ripgrep
+            rm-improved
+            system-config-printer
+            xournalpp
+            zenith
+            zoxide
+          ]
+          ++ config.mods.homePackages.additionalPackages
+      else config.mods.homePackages.additionalPackages;
 
-    xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml { }).generate "direnv" {
+    xdg.configFile."direnv/direnv.toml".source = (pkgs.formats.toml {}).generate "direnv" {
       global = {
         warn_timeout = "-1s";
       };
@@ -139,21 +139,19 @@
     programs =
       config.mods.homePackages.specialPrograms
       // (
-        if config.mods.homePackages.browser == "firefox" then
-          {
-            firefox = {
-              enable = true;
-              policies = config.mods.browser.firefox.configuration;
-              profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
-            };
-          }
-        else
-          { }
+        if config.mods.homePackages.browser == "firefox"
+        then {
+          firefox = {
+            enable = true;
+            policies = config.mods.browser.firefox.configuration;
+            profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
+          };
+        }
+        else {}
       );
     services =
-      if config.mods.homePackages.useDefaultPackages then
-        config.mods.homePackages.specialServices
-      else
-        config.mods.homePackages.specialServices;
+      if config.mods.homePackages.useDefaultPackages
+      then config.mods.homePackages.specialServices
+      else config.mods.homePackages.specialServices;
   };
 }

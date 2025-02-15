@@ -4,27 +4,23 @@
   options,
   pkgs,
   ...
-}:
-let
+}: let
   module =
-    if config.conf.cpu == "intel" then
-      "kvm-intel"
-    else if config.conf.cpu == "amd" then
-      "kvm-amd"
-    else
-      "";
-in
-{
-
+    if config.conf.cpu == "intel"
+    then "kvm-intel"
+    else if config.conf.cpu == "amd"
+    then "kvm-amd"
+    else "";
+in {
   options.mods = {
     virtmanager.enable = lib.mkOption {
       default = false;
       type = lib.types.bool;
       example = true;
       description = ''
-        
-                
-                        Enables virt-manager kvm.
+
+
+        Enables virt-manager kvm.
       '';
     };
   };
@@ -48,7 +44,7 @@ in
             package = pkgs.qemu_kvm;
             swtpm.enable = true;
             ovmf.enable = true;
-            ovmf.packages = [ pkgs.OVMFFull.fd ];
+            ovmf.packages = [pkgs.OVMFFull.fd];
           };
         };
         spiceUSBRedirection.enable = true;
@@ -60,13 +56,12 @@ in
         "kvm"
         "qemu-libvirtd"
       ];
-
     }
     // lib.optionalAttrs (options ? dconf.settings) {
       dconf.settings = {
         "org/virt-manager/virt-manager/connections" = {
-          autoconnect = [ "qemu:///system" ];
-          uris = [ "qemu:///system" ];
+          autoconnect = ["qemu:///system"];
+          uris = ["qemu:///system"];
         };
       };
     };

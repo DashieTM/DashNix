@@ -3,8 +3,7 @@
   options,
   config,
   ...
-}:
-{
+}: {
   options.mods.xkb = {
     layout = lib.mkOption {
       default = "dashie";

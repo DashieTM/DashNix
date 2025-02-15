@@ -5,19 +5,14 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   browserName =
-    if (builtins.isString config.mods.homePackages.browser) then
-      config.mods.homePackages.browser
-    else if
-      config.mods.homePackages.browser ? meta && config.mods.homePackages.browser.meta ? mainProgram
-    then
-      config.mods.homePackages.browser.meta.mainProgram
-    else
-      config.mods.homePackages.browser.pname;
-in
-{
+    if (builtins.isString config.mods.homePackages.browser)
+    then config.mods.homePackages.browser
+    else if config.mods.homePackages.browser ? meta && config.mods.homePackages.browser.meta ? mainProgram
+    then config.mods.homePackages.browser.meta.mainProgram
+    else config.mods.homePackages.browser.pname;
+in {
   options.mods = {
     hyprland = {
       enable = lib.mkOption {
@@ -35,15 +30,15 @@ in
           # all others
           ",highrr,auto,1"
         ];
-        example = [ "DP-1,3440x1440@180,2560x0,1,vrr,0" ];
+        example = ["DP-1,3440x1440@180,2560x0,1,vrr,0"];
         type = with lib.types; listOf str;
         description = ''
           The monitor configuration for hyprland.
         '';
       };
       workspace = lib.mkOption {
-        default = [ ];
-        example = [ "2,monitor:DP-1, default:true" ];
+        default = [];
+        example = ["2,monitor:DP-1, default:true"];
         type = with lib.types; listOf str;
         description = ''
           The workspace configuration for hyprland.
@@ -58,8 +53,8 @@ in
         '';
       };
       extraAutostart = lib.mkOption {
-        default = [ ];
-        example = [ "your application" ];
+        default = [];
+        example = ["your application"];
         type = lib.types.listOf lib.types.str;
         description = ''
           Extra exec_once.
@@ -74,8 +69,8 @@ in
         '';
       };
       customConfig = lib.mkOption {
-        default = { };
-        example = { };
+        default = {};
+        example = {};
         type = with lib.types; attrsOf anything;
         description = ''
           Custom Hyprland configuration.
@@ -83,16 +78,16 @@ in
         '';
       };
       plugins = lib.mkOption {
-        default = [ ];
-        example = [ ];
+        default = [];
+        example = [];
         type = with lib.types; listOf package;
         description = ''
           Plugins to be added to Hyprland.
         '';
       };
       pluginConfig = lib.mkOption {
-        default = { };
-        example = { };
+        default = {};
+        example = {};
         type = with lib.types; attrsOf anything;
         description = ''
           Plugin configuration to be added to Hyprland.
@@ -129,7 +124,8 @@ in
       wayland.windowManager.hyprland = {
         enable = true;
         settings =
-          if config.mods.hyprland.useDefaultConfig then
+          if config.mods.hyprland.useDefaultConfig
+          then
             {
               "$mod" = "SUPER";
 
@@ -366,34 +362,39 @@ in
                 "immediate,class:^(.*)(needforspeedheat.exe)$"
               ];
 
-              exec-once = [
-                # environment
-                "systemctl --user import-environment"
-                "dbus-update-activation-environment --systemd --all"
-                "hyprctl setcursor Bibata-Modern-Classic 24"
+              exec-once =
+                [
+                  # environment
+                  "systemctl --user import-environment"
+                  "dbus-update-activation-environment --systemd --all"
+                  "hyprctl setcursor Bibata-Modern-Classic 24"
 
-                # other programs
-                "hyprpaper"
-                "ironbar"
-                "${browserName}"
-                "oxipaste_daemon"
-                "oxinoti"
-              ] ++ config.mods.hyprland.extraAutostart;
+                  # other programs
+                  "hyprpaper"
+                  "ironbar"
+                  "${browserName}"
+                  "oxipaste_daemon"
+                  "oxinoti"
+                ]
+                ++ config.mods.hyprland.extraAutostart;
 
-              plugin = {
-                hyprspace = lib.mkIf config.mods.hyprland.hyprspaceEnable {
-                  bind = [
-                    "SUPER, W, overview:toggle, toggle"
-                  ];
-                };
-              } // config.mods.hyprland.pluginConfig;
+              plugin =
+                {
+                  hyprspace = lib.mkIf config.mods.hyprland.hyprspaceEnable {
+                    bind = [
+                      "SUPER, W, overview:toggle, toggle"
+                    ];
+                  };
+                }
+                // config.mods.hyprland.pluginConfig;
             }
             // config.mods.hyprland.customConfig
-          else
-            lib.mkForce config.mods.hyprland.customConfig;
-        plugins = [
-          (lib.mkIf config.mods.hyprland.hyprspaceEnable inputs.Hyprspace.packages.${pkgs.system}.Hyprspace)
-        ] ++ config.mods.hyprland.plugins;
+          else lib.mkForce config.mods.hyprland.customConfig;
+        plugins =
+          [
+            (lib.mkIf config.mods.hyprland.hyprspaceEnable inputs.Hyprspace.packages.${pkgs.system}.Hyprspace)
+          ]
+          ++ config.mods.hyprland.plugins;
       };
     }
   );

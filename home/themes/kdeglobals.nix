@@ -1,24 +1,21 @@
 # This is ABSOLUTE GARGABE, KDE srsly, remove this!
-# props to catppuccin mocha for sparing me from doing this manually: https://github.com/catppuccin/kde/blob/main/Resources/Base.colors 
+# props to catppuccin mocha for sparing me from doing this manually: https://github.com/catppuccin/kde/blob/main/Resources/Base.colors
 {
   pkgs,
   config,
   lib,
   inputs,
   ...
-}:
-let
-  base16 = pkgs.callPackage inputs.base16.lib { };
+}: let
+  base16 = pkgs.callPackage inputs.base16.lib {};
 
-  baseScheme = (base16.mkSchemeAttrs config.stylix.base16Scheme);
-  power =
-    number: powerIndex:
-    if powerIndex == 1 then
-      number
-    else if powerIndex == 0 then
-      1
-    else
-      number * power number (powerIndex - 1);
+  baseScheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
+  power = number: powerIndex:
+    if powerIndex == 1
+    then number
+    else if powerIndex == 0
+    then 1
+    else number * power number (powerIndex - 1);
 
   lookupTable = powerIndex: {
     "0" = 0 * (power 16 powerIndex);
@@ -39,16 +36,14 @@ let
     "f" = 15 * (power 16 powerIndex);
   };
 
-  convertHex =
-    hexChars:
+  convertHex = hexChars:
     recombineColors [
       (convertColor (lib.lists.take 2 hexChars))
       (convertColor (lib.lists.take 2 (lib.lists.drop 2 hexChars)))
       (convertColor (lib.lists.take 2 (lib.lists.drop 4 hexChars)))
     ];
 
-  convertColor =
-    color: (lookupTable 1).${(lib.lists.head color)} + (lookupTable 0).${(lib.lists.last color)};
+  convertColor = color: (lookupTable 1).${(lib.lists.head color)} + (lookupTable 0).${(lib.lists.last color)};
   recombineColors = colors: lib.lists.foldr (a: b: (toString a) + "," + (toString b)) "end" colors;
 
   scheme = {
@@ -101,9 +96,7 @@ let
       convertHex (lib.strings.stringToCharacters baseScheme.base0F)
     );
   };
-
-in
-{
+in {
   # temp
   # crust -> surface1
   # subtext0 -> surface2

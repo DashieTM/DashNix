@@ -5,8 +5,7 @@
   system,
   inputs,
   ...
-}:
-{
+}: {
   options.mods.browser.zen = {
     enable = lib.mkOption {
       default = false;
@@ -18,7 +17,7 @@
   };
   config = lib.mkIf config.mods.browser.zen.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = [ inputs.zen-browser.packages."${system}".default ];
+      home.packages = [inputs.zen-browser.packages."${system}".default];
     }
   );
 }

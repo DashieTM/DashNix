@@ -4,9 +4,7 @@
   options,
   pkgs,
   ...
-}:
-{
-
+}: {
   options.mods = {
     kdeConnect.enable = lib.mkOption {
       default = false;
@@ -38,7 +36,7 @@
       };
     }
     // lib.optionalAttrs (options ? home.packages) {
-      home.packages = with pkgs; [ kdePackages.kdeconnect-kde ];
+      home.packages = with pkgs; [kdePackages.kdeconnect-kde];
     }
   );
 }
