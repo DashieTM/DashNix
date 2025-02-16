@@ -3,7 +3,7 @@
 
 # $${\color{cyan}DashNix}$$
 
-![Logo of DashNix](./logo.svg)
+![Logo of DashNix](logo.svg)
 
 </div>
 
