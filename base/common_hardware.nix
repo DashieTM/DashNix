@@ -59,6 +59,7 @@ in {
 
   # Enable the X11 windowing system.
   services = {
+    lorri.enable = true;
     flatpak.enable = true;
     xserver.enable = true;
     fstrim.enable = lib.mkDefault true;
