@@ -43,12 +43,16 @@
     reset.url = "github:Xetibo/ReSet";
     reset-plugins.url = "github:Xetibo/ReSet-Plugins";
 
+    # absolute insanity
+    chaoticNyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     dashvim = {
       url = "github:DashieTM/DashVim";
     };
   };
 
   outputs = {self, ...} @ inputs: let
+    currentSystem = "x86_64-linux";
     permittedPackages = [
       "olm-3.2.16"
       # well done dotnet...
@@ -68,20 +72,23 @@
       "nextcloud-27.1.11"
     ];
     stable = import inputs.stable {
-      system = "x86_64-linux";
+      system = currentSystem;
       config = {
         allowUnfree = true;
         permittedInsecurePackages = permittedPackages;
       };
+      overlays = [inputs.chaoticNyx.overlays.default];
     };
     pkgs = import inputs.nixpkgs {
-      system = "x86_64-linux";
+      system = currentSystem;
       config = {
         allowUnsupportedSystem = true;
         permittedInsecurePackages = permittedPackages;
+        # Often happens with neovim, this should not block everything.
         allowBroken = true;
         allowUnfree = true;
       };
+      overlays = [inputs.chaoticNyx.overlays.default];
     };
   in rec {
     dashNixLib = import ./lib {
@@ -119,6 +126,7 @@
       "https://oxicalc.cachix.org"
       "https://hyprdock.cachix.org"
       "https://reset.cachix.org"
+      "https://chaotic-nyx.cachix.org/"
     ];
 
     extra-trusted-public-keys = [
@@ -132,6 +140,7 @@
       "oxicalc.cachix.org-1:qF3krFc20tgSmtR/kt6Ku/T5QiG824z79qU5eRCSBTQ="
       "hyprdock.cachix.org-1:HaROK3fBvFWIMHZau3Vq1TLwUoJE8yRbGLk0lEGzv3Y="
       "reset.cachix.org-1:LfpnUUdG7QM/eOkN7NtA+3+4Ar/UBeYB+3WH+GjP9Xo="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 }

@@ -61,7 +61,7 @@
   config = lib.mkIf config.mods.gaming.enable (
     lib.optionalAttrs (options ? environment.systemPackages) {
       environment.systemPackages = config.mods.gaming.tools;
-      boot.kernelPackages = lib.mkForce pkgs.linuxPackages_xanmod_latest;
+      boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
       programs = {
         steam.enable = config.mods.gaming.steam;
