@@ -17,7 +17,7 @@
         gamemode
         steam
         lutris
-        wine
+        wineWowPackages.stable
         adwsteamgtk
         # TODO broken
         #heroic
