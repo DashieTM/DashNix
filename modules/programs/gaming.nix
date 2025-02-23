@@ -31,7 +31,7 @@
       default = true;
       example = false;
       type = lib.types.bool;
-      description = "Whether to use the xanmod kernel";
+      description = "Whether to use the CachyOS kernel";
     };
     steam = lib.mkOption {
       default = true;

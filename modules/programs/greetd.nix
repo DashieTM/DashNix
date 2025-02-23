@@ -43,15 +43,16 @@
         '';
       };
       environments = lib.mkOption {
-        default = ''
-          Hyprland
-        '';
+        default = [
+          inputs.hyprland.packages.${config.conf.system}.hyprland
+        ];
         # no idea if these are written correctly
-        example = ''
-          Niri
-          River
-        '';
-        type = lib.types.lines;
+        example = [
+          pkgs.niri
+          pkgs.river
+          pkgs.swayfx
+        ];
+        type = with lib.types; listOf package;
         description = ''
           List of environments that should be available in the login prompt.
         '';
@@ -85,22 +86,23 @@
             manage = "desktop";
             name = "Hyprland";
             start = ''
-              ${lib.getExe pkgs.hyprland} & waitPID=$!
+              ${inputs.hyprland.packages.${config.conf.system}.hyprland} & waitPID=$!
             '';
           }
         ];
 
         # greetd display manager
         programs.hyprland.enable = true;
-        services.greetd = {
-          enable = true;
-          settings = {
-            terminal.vt = 1;
-            default_session = session;
+        services = {
+          displayManager.sessionPackages = config.mods.greetd.environments;
+          greetd = {
+            enable = true;
+            settings = {
+              terminal.vt = 1;
+              default_session = session;
+            };
           };
         };
-
-        environment.etc."greetd/environments".text = config.mods.greetd.environments;
 
         # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
         environment.etc."greetd/hyprgreet.conf".text = ''
@@ -118,8 +120,8 @@
               disable_hyprland_logo = false
           }
 
-          "HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}"
-          "HYPRCURSOR_SIZE,${toString config.mods.stylix.cursor.size}"
+          env="HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}"
+          env="HYPRCURSOR_SIZE,${toString config.mods.stylix.cursor.size}"
           env=XCURSOR_THEME,${config.mods.stylix.cursor.name}
           env=XCURSOR_SIZE,${toString config.mods.stylix.cursor.size}
           env=QT_QPA_PLATFORMTHEME,qt5ct

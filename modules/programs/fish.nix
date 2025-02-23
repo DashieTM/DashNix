@@ -50,8 +50,8 @@ in {
 
               set EDITOR "neovide --no-fork"
 
-              alias rebuild='nh os switch'
-              alias update='nix flake update --flake $FLAKE'
+              alias rebuild='nh os switch -- --accept-flake-config'
+              alias update='nix flake update --flake $FLAKE --accept-flake-config'
               abbr --add ls 'lsd'
               abbr --add :q 'exit'
               abbr --add gh 'git push origin'
