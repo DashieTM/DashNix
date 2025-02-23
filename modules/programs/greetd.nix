@@ -81,16 +81,6 @@
   in
     lib.mkIf config.mods.greetd.enable (
       lib.optionalAttrs (options ? environment) {
-        services.xserver.displayManager.session = [
-          {
-            manage = "desktop";
-            name = "Hyprland";
-            start = ''
-              ${inputs.hyprland.packages.${config.conf.system}.hyprland} & waitPID=$!
-            '';
-          }
-        ];
-
         # greetd display manager
         programs.hyprland.enable = true;
         services = {
@@ -117,11 +107,13 @@
 
           misc {
               disable_splash_rendering = false
-              disable_hyprland_logo = false
+              disable_hyprland_logo = true
           }
 
-          env="HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}"
-          env="HYPRCURSOR_SIZE,${toString config.mods.stylix.cursor.size}"
+          env=STATE_DIR,var/cache/regreet
+          env=CACHE_DIR,var/cache/regreet
+          env=HYPRCURSOR_THEME,${config.mods.stylix.cursor.name}
+          env=HYPRCURSOR_SIZE,${toString config.mods.stylix.cursor.size}
           env=XCURSOR_THEME,${config.mods.stylix.cursor.name}
           env=XCURSOR_SIZE,${toString config.mods.stylix.cursor.size}
           env=QT_QPA_PLATFORMTHEME,qt5ct
