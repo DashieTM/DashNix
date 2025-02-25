@@ -82,10 +82,6 @@
 
   config = let
     username = config.conf.username;
-    session = {
-      command = config.mods.greetd.greeterCommand;
-      user = username;
-    };
   in
     lib.mkIf config.mods.greetd.enable (
       lib.optionalAttrs (options ? environment) {
@@ -97,7 +93,10 @@
             enable = true;
             settings = {
               terminal.vt = 1;
-              default_session = session;
+              default_session = {
+                command = config.mods.greetd.greeterCommand;
+                user = username;
+              };
             };
           };
         };
