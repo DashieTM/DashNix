@@ -20,6 +20,14 @@
       '';
     };
 
+    useSystemdBootloader = lib.mkOption {
+      default = true;
+      example = false;
+      description = ''
+        use systemd bootloader.
+      '';
+    };
+
     cpu = lib.mkOption {
       # TODO: how to enable arm?
       default = "amd";

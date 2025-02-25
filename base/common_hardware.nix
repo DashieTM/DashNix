@@ -17,7 +17,7 @@ in {
   boot = {
     consoleLogLevel = 0;
     loader = {
-      systemd-boot = {
+      systemd-boot = lib.mkIf config.conf.useSystemdBootloader {
         enable = true;
         configurationLimit = 5;
       };

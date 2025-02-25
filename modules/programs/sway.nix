@@ -19,7 +19,7 @@
     };
   };
   config = lib.mkIf config.mods.sway.enable (
-    lib.optionalAttrs (options ? wayland.windowManger) {
+    lib.optionalAttrs (options ? wayland.windowManger.sway) {
       wayland.windowManager.sway =
         {
           enable = true;
