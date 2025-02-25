@@ -34,6 +34,16 @@
           By default the scale of the main monitor is used.
         '';
       };
+      greeterCommand = lib.mkOption {
+        default = "${
+          lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
+        } --config /etc/greetd/hyprgreet.conf";
+        example = "${
+          lib.getExe pkgs.cage
+        } -s -- ${lib.getEze pkgs.regreet}";
+        type = lib.types.str;
+        description = "The compositor/greeter command to run";
+      };
       resolution = lib.mkOption {
         default = "${config.conf.defaultMonitorMode}";
         example = "3440x1440@180";
@@ -73,9 +83,7 @@
   config = let
     username = config.conf.username;
     session = {
-      command = "${
-        lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
-      } --config /etc/greetd/hyprgreet.conf";
+      command = config.mods.greetd.greeterCommand;
       user = username;
     };
   in
