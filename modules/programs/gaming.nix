@@ -70,7 +70,7 @@
           enableRenice = true;
           settings = {
             general = {
-              governor = "performance";
+              desiredgov = "performance";
             };
             gpu = lib.mkIf config.mods.gaming.gpuOptimization {
               apply_gpu_optimisations = "accept-responsibility";
