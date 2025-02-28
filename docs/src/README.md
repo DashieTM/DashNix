@@ -1,13 +1,12 @@
 
 <div align = center>
 
-# $${\color{cyan}DashNix}$$
-
 ![Logo of DashNix](logo.svg)
 
 </div>
 
-A very opinionated (technically only for me) configuration that allows easy adding and removing of systems alongside custom configurations for each system.
+An opinionated flake to bootstrap NixOS systems with default configurations for various programs and services from both NixOS and HomeManger which can be enabled, disabled, configured or replaced at will.
+
 
 # Usage
 
