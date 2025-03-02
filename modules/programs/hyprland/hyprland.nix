@@ -291,6 +291,8 @@ in {
                 disable_hyprland_logo = true;
                 swallow_regex = "^(.*)(kitty)(.*)$";
                 initial_workspace_tracking = 1;
+                # just doesn't work
+                enable_anr_dialog = false;
               };
 
               cursor = {
