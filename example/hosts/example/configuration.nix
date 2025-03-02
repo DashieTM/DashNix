@@ -20,6 +20,8 @@
   mods = {
     # default disk config has root home boot and swap partition, overwrite if you want something different
     drives = {
+      # WARNING: Only do this when installing for the first time, as I am not sure if disko would format your disk
+      variant = "disko";
       # default assumes ROOT, BOOT, HOME and SWAP labaled drives exist
       # for an example without HOME see below
       #defaultDrives.enable = false;

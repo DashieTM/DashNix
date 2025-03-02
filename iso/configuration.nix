@@ -3,11 +3,14 @@
   lib,
   modulesPath,
   self,
+  inputs,
   ...
-}: {
+}: let
+  system = "x86_64-linux";
+in {
   imports = ["${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"];
   nixpkgs.hostPlatform = {
-    system = "x86_64-linux";
+    system = system;
   };
 
   environment.systemPackages = with pkgs; [
@@ -19,6 +22,7 @@
     firefox
     kitty
     gnome-disk-utility
+    inputs.disko.packages.${system}.disko-install
   ];
   networking = {
     wireless.enable = false;

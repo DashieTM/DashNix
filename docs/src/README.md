@@ -197,6 +197,32 @@ as well as a few tools like gnome-disks, neovim, vscodium, a browser etc.
 
 Alternatively, you can use whatever NixOS installer and just install your config from there, just make sure to set the drive configuration before.
 
+## Commands
+
+First, copy the readonly config from /iso/example-config to a location of your choice.
+
+```sh
+cp /iso/example-config ~/config -r
+```
+
+Then configure as you please and choose a command below depending on your disk installation variant.
+
+Installation via manual configuration:
+
+```sh
+sudo nixos-install --flake <flakelocation>#<hostname> --root <mountpoint>
+#example
+#nixos-install --flake ~/config#globi --root /mnt 
+```
+
+Installation via disko:
+
+```sh
+sudo disko-install --flake <flakelocation>#<hostname> --disk <disk-name> <disk-device>
+#example
+#disko-install -- --flake ~/config#globi --disk main /dev/nvme0n1
+```
+
 # Modules
 
 This configuration features several modules that can be used as preconfigured "recipies".
