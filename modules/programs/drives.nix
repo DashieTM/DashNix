@@ -54,23 +54,25 @@
         description = ''
           Use default drive config.
 
-          ## Manual variant
-          This config expects 4 different partitions on a single drive:
-          - boot partition with "BOOT" label and vfat format (filesystem configurable)
-          - swap partition with "SWAP" label
-          - root partition with "ROOT" label and ext4 format (filesystem configurable)
-          - home partition with "HOME" label and ext4 format (filesystem configurable)
-          - gpt disk format
-          NOTE: Any different configuration must be done manually with this turned off.
+          - Manual variant
+            This config expects 4 different partitions on a single drive:
+            - boot partition with BOOT label and vfat format (filesystem configurable)
+            - swap partition with SWAP label
+            - root partition with ROOT label and ext4 format (filesystem configurable)
+            - home partition with HOME label and ext4 format (filesystem configurable)
+            - gpt disk format
 
-          ## Disko variant
-          This config creates 4 different partitions on a single drive:
-          - boot partition with 1GB size and vfat format
-          - swap partition with 32GB (size configurable)
-          - root partition with 30% size and ext4 format (size and filesystem configurable)
-          - home partition with 70%~ size and ext4 format (size and filesystem configurable)
-          - gpt disk format
-          NOTE: Any different configuration must be done manually with this turned off.
+            NOTE: Any different configuration must be done manually with this turned off.
+
+          - Disko variant
+            This config creates 4 different partitions on a single drive:
+            - boot partition with 1GB size and vfat format
+            - swap partition with 32GB (size configurable)
+            - root partition with 30% size and ext4 format (size and filesystem configurable)
+            - home partition with 70%~ size and ext4 format (size and filesystem configurable)
+            - gpt disk format
+
+            NOTE: Any different configuration must be done manually with this turned off.
         '';
       };
     };
@@ -131,8 +133,8 @@
         description = "The name, ID, UUID or similar for the default drive.";
       };
       rootAmount = lib.mkOption {
-        default = 70;
-        example = 60;
+        default = 30;
+        example = 40;
         type = lib.types.number;
         description = "The percentage of the disk for root. (Home will take up the rest) (Only for disko)";
       };

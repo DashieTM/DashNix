@@ -99,6 +99,8 @@ Here is a minimal required configuration.nix (the TODOs mention a required chang
         #     };
         #   }
         # ];
+        # You can also use disko to format your disks on installation. 
+        # Please refer to the Documentation about the drives module for an example.
     };
     sops.enable = false;
     nextcloud.enable = false;
