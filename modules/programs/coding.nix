@@ -229,7 +229,7 @@
               netcoredbg
               #fsharp
               fsharp
-              #fsautocomplete
+              fsautocomplete
             ];
             example = [];
             type = with lib.types; listOf package;
