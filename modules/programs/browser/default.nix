@@ -1,8 +1,9 @@
 {
   imports = [
-    ./firefox.nix
-    ./zen.nix
-    ./chromium.nix
     ./brave.nix
+    ./chromium.nix
+    ./firefox.nix
+    ./librewolf.nix
+    ./zen.nix
   ];
 }

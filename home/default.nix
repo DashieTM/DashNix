@@ -10,6 +10,7 @@
   pkgs,
   root,
   alternativePkgs,
+  system,
   ...
 }: {
   xdg = {
@@ -23,7 +24,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs root additionalInputs alternativePkgs;
+      inherit inputs root additionalInputs alternativePkgs system;
     };
 
     users.${config.conf.username} = {
@@ -32,6 +33,7 @@
           ./common.nix
           ./themes
           ./sync.nix
+          ../modules/programs/browser/foxwrappers.nix
         ]
         ++ homeMods
         ++ additionalHomeMods

@@ -4,6 +4,7 @@
   pkgs,
   self,
   stable,
+  system,
   ...
 }: {
   /*
@@ -84,6 +85,7 @@
               inputs
               mod
               additionalHomeConfig
+              system
               root
               ;
             pkgs = lib.mkForce (

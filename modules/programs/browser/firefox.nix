@@ -70,7 +70,7 @@
           value = {
             isDefault = true;
             id = 0;
-            extensions.packages = [ pkgs.nur.repos.rycee.firefox-addons.darkreader ];
+            extensions.packages = [pkgs.nur.repos.rycee.firefox-addons.darkreader];
           };
         }
       ];

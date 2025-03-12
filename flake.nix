@@ -106,10 +106,12 @@
         pkgs
         stable
         ;
+      system = currentSystem;
       lib = inputs.nixpkgs.lib;
     };
     docs = import ./docs {
       inherit inputs pkgs stable;
+      system = currentSystem;
       lib = inputs.nixpkgs.lib;
       build_systems = dashNixLib.build_systems;
     };

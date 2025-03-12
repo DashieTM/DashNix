@@ -3,7 +3,6 @@
   options,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   # TODO remove when chromium works again
@@ -72,12 +71,14 @@ in {
       description = "The email client";
     };
     browser = lib.mkOption {
-      default = inputs.zen-browser.packages.${pkgs.system}.default;
+      default = "zen";
       example = "firefox";
       type = with lib.types;
         nullOr (
           either (enum [
             "firefox"
+            "zen"
+            "librewolf"
           ])
           package
         );
@@ -150,11 +151,23 @@ in {
             profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
           };
         }
+        else if config.mods.homePackages.browser == "zen"
+        then {
+          zen-browser = {
+            enable = true;
+            policies = config.mods.browser.zen.configuration;
+            profiles = builtins.listToAttrs config.mods.browser.zen.profiles;
+          };
+        }
+        else if config.mods.homePackages.browser == "librewolf"
+        then {
+          librewolf = {
+            enable = true;
+            settings = config.mods.browser.librewolf.settings;
+          };
+        }
         else {}
       );
-    services =
-      if config.mods.homePackages.useDefaultPackages
-      then config.mods.homePackages.specialServices
-      else config.mods.homePackages.specialServices;
+    services = config.mods.homePackages.specialServices;
   };
 }
