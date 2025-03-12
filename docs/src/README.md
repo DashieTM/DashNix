@@ -268,6 +268,7 @@ For package lists, please check the individual modules, as the lists can be long
 # Credits
 
 - [Fufexan](https://github.com/fufexan) for the xdg-mime config:
-- [Catppuccin](https://github.com/catppuccin) for base16 colors
+- [Catppuccin](https://github.com/catppuccin) for base16 colors and zen-browser css
 - [Danth](https://github.com/danth) for providing a base for the nix docs
+- [chermnyx](https://github.com/chermnyx) for providing a base for zen configuration
 - [Nix-Artwork](https://github.com/NixOS/nixos-artwork/tree/master/logo) for the Nix/NixOS logo (Tim Cuthbertson (@timbertson))

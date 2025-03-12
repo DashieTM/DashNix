@@ -31,6 +31,7 @@ in {
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+    "pipe-operators"
   ];
 
   # gnome is a good default that works with every gpu and doesn't require knowledge about custom keybinds.
