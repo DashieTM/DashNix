@@ -46,13 +46,37 @@
       };
       example = {};
       type = with lib.types; attrsOf anything;
-      description = "Zen policy configuration. See https://mozilla.github.io/policy-templates/ for more information.";
+      description = "Zen policy configuration. See https://mozilla.github.io/policy-templates for more information.";
     };
     profiles = lib.mkOption {
-      default = [
+      default = let
+        extensions = [
+          pkgs.nur.repos.rycee.firefox-addons.darkreader
+          pkgs.nur.repos.rycee.firefox-addons.ublock-origin
+          pkgs.nur.repos.rycee.firefox-addons.ghostery
+          pkgs.nur.repos.rycee.firefox-addons.canvasblocker
+          pkgs.nur.repos.rycee.firefox-addons.i-dont-care-about-cookies
+          pkgs.nur.repos.rycee.firefox-addons.keepassxc-browser
+          pkgs.nur.repos.rycee.firefox-addons.vimium
+          pkgs.nur.repos.rycee.firefox-addons.react-devtools
+          pkgs.nur.repos.rycee.firefox-addons.reduxdevtools
+          pkgs.nur.repos.rycee.firefox-addons.user-agent-string-switcher
+          pkgs.nur.repos.rycee.firefox-addons.private-relay
+        ];
+      in [
         {
           name = "${config.conf.username}";
           value = {
+            settings = {
+              zen.view.compact.hide-tabbar = false;
+              zen.view.compact.hide-toolbar = true;
+              zen.view.sidebar-expanded = false;
+              zen.view.use-single-toolbar = false;
+              zen.view.welcome-screen.seen = true;
+              zen.theme.accent-color = "#b4bbff";
+              extensions.autoDisableScopes = 0;
+            };
+            extensions.packages = extensions;
             isDefault = true;
             id = 0;
           };
@@ -60,6 +84,16 @@
         {
           name = "special";
           value = {
+            settings = {
+              zen.view.compact.hide-tabbar = false;
+              zen.view.compact.hide-toolbar = true;
+              zen.view.sidebar-expanded = false;
+              zen.view.use-single-toolbar = false;
+              zen.view.welcome-screen.seen = true;
+              zen.theme.accent-color = "#b4bbff";
+              extensions.autoDisableScopes = 0;
+            };
+            extensions.packages = extensions;
             isDefault = false;
             id = 1;
           };
@@ -69,9 +103,12 @@
         {
           name = "custom";
           value = {
+            settings = {
+              extensions.autoDisableScopes = 0;
+            };
+            extensions.packages = [pkgs.nur.repos.rycee.firefox-addons.darkreader];
             isDefault = true;
             id = 0;
-            extensions.packages = [pkgs.nur.repos.rycee.firefox-addons.darkreader];
           };
         }
       ];
