@@ -11,6 +11,8 @@
   root,
   alternativePkgs,
   system,
+  stable,
+  unstable,
   ...
 }: {
   xdg = {
@@ -24,7 +26,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs root additionalInputs alternativePkgs system;
+      inherit inputs root additionalInputs alternativePkgs system stable unstable;
     };
 
     users.${config.conf.username} = {

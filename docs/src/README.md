@@ -271,4 +271,5 @@ For package lists, please check the individual modules, as the lists can be long
 - [Catppuccin](https://github.com/catppuccin) for base16 colors and zen-browser css
 - [Danth](https://github.com/danth) for providing a base for the nix docs
 - [chermnyx](https://github.com/chermnyx) for providing a base for zen configuration
+- [voronind-com](https://github.com/voronind-com) for providing the darkreader configuration
 - [Nix-Artwork](https://github.com/NixOS/nixos-artwork/tree/master/logo) for the Nix/NixOS logo (Tim Cuthbertson (@timbertson))

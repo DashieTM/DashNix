@@ -3,6 +3,7 @@
   options,
   config,
   pkgs,
+  inputs,
   ...
 }: let
   # TODO remove when chromium works again
@@ -147,24 +148,18 @@ in {
         then {
           firefox = {
             enable = true;
-            policies = config.mods.browser.firefox.configuration;
-            profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
           };
         }
         else if config.mods.homePackages.browser == "zen"
         then {
           zen-browser = {
             enable = true;
-            policies = config.mods.browser.zen.configuration;
-            profiles = builtins.listToAttrs config.mods.browser.zen.profiles;
           };
         }
         else if config.mods.homePackages.browser == "librewolf"
         then {
           librewolf-dashnix = {
             enable = true;
-            policies = config.mods.browser.librewolf.configuration;
-            profiles = builtins.listToAttrs config.mods.browser.librewolf.profiles;
           };
         }
         else {}

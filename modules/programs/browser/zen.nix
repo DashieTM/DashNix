@@ -1,17 +1,62 @@
+# credits to Voronind for darkreader config https://github.com/voronind-com/nix/blob/main/home/program/firefox/default.nix
 {
   lib,
   config,
   options,
   inputs,
+  stable,
+  system,
   pkgs,
   ...
-}: {
+}: let
+  # at time of using this here, stylix might not be evaluated yet
+  # hence ensure it is by using base16 mkSchemeAttrs
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
+  mkExtension = id: install_url: {
+    ${id} = {
+      inherit install_url;
+      installation_mode = "normal_installed";
+    };
+  };
+in {
   options.mods.browser.zen = {
     enable = lib.mkOption {
       default = false;
       example = true;
       type = lib.types.bool;
       description = "Enables the zen browser";
+    };
+    extensions = lib.mkOption {
+      default = [
+        (mkExtension "uBlock0@raymondhill.net" "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi")
+        (mkExtension "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi")
+        (mkExtension "{d7742d87-e61d-4b78-b8a1-b469842139fa}" "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi")
+        (mkExtension "firefox@ghostery.com" "https://addons.mozilla.org/firefox/downloads/latest/ghostery/latest.xpi")
+        (mkExtension "CanvasBlocker@kkapsner.de" "https://addons.mozilla.org/firefox/downloads/latest/canvasblocker/latest.xpi")
+        (mkExtension "jid1-KKzOGWgsW3Ao4Q@jetpack" "https://addons.mozilla.org/firefox/downloads/latest/i-dont-care-about-cookies/latest.xpi")
+        (mkExtension "keepassxc-browser@keepassxc.org" "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi")
+        (mkExtension "@react-devtools" "https://addons.mozilla.org/firefox/downloads/latest/react-devtools/latest.xpi")
+        (mkExtension "extension@redux.devtools" "https://addons.mozilla.org/firefox/downloads/latest/reduxdevtools/latest.xpi")
+        (mkExtension "private-relay@firefox.com" "https://addons.mozilla.org/firefox/downloads/latest/private-relay/latest.xpi")
+        (mkExtension "addon@darkreader.org" "file://${pkgs.callPackage ./darkreader.nix {inherit lib stable;}}/latest.xpi")
+      ];
+      example = [];
+      type = with lib.types; listOf anything;
+      description = ''
+        List of extensions via attrsets:
+        ```nix
+        # id
+        # figure out the id via:
+        # nix run github:tupakkatapa/mozid -- 'https://addons.mozilla.org/en/firefox/addon/ublock-origin'
+        "uBlock0@raymondhill.net" = {
+          # install url
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          # method https://mozilla.github.io/policy-templates/#extensionsettings
+          installation_mode = "force_installed";
+        };
+        ```
+      '';
     };
     configuration = lib.mkOption {
       default = {
@@ -22,15 +67,10 @@
           Fingerprinting = true;
         };
         DisablePocket = true;
-        DisplayBookmarksToolbar = "never";
-        DisplayMenuBar = "default-off";
         CaptivePortal = false;
         DisableFirefoxStudies = true;
         DisableTelemetry = true;
-        DisableFirefoxAccounts = false;
         NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-        OfferToSaveLoginsDefault = false;
         PasswordManagerEnabled = false;
         FirefoxHome = {
           Search = true;
@@ -43,27 +83,22 @@
           ExtensionRecommendations = false;
           SkipOnboarding = true;
         };
+        "3rdparty".Extensions = {
+          "addon@darkreader.org" = {
+            theme = {
+              darkSchemeBackgroundColor = "#${scheme.base00}";
+              darkSchemeTextColor = "#${scheme.base05}";
+            };
+            previewNewDesign = true;
+          };
+        };
       };
       example = {};
       type = with lib.types; attrsOf anything;
       description = "Zen policy configuration. See https://mozilla.github.io/policy-templates for more information.";
     };
     profiles = lib.mkOption {
-      default = let
-        extensions = [
-          pkgs.nur.repos.rycee.firefox-addons.darkreader
-          pkgs.nur.repos.rycee.firefox-addons.ublock-origin
-          pkgs.nur.repos.rycee.firefox-addons.ghostery
-          pkgs.nur.repos.rycee.firefox-addons.canvasblocker
-          pkgs.nur.repos.rycee.firefox-addons.i-dont-care-about-cookies
-          pkgs.nur.repos.rycee.firefox-addons.keepassxc-browser
-          pkgs.nur.repos.rycee.firefox-addons.vimium
-          pkgs.nur.repos.rycee.firefox-addons.react-devtools
-          pkgs.nur.repos.rycee.firefox-addons.reduxdevtools
-          pkgs.nur.repos.rycee.firefox-addons.user-agent-string-switcher
-          pkgs.nur.repos.rycee.firefox-addons.private-relay
-        ];
-      in [
+      default = [
         {
           name = "${config.conf.username}";
           value = {
@@ -76,7 +111,6 @@
               zen.theme.accent-color = "#b4bbff";
               extensions.autoDisableScopes = 0;
             };
-            extensions.packages = extensions;
             isDefault = true;
             id = 0;
           };
@@ -93,7 +127,6 @@
               zen.theme.accent-color = "#b4bbff";
               extensions.autoDisableScopes = 0;
             };
-            extensions.packages = extensions;
             isDefault = false;
             id = 1;
           };
@@ -122,25 +155,15 @@
         enable = true;
         package =
           pkgs.wrapFirefox
-          (inputs.zen-browser.packages.${pkgs.system}.default.overrideAttrs (prevAttrs: {
-            passthru =
-              prevAttrs.passthru
-              or {}
-              // {
-                applicationName = "Zen Browser";
-                binaryName = "zen";
-
-                ffmpegSupport = true;
-                gssSupport = true;
-                gtk3 = pkgs.gtk3;
-              };
-          }))
+          inputs.zen-browser.packages.${system}.zen-browser-unwrapped
           {
-            icon = "zen-beta";
-            wmClass = "zen";
-            hasMozSystemDirPatch = false;
+            pname = "zen-browser";
+            extraPolicies =
+              config.mods.browser.zen.configuration
+              // {
+                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} config.mods.browser.zen.extensions;
+              };
           };
-        policies = config.mods.browser.zen.configuration;
         profiles = builtins.listToAttrs config.mods.browser.zen.profiles;
       };
     }

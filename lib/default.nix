@@ -1,7 +1,7 @@
 {
   inputs,
   lib,
-  pkgs,
+  unstable,
   self,
   stable,
   system,
@@ -87,15 +87,17 @@
               additionalHomeConfig
               system
               root
+              stable
+              unstable
               ;
             pkgs = lib.mkForce (
               if overridePkgs
               then stable
-              else pkgs
+              else unstable
             );
             alternativePkgs =
               if overridePkgs
-              then pkgs
+              then unstable
               else stable;
             hostName = name;
             homeMods = mods.home;
@@ -103,7 +105,7 @@
             additionalInputs = additionalInputs;
           };
         in
-          inputs.nixpkgs.lib.nixosSystem {
+          inputs.unstable.lib.nixosSystem {
             modules =
               [
                 {_module.args = args;}
@@ -111,8 +113,8 @@
               ]
               ++ mods.nixos
               ++ additionalMods.nixos
-              ++ inputs.nixpkgs.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
-              ++ inputs.nixpkgs.lib.optional (builtins.pathExists mod) mod;
+              ++ inputs.unstable.lib.optional (builtins.pathExists additionalNixosConfig) additionalNixosConfig
+              ++ inputs.unstable.lib.optional (builtins.pathExists mod) mod;
           };
       })
       (
@@ -127,9 +129,9 @@
       )
     );
 
-  buildIso = inputs.nixpkgs.lib.nixosSystem {
+  buildIso = inputs.unstable.lib.nixosSystem {
     specialArgs = {
-      inherit self inputs pkgs;
+      inherit self inputs unstable;
     };
     modules = [
       ../iso/configuration.nix

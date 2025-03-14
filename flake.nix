@@ -2,7 +2,7 @@
   description = "DashNix";
 
   inputs = {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    unstable.url = "github:NixOs/nixpkgs/nixos-unstable";
     stable.url = "github:NixOs/nixpkgs/nixos-24.11";
     nur.url = "github:nix-community/NUR";
 
@@ -12,7 +12,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -26,7 +26,7 @@
 
     ironbar = {
       url = "github:JakeStanger/ironbar";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
@@ -84,7 +84,7 @@
         inputs.chaoticNyx.overlays.default
       ];
     };
-    pkgs = import inputs.nixpkgs {
+    unstable = import inputs.unstable {
       system = currentSystem;
       config = {
         allowUnsupportedSystem = true;
@@ -103,21 +103,22 @@
       inherit
         self
         inputs
-        pkgs
+        unstable
         stable
         ;
       system = currentSystem;
-      lib = inputs.nixpkgs.lib;
+      lib = inputs.unstable.lib;
     };
     docs = import ./docs {
-      inherit inputs pkgs stable;
+      inherit inputs;
+      pkgs = unstable;
       system = currentSystem;
-      lib = inputs.nixpkgs.lib;
+      lib = inputs.unstable.lib;
       build_systems = dashNixLib.build_systems;
     };
     dashNixInputs = inputs;
     stablePkgs = stable;
-    unstablePkgs = pkgs;
+    unstablePkgs = unstable;
     modules = ./modules;
     iso = dashNixLib.buildIso.config.system.build.isoImage;
   };

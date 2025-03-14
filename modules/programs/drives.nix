@@ -129,7 +129,7 @@
       defaultDiskId = lib.mkOption {
         default = "TODO";
         example = "/dev/nvme0n1";
-        type = lib.types.string;
+        type = lib.types.str;
         description = "The name, ID, UUID or similar for the default drive.";
       };
       rootAmount = lib.mkOption {

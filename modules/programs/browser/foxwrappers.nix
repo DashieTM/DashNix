@@ -9,8 +9,8 @@ in {
         "zen-browser"
       ];
       name = "Zen Browser";
-      wrappedPackageName = "zen-browser-unwrapped";
-      unwrappedPackageName = "zen-browser";
+      wrappedPackageName = "zen";
+      unwrappedPackageName = "zen-unwrapped";
       visible = true;
       platforms = {
         linux = {
