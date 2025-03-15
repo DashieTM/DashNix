@@ -14,15 +14,35 @@
     echo "- [${name}](${name}.md)" >> src/SUMMARY.md
   '';
   system = (build_systems {root = ../example/.;})."example".options;
-  makeOptionsDocPrograms = name: pkgs.nixosOptionsDoc {options = system.mods.${name};};
+  makeOptionsDocPrograms = names: pkgs.nixosOptionsDoc {options = lib.attrByPath (lib.splitString "." names) null system.mods;};
   conf = makeOptionsDoc system.conf;
-  paths = builtins.readDir ../modules/programs;
-  names = lib.lists.remove "default" (
-    map (name: lib.strings.removeSuffix ".nix" name) (lib.attrsets.mapAttrsToList (name: _: name) paths)
+  basePath = ../modules/programs;
+  pathToAttrs = path:
+    lib.attrsets.mapAttrsToList (
+      name: meta: {
+        name = name;
+        meta = meta;
+      }
+    )
+    (builtins.readDir path);
+  pathToStrings = path: prefix: let
+    mapFn = attrs:
+      if attrs.meta == "directory"
+      then pathToStrings "${basePath}/${attrs.name}" attrs.name
+      else if prefix != ""
+      then "${prefix}.${attrs.name}"
+      else attrs.name;
+  in
+    map
+    mapFn
+    (pathToAttrs path);
+  filteredNames = builtins.filter (names: !(lib.strings.hasInfix "default" names)) (
+    map (name: lib.strings.removeSuffix ".nix" name) (lib.lists.flatten (pathToStrings basePath ""))
   );
-  mods = map makeOptionsDocPrograms names;
-  docs = lib.strings.concatLines (map generateDocs (lib.lists.zipLists names mods));
-  summary = lib.strings.concatStringsSep " " (map summaryAppend names);
+  deduplicatedNames = map (name:  lib.strings.splitString "." name |> lib.lists.unique |> lib.strings.concatStringsSep "." ) filteredNames;
+  mods = map makeOptionsDocPrograms deduplicatedNames;
+  docs = lib.strings.concatLines (map generateDocs (lib.lists.zipLists deduplicatedNames mods));
+  summary = lib.strings.concatStringsSep " " (map summaryAppend deduplicatedNames);
 in
   pkgs.stdenvNoCC.mkDerivation {
     name = "dashNix-book";

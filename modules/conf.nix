@@ -104,17 +104,6 @@
       '';
     };
 
-    streamdeck = {
-      enable = lib.mkOption {
-        default = false;
-        example = true;
-        type = lib.types.bool;
-        description = ''
-          Install streamdeck configuration program.
-        '';
-      };
-    };
-
     kernelOverride = lib.mkOption {
       default = null;
       type = with lib.types; nullOr package;

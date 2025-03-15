@@ -39,7 +39,7 @@ in {
         (mkExtension "@react-devtools" "https://addons.mozilla.org/firefox/downloads/latest/react-devtools/latest.xpi")
         (mkExtension "extension@redux.devtools" "https://addons.mozilla.org/firefox/downloads/latest/reduxdevtools/latest.xpi")
         (mkExtension "private-relay@firefox.com" "https://addons.mozilla.org/firefox/downloads/latest/private-relay/latest.xpi")
-        (mkExtension "addon@darkreader.org" "file://${pkgs.callPackage ./darkreader.nix {inherit lib stable;}}/latest.xpi")
+        (mkExtension "addon@darkreader.org" "file://${pkgs.callPackage ../../../patches/darkreader.nix {inherit lib stable;}}/latest.xpi")
       ];
       example = [];
       type = with lib.types; listOf anything;

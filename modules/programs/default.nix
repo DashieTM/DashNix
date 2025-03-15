@@ -34,6 +34,7 @@
     ./sddm.nix
     ./sops.nix
     ./starship.nix
+    ./streamcontroller.nix
     ./stylix.nix
     ./supersonic.nix
     ./sway.nix

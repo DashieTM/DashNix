@@ -13,95 +13,93 @@
     then config.mods.homePackages.browser.meta.mainProgram
     else config.mods.homePackages.browser.pname;
 in {
-  options.mods = {
-    hyprland = {
-      enable = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Enable Hyprland
-        '';
-      };
-      monitor = lib.mkOption {
-        default = [
-          # main monitor
-          "${config.conf.defaultMonitor},${config.conf.defaultMonitorMode},0x0,${config.conf.defaultMonitorScale}"
-          # all others
-          ",highrr,auto,1"
-        ];
-        example = ["DP-1,3440x1440@180,2560x0,1,vrr,0"];
-        type = with lib.types; listOf str;
-        description = ''
-          The monitor configuration for hyprland.
-        '';
-      };
-      workspace = lib.mkOption {
-        default = [];
-        example = ["2,monitor:DP-1, default:true"];
-        type = with lib.types; listOf str;
-        description = ''
-          The workspace configuration for hyprland.
-        '';
-      };
-      noAtomic = lib.mkOption {
-        default = false;
-        example = true;
-        type = lib.types.bool;
-        description = ''
-          Use tearing
-        '';
-      };
-      extraAutostart = lib.mkOption {
-        default = [];
-        example = ["your application"];
-        type = lib.types.listOf lib.types.str;
-        description = ''
-          Extra exec_once.
-        '';
-      };
-      useDefaultConfig = lib.mkOption {
-        default = true;
-        example = false;
-        type = lib.types.bool;
-        description = ''
-          Use preconfigured Hyprland config.
-        '';
-      };
-      customConfig = lib.mkOption {
-        default = {};
-        example = {};
-        type = with lib.types; attrsOf anything;
-        description = ''
-          Custom Hyprland configuration.
-          Will be merged with default configuration if enabled.
-        '';
-      };
-      plugins = lib.mkOption {
-        default = [];
-        example = [];
-        type = with lib.types; listOf package;
-        description = ''
-          Plugins to be added to Hyprland.
-        '';
-      };
-      pluginConfig = lib.mkOption {
-        default = {};
-        example = {};
-        type = with lib.types; attrsOf anything;
-        description = ''
-          Plugin configuration to be added to Hyprland.
-        '';
-      };
-      hyprspaceEnable = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
-        example = true;
-        description = ''
-          Enables Hyprspace plugin for hyprland.
-          Please note, plugins tend to break VERY often.
-        '';
-      };
+  options.mods.hyprland = {
+    enable = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = ''
+        Enable Hyprland
+      '';
+    };
+    monitor = lib.mkOption {
+      default = [
+        # main monitor
+        "${config.conf.defaultMonitor},${config.conf.defaultMonitorMode},0x0,${config.conf.defaultMonitorScale}"
+        # all others
+        ",highrr,auto,1"
+      ];
+      example = ["DP-1,3440x1440@180,2560x0,1,vrr,0"];
+      type = with lib.types; listOf str;
+      description = ''
+        The monitor configuration for hyprland.
+      '';
+    };
+    workspace = lib.mkOption {
+      default = [];
+      example = ["2,monitor:DP-1, default:true"];
+      type = with lib.types; listOf str;
+      description = ''
+        The workspace configuration for hyprland.
+      '';
+    };
+    noAtomic = lib.mkOption {
+      default = false;
+      example = true;
+      type = lib.types.bool;
+      description = ''
+        Use tearing
+      '';
+    };
+    extraAutostart = lib.mkOption {
+      default = [];
+      example = ["your application"];
+      type = lib.types.listOf lib.types.str;
+      description = ''
+        Extra exec_once.
+      '';
+    };
+    useDefaultConfig = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = ''
+        Use preconfigured Hyprland config.
+      '';
+    };
+    customConfig = lib.mkOption {
+      default = {};
+      example = {};
+      type = with lib.types; attrsOf anything;
+      description = ''
+        Custom Hyprland configuration.
+        Will be merged with default configuration if enabled.
+      '';
+    };
+    plugins = lib.mkOption {
+      default = [];
+      example = [];
+      type = with lib.types; listOf package;
+      description = ''
+        Plugins to be added to Hyprland.
+      '';
+    };
+    pluginConfig = lib.mkOption {
+      default = {};
+      example = {};
+      type = with lib.types; attrsOf anything;
+      description = ''
+        Plugin configuration to be added to Hyprland.
+      '';
+    };
+    hyprspaceEnable = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      example = true;
+      description = ''
+        Enables Hyprspace plugin for hyprland.
+        Please note, plugins tend to break VERY often.
+      '';
     };
   };
 

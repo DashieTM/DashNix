@@ -35,7 +35,7 @@
           ./common.nix
           ./themes
           ./sync.nix
-          ../modules/programs/browser/foxwrappers.nix
+          ../lib/foxwrappers.nix
         ]
         ++ homeMods
         ++ additionalHomeMods

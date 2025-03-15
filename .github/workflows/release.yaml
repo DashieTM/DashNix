@@ -15,7 +15,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           extra-conf: |
-            extra-experimental-features = nix-command flakes
+            extra-experimental-features = nix-command flakes pipe-operators
       - name: Set up cache
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build ISO
@@ -27,4 +27,3 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           path: path/
-            
