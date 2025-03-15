@@ -164,8 +164,8 @@ in {
                 ",XF86AudioPlay,exec, playerctl play-pause"
                 ",XF86AudioNext,exec, playerctl next"
                 ",XF86AudioPrev,exec, playerctl previous"
-                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessDown,exec, change-brightness brightness 10%-")
-                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessUp,exec, change-brightness brightness +10%")
+                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessDown,exec, changeBrightness brightness 10%-")
+                (lib.mkIf config.mods.scripts.changeBrightness ",XF86MonBrightnessUp,exec, changeBrightness brightness +10%")
 
                 # hyprland keybinds
                 # misc
