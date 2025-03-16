@@ -14,7 +14,7 @@
     };
     # TODO configure brave
   };
-  config = lib.mkIf config.mods.browser.brave.enable (
+  config = lib.mkIf (config.mods.browser.brave.enable || config.mods.homePackages.browser == "brave") (
     lib.optionalAttrs (options ? home.packages) {
       home.packages = with pkgs; [brave];
     }

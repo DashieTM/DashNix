@@ -78,7 +78,7 @@
       description = "Firefox profiles";
     };
   };
-  config = lib.mkIf config.mods.browser.firefox.enable (
+  config = lib.mkIf (config.mods.browser.firefox.enable || config.mods.homePackages.browser == "firefox") (
     lib.optionalAttrs (options ? programs.firefox.profiles) {
       programs.firefox = {
         enable = true;

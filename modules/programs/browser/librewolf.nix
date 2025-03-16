@@ -78,7 +78,7 @@
       description = "Librewolf profiles";
     };
   };
-  config = lib.mkIf config.mods.browser.librewolf.enable (
+  config = lib.mkIf (config.mods.browser.librewolf.enable || config.mods.homePackages.browser == "librewolf") (
     lib.optionalAttrs (options ? home.packages) {
       programs.librewolf-dashnix = {
         enable = true;

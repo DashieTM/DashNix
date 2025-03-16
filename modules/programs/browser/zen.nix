@@ -149,7 +149,7 @@ in {
       description = "Zen profiles";
     };
   };
-  config = lib.mkIf config.mods.browser.zen.enable (
+  config = lib.mkIf (config.mods.browser.zen.enable || config.mods.homePackages.browser == "firefox") (
     lib.optionalAttrs (options ? home.packages) {
       programs.zen-browser = {
         enable = true;

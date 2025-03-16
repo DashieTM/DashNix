@@ -80,12 +80,15 @@ in {
             "firefox"
             "zen"
             "librewolf"
+            "chromium"
+            "brave"
           ])
           package
         );
       description = "The browser (the enum variants have preconfigured modules)";
     };
   };
+
   config = lib.optionalAttrs (options ? home.packages) {
     home.packages =
       if config.mods.homePackages.useDefaultPackages
@@ -141,29 +144,7 @@ in {
         warn_timeout = "-1s";
       };
     };
-    programs =
-      config.mods.homePackages.specialPrograms
-      // (
-        if config.mods.homePackages.browser == "firefox"
-        then {
-          firefox = {
-            enable = true;
-          };
-        }
-        else if config.mods.homePackages.browser == "zen"
-        then {
-          zen-browser = {
-            enable = true;
-          };
-        }
-        else if config.mods.homePackages.browser == "librewolf"
-        then {
-          librewolf-dashnix = {
-            enable = true;
-          };
-        }
-        else {}
-      );
+    programs = config.mods.homePackages.specialPrograms;
     services = config.mods.homePackages.specialServices;
   };
 }

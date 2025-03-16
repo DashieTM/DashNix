@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   options,
   ...
@@ -8,11 +7,11 @@
   options.mods = {
     streamcontroller = {
       enable = lib.mkOption {
-        default = true;
-        example = false;
+        default = false;
+        example = true;
         type = lib.types.bool;
         description = ''
-          Enables starship prompt
+          Enables streamcontroller
         '';
       };
       configFilePath = lib.mkOption {
@@ -31,7 +30,10 @@
       programs.streamcontroller.enable = true;
     }
     // (lib.optionalAttrs (options ? home.file) {
-      home.file."var/app/com.core447.StreamController/data/pages/defaultpage.json".path = lib.mkIf (!isNull config.mods.streamcontroller.path) config.mods.streamcontroller.path;
+      home.file.".var/app/com.core447.StreamController/data/pages/defaultpage.json" =
+        lib.mkIf
+        (!isNull config.mods.streamcontroller.configFilePath)
+        {source = config.mods.streamcontroller.configFilePath;};
     })
   );
 }
