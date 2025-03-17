@@ -79,22 +79,6 @@
       '';
     };
 
-    ironbar = {
-      modules = lib.mkOption {
-        default = [];
-        example = [
-          {
-            type = "upower";
-            class = "memory-usage";
-          }
-        ];
-        type = with lib.types; listOf attrs;
-        description = ''
-          Adds modules to ironbar. See https://github.com/JakeStanger/ironbar/wiki/ for more information.
-        '';
-      };
-    };
-
     bootParams = lib.mkOption {
       default = [];
       example = ["resume=something"];

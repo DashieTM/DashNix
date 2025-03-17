@@ -251,6 +251,7 @@
             default = with pkgs; [
               # broke
               #bear
+              gdb
               gcc
               clang-tools
             ];

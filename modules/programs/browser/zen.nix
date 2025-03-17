@@ -110,6 +110,7 @@ in {
               zen.view.welcome-screen.seen = true;
               zen.theme.accent-color = "#b4bbff";
               extensions.autoDisableScopes = 0;
+              cookiebanners.service.mode = 2;
             };
             isDefault = true;
             id = 0;

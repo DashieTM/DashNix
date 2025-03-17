@@ -1,10 +1,14 @@
 {
   lib,
   config,
+  pkgs,
+  inputs,
   options,
   ...
 }: let
   username = config.conf.username;
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
 in {
   options.mods = {
     hyprland.ironbar = {
@@ -20,6 +24,19 @@ in {
         type = lib.types.bool;
         description = ''
           Use preconfigured ironbar config.
+        '';
+      };
+      modules = lib.mkOption {
+        default = [];
+        example = [
+          {
+            type = "upower";
+            class = "memory-usage";
+          }
+        ];
+        type = with lib.types; listOf attrs;
+        description = ''
+          Adds modules to ironbar. See https://github.com/JakeStanger/ironbar/wiki/ for more information.
         '';
       };
       customConfig = lib.mkOption {
@@ -61,11 +78,14 @@ in {
         style =
           if config.mods.hyprland.ironbar.useDefaultCss
           then
+            /*
+            css
+            */
             ''
               @import url("/home/${username}/.config/gtk-3.0/gtk.css");
 
               * {
-                color: #71bbe6;
+                color: #${scheme.base0D};
                 padding: 0px;
                 margin: 0px;
               }
@@ -77,8 +97,7 @@ in {
               .workspaces {
                 margin: 2px 0px 0px 5px;
                 border-radius: 10px;
-                /* background-color: #2b2c3b; */
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
                 padding: 2px 5px 2px 5px;
               }
 
@@ -91,16 +110,16 @@ in {
               }
 
               .workspaces .item:hover {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
 
               .workspaces .item.focused {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
 
               .audio-box {
                 padding: 2em;
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
                 border-radius: 5px;
               }
 
@@ -121,10 +140,8 @@ in {
               }
 
               .focused {
-                /* margin: 2px 0px 0px 0px; */
                 padding: 0px 5px 0px 5px;
-                /* background-color: 1a1b26; */
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
                 font-size: 17px;
                 border-radius: 10px;
               }
@@ -132,7 +149,7 @@ in {
               #bar #end {
                 margin: 0px 5px 0px 0px;
                 padding: 0px 5px 0px 5px;
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
                 border-radius: 10px;
               }
 
@@ -141,7 +158,7 @@ in {
                 margin: 0em 3px;
                 border-radius: 100%;
                 font-size: 13px;
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
               }
 
               .popup-button-box {
@@ -151,19 +168,19 @@ in {
               .clock {
                 padding: 0px 5px 0px 5px;
                 font-size: 17px;
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
               }
 
               .clock:hover {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
 
               .custom button {
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
               }
 
               .custom button:hover {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
 
               .memory-usage {
@@ -172,11 +189,11 @@ in {
               }
 
               .memory-usage:hover {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
 
               .popup-clock {
-                background-color: #1E1E2E;
+                background-color: #${scheme.base00};
                 border-radius: 5px;
                 padding: 2px 8px 10px 8px;
               }
@@ -192,7 +209,7 @@ in {
               }
 
               .popup-clock .calendar:selected {
-                background-color: #3e4152;
+                background-color: #${scheme.base02};
               }
             ''
             + config.mods.hyprland.ironbar.customCss
@@ -206,11 +223,11 @@ in {
             then
               {
                 end =
-                  config.conf.ironbar.modules
+                  config.mods.hyprland.ironbar.modules
                   ++ [
                     {
                       type = "sys_info";
-                      format = [" {memory_percent}"];
+                      format = [" {memory_percent}"];
                       interval.memory = 30;
                       class = "memory-usage";
                     }
