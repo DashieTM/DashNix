@@ -59,6 +59,12 @@ in {
       type = lib.types.bool;
       description = "Adds the ncspot spotify client";
     };
+    orcaSlicer = lib.mkOption {
+      default = false;
+      example = true;
+      type = lib.types.bool;
+      description = "Enables orca slicer";
+    };
     nextcloudClient = lib.mkOption {
       default = false;
       example = true;
@@ -96,6 +102,7 @@ in {
         with pkgs;
           [
             (lib.mkIf config.mods.homePackages.ncspot ncspot)
+            (lib.mkIf config.mods.homePackages.orcaSlicer orca-slicer)
             (lib.mkIf config.mods.homePackages.vesktop fixedVesktop)
             (lib.mkIf config.mods.homePackages.nextcloudClient nextcloud-client)
             (lib.mkIf (!isNull config.mods.homePackages.matrixClient) config.mods.homePackages.matrixClient)
