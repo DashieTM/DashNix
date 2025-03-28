@@ -341,22 +341,16 @@ in {
 
               windowrule = [
                 # window rules
-                "tile,^(.*)(Spotify)(.*)$"
-                "float,^(.*)(OxiCalc)(.*)$"
-                "float,^(.*)(winecfg.exe)(.*)$"
-                "float,^(.*)(speed.exe)(.*)$"
-                "float,^(.*)(copyq)(.*)$"
-                "center,^(.*)(swappy)(.*)$"
-                "float,title:^(.*)(Spirit)(.*)$"
+                "float,class:^(.*)(OxiCalc)(.*)$"
+                "float,class:^(.*)(winecfg.exe)(.*)$"
+                "float,class:^(.*)(copyq)(.*)$"
+                "center,class:^(.*)(swappy)(.*)$"
                 "float,title:^(.*)(reset)(.*)$"
-                "workspace 10 silent,^(.*)(steam)(.*)$"
-                "workspace 9 silent,^(.*)(dota)(.*)$"
-                "workspace 9 silent,^(.*)(battlebits)(.*)$"
-                "workspace 9 silent,^(.*)(aoe)(.*)$"
-                "suppressevent fullscreen maximize,^(.*)(neovide)(.*)$"
-              ];
-
-              windowrulev2 = [
+                "workspace 10 silent,class:^(.*)(steam)(.*)$"
+                "workspace 9 silent,class:^(.*)(dota)(.*)$"
+                "workspace 9 silent,class:^(.*)(battlebits)(.*)$"
+                "workspace 9 silent,class:^(.*)(aoe)(.*)$"
+                "suppressevent fullscreen maximize,class:^(.*)(neovide)(.*)$"
                 "immediate,class:^(.*)(Pal)$"
                 "immediate,class:^(.*)(dota2)$"
                 "immediate,class:^(.*)(needforspeedheat.exe)$"
