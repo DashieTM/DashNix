@@ -2,6 +2,7 @@
   lib,
   config,
   options,
+  unstable,
   pkgs,
   ...
 }: {
@@ -59,17 +60,17 @@
     fonts = lib.mkOption {
       default = {
         serif = {
-          package = pkgs.adwaita-fonts;
+          package = unstable.adwaita-fonts;
           name = "Adwaita Sans";
         };
 
         sansSerif = {
-          package = pkgs.adwaita-fonts;
+          package = unstable.adwaita-fonts;
           name = "Adwaita Sans";
         };
 
         monospace = {
-          package = pkgs.nerd-fonts.jetbrains-mono;
+          package = unstable.nerd-fonts.jetbrains-mono;
           name = "JetBrainsMono Nerd Font Mono";
         };
 
