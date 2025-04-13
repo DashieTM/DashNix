@@ -45,6 +45,18 @@
       type = lib.types.bool;
       description = "Whether to use gamemode";
     };
+    pinCores = lib.mkOption {
+      default = "false";
+      example = "true";
+      type = lib.types.str;
+      description = "Pin Cores gamemode config";
+    };
+    parkCores = lib.mkOption {
+      default = "false";
+      example = "true";
+      type = lib.types.str;
+      description = "Park Cores gamemode config";
+    };
     gpuOptimization = lib.mkOption {
       default = true;
       example = false;
@@ -71,6 +83,10 @@
           settings = {
             general = {
               desiredgov = "performance";
+            };
+            cpu = {
+              pin_cores = config.mods.gaming.pinCores;
+              park_cores = config.mods.gaming.parkCores;
             };
             gpu = lib.mkIf config.mods.gaming.gpuOptimization {
               apply_gpu_optimisations = "accept-responsibility";
