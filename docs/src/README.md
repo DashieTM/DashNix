@@ -193,13 +193,13 @@ E.g. stable/hosts/yourserver and unstable/hosts/yourdesktop
 
 You can find a custom ISO on my NextCloud server: [Link](https://cloud.dashie.org/s/z7G3zS9SXeEt2ERD).
 With this, you will receive the example config in /iso/example alongside the gnome desktop environment,
-as well as a few tools like gnome-disks, neovim, vscodium, a browser etc.
+as well as a few tools like gnome-disks, Neovim, Vscodium, a browser etc.
 
 Alternatively, you can use whatever NixOS installer and just install your config from there, just make sure to set the drive configuration before.
 
 ## Commands
 
-First, copy the readonly config from /iso/example-config to a location of your choice.
+First, copy the read-only config from /iso/example-config to a location of your choice.
 
 ```sh
 cp /iso/example-config ~/config -r

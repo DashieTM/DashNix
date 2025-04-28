@@ -1,0 +1,4 @@
+DashNix
+HomeManger
+Neovim
+Vscodium
