@@ -8,8 +8,9 @@
   imports = [
     ./oxidash.nix
     ./oxinoti.nix
-    ./oxishut.nix
     ./oxipaste.nix
+    ./oxirun.nix
+    ./oxishut.nix
   ];
   options.mods.oxi = {
     enable = lib.mkOption {
