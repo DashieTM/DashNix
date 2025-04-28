@@ -16,6 +16,7 @@
       NIXOS_OZONE_WL = "1";
       GOPATH = "$HOME/.go";
       FLAKE = config.conf.nixosConfigPath;
+      NH_FLAKE = config.conf.nixosConfigPath;
     };
   };
 }
