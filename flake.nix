@@ -41,6 +41,7 @@
     oxinoti.url = "github:Xetibo/OxiNoti";
     oxidash.url = "github:Xetibo/OxiDash";
     oxipaste.url = "github:Xetibo/OxiPaste";
+    oxirun.url = "github:Xetibo/OxiRun";
     hyprdock.url = "github:Xetibo/hyprdock";
     reset.url = "github:Xetibo/ReSet";
     reset-plugins.url = "github:Xetibo/ReSet-Plugins";
