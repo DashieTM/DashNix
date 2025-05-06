@@ -103,14 +103,14 @@ in {
           name = "${config.conf.username}";
           value = {
             settings = {
-              zen.view.compact.hide-tabbar = false;
-              zen.view.compact.hide-toolbar = true;
-              zen.view.sidebar-expanded = false;
-              zen.view.use-single-toolbar = false;
-              zen.view.welcome-screen.seen = true;
-              zen.theme.accent-color = "#b4bbff";
-              extensions.autoDisableScopes = 0;
-              cookiebanners.service.mode = 2;
+              "zen.view.compact.hide-tabbar" = false;
+              "zen.view.compact.hide-toolbar" = true;
+              "zen.view.sidebar-expanded" = false;
+              "zen.view.use-single-toolbar" = false;
+              "zen.view.welcome-screen.seen" = true;
+              "zen.theme.accent-color" = "#b4bbff";
+              "extensions.autoDisableScopes" = 0;
+              "cookiebanners.service.mode" = 2;
             };
             isDefault = true;
             id = 0;
@@ -120,13 +120,13 @@ in {
           name = "special";
           value = {
             settings = {
-              zen.view.compact.hide-tabbar = false;
-              zen.view.compact.hide-toolbar = true;
-              zen.view.sidebar-expanded = false;
-              zen.view.use-single-toolbar = false;
-              zen.view.welcome-screen.seen = true;
-              zen.theme.accent-color = "#b4bbff";
-              extensions.autoDisableScopes = 0;
+              "zen.view.compact.hide-tabbar" = false;
+              "zen.view.compact.hide-toolbar" = true;
+              "zen.view.sidebar-expanded" = false;
+              "zen.view.use-single-toolbar" = false;
+              "zen.view.welcome-screen.seen" = true;
+              "zen.theme.accent-color" = "#b4bbff";
+              "extensions.autoDisableScopes" = 0;
             };
             isDefault = false;
             id = 1;

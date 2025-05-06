@@ -23,7 +23,7 @@
           source = ../../assets/logo2.png;
           width = 35;
           padding = {
-            top = 2;
+            top = 1;
           };
         };
         modules = [
