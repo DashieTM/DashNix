@@ -59,25 +59,23 @@ in {
       ++ config.conf.bootParams;
   };
 
-  # Enable networking
   networking = {
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
     hostName = hostName;
   };
 
-  # Set your time zone.
-  time.timeZone = config.conf.timezone;
+  time = {
+    timeZone = config.conf.timezone;
+    hardwareClockInLocalTime = config.conf.systemLocalTime;
+  };
 
-  # Select internationalisation properties.
   i18n.defaultLocale = config.conf.locale;
 
-  # Enable the X11 windowing system.
   services = {
     lorri.enable = true;
     xserver.enable = true;
     fstrim.enable = lib.mkDefault true;
-    # Enable sound with pipewire.
     pulseaudio.enable = false;
     pipewire = {
       enable = true;

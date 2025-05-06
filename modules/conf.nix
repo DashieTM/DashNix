@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   options,
   ...
 }: {
@@ -17,6 +16,14 @@
       example = "aarch64-linux";
       description = ''
         System architecture.
+      '';
+    };
+
+    systemLocalTime = lib.mkOption {
+      default = false;
+      example = true;
+      description = ''
+        System time for dualbooting
       '';
     };
 
