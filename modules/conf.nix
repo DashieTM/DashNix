@@ -132,7 +132,7 @@
     };
 
     username = lib.mkOption {
-      default = "dashie";
+      default = "DashNix";
       example = "pingpang";
       type = lib.types.str;
       description = ''
