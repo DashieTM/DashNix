@@ -52,6 +52,7 @@ in {
 
               alias rebuild='nh os switch -- --accept-flake-config'
               alias update='nix flake update --flake $FLAKE --accept-flake-config'
+              alias gcli='gh'
               abbr --add ls 'lsd'
               abbr --add :q 'exit'
               abbr --add gh 'git push origin'

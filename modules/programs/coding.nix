@@ -4,7 +4,9 @@
   pkgs,
   options,
   ...
-}: {
+}: let
+  font_family = "${config.mods.stylix.fonts.monospace.name}";
+in {
   options.mods = {
     coding = {
       enable = lib.mkOption {
@@ -52,6 +54,80 @@
         example = true;
         type = lib.types.bool;
         description = "Enables penpot";
+      };
+      neovide = {
+        enable = lib.mkOption {
+          default = false;
+          example = true;
+          type = lib.types.bool;
+          description = "Enables neovide";
+        };
+        config = lib.mkOption {
+          default = {
+            font = {
+              size = 12;
+              normal = {
+                family = font_family;
+                style = "";
+              };
+              bold = {
+                family = font_family;
+                style = "ExtraBold";
+              };
+              italic = {
+                family = font_family;
+                style = "Italic";
+              };
+              bold_italic = {
+                family = font_family;
+                style = "Bold Italic";
+              };
+            };
+          };
+          example = {};
+          type = with lib.types; attrsOf anything;
+          description = "Config for neovide";
+        };
+      };
+      gh = {
+        enable = lib.mkOption {
+          default = true;
+          example = false;
+          type = lib.types.bool;
+          description = "Enables and configures gh";
+        };
+        config = lib.mkOption {
+          default = {
+            version = 1;
+            git_protocol = "ssh";
+            editor = "";
+            prompt = "enabled";
+            prefer_editor_prompt = "disabled";
+            pager = "";
+            aliases = {
+              co = "pr checkout";
+            };
+            http_unix_socket = "";
+            browser = "";
+          };
+          example = {};
+          type = with lib.types; attrsOf anything;
+          description = "config for gh. Keep in mind, empty values refer to using environment variables";
+        };
+        hosts = lib.mkOption {
+          default = {
+            "github.com" = {
+              git_protocol = "ssh";
+              users = {
+                ${config.mods.git.username} = "";
+              };
+              user = "${config.mods.git.username}";
+            };
+          };
+          example = {};
+          type = with lib.types; attrsOf anything;
+          description = "hosts for gh";
+        };
       };
       useDefaultPackages = lib.mkOption {
         default = true;
@@ -233,7 +309,6 @@
               omnisharp-roslyn
               csharpier
               netcoredbg
-              #fsharp
               fsharp
               fsautocomplete
             ];
@@ -255,8 +330,7 @@
           };
           packages = lib.mkOption {
             default = with pkgs; [
-              # broke
-              #bear
+              bear
               gdb
               gcc
               clang-tools
@@ -435,7 +509,6 @@
       tmux
       tmate
     ];
-    font_family = "${config.mods.stylix.fonts.monospace.name}";
   in
     lib.mkIf config.mods.coding.enable (
       lib.optionalAttrs (options ? home.packages) {
@@ -448,34 +521,29 @@
           package = pkgs.vscodium;
           profiles.default.extensions = config.mods.coding.vscodium.extensions;
         };
-        xdg.configFile."neovide/config.toml" = lib.mkIf config.mods.coding.dashvim {
-          source = (pkgs.formats.toml {}).generate "neovide" {
-            font = {
-              size = 12;
-              normal = {
-                family = font_family;
-                style = "";
-              };
-              bold = {
-                family = font_family;
-                style = "ExtraBold";
-              };
-              italic = {
-                family = font_family;
-                style = "Italic";
-              };
-              bold_italic = {
-                family = font_family;
-                style = "Bold Italic";
-              };
-            };
-          };
+        xdg.configFile."neovide/config.toml" = lib.mkIf (config.mods.coding.dashvim || config.mods.coding.neovide.enable) {
+          source =
+            (pkgs.formats.toml {}).generate "neovide"
+            config.mods.coding.neovide.config;
         };
+
+        xdg.configFile."gh/config.yml" = lib.mkIf config.mods.coding.gh.enable {
+          source =
+            (pkgs.formats.yaml {}).generate "config"
+            config.mods.coding.gh.config;
+        };
+        xdg.configFile."gh/hosts.yml" = lib.mkIf config.mods.coding.gh.enable {
+          source =
+            (pkgs.formats.yaml {}).generate "hosts"
+            config.mods.coding.gh.hosts;
+        };
+
         home.packages = with pkgs;
           [
-            (lib.mkIf config.mods.coding.dashvim neovide)
+            (lib.mkIf (config.mods.coding.dashvim || config.mods.coding.neovide.enable) neovide)
             (lib.mkIf config.mods.coding.jetbrains jetbrains-toolbox)
             (lib.mkIf config.mods.coding.penpot pkgs.penpot-desktop)
+            (lib.mkIf config.mods.coding.gh.enable gh)
           ]
           ++ config.mods.coding.additionalPackages
           ++ (lib.lists.optionals config.mods.coding.useDefaultPackages basePackages)

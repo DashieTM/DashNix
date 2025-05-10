@@ -6,13 +6,13 @@
 }: {
   options.mods.git = {
     username = lib.mkOption {
-      default = "DashieTM";
+      default = "";
       example = "globi";
       type = lib.types.str;
       description = "Git user name";
     };
     email = lib.mkOption {
-      default = "fabio.lenherr@gmail.com";
+      default = "";
       example = "globi@globus.glob";
       type = lib.types.str;
       description = "Git email";
