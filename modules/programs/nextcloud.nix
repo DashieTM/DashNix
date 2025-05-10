@@ -8,13 +8,13 @@
         description = "Enable nextcloud";
       };
       username = lib.mkOption {
-        default = "DashieTM";
+        default = "";
         example = "globi";
         type = lib.types.str;
         description = "Your username";
       };
       url = lib.mkOption {
-        default = "cloud.dashie.org";
+        default = "";
         example = "cloud.globi.org";
         type = lib.types.str;
         description = "Your url";
