@@ -102,9 +102,12 @@ in {
       builders-use-substitutes = mkDashDefault true;
 
       substituters = [
+        "https://chaotic-nyx.cachix.org/"
+      ];
+
+      trusted-substituters = [
         "https://hyprland.cachix.org"
         "https://anyrun.cachix.org"
-        "https://cache.garnix.io"
         "https://oxipaste.cachix.org"
         "https://oxinoti.cachix.org"
         "https://oxishut.cachix.org"
@@ -112,13 +115,11 @@ in {
         "https://oxicalc.cachix.org"
         "https://hyprdock.cachix.org"
         "https://reset.cachix.org"
-        "https://chaotic-nyx.cachix.org/"
       ];
 
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "oxipaste.cachix.org-1:n/oA3N3Z+LJP7eIWOwuoLd9QnPyZXqFjLgkahjsdDGc="
         "oxinoti.cachix.org-1:dvSoJl2Pjo5HMaNngdBbSaixK9BSf2N8gzjP2MdGvfc="
         "oxishut.cachix.org-1:axyAGF3XMh1IyMAW4UMbQCdMNovDH0KH6hqLLRJH8jU="
