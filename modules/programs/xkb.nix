@@ -6,7 +6,7 @@
 }: {
   options.mods.xkb = {
     layout = lib.mkOption {
-      default = "dashie";
+      default = "enIntUmlaut";
       example = "us";
       type = lib.types.str;
       description = "Your layout";

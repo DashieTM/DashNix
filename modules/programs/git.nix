@@ -34,27 +34,15 @@
       description = "Additional git config";
     };
     sshConfig = lib.mkOption {
-      default = ''
+      default = "";
+      example = ''
         Host github.com
           ${
           if (config ? sops.secrets && config.sops.secrets ? hub.path)
           then "IdentityFile ${config.sops.secrets.hub.path}"
           else ""
         }
-        Host gitlab.com
-          ${
-          if (config ? sops.secrets && config.sops.secrets ? lab.path)
-          then "IdentityFile ${config.sops.secrets.lab.path}"
-          else ""
-        }
-        Host dashie.org
-          ${
-          if (config ? sops.secrets && config.sops.secrets ? dashie.path)
-          then "IdentityFile ${config.sops.secrets.dashie.path}"
-          else ""
-        }
       '';
-      example = "";
       type = lib.types.lines;
       description = "ssh configuration (keys for git)";
     };

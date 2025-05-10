@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: let
-  layout = pkgs.writeText "dashie" ''
-    xkb_symbols "dashie"
+  layout = pkgs.writeText "enIntUmlaut" ''
+    xkb_symbols "enIntUmlaut"
     {
       include "us(basic)"
       include "level3(ralt_switch)"
@@ -15,7 +15,7 @@
   '';
 in {
   environment.systemPackages = mkDashDefault [pkgs.xorg.xkbcomp];
-  services.xserver.xkb.extraLayouts.dashie = {
+  services.xserver.xkb.extraLayouts.enIntUmlaut = {
     description = "US layout with 'umlaut'";
     languages = ["eng"];
     symbolsFile = "${layout}";
