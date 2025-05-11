@@ -9,7 +9,7 @@
 }: {
   /*
   *
-  # build_systems
+  # buildSystems
 
   Builds system given a list of system names which are placed within your hosts/ directory. Note that each system has its own directory in hosts/ as well.
 
@@ -24,7 +24,7 @@
   # Example usage
   :::{.example}
   ```nix
-  nixosConfigurations = build_systems { root = ./.; };
+  nixosConfigurations = buildSystems { root = ./.; };
   ```
   :::
   */
@@ -35,7 +35,7 @@
   #   );
 
   # in
-  build_systems = {
+  buildSystems = {
     root,
     additionalMods ? {
       nixos = [];

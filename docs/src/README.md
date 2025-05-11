@@ -26,7 +26,7 @@ dashNix = {
 You can then configure your systems in your flake outputs with a provided library command:
 
 ```nix
-nixosConfigurations = inputs.dashNix.dashNixLib.build_systems { root = ./.; };
+nixosConfigurations = inputs.dashNix.dashNixLib.buildSystems { root = ./.; };
 ```
 
 This command will build each system that is placed within the hosts/ directory.
@@ -132,7 +132,7 @@ After logging in the first time, your password will be set to "firstlogin", plea
 
 ## Nixos and Home-manager Modules
 
-You can add additional modules or remove all of them by overriding parameters to the build_systems command:
+You can add additional modules or remove all of them by overriding parameters to the buildSystems command:
 
 ```nix
 nixosConfigurations =
@@ -150,7 +150,7 @@ nixosConfigurations =
             home = [];
         }
     in
-    inputs.dashNix.dashNixLib.build_systems { root = ./.; inherit mods additionalMods; };
+    inputs.dashNix.dashNixLib.buildSystems { root = ./.; inherit mods additionalMods; };
 ```
 
 ## Additional Inputs
@@ -164,7 +164,7 @@ nixosConfigurations =
             something.url = "yoururl"
         }
     in
-    inputs.dashNix.dashNixLib.build_systems { root = ./.; inherit additionalInputs; };
+    inputs.dashNix.dashNixLib.buildSystems { root = ./.; inherit additionalInputs; };
 ```
 
 ## Stable/Unstable
@@ -174,12 +174,12 @@ This can be done with the overridePkgs flag for the lib function:
 
 ```nix
  nixosConfigurations =
-   inputs.dashNix.dashNixLib.build_systems {
+   inputs.dashNix.dashNixLib.buildSystems {
      root = ./stable;
      inherit additionalInputs;
      overridePkgs = true;
    }
-   // inputs.dashNix.dashNixLib.build_systems {
+   // inputs.dashNix.dashNixLib.buildSystems {
      root = ./unstable;
      inherit additionalInputs;
    };

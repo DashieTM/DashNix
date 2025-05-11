@@ -119,7 +119,7 @@
       pkgs = unstable;
       system = currentSystem;
       lib = inputs.unstable.lib;
-      build_systems = dashNixLib.build_systems;
+      buildSystems = dashNixLib.buildSystems;
     };
     dashNixInputs = inputs;
     stablePkgs = stable;
