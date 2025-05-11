@@ -367,7 +367,6 @@ in {
                   "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
                   "QT_SCALE_FACTOR,1"
                   ''EDITOR,"neovide --novsync --nofork"''
-                  (lib.mkIf config.mods.hypr.hyprland.noAtomic "WLR_DRM_NO_ATOMIC,1")
                   "GTK_USE_PORTAL, 1"
 
                   (lib.mkIf config.mods.gpu.nvidia.enable "LIBVA_DRIVER_NAME,nvidia")
