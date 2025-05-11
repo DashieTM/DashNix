@@ -3,9 +3,16 @@
   config,
   options,
   pkgs,
+  stable,
   ...
-}: {
-  options.mods.browser.firefox = {
+}: let
+  name = "firefox";
+in {
+  imports = [
+    (import ./ffextensions.nix
+      {inherit lib stable pkgs name;})
+  ];
+  options.mods.browser.${name} = {
     enable = lib.mkOption {
       default = false;
       example = true;
@@ -88,7 +95,17 @@
         config.mods.browser.firefox.profiles;
       programs.firefox = {
         enable = true;
-        policies = config.mods.browser.firefox.configuration;
+        package =
+          pkgs.wrapFirefox
+          pkgs.firefox-unwrapped
+          {
+            pname = "firefox";
+            extraPolicies =
+              config.mods.browser.firefox.configuration
+              // {
+                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} config.mods.browser.firefox.extensions;
+              };
+          };
         profiles = builtins.listToAttrs config.mods.browser.firefox.profiles;
       };
     }

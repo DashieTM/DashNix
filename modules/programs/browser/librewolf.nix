@@ -3,9 +3,16 @@
   config,
   options,
   pkgs,
+  stable,
   ...
-}: {
-  options.mods.browser.librewolf = {
+}: let
+  name = "librewolf";
+in {
+  imports = [
+    (import ./ffextensions.nix
+      {inherit lib stable pkgs name;})
+  ];
+  options.mods.browser.${name} = {
     enable = lib.mkOption {
       default = false;
       example = true;
@@ -82,8 +89,17 @@
     lib.optionalAttrs (options ? home.packages) {
       programs.librewolf-dashnix = {
         enable = true;
-        package = pkgs.librewolf;
-        policies = config.mods.browser.librewolf.configuration;
+        package =
+          pkgs.wrapFirefox
+          pkgs.librewolf-unwrapped
+          {
+            pname = "librewolf";
+            extraPolicies =
+              config.mods.browser.librewolf.configuration
+              // {
+                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} config.mods.browser.librewolf.extensions;
+              };
+          };
         profiles = builtins.listToAttrs config.mods.browser.librewolf.profiles;
       };
     }
