@@ -254,6 +254,10 @@ in {
                   rounding = 4;
                 };
 
+                render = {
+                  direct_scanout = mkDashDefault config.mods.gaming.enable;
+                };
+
                 animations = {
                   bezier = "penguin,0.05,0.9,0.1,1.0";
                   animation = [
@@ -298,7 +302,11 @@ in {
 
                 cursor = {
                   enable_hyprcursor = true;
-                  no_hardware_cursors = mkDashDefault config.mods.gpu.nvidia.enable;
+                  no_hardware_cursors = mkDashDefault (
+                    if config.mods.gpu.nvidia.enable
+                    then 2
+                    else 0
+                  );
                   # done with nix, this would break the current setup otherwise
                   sync_gsettings_theme = false;
                 };
