@@ -121,7 +121,7 @@
     ];
   };
   monitorConfig =
-    if config.mods.hypr.hyprland.enable
+    if config.mods.hypr.hyprland.ironbarSingleMonitor
     then {monitors.${config.mods.hypr.hyprland.defaultMonitor} = ironbarDefaultConfig;}
     else ironbarDefaultConfig;
 in {

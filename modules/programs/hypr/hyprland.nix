@@ -91,6 +91,14 @@ in {
         Whether to use ironbar in hyprland.
       '';
     };
+    ironbarSingleMonitor = lib.mkOption {
+      default = true;
+      example = false;
+      type = lib.types.bool;
+      description = ''
+        Whether to use ironbar on a single monitor.
+      '';
+    };
     useDefaultConfig = lib.mkOption {
       default = true;
       example = false;
