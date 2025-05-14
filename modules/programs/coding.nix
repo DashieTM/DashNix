@@ -178,7 +178,6 @@ in {
             default = with pkgs; [
               typst
               tinymist
-              ltex-ls
             ];
             example = [];
             type = with lib.types; listOf package;
