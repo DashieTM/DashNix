@@ -412,6 +412,8 @@ in {
                     "systemctl --user import-environment"
                     "dbus-update-activation-environment --systemd --all"
                     "hyprctl setcursor Bibata-Modern-Classic 24"
+                    # ensures the systemd service knows what "hyprctl" is :)
+                    (lib.mkIf config.mods.gaming.gamemode "systemctl try-restart gamemoded.service --user")
 
                     # other programs
                     "${browserName}"
