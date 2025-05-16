@@ -3,7 +3,6 @@
   config,
   options,
   pkgs,
-  alternativePkgs,
   ...
 }: let
   callPackage = lib.callPackageWith pkgs;
@@ -24,7 +23,7 @@ in {
   };
   config = lib.mkIf config.mods.teams.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = [(callPackage ../../override/teams.nix {chromium = alternativePkgs.chromium;})];
+      home.packages = [(callPackage ../../override/teams.nix {chromium = pkgs.chromium;})];
     }
     // (lib.optionalAttrs (options ? boot.kernelModules) {
       boot = {
