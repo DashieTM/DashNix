@@ -41,6 +41,7 @@
     ./starship.nix
     ./streamcontroller.nix
     ./stylix.nix
+    ./superfreq.nix
     ./supersonic.nix
     ./sway.nix
     ./teams.nix

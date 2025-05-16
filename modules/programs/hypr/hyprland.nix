@@ -417,6 +417,7 @@ in {
 
                     # other programs
                     "${browserName}"
+                    (lib.mkIf config.mods.oxi.hyprdock.enable "hyprdock --server")
                     (lib.mkIf config.mods.hypr.hyprpaper.enable "hyprpaper")
                     (lib.mkIf config.mods.hypr.hyprland.useIronbar "ironbar")
                     (lib.mkIf config.mods.oxi.oxipaste.enable "oxipaste_daemon")

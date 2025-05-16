@@ -34,6 +34,12 @@
         type = lib.types.bool;
         description = "Enables hyprdock";
       };
+      settings = lib.mkOption {
+        default = {};
+        example = {};
+        type = with lib.types; attrsOf anything;
+        description = "settings for hyprdock";
+      };
     };
     oxicalc = {
       enable = lib.mkOption {
@@ -47,7 +53,10 @@
   config = lib.mkIf config.mods.oxi.enable (
     lib.optionalAttrs (options ? home.packages) {
       programs = {
-        hyprdock.enable = lib.mkIf config.mods.oxi.hyprdock.enable true;
+        hyprdock = {
+          enable = config.mods.oxi.hyprdock.enable;
+          settings = config.mods.oxi.hyprdock.settings;
+        };
         oxicalc.enable = lib.mkIf config.mods.oxi.oxicalc.enable true;
         ReSet = lib.mkIf config.mods.oxi.ReSet.enable {
           enable = true;
@@ -64,6 +73,9 @@
           };
         };
       };
+    }
+    // lib.optionalAttrs (options ? services.logind) {
+      services.logind.lidSwitchExternalPower = "ignore";
     }
   );
 }

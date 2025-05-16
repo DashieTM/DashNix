@@ -49,6 +49,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
         inputs.disko.nixosModules.disko
+        inputs.superfreq.nixosModules.default
         ../base
         ../home
         ../modules

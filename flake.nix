@@ -49,9 +49,12 @@
     oxidash.url = "github:Xetibo/OxiDash";
     oxipaste.url = "github:Xetibo/OxiPaste";
     oxirun.url = "github:Xetibo/OxiRun";
-    hyprdock.url = "github:Xetibo/hyprdock";
+    # For now until merged into Xetibo
+    hyprdock.url = "github:DashieTM/hyprdock";
     reset.url = "github:Xetibo/ReSet";
     reset-plugins.url = "github:Xetibo/ReSet-Plugins";
+
+    superfreq.url = "github:NotAShelf/superfreq";
 
     # absolute insanity
     chaoticNyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
