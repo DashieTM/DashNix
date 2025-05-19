@@ -160,6 +160,7 @@ in {
       ];
 
       wayland.windowManager.hyprland = {
+        package = mkDashDefault pkgs.hyprland;
         enable = true;
         settings =
           if config.mods.hypr.hyprland.useDefaultConfig

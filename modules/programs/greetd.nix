@@ -37,7 +37,7 @@
       };
       greeterCommand = lib.mkOption {
         default = "${
-          lib.getExe inputs.hyprland.packages.${config.conf.system}.hyprland
+          lib.getExe pkgs.hyprland
         } --config /etc/greetd/hyprgreet.conf";
         example = "${
           lib.getExe pkgs.cage

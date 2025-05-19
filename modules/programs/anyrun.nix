@@ -57,6 +57,7 @@
   config = lib.mkIf config.mods.anyrun.enable (
     lib.optionalAttrs (options ? home.packages) {
       programs.anyrun = lib.mkForce {
+        package = pkgs.anyrun;
         enable = true;
         config =
           if config.mods.anyrun.useDefaultConfig
