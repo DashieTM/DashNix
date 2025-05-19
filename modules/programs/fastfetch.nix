@@ -57,18 +57,20 @@
 
   config = lib.optionalAttrs (options ? home.packages) {
     xdg.configFile."fastfetch/config.jsonc" = lib.mkIf (config.mods.dashfetch.enable) {
-      source = (pkgs.formats.json {}).generate "config.jsonc" {
-        "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-        logo = {
-          type = mkDashDefault "kitty";
-          source = mkDashDefault ../../assets/logo2.png;
-          width = mkDashDefault 35;
-          padding = mkDashDefault {
-            top = mkDashDefault 1;
+      source =
+        (pkgs.formats.json {}).generate "config.jsonc"
+        {
+          "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+          logo = {
+            type = "kitty";
+            source = ../../assets/logo2.png;
+            width = 35;
+            padding = {
+              top = 1;
+            };
           };
+          modules = config.mods.dashfetch.modules;
         };
-        modules = config.mods.dashfetch.modules;
-      };
     };
   };
 }
