@@ -75,10 +75,7 @@
     };
 
     additionalBootKernalParams = lib.mkOption {
-      default = [
-        # TODO test if needed
-        #"video=${config.conf.defaultMonitor}:${config.conf.defaultMonitorMode}"
-      ];
+      default = [];
       example = [];
       type = with lib.types; listOf str;
       description = ''
