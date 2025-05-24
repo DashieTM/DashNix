@@ -130,7 +130,19 @@ in {
             extraPolicies =
               config.mods.browser.zen.configuration
               // {
-                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} config.mods.browser.zen.extensions;
+                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} (config.mods.browser.zen.extensions
+                  ++ (
+                    if (config.mods.browser.firefox.darkreader)
+                    then [
+                      {
+                        "addon@darkreader.org" = {
+                          install_url = "file://${pkgs.callPackage ../../../patches/darkreader.nix {inherit lib dashNixAdditionalProps;}}/latest.xpi";
+                          installation_mode = "normal_installed";
+                        };
+                      }
+                    ]
+                    else []
+                  ));
               };
           };
         profiles = builtins.listToAttrs config.mods.browser.zen.profiles;

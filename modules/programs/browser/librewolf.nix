@@ -97,7 +97,19 @@ in {
             extraPolicies =
               config.mods.browser.librewolf.configuration
               // {
-                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} config.mods.browser.librewolf.extensions;
+                ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} (config.mods.browser.librewolf.extensions
+                  ++ (
+                    if (config.mods.browser.firefox.darkreader)
+                    then [
+                      {
+                        "addon@darkreader.org" = {
+                          install_url = "file://${pkgs.callPackage ../../../patches/darkreader.nix {inherit lib dashNixAdditionalProps;}}/latest.xpi";
+                          installation_mode = "normal_installed";
+                        };
+                      }
+                    ]
+                    else []
+                  ));
               };
           };
         profiles = builtins.listToAttrs config.mods.browser.librewolf.profiles;
