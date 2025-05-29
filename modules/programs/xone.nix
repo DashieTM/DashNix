@@ -15,5 +15,5 @@
     };
   };
 
-  config = lib.optionalAttrs (options ? hardware) {hardware.xone.enable = true;};
+  config = lib.optionalAttrs (options ? hardware) {hardware.xone.enable = config.mods.xone.enable;};
 }

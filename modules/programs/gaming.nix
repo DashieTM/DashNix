@@ -75,6 +75,7 @@
     lib.optionalAttrs (options ? environment.systemPackages) {
       environment.systemPackages = config.mods.gaming.tools;
       boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
+      services.scx.enable = true;
 
       programs = {
         steam.enable = mkDashDefault config.mods.gaming.steam;

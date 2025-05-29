@@ -50,9 +50,11 @@
         inputs.stylix.nixosModules.stylix
         inputs.disko.nixosModules.disko
         inputs.superfreq.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
         ../base
         ../home
         ../modules
+        inputs.chaoticNyx.nixosModules.default
       ];
       home = [
         inputs.anyrun.homeManagerModules.default
@@ -69,6 +71,7 @@
         inputs.sops-nix.homeManagerModules.sops
         inputs.dashvim.homeManagerModules.dashvim
         inputs.fancontrol.homeManagerModules.default
+        inputs.chaoticNyx.homeManagerModules.default
         ../modules
       ];
     },
