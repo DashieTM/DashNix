@@ -194,7 +194,7 @@ in {
                   (lib.mkIf (config.mods.oxi.oxidash.enable) "$mod SUPER,M,exec,oxidash")
                   (lib.mkIf (config.mods.oxi.oxicalc.enable) "$mod SUPER,G,exec,oxicalc")
                   (lib.mkIf (config.mods.oxi.oxishut.enable) "$mod SUPER,D,exec,oxishut")
-                  (lib.mkIf (config.mods.oxi.oxipaste.enable) "$mod SUPER,A,exec,oxipaste-iced")
+                  (lib.mkIf (config.mods.oxi.oxipaste.enable) "$mod SUPER,A,exec,oxipaste")
                   (lib.mkIf (config.mods.oxi.hyprdock.enable) "$mod SUPERSHIFT,P,exec,hyprdock --gui")
                   (lib.mkIf (config.mods.hypr.hyprlock.enable) "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend")
                   (lib.mkIf (config.mods.hypr.hyprlock.enable) "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate")
