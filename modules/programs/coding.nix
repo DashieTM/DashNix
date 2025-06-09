@@ -241,7 +241,6 @@ in {
               typescript
               nodePackages.typescript-language-server
               nodePackages.prettier
-              pnpm
             ];
             example = [];
             type = with lib.types; listOf package;
