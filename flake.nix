@@ -21,11 +21,6 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     ironbar = {

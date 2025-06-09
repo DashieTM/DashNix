@@ -4,7 +4,6 @@
   lib,
   options,
   pkgs,
-  inputs,
   ...
 }: let
   browserName =
@@ -141,6 +140,15 @@ in {
         Please note, plugins tend to break VERY often.
       '';
     };
+    filePickerPortal = lib.mkOption {
+      default = "gnome";
+      example = "kde";
+      type = with lib.types; (enum ["gnome" "kde" "gtk" "disable"]);
+      description = ''
+        The file picker portal to use with Hyprland.
+        Disable removes the config, allowing you to set it yourself.
+      '';
+    };
   };
 
   config = lib.mkIf config.mods.hypr.hyprland.enable (
@@ -152,16 +160,30 @@ in {
         slurp
         satty
         xdg-desktop-portal-gtk
-        # xdg-desktop-portal-hyprland
         copyq
         wl-clipboard
         hyprcursor
         hyprpicker
+        (lib.mkIf (config.mods.hypr.hyprland.filePickerPortal == "kde") xdg-desktop-portal-kde)
+        (lib.mkIf (config.mods.hypr.hyprland.filePickerPortal == "gnome") xdg-desktop-portal-gnome)
       ];
 
+      xdg.configFile."xdg-desktop-portal/portals.conf" = lib.mkIf (config.mods.hypr.hyprland.filePickerPortal != "none") {
+        text = ''
+          [preferred]
+          default = hyprland;gtk
+          org.freedesktop.impl.portal.FileChooser = ${config.mods.hypr.hyprland.filePickerPortal}
+        '';
+      };
+
       wayland.windowManager.hyprland = {
-        package = mkDashDefault pkgs.hyprland;
         enable = true;
+        package = mkDashDefault pkgs.hyprland;
+        plugins =
+          [
+            (lib.mkIf config.mods.hypr.hyprland.hyprspaceEnable pkgs.hyprlandPlugins.hyprspace)
+          ]
+          ++ config.mods.hypr.hyprland.plugins;
         settings =
           if config.mods.hypr.hyprland.useDefaultConfig
           then
@@ -281,6 +303,9 @@ in {
                   "$mod SUPER,P,resizeactive,20 0"
                   "$mod SUPER,O,resizeactive,0 -20"
                   "$mod SUPER,I,resizeactive,0 20"
+
+                  (lib.mkIf config.mods.hypr.hyprland.hyprspaceEnable
+                    "SUPER, W, overview:toggle")
                 ];
 
                 general = {
@@ -426,27 +451,11 @@ in {
                   ]
                   ++ config.mods.hypr.hyprland.extraAutostart;
 
-                plugin =
-                  lib.mkMerge
-                  [
-                    {
-                      hyprspace = lib.mkIf config.mods.hypr.hyprland.hyprspaceEnable {
-                        bind = [
-                          "SUPER, W, overview:toggle, toggle"
-                        ];
-                      };
-                    }
-                    config.mods.hypr.hyprland.pluginConfig
-                  ];
+                plugin = config.mods.hypr.hyprland.pluginConfig;
               }
               config.mods.hypr.hyprland.customConfig
             ]
           else lib.mkForce config.mods.hypr.hyprland.customConfig;
-        plugins =
-          [
-            (lib.mkIf config.mods.hypr.hyprland.hyprspaceEnable inputs.Hyprspace.packages.${pkgs.system}.Hyprspace)
-          ]
-          ++ config.mods.hypr.hyprland.plugins;
       };
     }
   );
