@@ -201,7 +201,6 @@ in {
                   # screenshots
                   ''$mod SUPER,S,exec,grim -g "$(slurp)" - | wl-copy''
                   ''$mod SUPERSHIFT,S,exec,grim -g "$(slurp)" - | satty -f -''
-                  ''$mod SUPERSHIFTALT,S,exec,grim -c -g "2560,0 3440x1440" - | wl-copy''
 
                   # regular programs
                   "$mod SUPER,F,exec,${browserName}"
@@ -312,7 +311,6 @@ in {
                   gaps_out = mkDashDefault "3,5,5,5";
                   border_size = mkDashDefault 3;
                   "col.active_border" = lib.mkOverride 51 "0xFFFF0000 0xFF00FF00 0xFF0000FF 45deg";
-                  # "col.inactive_border" = "0x66333333";
                   allow_tearing = lib.mkIf config.mods.hypr.hyprland.noAtomic true;
                 };
 
@@ -401,7 +399,6 @@ in {
                   "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
                   "QT_SCALE_FACTOR,1"
                   ''EDITOR,"neovide --novsync --nofork"''
-                  "GTK_USE_PORTAL, 1"
 
                   (lib.mkIf config.mods.gpu.nvidia.enable "LIBVA_DRIVER_NAME,nvidia")
                   (lib.mkIf config.mods.gpu.nvidia.enable "XDG_SESSION_TYPE,wayland")
@@ -421,15 +418,10 @@ in {
                   "float,class:^(.*)(winecfg.exe)(.*)$"
                   "float,class:^(.*)(copyq)(.*)$"
                   "center,class:^(.*)(swappy)(.*)$"
-                  "float,title:^(.*)(reset)(.*)$"
                   "workspace 10 silent,class:^(.*)(steam)(.*)$"
-                  "workspace 9 silent,class:^(.*)(dota)(.*)$"
-                  "workspace 9 silent,class:^(.*)(battlebits)(.*)$"
-                  "workspace 9 silent,class:^(.*)(aoe)(.*)$"
+
+                  # Otherwise neovide will ignore tiling
                   "suppressevent fullscreen maximize,class:^(.*)(neovide)(.*)$"
-                  "immediate,class:^(.*)(Pal)$"
-                  "immediate,class:^(.*)(dota2)$"
-                  "immediate,class:^(.*)(needforspeedheat.exe)$"
                 ];
 
                 exec-once =
@@ -437,7 +429,7 @@ in {
                     # environment
                     "systemctl --user import-environment"
                     "dbus-update-activation-environment --systemd --all"
-                    "hyprctl setcursor Bibata-Modern-Classic 24"
+                    "hyprctl setcursor ${config.mods.stylix.cursor.name} ${toString config.mods.stylix.cursor.size}"
                     # ensures the systemd service knows what "hyprctl" is :)
                     (lib.mkIf config.mods.gaming.gamemode "systemctl try-restart gamemoded.service --user")
 
