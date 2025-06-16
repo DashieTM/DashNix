@@ -4,9 +4,28 @@
   config,
   options,
   unstable,
+  inputs,
   pkgs,
   ...
-}: {
+}: let
+  svg = ../../assets/rainbow.svg;
+  sd = lib.getExe pkgs.sd;
+  base16 = pkgs.callPackage inputs.base16.lib {};
+  mkWallpaper = schemeStr: let
+    scheme = base16.mkSchemeAttrs schemeStr;
+  in
+    pkgs.runCommand "rainbow.png" {} ''
+      cat ${svg} \
+        | ${sd} '#f9e2af' '#${scheme.base0A}' \
+        | ${sd} '#fab387' '#${scheme.base09}' \
+        | ${sd} '#f38ba8' '#${scheme.base08}' \
+        | ${sd} '#89b4fa' '#${scheme.base0D}' \
+        | ${sd} '#cba6f7' '#${scheme.base0E}' \
+        | ${sd} '#a6e3a1' '#${scheme.base0B}' \
+        | ${sd} '#1e1e2e' '#${scheme.base00}' \
+        | ${lib.getExe pkgs.imagemagick} svg:- png:$out
+    '';
+in {
   options.mods.stylix = {
     colorscheme = lib.mkOption {
       default = "catppuccin-mocha";
@@ -85,11 +104,16 @@
       description = "font config";
     };
   };
-  config =
+  config = let
+    scheme =
+      if builtins.isAttrs config.mods.stylix.colorscheme
+      then config.mods.stylix.colorscheme
+      else "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml";
+  in
     (lib.optionalAttrs (options ? stylix) {
       stylix = {
         enable = true;
-        image = mkDashDefault ../../base/black.jpg;
+        image = mkDashDefault (mkWallpaper scheme);
         polarity = mkDashDefault "dark";
         targets = {
           nixvim.enable = mkDashDefault false;
@@ -97,11 +121,7 @@
         };
         fonts = config.mods.stylix.fonts;
         cursor = config.mods.stylix.cursor;
-        base16Scheme = (
-          if builtins.isAttrs config.mods.stylix.colorscheme
-          then config.mods.stylix.colorscheme
-          else "${pkgs.base16-schemes}/share/themes/${config.mods.stylix.colorscheme}.yaml"
-        );
+        base16Scheme = scheme;
       };
     })
     // lib.optionalAttrs (options ? environment.systemPackages) {
