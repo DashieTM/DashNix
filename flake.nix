@@ -45,7 +45,7 @@
     oxipaste.url = "github:Xetibo/OxiPaste";
     oxirun.url = "github:Xetibo/OxiRun";
     # For now until merged into Xetibo
-    hyprdock.url = "github:DashieTM/hyprdock";
+    hyprdock.url = "github:Xetibo/hyprdock";
     reset.url = "github:Xetibo/ReSet";
     reset-plugins.url = "github:Xetibo/ReSet-Plugins";
 
