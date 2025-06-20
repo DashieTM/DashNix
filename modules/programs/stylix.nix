@@ -61,10 +61,6 @@ in {
         or a path to a custom yaml file.
 
         Also supports the oxiced theme in an oxiced attrset.
-        oxiced = {
-          # and more
-          primary = "#yourcolor";
-        };
       '';
     };
     cursor = lib.mkOption {

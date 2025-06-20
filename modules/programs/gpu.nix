@@ -91,7 +91,8 @@
           (lib.mkIf (config.mods.gpu.intelgpu.enable || config.mods.gpu.amdgpu.enable) pkgs.mesa)
         ];
         rocmPackages = [
-          pkgs.rocmPackages.clr.icd
+          # TODO broken
+          #pkgs.rocmPackages.clr.icd
           pkgs.mesa
           pkgs.mesa.opencl
           pkgs.vulkan-loader
