@@ -109,7 +109,7 @@
           {
             class = "popup-button";
             label = "";
-            on_click = "!oxidash --css /home/dashie/gits/oxidash/style.css";
+            on_click = "!oxidash";
             type = "button";
           }
         ];

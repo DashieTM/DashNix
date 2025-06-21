@@ -323,15 +323,15 @@ in {
                 };
 
                 animations = {
-                  bezier = mkDashDefault "penguin,0.05,0.9,0.1,1.0";
+                  bezier = mkDashDefault "overshot, 0.05, 0.9, 0.1, 1.2";
                   animation = [
                     "windowsMove,1,4,default"
-                    "windows,1,7,default,popin 70%"
+                    "windows,1,3,overshot,slide bottom"
                     "windowsOut,1,7,default,popin 70%"
-                    "border,1,10,default"
+                    "border,1,4,default"
                     "fade,1,7,default"
-                    "workspaces,1,6,default"
-                    "layers,1,3,default,popin"
+                    "workspaces,1,4,default"
+                    "layers,1,2,default,slide"
                   ];
                 };
 
