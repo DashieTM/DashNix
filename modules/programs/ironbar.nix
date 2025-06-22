@@ -10,8 +10,14 @@
   username = config.conf.username;
   base16 = pkgs.callPackage inputs.base16.lib {};
   scheme = base16.mkSchemeAttrs config.stylix.base16Scheme;
-  ironbarDefaultConfig = {
+  ironbarDefaultConfig = useBatteryModule: {
     end = [
+      (lib.mkIf useBatteryModule
+        {
+          type = "upower";
+          class = "battery";
+          icon_size = 0;
+        })
       {
         class = "music";
         type = "music";
@@ -176,10 +182,10 @@
       }
     ];
   };
-  monitorConfig =
+  monitorConfig = useBatteryModule:
     if config.mods.hypr.hyprland.ironbarSingleMonitor
-    then {monitors.${config.mods.hypr.hyprland.defaultMonitor} = ironbarDefaultConfig;}
-    else ironbarDefaultConfig;
+    then {monitors.${config.mods.hypr.hyprland.defaultMonitor} = ironbarDefaultConfig useBatteryModule;}
+    else ironbarDefaultConfig useBatteryModule;
 in {
   options.mods = {
     ironbar = {
@@ -196,6 +202,12 @@ in {
         description = ''
           Use preconfigured ironbar config.
         '';
+      };
+      useBatteryModule = lib.mkOption {
+        default = false;
+        example = true;
+        type = lib.types.bool;
+        description = "Whether to use the preconfigured battery module.";
       };
       customConfig = lib.mkOption {
         default = {};
@@ -398,6 +410,38 @@ in {
                 color: @background;
               }
 
+              /* upower */
+              .upower {
+                font-size: 13px;
+                padding: 0px 4px 0px 0px;
+                margin: 2px 0px 2px 0px;
+                background-color: @background;
+                color: @primary;
+              }
+
+              .upower .icon {
+                opacity: 0.0;
+              }
+
+              .upower .label {
+                margin: 2px 0px 0px -8px;
+                color: @primary;
+              }
+
+              .upower:hover {
+                background-color: @secondary-background;
+                border-radius: 5px;
+              }
+
+              .popup-upower {
+                background-color: @background;
+                color: @primary;
+                border-radius: 8px;
+                border: 1px solid @primary;
+                padding: 16px;
+                font-size: 20px;
+              }
+
               /* music */
               .music {
                 font-size: 13px;
@@ -473,7 +517,7 @@ in {
           then
             lib.mkMerge
             [
-              monitorConfig
+              (monitorConfig config.mods.ironbar.useBatteryModule)
               config.mods.ironbar.customConfig
             ]
           else config.mods.ironbar.customConfig;

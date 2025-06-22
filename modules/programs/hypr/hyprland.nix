@@ -141,7 +141,7 @@ in {
       '';
     };
     filePickerPortal = lib.mkOption {
-      default = "gnome";
+      default = "gtk";
       example = "kde";
       type = with lib.types; (enum ["gnome" "kde" "gtk" "disable"]);
       description = ''
