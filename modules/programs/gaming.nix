@@ -15,6 +15,7 @@
     };
     tools = lib.mkOption {
       default = with pkgs; [
+        protonplus
         gamescope
         gamemode
         steam
