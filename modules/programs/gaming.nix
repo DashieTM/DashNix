@@ -26,6 +26,7 @@
         mangohud
         nexusmods-app
         steamtinkerlaunch
+        winetricks
       ];
       example = [];
       type = with lib.types; listOf package;
