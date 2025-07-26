@@ -25,6 +25,7 @@
         heroic
         mangohud
         nexusmods-app
+        steamtinkerlaunch
       ];
       example = [];
       type = with lib.types; listOf package;
