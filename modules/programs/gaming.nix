@@ -24,6 +24,7 @@
         adwsteamgtk
         heroic
         mangohud
+        nexusmods-app
       ];
       example = [];
       type = with lib.types; listOf package;
