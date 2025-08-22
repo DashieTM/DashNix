@@ -306,7 +306,6 @@ in {
             default = with pkgs; [
               #.!
               dotnet-sdk
-              omnisharp-roslyn
               csharpier
               netcoredbg
               fsharp
