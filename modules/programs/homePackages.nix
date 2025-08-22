@@ -119,7 +119,7 @@
             flake-checker
             gnome-keyring
             gnutar
-            greetd.regreet
+            regreet
             killall
             kitty
             libnotify

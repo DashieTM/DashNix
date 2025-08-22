@@ -147,6 +147,7 @@ in {
           };
         profiles = builtins.listToAttrs config.mods.browser.zen.profiles;
       };
+      stylix.targets.zen-browser.profileNames = lib.map (profile: profile.name) config.mods.browser.zen.profiles;
     }
   );
 }
