@@ -28,6 +28,7 @@ in {
         (mkExtension "keepassxc-browser@keepassxc.org" "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi")
         (mkExtension "@react-devtools" "https://addons.mozilla.org/firefox/downloads/latest/react-devtools/latest.xpi")
         (mkExtension "extension@redux.devtools" "https://addons.mozilla.org/firefox/downloads/latest/reduxdevtools/latest.xpi")
+        (mkExtension "{20a9bb38-ed7c-4faf-9aaf-7c5d241fd747}" "https://addons.mozilla.org/firefox/downloads/file/4524699/angular_devtools-1.0.37.xpi")
         (mkExtension "private-relay@firefox.com" "https://addons.mozilla.org/firefox/downloads/latest/private-relay/latest.xpi")
       ];
       example = [
