@@ -71,6 +71,7 @@
             nautilus
             sushi
             nautilus-python
+            nautilus-open-any-terminal
           ];
         in
           lib.mkIf config.mods.nautilus.enable packages;

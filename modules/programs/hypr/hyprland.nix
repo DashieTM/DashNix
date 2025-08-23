@@ -140,15 +140,6 @@ in {
         Please note, plugins tend to break VERY often.
       '';
     };
-    filePickerPortal = lib.mkOption {
-      default = "gtk";
-      example = "kde";
-      type = with lib.types; (enum ["gnome" "kde" "gtk" "disable"]);
-      description = ''
-        The file picker portal to use with Hyprland.
-        Disable removes the config, allowing you to set it yourself.
-      '';
-    };
   };
 
   config = lib.mkIf config.mods.hypr.hyprland.enable (
@@ -160,21 +151,14 @@ in {
         slurp
         satty
         xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        kdePackages.xdg-desktop-portal-kde
+        xdg-desktop-portal-shana
         copyq
         wl-clipboard
         hyprcursor
         hyprpicker
-        (lib.mkIf (config.mods.hypr.hyprland.filePickerPortal == "kde") xdg-desktop-portal-kde)
-        (lib.mkIf (config.mods.hypr.hyprland.filePickerPortal == "gnome") xdg-desktop-portal-gnome)
       ];
-
-      xdg.configFile."xdg-desktop-portal/portals.conf" = lib.mkIf (config.mods.hypr.hyprland.filePickerPortal != "none") {
-        text = ''
-          [preferred]
-          default = hyprland;gtk
-          org.freedesktop.impl.portal.FileChooser = ${config.mods.hypr.hyprland.filePickerPortal}
-        '';
-      };
 
       wayland.windowManager.hyprland = {
         enable = true;

@@ -36,8 +36,46 @@
         special services configuration to be added which require an services.something notation.
       '';
     };
+    filePickerPortal = lib.mkOption {
+      default = "Term";
+      example = "Gnome";
+      type = with lib.types; oneOf [(enum ["Gnome" "Kde" "Lxqt" "Gtk" "Term" "Default"]) string];
+      description = ''
+        The file picker portal to use (set with shana).
+        Default removes the config, allowing you to set it yourself.
+      '';
+    };
+    termFileChooserConfig = lib.mkOption {
+      default = {
+        cmd = "${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh";
+        default_dir = "$HOME";
+      };
+      example = {};
+      type = with lib.types; attrsOf anything;
+      description = ''
+        Termfilechooser config
+      '';
+    };
   };
   config = lib.optionalAttrs (options ? home.packages) {
+    xdg.configFile."xdg-desktop-portal-termfilechooser/config" = lib.mkIf (config.mods.media.filePickerPortal != "Term") {
+      source = (pkgs.formats.ini {}).generate "termchooser" {
+        filechooser = config.mods.media.termFileChooserConfig;
+      };
+    };
+    xdg.configFile."xdg-desktop-portal-shana/config.toml" = lib.mkIf (config.mods.media.filePickerPortal != "Default") {
+      source = let
+        name =
+          if (config.mods.media.filePickerPortal == "Term")
+          then "org.freedesktop.impl.portal.desktop.termfilechooser"
+          else config.mods.media.filePickerPortal;
+      in
+        (pkgs.formats.toml {}).generate "shana" {
+          open_file = name;
+          save_file = name;
+          save_files = name;
+        };
+    };
     home.packages =
       if config.mods.media.useBasePackages
       then

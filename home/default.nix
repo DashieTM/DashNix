@@ -18,10 +18,21 @@
   ...
 }: {
   xdg = {
-    portal.config.common.default = mkDashDefault "*";
+    portal.config.common = {
+      default = mkDashDefault "hyprland;gtk";
+      "org.freedesktop.impl.portal.FileChooser" = lib.mkIf (config.mods.media.filePickerPortal != "Default") "shana";
+    };
     portal = {
       enable = mkDashDefault true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk # prob needed either way
+        (lib.mkIf (config.mods.media.filePickerPortal != "Default") xdg-desktop-portal-shana)
+        (lib.mkIf (config.mods.media.filePickerPortal == "Kde") kdePackages.xdg-desktop-portal-kde)
+        # Gnome uses their file manager, kinda cool tbh
+        (lib.mkIf (config.mods.media.filePickerPortal == "Gnome" && !config.mods.nautilus.enable) nautilus)
+        (lib.mkIf (config.mods.media.filePickerPortal == "Lxqt") xdg-desktop-portal-lxqt)
+        (lib.mkIf (config.mods.media.filePickerPortal == "Term") xdg-desktop-portal-termfilechooser)
+      ];
     };
   };
   home-manager = {
