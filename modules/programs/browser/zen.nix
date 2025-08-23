@@ -79,6 +79,7 @@ in {
               "zen.theme.accent-color" = "#b4bbff";
               "extensions.autoDisableScopes" = 0;
               "cookiebanners.service.mode" = 2;
+              "widget.use-xdg-desktop-portal.file-picker" = 1;
             };
             isDefault = true;
             id = 0;
@@ -95,6 +96,7 @@ in {
               "zen.view.welcome-screen.seen" = true;
               "zen.theme.accent-color" = "#b4bbff";
               "extensions.autoDisableScopes" = 0;
+              "widget.use-xdg-desktop-portal.file-picker" = 1;
             };
             isDefault = false;
             id = 1;

@@ -86,18 +86,22 @@
     plugin = {
       prepend_previewers = [
         {
+          name = "*.tar";
+          run = ''piper --format=url -- tar tf "$1"'';
+        }
+        {
           name = "*.md";
-          run = "glow";
+          run = ''piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'';
         }
         {
           mime = "text/csv";
-          run = "miller";
+          run = ''piper -- bat -p --color=always "$1"'';
         }
       ];
     };
   };
   keymap = {
-    manager.keymap = [
+    mgr.keymap = [
       {
         on = ["<Esc>"];
         run = "escape";
@@ -368,13 +372,13 @@
         desc = "Cancel the ongoing search";
       }
       {
-        on = ["z"];
-        run = "jump zoxide";
+        on = ["Z"];
+        run = "plugin zoxide";
         desc = "Jump to a directory using zoxide";
       }
       {
-        on = ["Z"];
-        run = "jump fzf";
+        on = ["z"];
+        run = "plugin fzf";
         desc = "Jump to a directory or reveal a file using fzf";
       }
 

@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   options,
@@ -35,16 +36,26 @@
       type = with lib.types; attrsOf anything;
       description = "Additional keymap for yazi";
     };
+    plugins = lib.mkOption {
+      default = {
+        inherit (pkgs.yaziPlugins) piper diff gitui;
+      };
+      example = {};
+      type = with lib.types; attrsOf anything;
+      description = "Additional keymap for yazi";
+    };
   };
   config = let
     conf = import ./yazi.nix;
   in
     lib.optionalAttrs (options ? home.packages) (
       lib.mkIf config.mods.yazi.enable {
+        home.packages = [pkgs.glow];
         programs.yazi = {
           enable = conf.enable;
           settings = conf.settings // config.mods.yazi.additionalKeymap;
           keymap = conf.keymap // config.mods.yazi.additionalConfig;
+          plugins = config.mods.yazi.plugins;
         };
       }
     );

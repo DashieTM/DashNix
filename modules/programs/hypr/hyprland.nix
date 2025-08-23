@@ -193,16 +193,17 @@ in {
                   ) "$mod SUPERSHIFT,F,exec,${browserName} -p special")
                   "$mod SUPER,T,exec,kitty -1"
                   "$mod SUPER,E,exec,nautilus -w"
+                  (lib.mkIf config.mods.yazi.enable "$mod SUPER,Y,exec, EDITOR='neovide --no-fork' kitty yazi")
                   "$mod SUPER,N,exec,neovide"
-                  (lib.mkIf (config.mods.anyrun.enable) "$mod SUPER,R,exec,anyrun")
-                  (lib.mkIf (config.mods.oxi.oxirun.enable) "$mod SUPER,R,exec,oxirun")
-                  (lib.mkIf (config.mods.oxi.oxidash.enable) "$mod SUPER,M,exec,oxidash")
-                  (lib.mkIf (config.mods.oxi.oxicalc.enable) "$mod SUPER,G,exec,oxicalc")
-                  (lib.mkIf (config.mods.oxi.oxishut.enable) "$mod SUPER,D,exec,oxishut")
-                  (lib.mkIf (config.mods.oxi.oxipaste.enable) "$mod SUPER,A,exec,oxipaste")
-                  (lib.mkIf (config.mods.oxi.hyprdock.enable) "$mod SUPERSHIFT,P,exec,hyprdock --gui")
-                  (lib.mkIf (config.mods.hypr.hyprlock.enable) "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend")
-                  (lib.mkIf (config.mods.hypr.hyprlock.enable) "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate")
+                  (lib.mkIf config.mods.anyrun.enable "$mod SUPER,R,exec,anyrun")
+                  (lib.mkIf config.mods.oxi.oxirun.enable "$mod SUPER,R,exec,oxirun")
+                  (lib.mkIf config.mods.oxi.oxidash.enable "$mod SUPER,M,exec,oxidash")
+                  (lib.mkIf config.mods.oxi.oxicalc.enable "$mod SUPER,G,exec,oxicalc")
+                  (lib.mkIf config.mods.oxi.oxishut.enable "$mod SUPER,D,exec,oxishut")
+                  (lib.mkIf config.mods.oxi.oxipaste.enable "$mod SUPER,A,exec,oxipaste")
+                  (lib.mkIf config.mods.oxi.hyprdock.enable "$mod SUPERSHIFT,P,exec,hyprdock --gui")
+                  (lib.mkIf config.mods.hypr.hyprlock.enable "$mod SUPERSHIFT,L,exec, playerctl -a pause & hyprlock & systemctl suspend")
+                  (lib.mkIf config.mods.hypr.hyprlock.enable "$mod SUPERSHIFT,K,exec, playerctl -a pause & hyprlock & systemctl hibernate")
 
                   # media keys
                   (lib.mkIf config.mods.scripts.audioControl ",XF86AudioMute,exec, audioControl mute")
