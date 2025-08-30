@@ -305,7 +305,11 @@ in {
           packages = lib.mkOption {
             default = with pkgs; [
               #.!
-              dotnet-sdk
+              (with dotnetCorePackages;
+                combinePackages [
+                  sdk_8_0
+                  sdk_9_0
+                ])
               csharpier
               netcoredbg
               fsharp

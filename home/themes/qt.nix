@@ -45,7 +45,7 @@ in {
   };
   qt = {
     enable = true;
-    style.package = pkgs.libsForQt5.breeze-qt5;
+    style.package = pkgs.kdePackages.breeze;
     style.name = lib.mkForce "breeze-dark";
   };
 
