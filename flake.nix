@@ -30,9 +30,6 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
 
-    # TODO move to upstream repository after merged nix flake pr
-    fancontrol.url = "git+https://github.com/DashieTM/fancontrol-gui?ref=nix-flake";
-
     stylix.url = "github:danth/stylix";
     base16.url = "github:SenchoPens/base16.nix";
     disko.url = "github:nix-community/disko/latest";
@@ -44,6 +41,7 @@
     oxidash.url = "github:Xetibo/OxiDash";
     oxipaste.url = "github:Xetibo/OxiPaste";
     oxirun.url = "github:Xetibo/OxiRun";
+    dashvim.url = "github:Xetibo/DashVim";
     # For now until merged into Xetibo
     hyprdock.url = "github:Xetibo/hyprdock";
     reset.url = "github:Xetibo/ReSet";
@@ -53,10 +51,6 @@
 
     # absolute insanity
     chaoticNyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
-    dashvim = {
-      url = "github:Xetibo/DashVim";
-    };
   };
 
   outputs = {self, ...} @ inputs: let
@@ -109,9 +103,11 @@
       inherit inputs;
       pkgs = unstable;
       system = currentSystem;
-      lib = inputs.unstable.lib;
-      buildSystems = dashNixLib.buildSystems;
+      inherit (inputs.unstable) lib;
+      inherit (dashNixLib) buildSystems;
     };
+    lint = unstable.statix;
+    format = unstable.alejandra;
     dashNixInputs = inputs;
     stablePkgs = stable;
     unstablePkgs = unstable;

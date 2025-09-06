@@ -20,8 +20,8 @@
   pathToAttrs = path:
     lib.attrsets.mapAttrsToList (
       name: meta: {
-        name = name;
-        meta = meta;
+        inherit name;
+        inherit meta;
       }
     )
     (builtins.readDir path);

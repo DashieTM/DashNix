@@ -159,25 +159,143 @@
     };
   };
 
-  config = (
-    lib.optionalAttrs (options ? fileSystems) {
-      boot.initrd.luks.devices = lib.mkIf (config.mods.drives.variant == "manual" && config.mods.drives.useEncryption) (
-        builtins.listToAttrs (
-          map (
-            {
-              name,
-              drive,
-            }: {
-              cryptstorage.device = lib.mkIf (name != "root") drive?device;
-              cryptoroot.device = lib.mkIf (name == "root") drive?device;
-            }
-          )
-          config.mods.drives.extraDrives
+  config = lib.optionalAttrs (options ? fileSystems) {
+    boot.initrd.luks.devices = lib.mkIf (config.mods.drives.variant == "manual" && config.mods.drives.useEncryption) (
+      builtins.listToAttrs (
+        map (
+          {
+            name,
+            drive,
+          }: {
+            cryptstorage.device = lib.mkIf (name != "root") drive?device;
+            cryptoroot.device = lib.mkIf (name == "root") drive?device;
+          }
         )
-      );
+        config.mods.drives.extraDrives
+      )
+    );
 
-      fileSystems = lib.mkIf (config.mods.drives.variant == "manual" && !config.conf.wsl) (
-        builtins.listToAttrs (
+    fileSystems = lib.mkIf (config.mods.drives.variant == "manual" && !config.conf.wsl) (
+      builtins.listToAttrs (
+        map (
+          {
+            name,
+            drive,
+          }: {
+            name = "/" + name;
+            value = drive;
+          }
+        )
+        config.mods.drives.extraDrives
+      )
+      // (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
+        "/" = {
+          device = "/dev/disk/by-label/ROOT";
+          fsType = config.mods.drives.homeAndRootFsTypes;
+          options = [
+            "noatime"
+            "nodiratime"
+            "discard"
+          ];
+        };
+
+        "/boot" = {
+          device = "/dev/disk/by-label/BOOT";
+          fsType = "vfat";
+          options = [
+            "rw"
+            "fmask=0022"
+            "dmask=0022"
+            "noatime"
+          ];
+        };
+
+        "/home" = {
+          device = "/dev/disk/by-label/HOME";
+          fsType = config.mods.drives.homeAndRootFsTypes;
+          options = [
+            "noatime"
+            "nodiratime"
+            "discard"
+          ];
+        };
+      }
+    );
+
+    swapDevices = lib.mkIf (config.mods.drives.useSwap && config.mods.drives.variant == "manual" && !config.conf.wsl) [
+      {device = "/dev/disk/by-label/SWAP";}
+    ];
+
+    disko.devices = lib.mkIf (config.mods.drives.variant == "disko") {
+      disk =
+        {
+          main = (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
+            device = "${config.mods.drives.disko.defaultDiskId}";
+            type = "disk";
+            content = {
+              type = "gpt";
+              partitions = {
+                root = {
+                  start = "${
+                    if config.mods.drives.useSwap
+                    then builtins.toString config.mods.drives.disko.swapAmount
+                    else builtins.toString 1
+                  }G";
+                  end = "${builtins.toString config.mods.drives.disko.rootAmount}%";
+                  content = {
+                    type = "filesystem";
+                    format = config.mods.drives.homeAndRootFsTypes;
+                    mountpoint = "/";
+                    mountOptions = [
+                      "noatime"
+                      "nodiratime"
+                      "discard"
+                    ];
+                  };
+                };
+                plainSwap = {
+                  start = "1G";
+                  end = "33G";
+                  content = {
+                    type = "swap";
+                    discardPolicy = "both";
+                    resumeDevice = true;
+                  };
+                };
+                boot = {
+                  start = "0G";
+                  end = "1G";
+                  content = {
+                    type = "filesystem";
+                    format = "vfat";
+                    mountpoint = "/boot";
+                    mountOptions = [
+                      "rw"
+                      "fmask=0022"
+                      "dmask=0022"
+                      "noatime"
+                    ];
+                  };
+                };
+                home = {
+                  start = "${builtins.toString config.mods.drives.disko.rootAmount}%";
+                  end = "100%";
+                  content = {
+                    type = "filesystem";
+                    format = config.mods.drives.homeAndRootFsTypes;
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "noatime"
+                      "nodiratime"
+                      "discard"
+                    ];
+                  };
+                };
+              };
+            };
+          };
+        }
+        // builtins.listToAttrs (
           map (
             {
               name,
@@ -188,127 +306,7 @@
             }
           )
           config.mods.drives.extraDrives
-        )
-        // (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
-          "/" = {
-            device = "/dev/disk/by-label/ROOT";
-            fsType = config.mods.drives.homeAndRootFsTypes;
-            options = [
-              "noatime"
-              "nodiratime"
-              "discard"
-            ];
-          };
-
-          "/boot" = {
-            device = "/dev/disk/by-label/BOOT";
-            fsType = "vfat";
-            options = [
-              "rw"
-              "fmask=0022"
-              "dmask=0022"
-              "noatime"
-            ];
-          };
-
-          "/home" = {
-            device = "/dev/disk/by-label/HOME";
-            fsType = config.mods.drives.homeAndRootFsTypes;
-            options = [
-              "noatime"
-              "nodiratime"
-              "discard"
-            ];
-          };
-        }
-      );
-
-      swapDevices = lib.mkIf (config.mods.drives.useSwap && config.mods.drives.variant == "manual" && !config.conf.wsl) [
-        {device = "/dev/disk/by-label/SWAP";}
-      ];
-
-      disko.devices = lib.mkIf (config.mods.drives.variant == "disko") {
-        disk =
-          {
-            main = (lib.optionalAttrs config.mods.drives.defaultDrives.enable) {
-              device = "${config.mods.drives.disko.defaultDiskId}";
-              type = "disk";
-              content = {
-                type = "gpt";
-                partitions = {
-                  root = {
-                    start = "${
-                      if config.mods.drives.useSwap
-                      then builtins.toString config.mods.drives.disko.swapAmount
-                      else builtins.toString 1
-                    }G";
-                    end = "${builtins.toString config.mods.drives.disko.rootAmount}%";
-                    content = {
-                      type = "filesystem";
-                      format = config.mods.drives.homeAndRootFsTypes;
-                      mountpoint = "/";
-                      mountOptions = [
-                        "noatime"
-                        "nodiratime"
-                        "discard"
-                      ];
-                    };
-                  };
-                  plainSwap = {
-                    start = "1G";
-                    end = "33G";
-                    content = {
-                      type = "swap";
-                      discardPolicy = "both";
-                      resumeDevice = true;
-                    };
-                  };
-                  boot = {
-                    start = "0G";
-                    end = "1G";
-                    content = {
-                      type = "filesystem";
-                      format = "vfat";
-                      mountpoint = "/boot";
-                      mountOptions = [
-                        "rw"
-                        "fmask=0022"
-                        "dmask=0022"
-                        "noatime"
-                      ];
-                    };
-                  };
-                  home = {
-                    start = "${builtins.toString config.mods.drives.disko.rootAmount}%";
-                    end = "100%";
-                    content = {
-                      type = "filesystem";
-                      format = config.mods.drives.homeAndRootFsTypes;
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "noatime"
-                        "nodiratime"
-                        "discard"
-                      ];
-                    };
-                  };
-                };
-              };
-            };
-          }
-          // builtins.listToAttrs (
-            map (
-              {
-                name,
-                drive,
-              }: {
-                name = "/" + name;
-                value = drive;
-              }
-            )
-            config.mods.drives.extraDrives
-          );
-      };
-    }
-  );
+        );
+    };
+  };
 }

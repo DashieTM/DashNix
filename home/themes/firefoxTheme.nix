@@ -319,11 +319,9 @@
       else {}
   );
   moduleFn = lib.lists.foldr (attr1: attr2: attr1 // attr2) {};
-  mkFirefoxTheme = (
-    profiles:
-      profiles
-      |> profileNamesFn
-      |> chromesFn
-      |> moduleFn
-  );
+  mkFirefoxTheme = profiles:
+    profiles
+    |> profileNamesFn
+    |> chromesFn
+    |> moduleFn;
 in {home.file = mkFirefoxTheme profiles;}

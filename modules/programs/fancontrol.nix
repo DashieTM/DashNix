@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   options,
   ...
@@ -20,7 +21,7 @@
   };
   config = lib.mkIf config.mods.fancontrol.enable (
     lib.optionalAttrs (options ? home.packages) {
-      programs.fancontrol-gui.enable = true;
+      home.packages = [pkgs.fancontrol-gui];
     }
     // (lib.optionalAttrs (options ? boot.kernelModules) {
       boot = {

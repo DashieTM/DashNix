@@ -23,7 +23,7 @@ in {
   };
   config = lib.mkIf config.mods.teams.enable (
     lib.optionalAttrs (options ? home.packages) {
-      home.packages = [(callPackage ../../override/teams.nix {chromium = pkgs.chromium;})];
+      home.packages = [(callPackage ../../override/teams.nix {inherit (pkgs) chromium;})];
     }
     // (lib.optionalAttrs (options ? boot.kernelModules) {
       boot = {

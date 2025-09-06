@@ -43,39 +43,37 @@
       description = "Container packages";
     };
   };
-  config = (
-    lib.optionalAttrs (options ? environment.systemPackages) {
-      environment.systemPackages =
-        (lib.lists.optionals (
-            config.mods.containers.variant == "podman"
-          )
-          config.mods.containers.podmanPackages)
-        ++ (lib.lists.optionals (
-            config.mods.containers.variant == "docker"
-          )
-          config.mods.containers.dockerPackages)
-        ++ (lib.lists.optionals (
-            config.mods.containers.variant == "podman" || config.mods.containers.variant == "docker"
-          )
-          config.mods.containers.combinedPackages);
-      virtualisation =
-        if (config.mods.containers.variant == "podman")
-        then {
-          containers.enable = true;
-          podman = {
-            enable = true;
-            dockerCompat = mkDashDefault true;
-            defaultNetwork.settings.dns_enabled = mkDashDefault true;
-          };
-        }
-        else if (config.mods.containers.variant == "docker")
-        then {
-          containers.enable = true;
-          docker = {
-            enable = true;
-          };
-        }
-        else {};
-    }
-  );
+  config = lib.optionalAttrs (options ? environment.systemPackages) {
+    environment.systemPackages =
+      (lib.lists.optionals (
+          config.mods.containers.variant == "podman"
+        )
+        config.mods.containers.podmanPackages)
+      ++ (lib.lists.optionals (
+          config.mods.containers.variant == "docker"
+        )
+        config.mods.containers.dockerPackages)
+      ++ (lib.lists.optionals (
+          config.mods.containers.variant == "podman" || config.mods.containers.variant == "docker"
+        )
+        config.mods.containers.combinedPackages);
+    virtualisation =
+      if (config.mods.containers.variant == "podman")
+      then {
+        containers.enable = true;
+        podman = {
+          enable = true;
+          dockerCompat = mkDashDefault true;
+          defaultNetwork.settings.dns_enabled = mkDashDefault true;
+        };
+      }
+      else if (config.mods.containers.variant == "docker")
+      then {
+        containers.enable = true;
+        docker = {
+          enable = true;
+        };
+      }
+      else {};
+  };
 }

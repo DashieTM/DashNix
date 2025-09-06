@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = {...} @ inputs: {
+  outputs = inputs: {
     nixosConfigurations = inputs.dashNix.dashNixLib.buildSystems {root = ./.;};
   };
 

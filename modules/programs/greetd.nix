@@ -130,9 +130,13 @@
         '';
 
         # unlock GPG keyring on login
-        security.pam.services.greetd.enableGnomeKeyring = mkDashDefault true;
-        security.pam.services.greetd.sshAgentAuth = mkDashDefault true;
-        security.pam.sshAgentAuth.enable = mkDashDefault true;
+        security.pam = {
+          services.greetd = {
+            enableGnomeKeyring = mkDashDefault true;
+            sshAgentAuth = mkDashDefault true;
+          };
+          sshAgentAuth.enable = mkDashDefault true;
+        };
       }
       // lib.optionalAttrs (options ? home) {
         xdg.configFile."regreet/regreet.toml".source =

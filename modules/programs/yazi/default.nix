@@ -52,7 +52,7 @@
       lib.mkIf config.mods.yazi.enable {
         home.packages = [pkgs.glow];
         programs.yazi = {
-          enable = conf.enable;
+          inherit (conf) enable;
           settings = conf.settings // config.mods.yazi.additionalKeymap;
           keymap = conf.keymap // config.mods.yazi.additionalConfig;
           plugins = config.mods.yazi.plugins;

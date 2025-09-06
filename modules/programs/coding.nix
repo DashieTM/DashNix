@@ -517,28 +517,30 @@ in {
       lib.optionalAttrs (options ? home.packages) {
         programs.dashvim = lib.mkIf config.mods.coding.dashvim {
           enable = true;
-          colorscheme = config.mods.stylix.colorscheme;
+          inherit (config.mods.stylix) colorscheme;
         };
         programs.vscode = lib.mkIf config.mods.coding.vscodium.enable {
           enable = true;
           package = mkDashDefault pkgs.vscodium;
           profiles.default.extensions = config.mods.coding.vscodium.extensions;
         };
-        xdg.configFile."neovide/config.toml" = lib.mkIf (config.mods.coding.dashvim || config.mods.coding.neovide.enable) {
-          source =
-            (pkgs.formats.toml {}).generate "neovide"
-            config.mods.coding.neovide.config;
-        };
+        xdg.configFile = {
+          "neovide/config.toml" = lib.mkIf (config.mods.coding.dashvim || config.mods.coding.neovide.enable) {
+            source =
+              (pkgs.formats.toml {}).generate "neovide"
+              config.mods.coding.neovide.config;
+          };
 
-        xdg.configFile."gh/config.yml" = lib.mkIf config.mods.coding.gh.enable {
-          source =
-            (pkgs.formats.yaml {}).generate "config"
-            config.mods.coding.gh.config;
-        };
-        xdg.configFile."gh/hosts.yml" = lib.mkIf config.mods.coding.gh.enable {
-          source =
-            (pkgs.formats.yaml {}).generate "hosts"
-            config.mods.coding.gh.hosts;
+          "gh/config.yml" = lib.mkIf config.mods.coding.gh.enable {
+            source =
+              (pkgs.formats.yaml {}).generate "config"
+              config.mods.coding.gh.config;
+          };
+          "gh/hosts.yml" = lib.mkIf config.mods.coding.gh.enable {
+            source =
+              (pkgs.formats.yaml {}).generate "hosts"
+              config.mods.coding.gh.hosts;
+          };
         };
 
         home.packages = with pkgs;

@@ -70,7 +70,6 @@
         inputs.reset.homeManagerModules.default
         inputs.sops-nix.homeManagerModules.sops
         inputs.dashvim.homeManagerModules.dashvim
-        inputs.fancontrol.homeManagerModules.default
         inputs.chaoticNyx.homeManagerModules.default
         ../modules
       ];
@@ -82,7 +81,7 @@
     builtins.listToAttrs (
       map
       (name: {
-        name = name;
+        inherit name;
         value = let
           mod = root + /hosts/${name}/configuration.nix;
           additionalNixosConfig = root + /hosts/${name}/hardware.nix;

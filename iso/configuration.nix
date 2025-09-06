@@ -10,7 +10,7 @@
 in {
   imports = ["${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"];
   nixpkgs.hostPlatform = {
-    system = system;
+    inherit system;
   };
 
   environment.systemPackages = with pkgs; [

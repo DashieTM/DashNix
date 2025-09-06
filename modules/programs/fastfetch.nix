@@ -56,7 +56,7 @@
   };
 
   config = lib.optionalAttrs (options ? home.packages) {
-    xdg.configFile."fastfetch/config.jsonc" = lib.mkIf (config.mods.dashfetch.enable) {
+    xdg.configFile."fastfetch/config.jsonc" = lib.mkIf config.mods.dashfetch.enable {
       source =
         (pkgs.formats.json {}).generate "config.jsonc"
         {

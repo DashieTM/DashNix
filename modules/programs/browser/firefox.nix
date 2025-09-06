@@ -105,7 +105,7 @@ in {
               // {
                 ExtensionSettings = builtins.foldl' (acc: ext: acc // ext) {} (config.mods.browser.firefox.extensions
                   ++ (
-                    if (config.mods.browser.firefox.darkreader)
+                    if config.mods.browser.firefox.darkreader
                     then [
                       {
                         "addon@darkreader.org" = {
