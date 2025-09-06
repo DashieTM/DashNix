@@ -4,6 +4,8 @@
   lib,
   options,
   pkgs,
+  inputs,
+  system,
   ...
 }: {
   options.mods = {
@@ -50,6 +52,7 @@
       then
         with pkgs;
           [
+            inputs.statix.packages.${system}.default
             adwaita-icon-theme
             dbus
             dconf
