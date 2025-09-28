@@ -257,6 +257,7 @@ in {
               @import url("/home/${username}/.config/gtk-3.0/gtk.css");
 
               @define-color primary #${scheme.base0D};
+              @define-color warning #${scheme.base0F};
               @define-color muted-text #${scheme.base05};
               @define-color background #${scheme.base00};
               @define-color secondary-background #${scheme.base02};
@@ -404,6 +405,10 @@ in {
               .workspaces .item:hover {
                 background-color: @secondary-background;
                 color: @primary;
+              }
+
+              .workspaces .item:not(.visible) {
+                color: @warning;
               }
 
               .workspaces .item.focused {

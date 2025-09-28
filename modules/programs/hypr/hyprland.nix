@@ -160,7 +160,11 @@ in {
         hyprpicker
       ];
 
-      wayland.windowManager.hyprland = {
+      wayland.windowManager.hyprland = let
+        hyprlandMonitors = builtins.map (
+          monitor: "${monitor.name},${monitor.resolutionX}x${monitor.resolutionY}${monitor.refreshrate},${monitor.positionX}x${monitor.positionY},${monitor.scale}, transform,${monitor.transform}, vrr,${monitor.vrr}"
+        );
+      in {
         enable = true;
         package = mkDashDefault pkgs.hyprland;
         plugins =
