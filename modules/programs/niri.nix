@@ -4,9 +4,10 @@
   lib,
   options,
   pkgs,
+  system,
   ...
 }: let
-  defaultWmConf = import ../../lib/wm.nix;
+  defaultWmConf = import ../../lib/wm.nix {inherit pkgs system;};
 in {
   options.mods.niri = {
     enable = lib.mkOption {

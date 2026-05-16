@@ -8,7 +8,7 @@
   system,
   ...
 }: let
-  defaultWmConf = import ../../../lib/wm.nix;
+  defaultWmConf = import ../../../lib/wm.nix {inherit pkgs system;};
 in {
   options.mods.hypr.hyprland = {
     enable = lib.mkOption {

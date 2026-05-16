@@ -124,7 +124,7 @@
         };
 
         # should technically be the same, but this is configured instead in order to provide a decent out of the box login experience.
-        environment.etc."greetd/hyprgreet.lua".text = ''
+        environment.etc."greetd/hyprgreet.lua".text = /*lua*/ ''
           hl.monitor({
             output = "${config.mods.greetd.monitor}",
             mode = "${config.mods.greetd.resolution}",
