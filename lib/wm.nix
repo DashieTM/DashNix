@@ -1,4 +1,12 @@
+{pkgs, system, ...}:
 let
+  driverIcdPath = "${pkgs.mesa}/share/vulkan/icd.d";
+  icdArch =
+    if system == "x86_64-linux"
+    then "x86_64"
+    else if system == "aarch64-linux"
+    then "aarch64"
+    else "x86_64";
   browserName = config:
     if (builtins.isString config.mods.homePackages.browser)
     then config.mods.homePackages.browser
@@ -112,6 +120,7 @@ in {
 
   defaultEnv = config: {
     all = {
+      VK_ICD_FILENAMES = "${driverIcdPath}/radeon_icd.${icdArch}.json:${driverIcdPath}/intel_icd.${icdArch}.json";
       GTK_CSD = "0";
       TERM = "kitty /bin/fish";
       HYPRCURSOR_THEME = config.mods.stylix.cursor.name;
@@ -180,7 +189,7 @@ in {
     (mkBindWithDesc ["Mod"] "Q" "killActive" [] "Kill active window")
 
     (mkBindWithDesc ["Mod"] "N" "spawn" ["neovide"] "Open Neovide")
-    (mkBindWithDesc ["Mod"] "T" "spawn-sh" ["kitty" "-1"] "Open Kitty")
+    (mkBindWithDesc ["Mod"] "T" "spawn-sh" ["kitty -1"] "Open Kitty")
     (mkBindWithDesc ["Mod" "Shift"] "L" "spawn" ["hyprlock"] "Lock screen")
 
     (

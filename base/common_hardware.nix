@@ -5,9 +5,17 @@
   lib,
   hostName,
   modulesPath,
+  system,
   ...
 }: let
   username = config.conf.username;
+  driverIcdPath = "${pkgs.mesa}/share/vulkan/icd.d";
+  icdArch =
+    if system == "x86_64-linux"
+    then "x86_64"
+    else if system == "aarch64-linux"
+    then "aarch64"
+    else "x86_64";
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -52,7 +60,7 @@ in {
     };
     kernelParams =
       [
-        ''resume="PARTLABEL=SWAP"''
+        ''resume="LABEL=SWAP"''
         ''quiet''
         ''udev.log_level=3''
       ]
@@ -143,6 +151,7 @@ in {
     XDG_CACHE_HOME = mkDashDefault "$HOME/.cache";
     DIRENV_LOG_FORMAT = mkDashDefault "";
     QT_QPA_PLATFORMTHEME = mkDashDefault "qt5ct";
+    VK_ICD_FILENAMES = "${driverIcdPath}/radeon_icd.${icdArch}.json:${driverIcdPath}/intel_icd.${icdArch}.json";
   };
 
   # allows user change later on
