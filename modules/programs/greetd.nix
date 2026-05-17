@@ -157,7 +157,7 @@
           hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 
           hl.on("hyprland.start", function()
-            hl.dsp.exec_cmd("${pkgs.regreet}/bin/regreet --style /home/${username}/.config/gtk-3.0/gtk.css --config /home/${username}/.config/regreet/regreet.toml; hyprctl dispatch hl.dsp.exit()")
+            hl.dsp.exec_cmd("sh -c ${pkgs.regreet}/bin/regreet --style /home/${username}/.config/gtk-3.0/gtk.css --config /home/${username}/.config/regreet/regreet.toml; hyprctl dispatch hl.dsp.exi()")
           end)
         '';
 
