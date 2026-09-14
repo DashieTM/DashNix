@@ -1,0 +1,137 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(5,1),point(5,15))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+this is a test
+</SELECTION_CONTENT>
+<SURROUNDING_CONTEXT>
+<div align = center>
+
+![Logo of DashNix](logo.svg)
+
+this is a test
+
+</div>
+
+An opinionated flake to bootstrap NixOS systems with default configurations for various programs and services from both NixOS and HomeManager which can be enabled, disabled, configured or replaced at will.
+
+# Usage
+
+This flake is intended to be used as an input to your own NixOS configuration:
+
+```nix
+dashNix = {
+  url = "github:Xetibo/DashNix";
+  inputs = {
+    # ensure these are here to update the packages on your own
+    nixpkgs.follows = "nixpkgs";
+    stable.follows = "stable";
+  };
+};
+```
+
+You can then configure your systems in your flake outputs with a provided library command:
+
+Please note that overriding inputs will invalidate the cache configuration, this means you will have to add this manually:
+
+```nix
+  builders-use-substitutes = true;
+
+  extra-substituters = [
+    "https://hyprland.cachix.org"
+    "https://anyrun.cachix.org"
+    "https://cache.garnix.io"
+    "https://oxipaste.cachix.org"
+    "https://oxishut.cachix.org"
+    "https://oxidash.cachix.org"
+    "https://oxicalc.cachix.org"
+    "https://hyprdock.cachix.org"
+    "https://reset.cachix.org"
+    "https://dashvim.cachix.org"
+  ];
+
+  extra-trusted-public-keys = [
+    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+    "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+    "oxipaste.cachix.org-1:n/oA3N3Z+LJP7eIWOwuoLd9QnPyZXqFjLgkahjsdDGc="
+    "oxishut.cachix.org-1:axyAGF3XMh1IyMAW4UMbQCdMNovDH0KH6hqLLRJH8jU="
+    "oxidash.cachix.org-1:5K2FNHp7AS8VF7LmQkJAUG/dm6UHCz4ngshBVbjFX30="
+    "oxicalc.cachix.org-1:qF3krFc20tgSmtR/kt6Ku/T5QiG824z79qU5eRCSBTQ="
+    "hyprdock.cachix.org-1:HaROK3fBvFWIMHZau3Vq1TLwUoJE8yRbGLk0lEGzv3Y="
+    "reset.cachix.org-1:LfpnUUdG7QM/eOkN7NtA+3+4Ar/UBeYB+3WH+GjP9Xo="
+    "dashvim.cachix.org-1:uLRdxp1WOWHnsZZtu3SwUWZRsvC7SXo0Gyk3tIefuL0="
+  ];
+```
+
+```nix
+nixosConfigurations = inputs.dashNix.dashNixLib.buildSystems { root = ./.; };
+```
+
+This command will build each system that is placed within the hosts/ directory.
+In this directory create one directory for each system you want to configure with DashNix.
+This will automatically pick up the hostname for the system and look for 3 different files that are explained below.
+(Optionally, you can also change the parameter root (./.) to define a different starting directory than hosts/)
+
+In order for your configuration to work, you are required to at least provide a single config file with a further config file being optional for custom configuration.
+The hardware.nix specifies additional NixOS configuration, while home.nix specifies additional home-manager configuration. (both optional)
+
+|- flake.nix\
+|- flake.lock\
+|- hosts/\
+|--- system1/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)\
+|--- system2/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)\
+|--- system3/\
+|------ configuration.nix (required)\
+|------ hardware.nix (optional)\
+|------ home.nix (optional)
+
+Here is a minimal required configuration.nix (the TODOs mention a required change):
+
+```nix
+{config, ...}: {
+  # TODO denote important changes
+
+  # variables for system
+  conf = {
+    # TODO your username
+    username = "YOURNAME";
+    # TODO only needed when you use intel -> amd is default
+    # cpu = "intel";
+    # TODO your xkb layout
+    locale = "something.UTF-8";
+    # TODO your timezone
+    timezone = "CONTINENT/CITY";
+  };
+
+</SURROUNDING_CONTEXT>
+
+</Context>
+<Prompt>
+remove the test text (this is a test to see if the harness works)
+</Prompt>
+
+<Location><File>/home/dashie/gits/DashNix/README.md</File><Function>range(point(5,1),point(5,15))</Function></Location>
+<FunctionText>this is a test</FunctionText>
+<TEMP_FILE>./tmp/99-7261</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>
