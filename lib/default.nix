@@ -7,6 +7,7 @@
   dashNixAdditionalProps ? {},
   ...
 }: let
+  goCompatOverlay = import ./go-compat-overlay.nix;
   defaultConfig = {
     config = {
       allowUnfree = true;
@@ -15,6 +16,7 @@
     overlays = [
       inputs.cachy.overlays.pinned
       inputs.nur.overlays.default
+      goCompatOverlay
     ];
     inherit system;
   };
