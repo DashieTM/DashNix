@@ -7,7 +7,10 @@
   options,
   system,
   ...
-}: {
+}: let
+  hyprlandPkgs = import ../../lib/hyprland-packages.nix {inherit inputs system;};
+  hyprlandPkg = hyprlandPkgs.hyprland;
+in {
   options.mods = {
     greetd = {
       enable = lib.mkOption {
@@ -47,9 +50,7 @@
         # console output is redirected to a log file so that the Plymouth ->
         # greeter transition stays clean instead of flashing compositor debug
         # output on the TTY.
-        default = "${
-          inputs.hyprland.packages.${system}.default
-        }/bin/start-hyprland -- --config /etc/greetd/hyprgreet.lua > /tmp/hyprgreet.log 2>&1";
+        default = "${hyprlandPkg}/bin/start-hyprland -- --config /etc/greetd/hyprgreet.lua > /tmp/hyprgreet.log 2>&1";
         example = "${
           lib.getExe pkgs.cage
         } -s -- ${lib.getExe pkgs.regreet}";
@@ -74,7 +75,7 @@
       environments = lib.mkOption {
         default = [
           # (lib.mkIf config.mods.hypr.hyprland.enable pkgs.hyprland)
-          (lib.mkIf config.mods.hypr.hyprland.enable inputs.hyprland.packages.${system}.default)
+          (lib.mkIf config.mods.hypr.hyprland.enable hyprlandPkg)
           (lib.mkIf config.mods.niri.enable pkgs.niri)
         ];
         # no idea if these are written correctly
@@ -103,7 +104,6 @@
 
   config = let
     inherit (config.conf) username;
-    hyprlandPkg = inputs.hyprland.packages.${system}.default;
 
     # Wrap a Hyprland package so that starting the session via greetd redirects
     # the compositor's console output to a log file instead of printing it on
@@ -151,7 +151,8 @@
         programs.hyprland = {
           # keep the real package for systemPackages/portal/xwayland handling;
           # the session is registered via displayManager.sessionPackages below.
-          package = inputs.hyprland.packages.${system}.default;
+          package = hyprlandPkg;
+          portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
           enable = mkDashDefault true;
         };
         programs.regreet = {

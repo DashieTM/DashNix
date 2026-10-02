@@ -101,6 +101,8 @@ in {
 
       builders-use-substitutes = mkDashDefault true;
 
+      substituters = config.nix.settings.trusted-substituters;
+
       trusted-substituters = [
         "https://hyprland.cachix.org"
         "https://anyrun.cachix.org"

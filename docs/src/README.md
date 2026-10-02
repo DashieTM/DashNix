@@ -23,7 +23,9 @@ dashNix = {
 
 You can then configure your systems in your flake outputs with a provided library command:
 
-Please note that overriding inputs will invalidate the cache configuration, this means you will have to add this manually:
+Binary-cache settings from dependency flakes are not inherited. Add the following settings to your root flake's `nixConfig` and accept them with `--accept-flake-config` when building. DashNix also enables its trusted caches in the installed system's `nix.settings.substituters`.
+
+Hyprland is pinned to release v0.56.2. Its upstream release flake supplies the Home Manager module; runtime packages come from the separately pinned `hyprland-release` nixpkgs input because that release's upstream flake compositor was not available in the Hyprland cache. Keep `hyprland-release` independent of system nixpkgs: adding overlays, making it follow another input, or overriding build inputs changes derivation hashes and can force source builds. Consumer nixpkgs updates alone leave this release package unchanged. DashNix selects compositor, portal, Mesa, and userspace graphics drivers from the same package set to avoid libc mismatches.
 
 ```nix
   builders-use-substitutes = true;

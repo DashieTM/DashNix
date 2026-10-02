@@ -19,7 +19,10 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # v0.56.2 supplies the matching Home Manager module.
+    hyprland.url = "github:hyprwm/Hyprland/efb50993780079460b0cbed1363e2166a2de1d9f";
+    # Unoverlaid release packages retain cache.nixos.org derivation hashes.
+    hyprland-release.url = "github:NixOS/nixpkgs/c59305bab2065cfecc4944690d9eedbb56f3a9fa";
 
     ironbar = {
       url = "github:JakeStanger/ironbar";
@@ -50,6 +53,11 @@
     superfreq.url = "github:NotAShelf/superfreq";
 
     compose.url = "github:garnix-io/nixos-compose";
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://hyprland.cachix.org"];
+    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   outputs = {self, ...} @ inputs: let

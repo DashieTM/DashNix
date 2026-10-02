@@ -3,6 +3,16 @@
 Log of notable design decisions for LLM continuity. Keep entries concise; do
 not duplicate component-specific details that live in module code or docs.
 
+## 2026-10-02: Cached Hyprland release and matching graphics stack
+
+- User requested latest release rather than latest master commit. Pin v0.56.2's module input to `efb50993780079460b0cbed1363e2166a2de1d9f`.
+- Upstream release-flake compositor had a cache miss. Select official nixpkgs v0.56.2 from `c59305bab2065cfecc4944690d9eedbb56f3a9fa` without overlays. The shared helper asserts the expected version and supplies runtime packages to greetd, Home Manager, GPU configuration, and the ISO.
+- `/tmp/hyprgreet.log` identified the startup failure: master compositor's glibc 2.42 could not load host Mesa requiring `GLIBC_2.43`. Match graphics packages to the pinned compositor instead of mixing package sets.
+- Enable caches through `nix.settings.substituters`; `trusted-substituters` alone only permits their use. Root flake cache settings are required separately because dependency `nixConfig` is not inherited.
+- Consumer `/home/dashie/gits/nixos` uses a local path input so uncommitted framework fixes are included when refreshing its locked source snapshot. Preserve its unrelated dependency revisions. Stale ignored framework lock was moved to `/tmp/opencode/dashnix-flake-lock-before-consumer-sync.json`; dependency lock remains consumer-owned.
+- Keep the installer's XWayland build flag enabled to match the official cached compositor; disabling it changes the derivation and requires a source build.
+- Verified consumer system/Home Manager compositor derivations match official cached package; compositor, portal, and both Mesa architectures fetched with local builds disabled; generated session and greeter Lua parsed successfully; spaceship system derivation evaluated successfully. Validation executes Lua startup commands, so future checks must stub `hl.exec_cmd`.
+
 ## 2026-08-14: OxiBar configurable via mods.oxi.oxibar
 
 `modules/programs/oxi/oxibar.nix` now exposes user-facing options instead of a

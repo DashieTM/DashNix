@@ -9,6 +9,7 @@
   ...
 }: let
   defaultWmConf = import ../../../lib/wm.nix;
+  hyprlandPkgs = import ../../../lib/hyprland-packages.nix {inherit inputs system;};
 in {
   options.mods.hypr.hyprland = {
     enable = lib.mkOption {
@@ -363,7 +364,8 @@ in {
       in {
         enable = true;
         # package = pkgs.hyprland;
-        package = inputs.hyprland.packages.${system}.default;
+        package = hyprlandPkgs.hyprland;
+        portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
         plugins =
           [
             (lib.mkIf config.mods.hypr.hyprland.hyprspaceEnable pkgs.hyprlandPlugins.hyprspace)
