@@ -12,7 +12,7 @@
       description = "Enables OxiRun";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxirun.enable && config.mods.oxi.enable) (
+  config = lib.mkIf (config.mods.oxi.oxirun.enable && config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxirun.enable = true;
     }

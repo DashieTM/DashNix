@@ -34,6 +34,25 @@
     ];
     gpu.nvidia.enable = true;
     kdeConnect.enable = true;
+    # Noctalia shell (only active with `wm.suite = "noctalia"`):
+    # selects the noctalia suite instead of the default oxi suite
+    # wm.suite = "noctalia";
+    # Example: full-width bar with a larger clock (see
+    # https://docs.noctalia.dev/noctalia/configuration/shell/ and
+    # https://github.com/noctalia-dev/noctalia/blob/main/example.toml
+    # for all keys). The theme comes from stylix, so theme.* keys set
+    # here would be overridden.
+    # noctalia.settings = {
+    #   bar.main = {
+    #     margin_ends = 0; # default 180, side gaps
+    #     margin_edge = 0; # default 10, gap to screen edge
+    #     radius = 0; # default 12, square corners for edge-to-edge
+    #   };
+    #   widget.clock = {
+    #     font_scale = 1.35; # default 1.0
+    #     font_weight = 700;
+    #   };
+    # };
     # login manager:
     # default is greetd
     # greetd = { };

@@ -19,7 +19,7 @@ in {
       description = "Enables and configures oxidash";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxidash.enable && config.mods.oxi.enable) (
+  config = lib.mkIf (config.mods.oxi.oxidash.enable && config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxidash.enable = true;
       xdg.configFile."oxidash/style.css" = {

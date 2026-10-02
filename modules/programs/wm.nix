@@ -272,6 +272,17 @@ in {
       description = "Mod key";
     };
 
+    suite = lib.mkOption {
+      default = "oxi";
+      example = "noctalia";
+      type = lib.types.enum ["oxi" "noctalia" "none"];
+      description = ''
+        Desktop shell suite used by niri and Hyprland.
+        "oxi" enables the oxi suite (oxibar, oxirun, oxidash, oxishut, oxipaste, oxicalc, hyprdock, ReSet),
+        "noctalia" enables Noctalia instead, "none" enables neither.
+      '';
+    };
+
     env = lib.mkOption {
       default = {};
       example = {

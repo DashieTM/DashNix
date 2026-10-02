@@ -42,6 +42,7 @@ in {
       type = lib.types.bool;
       description = ''
         Whether to use oxibar in hyprland.
+        Only started when mods.wm.suite is "oxi".
       '';
     };
     useDefaultConfig = lib.mkOption {
@@ -185,7 +186,7 @@ in {
         mkWindowRule = cfg: let
           defaultWindowRules =
             if cfg.mods.wm.useDefaultWindowRules
-            then defaultWmConf.defaultWindowRules.hyprland
+            then (defaultWmConf.defaultWindowRules cfg).hyprland
             else [];
           userWindowRules = cfg.mods.wm.windowRules.hyprland or [];
           allRules = defaultWindowRules ++ userWindowRules;
@@ -529,13 +530,18 @@ in {
                   action = "workspace";
                 };
 
-                layer_rule = [
-                  # layer rules - mainly to disable animations within slurp and grim
-                  {
-                    match = {namespace = "selection";};
+                layer_rule =
+                  [
+                    # layer rules - mainly to disable animations within slurp and grim
+                    {
+                      match = {namespace = "selection";};
+                      no_anim = true;
+                    }
+                  ]
+                  ++ lib.optional (config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable) {
+                    match = {namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$";};
                     no_anim = true;
-                  }
-                ];
+                  };
 
                 workspace_rule = mkWorkspace config.mods.wm.workspaces;
                 monitor = mkMonitors config.mods.wm.monitors;

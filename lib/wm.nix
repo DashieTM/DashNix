@@ -31,31 +31,52 @@ let
     }
     // mkSimpleBind modKeys key command args;
 in {
-  defaultWindowRules = {
-    niri = [
-      ''
-        match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-        match app-id=r#"^org\.gnome\.World\.Secrets$"#
+  defaultWindowRules = config: let
+    noctaliaActive = config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable;
+  in {
+    niri =
+      [
+        ''
+          match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+          match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
-        block-out-from "screen-capture"
-      ''
-      ''
-        match app-id=r#"^steam$"#
-        open-on-workspace "0"
-      ''
-      ''
-        geometry-corner-radius 12
-        clip-to-geometry true
-      ''
-    ];
-    hyprland = [
-      # window rules
-      "match:class OxiCalc, float on"
-      "match:class winecfg.exe, float on"
-      "match:class copyq, float on"
-      "match:class swappy, center on"
-      "match:class steam, workspace 10 silent"
-    ];
+          block-out-from "screen-capture"
+        ''
+        ''
+          match app-id=r#"^steam$"#
+          open-on-workspace "0"
+        ''
+      ]
+      ++ (
+        if noctaliaActive
+        then [
+          ''
+            match app-id=r#"^dev\.noctalia\.Noctalia$"#
+            open-floating true
+          ''
+        ]
+        else []
+      )
+      ++ [
+        ''
+          geometry-corner-radius 12
+          clip-to-geometry true
+        ''
+      ];
+    hyprland =
+      [
+        # window rules
+        "match:class OxiCalc, float on"
+        "match:class winecfg.exe, float on"
+        "match:class copyq, float on"
+        "match:class swappy, center on"
+        "match:class steam, workspace 10 silent"
+      ]
+      ++ (
+        if noctaliaActive
+        then ["match:class dev.noctalia.Noctalia, float on"]
+        else []
+      );
   };
 
   defaultStartup = config: {
@@ -73,7 +94,7 @@ in {
       # other programs
       "${browserName config}"
       (
-        if config.mods.oxi.hyprdock.enable
+        if config.mods.wm.suite == "oxi" && config.mods.oxi.hyprdock.enable
         then "hyprdock --server"
         else ""
       )
@@ -83,18 +104,31 @@ in {
         else ""
       )
       (
-        if config.mods.hypr.hyprland.useIronbar
+        if config.mods.wm.suite != "noctalia" && config.mods.hypr.hyprland.useIronbar
         then "ironbar"
         else ""
       )
       (
-        if config.mods.hypr.hyprland.useOxiBar
+        if config.mods.wm.suite == "oxi" && config.mods.hypr.hyprland.useOxiBar
         then "oxibar"
         else ""
       )
       (
-        if config.mods.oxi.oxipaste.enable
+        if config.mods.wm.suite == "oxi" && config.mods.oxi.oxipaste.enable
         then "oxipaste_daemon"
+        else ""
+      )
+      (
+        if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+        then
+          # Absolute store path: the compositor's PATH at autostart time does
+          # not reliably include the HM profile, which silently breaks bare
+          # executable names here.
+          let pkg = (config.programs.noctalia or {}).package or null;
+          in
+            if pkg != null
+            then "${pkg}/bin/noctalia"
+            else "noctalia"
         else ""
       )
     ];
@@ -194,13 +228,28 @@ in {
       else {}
     )
     (
-      if config.mods.oxi.oxirun.enable
+      if config.mods.wm.suite == "oxi" && config.mods.oxi.oxirun.enable
       then mkBindWithDesc ["Mod"] "R" "spawn" ["oxirun"] "Open OxiRun"
       else {}
     )
     (
-      if config.mods.oxi.oxidash.enable
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable && !config.mods.anyrun.enable
+      then mkBindWithDesc ["Mod"] "R" "spawn-sh" ["noctalia msg panel-toggle launcher"] "Open Noctalia launcher"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+      then mkBindWithDesc ["Mod"] "Space" "spawn-sh" ["noctalia msg panel-toggle launcher"] "Open Noctalia launcher"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "oxi" && config.mods.oxi.oxidash.enable
       then mkBindWithDesc ["Mod"] "M" "spawn" ["oxidash"] "Open OxiDash"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+      then mkBindWithDesc ["Mod"] "M" "spawn-sh" ["noctalia msg panel-toggle control-center"] "Open Noctalia control center"
       else {}
     )
     (
@@ -209,17 +258,32 @@ in {
       else {}
     )
     (
-      if config.mods.oxi.oxishut.enable
+      if config.mods.wm.suite == "oxi" && config.mods.oxi.oxishut.enable
       then mkBindWithDesc ["Mod"] "D" "spawn" ["oxishut"] "Open OxiShut"
       else {}
     )
     (
-      if config.mods.oxi.oxipaste.enable
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+      then mkBindWithDesc ["Mod"] "D" "spawn-sh" ["noctalia msg panel-toggle session"] "Open Noctalia session menu"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+      then mkBindWithDesc ["Mod" "Shift"] "D" "spawn-sh" ["noctalia msg settings-toggle"] "Open Noctalia settings"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "oxi" && config.mods.oxi.oxipaste.enable
       then mkBindWithDesc ["Mod"] "A" "spawn" ["oxipaste"] "Open Oxipaste"
       else {}
     )
     (
-      if config.mods.oxi.hyprdock.enable
+      if config.mods.wm.suite == "noctalia" && config.mods.noctalia.enable
+      then mkBindWithDesc ["Mod"] "A" "spawn-sh" ["noctalia msg panel-toggle clipboard"] "Open Noctalia clipboard"
+      else {}
+    )
+    (
+      if config.mods.wm.suite == "oxi" && config.mods.oxi.hyprdock.enable
       then mkBindWithDesc ["Mod" "Shift"] "P" "spawn" ["hyprdock --gui"] "Open Hyprdock"
       else {}
     )

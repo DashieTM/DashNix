@@ -81,7 +81,7 @@ in {
     };
   };
 
-  config = lib.mkIf (cfg.enable && config.mods.oxi.enable) (
+  config = lib.mkIf (cfg.enable && config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxibar = {
         enable = true;

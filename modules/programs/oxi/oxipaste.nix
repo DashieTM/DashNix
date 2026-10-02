@@ -12,7 +12,7 @@
       description = "Enables and configures oxipaste";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxipaste.enable && config.mods.oxi.enable) (
+  config = lib.mkIf (config.mods.oxi.oxipaste.enable && config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxipaste.enable = true;
       xdg.configFile."oxipaste/style.css" = {

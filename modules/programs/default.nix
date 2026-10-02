@@ -32,6 +32,7 @@
     ./ncspot.nix
     ./nextcloud.nix
     ./niri.nix
+    ./noctalia.nix
     ./onedrive.nix
     ./oxi
     ./piper.nix

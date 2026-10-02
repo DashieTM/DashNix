@@ -89,6 +89,15 @@ in {
           List of environments that should be available in the login prompt.
         '';
       };
+      greeter = lib.mkOption {
+        type = lib.types.enum ["regreet" "noctalia"];
+        default = "noctalia";
+        example = "regreet";
+        description = ''
+          Greeter to show on the greetd login screen. The noctalia greeter
+          follows the dashnix theme (stylix palette, cursor, fonts, wallpaper).
+        '';
+      };
       regreet = {
         customSettings = lib.mkOption {
           default = {};
@@ -96,6 +105,18 @@ in {
           type = with lib.types; attrsOf anything;
           description = ''
             Custom regret settings. See https://github.com/rharish101/ReGreet/blob/main/regreet.sample.toml for more information.
+          '';
+        };
+      };
+      noctalia = {
+        customSettings = lib.mkOption {
+          default = {};
+          example = {};
+          type = with lib.types; attrsOf anything;
+          description = ''
+            Custom noctalia-greeter settings, merged over the dashnix-themed
+            defaults. See https://docs.noctalia.dev/greeter/configuration/ for
+            all keys.
           '';
         };
       };
@@ -144,6 +165,43 @@ in {
       then quietHyprland
       else pkg)
     config.mods.greetd.environments;
+
+    useNoctaliaGreeter = config.mods.greetd.greeter == "noctalia";
+
+    # Greeter palette derived from the resolved stylix scheme (accent
+    # override already applied), mirroring the shell's stylix palette roles.
+    greeterScheme = config.stylix.base16Scheme;
+    greeterHex = color: "#" + lib.removePrefix "#" color;
+    greeterPalette = {
+      primary = greeterHex greeterScheme.base0D;
+      on_primary = greeterHex greeterScheme.base00;
+      secondary = greeterHex greeterScheme.base0E;
+      on_secondary = greeterHex greeterScheme.base00;
+      tertiary = greeterHex greeterScheme.base0C;
+      on_tertiary = greeterHex greeterScheme.base00;
+      error = greeterHex greeterScheme.base08;
+      on_error = greeterHex greeterScheme.base00;
+      surface = greeterHex greeterScheme.base00;
+      on_surface = greeterHex greeterScheme.base05;
+      surface_variant = greeterHex greeterScheme.base01;
+      on_surface_variant = greeterHex greeterScheme.base04;
+      outline = greeterHex greeterScheme.base03;
+      shadow = greeterHex greeterScheme.base00;
+      hover = greeterHex greeterScheme.base0D;
+      on_hover = greeterHex greeterScheme.base00;
+    };
+
+    # "RESxRES@RATE" -> { width, height, refresh_rate }, null when unset.
+    greeterMode = let
+      m = builtins.match "([0-9]+)x([0-9]+)@([0-9]+)" config.mods.greetd.resolution;
+    in
+      if m == null
+      then null
+      else {
+        width = builtins.fromJSON (builtins.elemAt m 0);
+        height = builtins.fromJSON (builtins.elemAt m 1);
+        refresh_rate = builtins.fromJSON (builtins.elemAt m 2);
+      };
   in
     lib.mkIf config.mods.greetd.enable (
       lib.optionalAttrs (options ? environment) {
@@ -155,21 +213,69 @@ in {
           portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
           enable = mkDashDefault true;
         };
-        programs.regreet = {
+        programs.regreet = lib.mkIf (!useNoctaliaGreeter) {
           enable = true;
           settings = config.mods.greetd.regreet.customSettings;
         };
+        # The nixpkgs greeter module sets its own default_session command
+        # (mkDefault); ours would win via mkDashDefault, so only set it for
+        # the regreet path.
         services = {
           # mkForce: the nixpkgs programs.hyprland module also registers
           # [cfg.package] (the unwrapped real package) as a session, which would
           # offer an extra, noisy Hyprland entry in the login prompt. Force our
           # wrapped session list so only the quiet session is offered.
           displayManager.sessionPackages = lib.mkForce sessionPackages;
+          displayManager.noctalia-greeter = lib.mkIf useNoctaliaGreeter {
+            enable = true;
+            cursorTheme = {
+              inherit (config.mods.stylix.cursor) package name;
+            };
+            settings = lib.mkMerge [
+              {
+                session.default =
+                  if config.mods.niri.enable
+                  then "niri"
+                  else "Hyprland";
+                user.default = username;
+                appearance = {
+                  scheme = "Synced";
+                  theme_mode = config.stylix.polarity;
+                  font_family = config.mods.stylix.fonts.sansSerif.name;
+                  palette = greeterPalette;
+                  wallpaper = {
+                    path = "${config.stylix.image}";
+                    fill_mode = "crop";
+                  };
+                };
+                cursor.size = config.mods.stylix.cursor.size;
+                keyboard =
+                  {
+                    layout = config.mods.xkb.layout;
+                  }
+                  // lib.optionalAttrs (config.mods.xkb.variant != "") {
+                    variant = config.mods.xkb.variant;
+                  };
+              }
+              (lib.optionalAttrs (config.mods.greetd.monitor != "") {
+                output.name = config.mods.greetd.monitor;
+              })
+              (lib.optionalAttrs (config.mods.greetd.scale != "") {
+                output.scale = builtins.fromJSON config.mods.greetd.scale;
+              })
+              (lib.optionalAttrs (greeterMode != null) {
+                output = {
+                  inherit (greeterMode) width height refresh_rate;
+                };
+              })
+              config.mods.greetd.noctalia.customSettings
+            ];
+          };
           greetd = {
             enable = true;
             settings = {
               terminal.vt = mkDashDefault 1;
-              default_session = {
+              default_session = lib.mkIf (!useNoctaliaGreeter) {
                 command = mkDashDefault config.mods.greetd.greeterCommand;
                 user = mkDashDefault username;
               };

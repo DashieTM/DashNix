@@ -12,7 +12,7 @@
       description = "Enables and configures oxishut";
     };
   };
-  config = lib.mkIf (config.mods.oxi.oxishut.enable && config.mods.oxi.enable) (
+  config = lib.mkIf (config.mods.oxi.oxishut.enable && config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
     lib.optionalAttrs (options ? xdg.configFile) {
       programs.oxishut.enable = true;
       xdg.configFile."oxishut/style.css" = {

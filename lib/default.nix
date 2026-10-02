@@ -250,6 +250,7 @@ in rec {
       inputs.oxirun.homeManagerModules.default
       inputs.hyprdock.homeManagerModules.default
       inputs.hyprland.homeManagerModules.default
+      inputs.noctalia.homeModules.default
       inputs.reset.homeManagerModules.default
       inputs.sops-nix.homeManagerModules.sops
       inputs.dashvim.homeManagerModules.dashvim

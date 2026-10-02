@@ -46,36 +46,44 @@
         default = true;
         example = false;
         type = lib.types.bool;
-        description = "Enables hyprdock";
+        description = "Enables oxicalc (compositor-independent, not part of the wm suite selection)";
       };
     };
   };
-  config = lib.mkIf config.mods.oxi.enable (
-    lib.optionalAttrs (options ? home.packages) {
-      programs = {
-        hyprdock = {
-          inherit (config.mods.oxi.hyprdock) enable;
-          inherit (config.mods.oxi.hyprdock) settings;
-        };
-        oxicalc.enable = lib.mkIf config.mods.oxi.oxicalc.enable true;
-        ReSet = lib.mkIf config.mods.oxi.ReSet.enable {
-          enable = true;
-          config = {
-            plugins = [
-              inputs.reset-plugins.packages."x86_64-linux".monitor
-              inputs.reset-plugins.packages."x86_64-linux".keyboard
-            ];
-            plugin_config = {
-              Keyboard = {
-                path = "/home/${config.conf.username}/.config/reset/keyboard.conf";
+  # Oxicalc is compositor-independent, so it stays available regardless of
+  # the selected wm suite. Everything else here belongs to the oxi suite.
+  config = lib.mkMerge [
+    (lib.mkIf (config.mods.oxi.enable && config.mods.oxi.oxicalc.enable) (
+      lib.optionalAttrs (options ? home.packages) {
+        programs.oxicalc.enable = true;
+      }
+    ))
+    (lib.mkIf (config.mods.oxi.enable && config.mods.wm.suite == "oxi") (
+      lib.optionalAttrs (options ? home.packages) {
+        programs = {
+          hyprdock = {
+            inherit (config.mods.oxi.hyprdock) enable;
+            inherit (config.mods.oxi.hyprdock) settings;
+          };
+          ReSet = lib.mkIf config.mods.oxi.ReSet.enable {
+            enable = true;
+            config = {
+              plugins = [
+                inputs.reset-plugins.packages."x86_64-linux".monitor
+                inputs.reset-plugins.packages."x86_64-linux".keyboard
+              ];
+              plugin_config = {
+                Keyboard = {
+                  path = "/home/${config.conf.username}/.config/reset/keyboard.conf";
+                };
               };
             };
           };
         };
-      };
-    }
-    // lib.optionalAttrs (options ? services.logind && options ? services.logind.settings) {
-      services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
-    }
-  );
+      }
+      // lib.optionalAttrs (options ? services.logind && options ? services.logind.settings) {
+        services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
+      }
+    ))
+  ];
 }

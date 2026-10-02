@@ -44,6 +44,10 @@
     oxirun.url = "github:Xetibo/OxiRun";
     dashvim.url = "github:Xetibo/DashVim";
 
+    # cachix branch always points at the latest cached commit; do not add
+    # nixpkgs.follows here, it would change derivations and break the cache.
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     hyprdock.url = "github:Xetibo/hyprdock";
@@ -56,8 +60,8 @@
   };
 
   nixConfig = {
-    extra-substituters = ["https://hyprland.cachix.org"];
-    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    extra-substituters = ["https://hyprland.cachix.org" "https://noctalia.cachix.org"];
+    extra-trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
   };
 
   outputs = {self, ...} @ inputs: let

@@ -3,6 +3,13 @@
 Log of notable design decisions for LLM continuity. Keep entries concise; do
 not duplicate component-specific details that live in module code or docs.
 
+## 2026-10-02: Noctalia suite variant via mods.wm.suite
+
+- `mods.wm.suite` enum `oxi`/`noctalia`/`none` (default `oxi`) selects the shell for both niri and Hyprland; default preserves existing behavior.
+- New `modules/programs/noctalia.nix` (`mods.noctalia`) drives upstream `programs.noctalia` (HM scope) plus `recommendedServices` (NixOS scope, per-scope gating via `options ? ...` since nixpkgs ships its own NixOS `programs.noctalia` without settings). Theming intentionally goes through the stylix noctalia target, which derives its palette from the same `stylix.base16Scheme` (accent override respected), avoiding a competing custom palette; user `settings`/`customPalettes` pass through to the upstream module. The bar clock defaults to the `primary` palette role (mkDashDefault, plain user values win), so it tracks the dashnix accent automatically.
+- Flake input `noctalia` tracks `github:noctalia-dev/noctalia/cachix` (latest cached commit) with no `nixpkgs.follows`, preserving its binary cache (`noctalia.cachix.org`); wired into `defaultHomeMods` and both cache lists (`base/common_hardware.nix`, root and example `nixConfig`).
+- All `mods.oxi.*` configs additionally require `suite == "oxi"`, so switching suites removes oxi packages without touching per-app enables; oxicalc is exempt as compositor-independent (stays enabled with its Mod+G bind and float rule in every suite). Ironbar stays independent. Shared `lib/wm.nix` startup/binds/window-rules are suite-aware (noctalia autostart, float rules, launcher on Mod+Space/Mod+R, control-center on Mod+M, session menu on Mod+D replacing oxishut, clipboard on Mod+A replacing oxipaste, settings on Mod+Shift+D since Mod+Comma is niri's consume-window-into-column; hyprland no-anim layer rule for noctalia namespaces).
+
 ## 2026-10-02: Cached Hyprland release and matching graphics stack
 
 - User requested latest release rather than latest master commit. Pin v0.56.2's module input to `efb50993780079460b0cbed1363e2166a2de1d9f`.
