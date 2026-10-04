@@ -52,15 +52,29 @@ in {
       programs.noctalia = {
         enable = true;
         systemd.enable = cfg.systemd.enable;
-        # The bar clock follows the palette accent automatically. The
-        # stylix palette derives `primary` from the dashnix colorscheme
-        # (including the accentColor override), so this tracks it with no
-        # further config. Plain user values win over mkDashDefault.
+        # Dashnix bar defaults: full-width bar with slightly enlarged
+        # clock/workspaces, and the clock following the palette accent
+        # (stylix derives `primary` from the dashnix colorscheme including
+        # the accentColor override). Everything is mkDashDefault, so plain
+        # user values in `mods.noctalia.settings` win per key.
         settings =
           if builtins.isAttrs cfg.settings
           then
             lib.mkMerge [
-              {widget.clock.color = mkDashDefault "primary";}
+              {
+                bar.main = {
+                  margin_ends = mkDashDefault 0;
+                  margin_edge = mkDashDefault 0;
+                  radius = mkDashDefault 0;
+                  thickness = mkDashDefault 38;
+                  font_scale = mkDashDefault 1.15;
+                };
+                widget.clock = {
+                  color = mkDashDefault "primary";
+                  font_scale = mkDashDefault 1.35;
+                };
+                widget.workspaces.font_scale = mkDashDefault 1.25;
+              }
               cfg.settings
             ]
           else cfg.settings;
